@@ -17,11 +17,6 @@ public abstract class LevelGeneratorStyle : MonoBehaviour
     [Header("Settings")]
     public int minimumArea = 2000;
     
-    //protected LevelGeneratorStyle(LevelGenerator levelGenerator)
-    //{
-    //    LevelGenerator = levelGenerator;
-    //}
-    
     protected LevelGenerator LevelGenerator { get; private set; }
 
     public GameObject GetModel(char tileType)
@@ -63,6 +58,7 @@ public abstract class LevelGeneratorStyle : MonoBehaviour
         Step01_PreDungeon();
         Step02_Dungeon();
         Step03_PostDungeon();
+        LevelGenerator.FinalLevel.Optimize();
     }
 
     //Walkable areas

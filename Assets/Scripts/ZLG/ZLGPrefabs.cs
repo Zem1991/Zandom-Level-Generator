@@ -6,5 +6,5 @@ public class ZLGPrefabs : AbstractSingleton<ZLGPrefabs>
 {
     [Header("Finals")]
     public FinalRoom finalRoom;
-    public FinalWall finalWall;
+    //public FinalWall finalWall;
 }

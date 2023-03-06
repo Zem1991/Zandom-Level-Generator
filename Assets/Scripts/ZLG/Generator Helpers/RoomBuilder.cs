@@ -23,7 +23,7 @@ public class RoomBuilder
     public Room Build(Vector2Int start, Vector2Int size, bool vertical, Room parent)
     {
         //Room root = parent?.Root ?? parent;
-        //Room room = LevelGenerator.Level.CreateRoom(start, size, vertical, root, parent);
+        //Room room = LevelGenerator.Level.CreateFinalRoom(start, size, vertical, root, parent);
         Room room = LevelGenerator.Level.CreateRoom(start, size, vertical, parent);
         BuildArea(room, start, size);
         BuildBorders(room, start, size);

@@ -26,7 +26,7 @@ public class Level
         return true;
     }
 
-    //public Room CreateRoom(Vector2Int start, Vector2Int size, bool vertical, Room root, Room parent)
+    //public Room CreateFinalRoom(Vector2Int start, Vector2Int size, bool vertical, Room root, Room parent)
     public Room CreateRoom(Vector2Int start, Vector2Int size, bool vertical, Room parent)
     {
         int id = Rooms.Count;

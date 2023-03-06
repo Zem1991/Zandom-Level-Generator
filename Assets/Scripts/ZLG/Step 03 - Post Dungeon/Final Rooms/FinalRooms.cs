@@ -19,15 +19,11 @@ public class FinalRooms : LevelGeneratorTask
         }
     }
 
-    public FinalRoom Run(Room room)
+    public void Run(Room room)
     {
-        FinalRoom prefab = ZLGPrefabs.Instance.finalRoom;
         FinalRoom parent = room.Parent?.GeneratedRoom;
-        Transform parentTransform = parent ? parent.transform : LevelGenerator.FinalLevel.transform;
-        FinalRoom finalRoom = Object.Instantiate(prefab, Vector3.zero, Quaternion.identity, parentTransform);
-        finalRoom.Setup(room, parent);
-        //finalRoom.transform.SetAsFirstSibling();
-        room.GeneratedRoom = finalRoom;
-        return finalRoom;
+        FinalLevel finalLevel = LevelGenerator.FinalLevel;
+        Transform parentTransform = finalLevel.transform;
+        finalLevel.CreateFinalRoom(room, parent, parentTransform);
     }
 }

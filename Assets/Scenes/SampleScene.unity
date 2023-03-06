@@ -262,11 +262,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   finalRoom: {fileID: 8197844708188214129, guid: 04a1c4b76b5e0f64ab5deb54fadc4c90, type: 3}
-  finalWall: {fileID: 7883041805345766120, guid: 8c535f258a9682745a487dbd9a3de906, type: 3}
-  cathedralFloor: {fileID: 0}
-  cathedralWall: {fileID: 0}
-  cathedralBars: {fileID: 0}
-  cathedralDoor: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,6 +357,7 @@ GameObject:
   - component: {fileID: 1630063770}
   - component: {fileID: 1630063771}
   - component: {fileID: 1630063772}
+  - component: {fileID: 1630063773}
   m_Layer: 0
   m_Name: Level Generator
   m_TagString: Untagged
@@ -409,3 +405,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2d2aa4c4b22c8a4da2d1b53a0c382da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!33 &1630063773
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630063768}
+  m_Mesh: {fileID: 0}

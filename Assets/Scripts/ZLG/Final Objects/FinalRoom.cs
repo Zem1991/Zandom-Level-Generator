@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Utility;
 
 public class FinalRoom : MonoBehaviour
 {
+    public Room Room { get; private set; }
+    public FinalRoom Parent { get; private set; }
+
     public void Setup(Room room, FinalRoom parent)
     {
         Room = room;
@@ -11,6 +15,8 @@ public class FinalRoom : MonoBehaviour
         name = $"Room #{room.Id}";
     }
 
-    public Room Room { get; private set; }
-    public FinalRoom Parent { get; private set; }
+    public void Optimize()
+    {
+        gameObject.MeshCombine(true);
+    }
 }

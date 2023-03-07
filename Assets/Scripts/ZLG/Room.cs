@@ -54,6 +54,11 @@ public class Room
     //    //return count <= 1;
     //}
 
+    public override string ToString()
+    {
+        return $"Room #{Id}";
+    }
+
     public bool IsSpecial()
     {
         bool hasParent = Parent != null;

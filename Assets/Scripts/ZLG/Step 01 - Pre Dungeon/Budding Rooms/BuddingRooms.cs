@@ -24,14 +24,29 @@ public class BuddingRooms : LevelGeneratorTask
 
     public List<Room> Run(Room parent)
     {
-        bool vertical = !parent.Vertical;
-        bool canKeepParentOrientation = parent.Parent != null;
-        bool canRetry = canKeepParentOrientation;
-        //bool canRetry = false;
-        if (canKeepParentOrientation && Random.Range(0, 4) <= 0)
+        bool nextVertical;// = false;
+        bool enoughParents = parent?.Parent != null;
+        bool tooManyParents = parent?.Parent?.Parent != null;
+        bool canRetry = !tooManyParents;
+        enoughParents = tooManyParents;
+
+        if (enoughParents)
         {
-            vertical = !vertical;
-            //canRetry = true;
+            bool parentsWithSameOrientation = parent.Vertical == parent.Parent.Vertical;
+            if (parentsWithSameOrientation)
+            {
+                nextVertical = !parent.Vertical;
+            }
+            else
+            {
+                bool keepSame = Random.Range(0, 4) <= 0;
+                if (keepSame) nextVertical = parent.Vertical;
+                else nextVertical = !parent.Vertical;
+            }
+        }
+        else
+        {
+            nextVertical = !parent.Vertical;
         }
 
         RoomSizePicker sizePicker = new();
@@ -40,14 +55,14 @@ public class BuddingRooms : LevelGeneratorTask
         Vector2Int size = new(sizeX, sizeZ);
 
         List<Room> newRooms;
-        if (vertical)
+        if (nextVertical)
             newRooms = new VerticalBuddingRooms(LevelGenerator).Run(size, parent);
         else
             newRooms = new HorizontalBuddingRooms(LevelGenerator).Run(size, parent);
         bool success = newRooms.Count > 0;
         if (!success && canRetry)
         {
-            if (vertical)
+            if (nextVertical)
                 newRooms = new HorizontalBuddingRooms(LevelGenerator).Run(size, parent);
             else
                 newRooms = new VerticalBuddingRooms(LevelGenerator).Run(size, parent);

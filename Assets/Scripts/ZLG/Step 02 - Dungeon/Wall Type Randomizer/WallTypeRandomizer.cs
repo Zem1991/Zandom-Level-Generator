@@ -17,7 +17,7 @@ public class WallTypeRandomizer : LevelGeneratorTask
         foreach (Wall wall in LevelGenerator.Level.Walls.Values)
         {
             int ageGap = wall.GetAgeGap();
-            bool tooOld = ageGap > 4;
+            bool tooOld = ageGap >= 4;
             bool differentRoot = wall.IsDifferentRoot();
             bool specialRoom = wall.HasSpecialRoom();
             bool parentWall = wall.IsParentWall();

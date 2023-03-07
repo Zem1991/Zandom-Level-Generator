@@ -11,11 +11,11 @@ public abstract class AxisBuddingRooms
 
     protected LevelGenerator LevelGenerator { get; }
 
-    protected List<Room> Run(Vector2Int position1, Vector2Int position2, Vector2Int size, Room parent)
+    protected List<Room> Run(Vector2Int position1, Vector2Int position2, Vector2Int size, bool vertical, Room parent)
     {
         BuddingRoomsExecutor buddingRoomsExecutor = new BuddingRoomsExecutor(LevelGenerator);
-        Room room1 = buddingRoomsExecutor.Run(position1, size, false, parent);
-        Room room2 = buddingRoomsExecutor.Run(position2, size, false, parent);
+        Room room1 = buddingRoomsExecutor.Run(position1, size, vertical, parent);
+        Room room2 = buddingRoomsExecutor.Run(position2, size, vertical, parent);
         List<Room> result = new();
         if (room1 != null) result.Add(room1);
         if (room2 != null) result.Add(room2);

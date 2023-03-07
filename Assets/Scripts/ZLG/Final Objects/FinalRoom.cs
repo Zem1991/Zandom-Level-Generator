@@ -12,7 +12,7 @@ public class FinalRoom : MonoBehaviour
     {
         Room = room;
         Parent = parent;
-        name = $"Room #{room.Id}";
+        name = room.ToString();
     }
 
     public void Optimize()

@@ -22,7 +22,7 @@ public class Level
         if (start.x < 0) return false;
         if (start.y < 0) return false;
         if (start.x + size.x - 1 >= SIZE) return false;
-        if (start.y + size.x - 1>= SIZE) return false;
+        if (start.y + size.y - 1 >= SIZE) return false;
         return true;
     }
 

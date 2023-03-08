@@ -17,7 +17,7 @@ public class Room
         Tiles = new();
         Walls = new();
         Children = new();
-        DefineRoot();
+        DefineRootAndAge();
     }
 
     public int Id { get; }
@@ -59,14 +59,14 @@ public class Room
         return $"Room #{Id}";
     }
 
-    public bool IsSpecial()
+    public bool IsEnclosed()
     {
         bool hasParent = Parent != null;
         bool noChildren = Children.Count <= 0;
         return hasParent && noChildren;
     }
 
-    private void DefineRoot()
+    private void DefineRootAndAge()
     {
         Root = null;
         Age = 0;

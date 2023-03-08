@@ -10,25 +10,28 @@ public class WallTypeRandomizer : LevelGeneratorTask
 
     public override void Run()
     {
-        List<Wall> specialRoomList = new();
+        List<Wall> enclosedList = new();
         List<Wall> parentList = new();
         List<Wall> destructibleList = new();
         List<Wall> normalList = new();
         foreach (Wall wall in LevelGenerator.Level.Walls.Values)
         {
-            int ageGap = wall.GetAgeGap();
-            bool tooOld = ageGap >= 4;
-            bool differentRoot = wall.IsDifferentRoot();
-            bool specialRoom = wall.HasSpecialRoom();
+            int distance = new RoomDistanceFinder().Find(wall.SourceRoom, wall.NeighborRoom);
+            bool tooDistant = distance >= Constants.ROOM_AGE_FOR_WEAK_WALLS;
+            //int ageGap = wall.GetAgeGap();
+            //bool tooOld = ageGap >= Constants.ROOM_AGE_FOR_WEAK_WALLS;
+            //bool differentRoot = wall.IsDifferentRoot();
+            bool enclosedRoom = wall.HasEnclosedRoom();
             bool parentWall = wall.IsParentWall();
 
-            if (tooOld || differentRoot)
+            //if (tooOld || differentRoot)
+            if (tooDistant)
             {
                 destructibleList.Add(wall);
             }
-            else if (specialRoom)
+            else if (enclosedRoom)
             {
-                specialRoomList.Add(wall);
+                enclosedList.Add(wall);
             }
             else if (parentWall)
             {
@@ -45,18 +48,18 @@ public class WallTypeRandomizer : LevelGeneratorTask
             //else if (wall.IsDifferentRoot()) differentRoots.Add(wall);
             //else others.Add(wall);
         }
-        SpecialRoom(specialRoomList);
+        Enclosed(enclosedList);
         Parent(parentList);
         DestructibleWall(destructibleList);
         NormalWall(normalList);
     }
 
-    public void SpecialRoom(List<Wall> walls)
+    public void Enclosed(List<Wall> walls)
     {
         WallTypePicker picker = new();
         foreach (Wall wall in walls)
         {
-            wall.Type = picker.SpecialRoom();
+            wall.Type = picker.Enclosed();
             Run(wall);
         }
     }

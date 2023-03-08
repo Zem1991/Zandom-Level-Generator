@@ -14,7 +14,7 @@ public class RoomTypeRandomizer : LevelGeneratorTask
         List<Room> specialRooms = new();
         foreach (Room room in LevelGenerator.Level.Rooms.Values)
         {
-            if (room.IsSpecial()) specialRooms.Add(room);
+            if (room.IsEnclosed()) specialRooms.Add(room);
             else normalRooms.Add(room);
         }
         RunNormal(normalRooms);

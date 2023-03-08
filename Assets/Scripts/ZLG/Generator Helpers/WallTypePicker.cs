@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallTypePicker
 {
-    public char SpecialRoom()
+    public char Enclosed()
     {
         int rng = Random.Range(0, 2);
         if (rng > 0) return TileTypes.BARS;
@@ -14,7 +14,7 @@ public class WallTypePicker
     public char Parent()
     {
         int rng = Random.Range(0, 2);
-        if (rng > 0) return SpecialRoom();
+        if (rng > 0) return Enclosed();
         return TileTypes.FLOOR;
     }
     

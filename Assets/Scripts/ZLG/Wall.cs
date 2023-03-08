@@ -56,15 +56,15 @@ public class Wall
 
     public bool IsDifferentRoot()
     {
-        bool sourceRoot = SourceRoom.Root != null;
-        bool neighborRoot = NeighborRoom.Root != null;
+        bool haveSourceRoot = SourceRoom.Root != null;
+        bool haveNeighborRoot = NeighborRoom.Root != null;
         bool different = SourceRoom.Root != NeighborRoom.Root;
-        return sourceRoot && neighborRoot && different;
+        return haveSourceRoot && haveNeighborRoot && different;
     }
 
-    public bool HasSpecialRoom()
+    public bool HasEnclosedRoom()
     {
-        return SourceRoom.IsSpecial() || NeighborRoom.IsSpecial();
+        return SourceRoom.IsEnclosed() || NeighborRoom.IsEnclosed();
     }
 
     public bool IsParentWall()

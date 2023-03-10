@@ -11,11 +11,11 @@ public class CathedralLevelGeneratorStyle : LevelGeneratorStyle
 
     protected override void Step01_PreDungeon()
     {
-        new StartingRoom(LevelGenerator).Run();
+        //new StartingRoom(LevelGenerator).Run();
+        new CathedralSpine(LevelGenerator).Run();
         List<Room> startingBuddingRooms = new(LevelGenerator.Level.Rooms.Values.Take(2));
         new BuddingRooms(LevelGenerator, startingBuddingRooms).Run();
         new WallFinder(LevelGenerator).Run();
-        //new DoorsFromWalls(LevelGenerator).Run();
     }
 
     protected override void Step02_Dungeon()

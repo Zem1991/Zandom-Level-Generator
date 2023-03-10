@@ -20,6 +20,14 @@ public class RoomBuilder
         return insideLevelBounds && availableOnTilemap;
     }
 
+    public Room Build(Vector2Int start, SetPiece setPiece, bool vertical, Room parent)
+    {
+        Room room = Build(start, setPiece.Size, vertical, parent);
+        SetPieceBuilder setPieceBuilder = new(LevelGenerator);
+        setPieceBuilder.Build(start, setPiece);
+        return room;
+    }
+
     public Room Build(Vector2Int start, Vector2Int size, bool vertical, Room parent)
     {
         //Room root = parent?.Root ?? parent;

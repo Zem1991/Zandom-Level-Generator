@@ -15,6 +15,8 @@ public class StartingRoom : LevelGeneratorTask
         Vector2Int size = new(20, 20);
         bool can = roomBuilder.CanBuild(start, size);
         if (!can) return;
-        roomBuilder.Build(start, size, false, null);
+        Room result = roomBuilder.Build(start, size, false, null);
+        ApplyBorders applyBorders = new(LevelGenerator);
+        applyBorders.Apply(result);
     }
 }

@@ -2,52 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorizontalCathedralSpine
+public class HorizontalCathedralSpine : AxisCathedralSpine
 {
-    private LevelGenerator levelGenerator;
-    private int firstRoomPosition;
-    private int corridorLength;
-
-    public HorizontalCathedralSpine(LevelGenerator levelGenerator, int firstRoomPosition, int corridorLength)
+    public HorizontalCathedralSpine(LevelGenerator levelGenerator, int firstRoomPosition, int corridorLength) : base(levelGenerator, firstRoomPosition, corridorLength)
     {
-        this.levelGenerator = levelGenerator;
-        this.firstRoomPosition = firstRoomPosition;
-        this.corridorLength = corridorLength;
     }
 
-    public void Run()
+    protected override Vector2Int GetPositionRoom1()
     {
-        Vector2Int position1 = new(firstRoomPosition, 3);
-        Vector2Int position2 = new(firstRoomPosition + 2 + corridorLength, 3);
-        position1 *= Constants.MODULE_SIZE;
-        position2 *= Constants.MODULE_SIZE;
-        Room(position1);
-        Room(position2);
-        if (corridorLength <= 0) return;
-        Corridor();
+        return new(firstRoomPosition, 3);
     }
 
-    private void Room(Vector2Int startPos)
+    protected override Vector2Int GetPositionRoom2()
     {
-        SetPiece setPiece = new CathedralSpineRoom();
-        Build(startPos, setPiece);
+        return new(firstRoomPosition + 2 + corridorLength, 3);
     }
 
-    private void Corridor()
+    protected override Vector2Int GetPositionCorridor(int index)
     {
-        SetPiece setPiece = new CathedralSpineCorridor();
-        for (int i = 0; i < corridorLength; i++)
-        {
-            int pos = firstRoomPosition + 2 + i;
-            Vector2Int position = new(pos, 3);
-            position *= Constants.MODULE_SIZE;
-            position.y += 3;
-            Build(position, setPiece);
-        }
+        return new(index, 3);
     }
-
-    private void Build(Vector2Int position, SetPiece setPiece)
+    
+    protected override Room Build(Vector2Int position, SetPiece setPiece)
     {
-        new CathedralSpineExecutor(levelGenerator).Run(position, setPiece, false);
+        return new CathedralSpineExecutor(levelGenerator).Run(position, setPiece, false);
     }
 }

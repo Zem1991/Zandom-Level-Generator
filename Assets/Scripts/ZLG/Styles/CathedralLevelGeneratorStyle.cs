@@ -5,17 +5,13 @@ using UnityEngine;
 
 public class CathedralLevelGeneratorStyle : LevelGeneratorStyle
 {
-    //public CathedralLevelGeneratorStyle(LevelGenerator levelGenerator) : base(levelGenerator)
-    //{
-    //}
-
     protected override void Step01_PreDungeon()
     {
         //new StartingRoom(LevelGenerator).Run();
         new CathedralSpine(LevelGenerator).Run();
         List<Room> startingBuddingRooms = new(LevelGenerator.Level.Rooms.Values.Take(2));
-        new BuddingRooms(LevelGenerator, startingBuddingRooms).Run();
-        new WallFinder(LevelGenerator).Run();
+        //new BuddingRooms(LevelGenerator, startingBuddingRooms).Run();
+        //new WallFinder(LevelGenerator).Run();
     }
 
     protected override void Step02_Dungeon()

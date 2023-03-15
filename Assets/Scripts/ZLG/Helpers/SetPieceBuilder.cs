@@ -15,8 +15,6 @@ public class SetPieceBuilder
     {
         bool insideLevelBounds = LevelGenerator.Level.IsInsideBounds(start, setPiece.Size);
         bool availableOnTilemap = LevelGenerator.Level.TileMap.IsAvailable(start, setPiece.Size);
-        //start -= Vector2Int.one;
-        //size += Vector2Int.one;
         return insideLevelBounds && availableOnTilemap;
     }
 

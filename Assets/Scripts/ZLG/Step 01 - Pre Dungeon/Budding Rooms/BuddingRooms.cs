@@ -13,14 +13,23 @@ public class BuddingRooms : LevelGeneratorTask
 
     public override void Run()
     {
+        AreaChecker dungeonAreaChecker = new(StartingRooms);
         Queue<Room> rooms = new(StartingRooms);
-        DungeonAreaChecker dungeonAreaChecker = new(LevelGenerator);
+        int roomAreaSum = dungeonAreaChecker.GetArea();
         while (rooms.Count > 0)
         {
-            if (dungeonAreaChecker.CheckAreaMin()) break;
+            if (!dungeonAreaChecker.CheckMax(roomAreaSum, out int maximum))
+            {
+                Debug.Log($"Surpassed the maximum area: {roomAreaSum}/{maximum}");
+                break;
+            }
             Room sourceRoom = rooms.Dequeue();
             List<Room> newRooms = Run(sourceRoom);
-            foreach (Room room in newRooms) rooms.Enqueue(room);
+            foreach (var item in newRooms)
+            {
+                roomAreaSum += item.Area;
+                rooms.Enqueue(item);
+            }
         }
     }
 

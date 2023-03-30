@@ -8,12 +8,17 @@ public class LevelGenerator : MonoBehaviour
 
     private void Awake()
     {
-        Level = new();
+        ClearLevel();
         FinalLevel = GetComponent<FinalLevel>();
     }
 
     public Level Level { get; private set; }
     public FinalLevel FinalLevel { get; private set; }
+
+    public void ClearLevel()
+    {
+        Level = new();
+    }
 
     private void Start()
     {

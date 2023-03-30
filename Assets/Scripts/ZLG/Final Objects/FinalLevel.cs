@@ -27,7 +27,7 @@ public class FinalLevel : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Vector3 size = new(Level.SIZE, 0, Level.SIZE);
+        Vector3 size = new(Constants.LEVEL_SIZE, 0, Constants.LEVEL_SIZE);
         Vector3 center = size / 2F;
         center += transform.position;
         center.x -= 0.5F;

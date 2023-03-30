@@ -21,7 +21,7 @@ public class WallFinder : LevelGeneratorTask
     private void IterateTiles()
     {
         Vector2Int start = new();
-        Vector2Int size = Vector2Int.one * Level.SIZE;
+        Vector2Int size = Vector2Int.one * Constants.LEVEL_SIZE;
         bool wallTile(int col, int row)
         {
             Vector2Int coordinates = new(col, row);

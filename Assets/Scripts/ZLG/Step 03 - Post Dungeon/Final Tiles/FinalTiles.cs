@@ -11,7 +11,7 @@ public class FinalTiles : LevelGeneratorTask
     public override void Run()
     {
         Vector2Int start = new();
-        Vector2Int size = Vector2Int.one * Level.SIZE;
+        Vector2Int size = Vector2Int.one * Constants.LEVEL_SIZE;
         start -= Vector2Int.one;
         size += Vector2Int.one * 2;
         bool finalTile(int col, int row)

@@ -43,7 +43,7 @@ public class Room
         {
             int x = Size.x;// - Start.x + 1;
             int y = Size.y;// - Start.y + 1;
-            return x + y;
+            return x * y;
         }
     }
 

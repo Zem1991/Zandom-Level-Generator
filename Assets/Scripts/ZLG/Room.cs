@@ -37,6 +37,16 @@ public class Room
     public char Type { get; set; }
     public FinalRoom GeneratedRoom { get; set; }
 
+    public int Area
+    {
+        get
+        {
+            int x = Size.x;// - Start.x + 1;
+            int y = Size.y;// - Start.y + 1;
+            return x + y;
+        }
+    }
+
     //public void Add(Vector2Int coordinates)
     //{
     //    Tile tile = LevelGenerator.TileMap.Get(coordinates);

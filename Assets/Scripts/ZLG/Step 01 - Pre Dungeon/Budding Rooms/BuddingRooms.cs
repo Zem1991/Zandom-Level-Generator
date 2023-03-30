@@ -14,8 +14,10 @@ public class BuddingRooms : LevelGeneratorTask
     public override void Run()
     {
         Queue<Room> rooms = new(StartingRooms);
+        DungeonAreaChecker dungeonAreaChecker = new(LevelGenerator);
         while (rooms.Count > 0)
         {
+            if (dungeonAreaChecker.CheckAreaMin()) break;
             Room sourceRoom = rooms.Dequeue();
             List<Room> newRooms = Run(sourceRoom);
             foreach (Room room in newRooms) rooms.Enqueue(room);

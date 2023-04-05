@@ -34,7 +34,7 @@ public class Room
     
     public Room Root { get; private set; }
     public int Age { get; private set; }
-    public char Type { get; set; }
+    public RoomType Type { get; set; }
     public FinalRoom GeneratedRoom { get; set; }
 
     public int Area
@@ -66,7 +66,7 @@ public class Room
 
     public override string ToString()
     {
-        return $"Room #{Id}";
+        return $"Room #{Id} \'{Type}\'";
     }
 
     public bool IsEnclosed()

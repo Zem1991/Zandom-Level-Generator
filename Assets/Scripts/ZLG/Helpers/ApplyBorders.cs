@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class ApplyBorders
@@ -31,12 +32,12 @@ public class ApplyBorders
                 tile = LevelGenerator.Level.TileMap.Create(coordinates);
                 room.Tiles.Add(tile);
             }
-            //else if (tile.Type != TileTypes.ROOM_BORDER)
+            //else if (tile.Type != TileType.ROOM_BORDER)
             //{
             //    throw new System.Exception($"Border tile at {coordinates} would be invalid.");
             //}
             tile.MentionedRooms.Add(room);
-            TryChange(tile, TileTypes.ROOM_BORDER);
+            TryChange(tile, TileType.ROOM_BORDER);
             return true;
         }
         TileMapIterator iterator = new();
@@ -60,17 +61,17 @@ public class ApplyBorders
         };
         foreach (Tile tile in tiles)
         {
-            TryChange(tile, TileTypes.ROOM_CORNER);
+            TryChange(tile, TileType.ROOM_CORNER);
         }
     }
 
-    private void TryChange(Tile tile, char nextType)
+    private void TryChange(Tile tile, TileType nextType)
     {
-        bool noType = tile.Type == default(char);
-        //bool isRoom = TileTypes.IsRoom(tile.Type);
-        bool isRoomArea = tile.Type == TileTypes.ROOM_AREA;
-        bool isRoomBorder = tile.Type == TileTypes.ROOM_BORDER;
-        bool isRoomCorner = tile.Type == TileTypes.ROOM_CORNER;
+        bool noType = tile.Type == default;
+        //bool isRoom = TileType.IsRoom(tile.Type);
+        bool isRoomArea = tile.Type == TileType.ROOM_AREA;
+        bool isRoomBorder = tile.Type == TileType.ROOM_BORDER;
+        bool isRoomCorner = tile.Type == TileType.ROOM_CORNER;
         bool roomOk = !isRoomArea && !isRoomCorner;
         //if (noType || roomOk)
         if (noType || isRoomBorder)

@@ -12,5 +12,10 @@ public class Tile
 
     public Vector2Int Coordinates { get; }
     public List<Room> MentionedRooms { get; set; }
-    public char Type { get; set; }
+    public TileType Type { get; set; }
+
+    public override string ToString()
+    {
+        return $"Tile {Coordinates} \'{Type}\'";
+    }
 }

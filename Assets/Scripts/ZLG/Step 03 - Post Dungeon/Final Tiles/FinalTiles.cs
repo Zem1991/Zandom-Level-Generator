@@ -20,7 +20,7 @@ public class FinalTiles : LevelGeneratorTask
             Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
             if (tile == null) return false;
 
-            char tileType = tile.Type;
+            TileType tileType = tile.Type;
             GameObject model = LevelGenerator.LevelGeneratorStyle.GetModel(tileType);
             if (!model) return false;
 

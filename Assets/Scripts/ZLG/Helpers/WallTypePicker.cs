@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class WallTypePicker
 {
-    public char Enclosed()
+    public TileType Enclosed()
     {
         int rng = Random.Range(0, 2);
-        if (rng > 0) return TileTypes.BARS;
+        if (rng > 0) return TileType.BARS;
         return Normal();
     }
 
-    public char Parent()
+    public TileType Parent()
     {
         int rng = Random.Range(0, 2);
         if (rng > 0) return Enclosed();
-        return TileTypes.FLOOR;
+        return TileType.FLOOR;
     }
     
-    public char Destructible()
+    public TileType Destructible()
     {
-        return TileTypes.DESTRUCTIBLE_WALL;
+        return TileType.DESTRUCTIBLE_WALL;
     }
 
-    public char Normal()
+    public TileType Normal()
     {
-        return TileTypes.WALL;
+        return TileType.WALL;
     }
 }

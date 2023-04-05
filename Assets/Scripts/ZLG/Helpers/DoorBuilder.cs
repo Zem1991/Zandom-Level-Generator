@@ -13,7 +13,7 @@ public class DoorBuilder
 
     public bool CanBuild(Wall wall)
     {
-        return !TileTypes.IsFloor(wall.Type);
+        return !wall.Type.IsFloor();
     }
 
     public Wall Build(Wall wall)
@@ -26,7 +26,7 @@ public class DoorBuilder
         for (int i = startPos; i < endPos; i++)
         {
             Tile tile = wall.Tiles[i];
-            tile.Type = TileTypes.DOOR;
+            tile.Type = TileType.DOOR;
         }
         return wall;
     }

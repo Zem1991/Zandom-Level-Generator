@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class AreaChecker
+public class AreaSumChecker
 {
-    public AreaChecker(LevelGenerator levelGenerator)
+    public AreaSumChecker(LevelGenerator levelGenerator)
     {
         Rooms = levelGenerator.Level.Rooms.Values;
     }
 
-    public AreaChecker(IEnumerable<Room> rooms)
+    public AreaSumChecker(IEnumerable<Room> rooms)
     {
         Rooms = rooms;
     }

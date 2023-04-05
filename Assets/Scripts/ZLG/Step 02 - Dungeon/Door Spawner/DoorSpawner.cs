@@ -27,7 +27,7 @@ public class DoorSpawner : LevelGeneratorTask
         for (int i = startPos; i < endPos; i++)
         {
             Tile tile = wall.Tiles[i];
-            tile.Type = TileTypes.DOOR;
+            tile.Type = TileType.DOOR;
         }
     }
 }

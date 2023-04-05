@@ -28,7 +28,7 @@ public class RoomBuilder
             //room.TileMap.Add(tile);
             room.Tiles.Add(tile);
             tile.MentionedRooms.Add(room);
-            tile.Type = TileTypes.ROOM_AREA;
+            tile.Type = TileType.ROOM_AREA;
             return true;
         }
         TileMapIterator iterator = new();

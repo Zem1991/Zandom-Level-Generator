@@ -23,20 +23,18 @@ public class RoomTypeRandomizer : LevelGeneratorTask
 
     public void RunNormal(List<Room> rooms)
     {
-        RoomTypePicker picker = new();
         foreach (Room room in rooms)
         {
-            room.Type = picker.PickNormal();
+            room.Type = RoomType.NORMAL;
             Run(room);
         }
     }
 
     public void RunSpecial(List<Room> rooms)
     {
-        RoomTypePicker picker = new();
         foreach (Room room in rooms)
         {
-            room.Type = picker.PickSpecial();
+            room.Type = RoomType.SPECIAL;
             Run(room);
         }
     }
@@ -45,7 +43,10 @@ public class RoomTypeRandomizer : LevelGeneratorTask
     {
         foreach (Tile tile in room.Tiles)
         {
-            if (tile.Type == TileTypes.ROOM_AREA) tile.Type = room.Type;
+            if (tile.Type != TileType.ROOM_AREA) continue;
+            TileType newType = TileType.FLOOR;
+            if (room.Type == RoomType.SPECIAL) newType = TileType.SPECIAL_FLOOR;
+            tile.Type = newType;
         }
     }
 }

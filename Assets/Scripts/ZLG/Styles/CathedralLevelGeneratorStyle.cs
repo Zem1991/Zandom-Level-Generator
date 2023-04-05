@@ -13,9 +13,9 @@ public class CathedralLevelGeneratorStyle : LevelGeneratorStyle
         List<Room> startingBuddingRooms = new(LevelGenerator.Level.Rooms.Values.Take(2));
         new BuddingRooms(LevelGenerator, startingBuddingRooms).Run();
         new WallFinder(LevelGenerator).Run();
-        AreaChecker dungeonAreaChecker = new(LevelGenerator);
+        AreaSumChecker dungeonAreaChecker = new(LevelGenerator);
         bool levelAreaMin = dungeonAreaChecker.CheckMin(out int current, out int minimum);
-        message += $"\nLevel area at {current}, minimum required at {minimum}";
+        message += $"\nLevel area at {current} / minimum required at {minimum}";
         return levelAreaMin;// &&;
     }
 

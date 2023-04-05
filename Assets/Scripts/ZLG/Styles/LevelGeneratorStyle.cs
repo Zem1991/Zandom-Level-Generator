@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
@@ -20,33 +21,33 @@ public abstract class LevelGeneratorStyle : MonoBehaviour
     
     protected LevelGenerator LevelGenerator { get; private set; }
 
-    public GameObject GetModel(char tileType)
+    public GameObject GetModel(TileType tileType)
     {
         GameObject result = null;
         switch (tileType)
         {
-            case TileTypes.ROOM_BORDER:
+            case TileType.ROOM_BORDER:
                 result = roomBorderTile;
                 break;
-            case TileTypes.ROOM_CORNER:
+            case TileType.ROOM_CORNER:
                 result = roomCornerTile;
                 break;
-            case TileTypes.FLOOR:
+            case TileType.FLOOR:
                 result = floorTile;
                 break;
-            case TileTypes.SPECIAL_FLOOR:
+            case TileType.SPECIAL_FLOOR:
                 result = specialFloorTile;
                 break;
-            case TileTypes.WALL:
+            case TileType.WALL:
                 result = wallTile;
                 break;
-            case TileTypes.DESTRUCTIBLE_WALL:
+            case TileType.DESTRUCTIBLE_WALL:
                 result = destructibleWallTile;
                 break;
-            case TileTypes.BARS:
+            case TileType.BARS:
                 result = barsTile;
                 break;
-            case TileTypes.DOOR:
+            case TileType.DOOR:
                 result = doorTile;
                 break;
         }

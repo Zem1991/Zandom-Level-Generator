@@ -13,7 +13,7 @@ public class BuddingRooms : LevelGeneratorTask
 
     public override void Run()
     {
-        AreaChecker dungeonAreaChecker = new(StartingRooms);
+        AreaSumChecker dungeonAreaChecker = new(StartingRooms);
         Queue<Room> rooms = new(StartingRooms);
         int roomAreaSum = dungeonAreaChecker.GetArea();
         while (rooms.Count > 0)

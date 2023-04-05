@@ -25,7 +25,7 @@ public class SetPieceBuilder
             Vector2Int coordinates = new(col, row);
             char tileType = setPiece.Get(coordinates.x - start.x, coordinates.y - start.y);
             Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
-            tile.Type = tileType;
+            tile.Type = (TileType)tileType;
             return true;
         }
         TileMapIterator iterator = new();

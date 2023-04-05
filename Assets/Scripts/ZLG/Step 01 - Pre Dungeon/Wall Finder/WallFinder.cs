@@ -27,7 +27,7 @@ public class WallFinder : LevelGeneratorTask
             Vector2Int coordinates = new(col, row);
             Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
             if (tile == null) return false;
-            if (tile.Type != TileTypes.ROOM_BORDER) return false;
+            if (tile.Type != TileType.ROOM_BORDER) return false;
             if (tile.MentionedRooms.Count != 2) return false;
             Room sourceRoom = tile.MentionedRooms[0];
             Room neighborRoom = tile.MentionedRooms[1];

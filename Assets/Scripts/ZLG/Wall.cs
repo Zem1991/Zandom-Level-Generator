@@ -41,7 +41,7 @@ public class Wall
     }
     //public TileMap TileMap { get; }
 
-    public char Type { get; set; }
+    public TileType Type { get; set; }
 
     //public void Add(Vector2Int coordinates)
     //{
@@ -75,7 +75,7 @@ public class Wall
     public bool CanHaveDoor()
     {
         bool validAsWall = IsDifferentRoot() || IsParentWall();
-        bool validType = Type == TileTypes.WALL || Type == TileTypes.BARS;
+        bool validType = Type == TileType.WALL || Type == TileType.BARS;
         return validAsWall && validType;
     }
 }

@@ -6,13 +6,7 @@ public class VerticalCathedralSpine : AxisCathedralSpine
 {
     public VerticalCathedralSpine(LevelGenerator levelGenerator, int firstRoomPosition, int corridorLength) : base(levelGenerator, firstRoomPosition, corridorLength)
     {
-    }
-
-    protected override Room Room(Vector2Int startPos)
-    {
-        SetPiece setPiece = new CathedralSpineRoom();
-        setPiece.Rotate();
-        return Build(startPos, setPiece);
+        rotate = true;
     }
 
     protected override Vector2Int GetPositionRoom1()
@@ -27,7 +21,6 @@ public class VerticalCathedralSpine : AxisCathedralSpine
 
     protected override Vector2Int GetPositionCorridor(int index)
     {
-
         return new(3, index);
     }
 

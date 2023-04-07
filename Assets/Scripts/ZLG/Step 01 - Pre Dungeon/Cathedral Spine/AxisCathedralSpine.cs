@@ -7,6 +7,7 @@ public abstract class AxisCathedralSpine
     protected LevelGenerator levelGenerator;
     protected int firstRoomPosition;
     protected int corridorLength;
+    protected bool rotate;
 
     public AxisCathedralSpine(LevelGenerator levelGenerator, int firstRoomPosition, int corridorLength)
     {
@@ -38,9 +39,10 @@ public abstract class AxisCathedralSpine
         }
     }
 
-    protected virtual Room Room(Vector2Int startPos)
+    private Room Room(Vector2Int startPos)
     {
         SetPiece setPiece = new CathedralSpineRoom();
+        if (rotate) setPiece.Rotate();
         return Build(startPos, setPiece);
     }
 
@@ -48,12 +50,14 @@ public abstract class AxisCathedralSpine
     {
         List<Room> result = new();
         SetPiece setPiece = new CathedralSpineCorridor();
+        if (rotate) setPiece.Rotate();
         for (int i = 0; i < corridorLength; i++)
         {
             int pos = firstRoomPosition + 2 + i;
             Vector2Int position = GetPositionCorridor(pos);
             position *= Constants.MODULE_SIZE;
-            position.y += 3;
+            if (rotate) position.x += 3;
+            else position.y += 3;
             Room room = Build(position, setPiece);
             result.Add(room);
         }

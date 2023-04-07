@@ -23,7 +23,6 @@ public class FinalRooms : LevelGeneratorTask
     {
         FinalRoom parent = room.Parent?.GeneratedRoom;
         FinalLevel finalLevel = LevelGenerator.FinalLevel;
-        Transform parentTransform = finalLevel.transform;
-        finalLevel.CreateFinalRoom(room, parent, parentTransform);
+        finalLevel.CreateFinalRoom(room, parent);
     }
 }

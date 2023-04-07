@@ -19,8 +19,7 @@ public abstract class SetPiece
     public void Rotate()
     {
         SetPieceRotator setPieceRotator = new(this);
-        setPieceRotator.Rotate90Negative();
-        Layout = setPieceRotator.Layout;
+        Layout = setPieceRotator.Rotate90Negative();
     }
 
     private void FillLayout(string layoutString)

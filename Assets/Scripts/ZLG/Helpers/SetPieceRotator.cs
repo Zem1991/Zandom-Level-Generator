@@ -13,7 +13,7 @@ public class SetPieceRotator
 
     public char[,] Layout { get; private set; }
 
-    public void Rotate90Negative()
+    public char[,] Rotate90Negative()
     {
         char[,] originalLayout = setPiece.Layout;
         int lengthX = originalLayout.GetLength(0);
@@ -28,11 +28,11 @@ public class SetPieceRotator
                 result[i, j] = originalLayout[j, lengthY - i - 1];
             }
         }
-        Layout = result;
+        return result;
     }
 
     ////TODO: test this one?
-    //public void Rotate90Positive()
+    //public char[,] Rotate90Positive()
     //{
     //    char[,] originalLayout = setPiece.Layout;
     //    int lengthX = originalLayout.GetLength(0);
@@ -47,6 +47,6 @@ public class SetPieceRotator
     //            result[i, j] = originalLayout[lengthY - j - 1, i];   
     //        }
     //    }
-    //    Layout = result;
+    //    return result;
     //}
 }

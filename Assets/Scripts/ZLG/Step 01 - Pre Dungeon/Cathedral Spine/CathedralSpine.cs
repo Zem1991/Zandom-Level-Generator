@@ -13,9 +13,8 @@ public class CathedralSpine : LevelGeneratorTask
         int corridorLength = Random.Range(0, 5);
         int maxPosition = 5 - corridorLength;
         int firstRoomPosition = Random.Range(0, maxPosition);
-        //bool vertical = Random.Range(0, 2) > 0;
-        //if (vertical) new VerticalCathedralSpine(LevelGenerator, firstRoomPosition, corridorLength).Run();
-        //else new HorizontalCathedralSpine(LevelGenerator, firstRoomPosition, corridorLength).Run();
-        new HorizontalCathedralSpine(LevelGenerator, 0, 4).Run();
+        bool vertical = Random.Range(0, 2) > 0;
+        if (vertical) new VerticalCathedralSpine(LevelGenerator, firstRoomPosition, corridorLength).Run();
+        else new HorizontalCathedralSpine(LevelGenerator, firstRoomPosition, corridorLength).Run();
     }
 }

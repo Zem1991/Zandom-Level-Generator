@@ -26,8 +26,9 @@ public class FinalTiles : LevelGeneratorTask
 
             Room room = tile.MentionedRooms[0];
             FinalRoom finalRoom = room.GeneratedRoom;
+            Vector3 finalRoomposition = finalRoom.transform.position;
 
-            Vector3 position = new(coordinates.x, 0, coordinates.y);
+            Vector3 position = finalRoomposition + new Vector3(coordinates.x, 0, coordinates.y);
             GameObject finalTile = Object.Instantiate(model, position, Quaternion.identity, finalRoom.transform);
             //finalRoom.AddTile(finalTile);
             finalTile.name = $"\'{tile.Type}\' {coordinates}";

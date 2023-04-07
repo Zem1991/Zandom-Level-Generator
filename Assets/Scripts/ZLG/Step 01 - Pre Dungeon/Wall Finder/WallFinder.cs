@@ -31,6 +31,7 @@ public class WallFinder : LevelGeneratorTask
             if (tile.MentionedRooms.Count != 2) return false;
             Room sourceRoom = tile.MentionedRooms[0];
             Room neighborRoom = tile.MentionedRooms[1];
+            if (sourceRoom.FromSetPiece && neighborRoom.FromSetPiece) return false;
             (Room, Room) rooms = (sourceRoom, neighborRoom);
             bool hadList = roomsTiles.TryGetValue(rooms, out List<Tile> tiles);
             if (!hadList)

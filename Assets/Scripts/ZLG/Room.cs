@@ -36,6 +36,7 @@ public class Room
     public int Age { get; private set; }
     public RoomType Type { get; set; }
     public FinalRoom GeneratedRoom { get; set; }
+    public bool FromSetPiece { get; set; }
 
     public int Area
     {

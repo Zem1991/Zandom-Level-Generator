@@ -35,4 +35,11 @@ public class RoomBuilder
         iterator.IterateAll(start, size, areaTile);
         return room;
     }
+
+    public Room Build(Vector2Int start, SetPiece setPiece, bool vertical, Room parent)
+    {
+        Room room = Build(start, setPiece.Size, vertical, parent);
+        room.FromSetPiece = true;
+        return room;
+    }
 }

@@ -13,6 +13,7 @@ public class Tile
     public Vector2Int Coordinates { get; }
     public List<Room> MentionedRooms { get; set; }
     public TileType Type { get; set; }
+    public bool FromSetPiece { get; set; }
 
     public override string ToString()
     {

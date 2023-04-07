@@ -15,7 +15,7 @@ public class CathedralSpineExecutor
     {
         RoomBuilder roomBuilder = new(levelGenerator);
         //if (!roomBuilder.CanBuild(position, setPiece.Size)) return;
-        Room room = roomBuilder.Build(position, setPiece.Size, verticalOrientation, null);
+        Room room = roomBuilder.Build(position, setPiece, verticalOrientation, null);
         SetPieceBuilder setPieceBuilder = new(levelGenerator);
         setPieceBuilder.Build(position, setPiece);
         return room;

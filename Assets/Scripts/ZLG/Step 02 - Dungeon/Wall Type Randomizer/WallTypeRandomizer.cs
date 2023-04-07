@@ -98,6 +98,14 @@ public class WallTypeRandomizer : LevelGeneratorTask
     {
         foreach (Tile tile in wall.Tiles)
         {
+            //if (tile.FromSetPiece)
+            //{
+            //    tile.Type = TileType.ROOM_CORNER;
+            //}
+            //else if (tile.Type != TileType.DOOR)
+            //{
+            //    tile.Type = wall.Type;
+            //}
             if (tile.Type == TileType.DOOR) continue;
             tile.Type = wall.Type;
         }

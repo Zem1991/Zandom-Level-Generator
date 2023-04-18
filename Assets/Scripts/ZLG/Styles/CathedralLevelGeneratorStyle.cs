@@ -12,11 +12,16 @@ public class CathedralLevelGeneratorStyle : LevelGeneratorStyle
         new CathedralSpine(LevelGenerator).Run();
         List<Room> startingBuddingRooms = new(LevelGenerator.Level.Rooms.Values.Take(2));
         new BuddingRooms(LevelGenerator, startingBuddingRooms).Run();
+        new CathedralSpecialRooms(LevelGenerator).Run();
         new WallFinder(LevelGenerator).Run();
+
         AreaSumChecker dungeonAreaChecker = new(LevelGenerator);
-        bool levelAreaMin = dungeonAreaChecker.CheckMin(out int current, out int minimum);
-        message += $"\nLevel area at {current} / minimum required at {minimum}";
-        return levelAreaMin;// &&;
+        bool levelAreaMin = dungeonAreaChecker.CheckMin(out int currentArea, out int minimumArea);
+        message += $" | Area {currentArea} of {minimumArea}";
+        SpecialRoomSumChecker specialRoomSumChecker = new(LevelGenerator);
+        bool specialRoomsMin = specialRoomSumChecker.CheckMin(out int currentSpecials, out int minimumSpecials);
+        message += $" | Special Rooms {currentSpecials} of {minimumSpecials}";
+        return levelAreaMin && specialRoomsMin;
     }
 
     protected override bool Step02_Dungeon_Execution(out string message)

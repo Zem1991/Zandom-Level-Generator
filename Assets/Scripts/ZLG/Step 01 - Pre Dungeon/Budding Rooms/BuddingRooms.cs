@@ -15,7 +15,7 @@ public class BuddingRooms : LevelGeneratorTask
     {
         AreaSumChecker dungeonAreaChecker = new(StartingRooms);
         Queue<Room> rooms = new(StartingRooms);
-        int roomAreaSum = dungeonAreaChecker.GetArea();
+        int roomAreaSum = dungeonAreaChecker.Get();
         while (rooms.Count > 0)
         {
             if (!dungeonAreaChecker.CheckMax(roomAreaSum, out int maximum))

@@ -16,7 +16,7 @@ public class AreaSumChecker
 
     private IEnumerable<Room> Rooms { get; }
 
-    public int GetArea()
+    public int Get()
     {
         int levelArea = 0;
         foreach (var item in Rooms)
@@ -28,7 +28,7 @@ public class AreaSumChecker
 
     public bool CheckMin(out int current, out int minimum)
     {
-        current = GetArea();
+        current = Get();
         return CheckMin(current, out minimum);
     }
 
@@ -40,7 +40,7 @@ public class AreaSumChecker
 
     public bool CheckMax(out int current, out int maximum)
     {
-        current = GetArea();
+        current = Get();
         return CheckMax(current, out maximum);
     }
 

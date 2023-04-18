@@ -4,17 +4,18 @@ using UnityEngine;
 
 public enum TileType
 {
-    //PreDungeon
+    //Rooms: PreDungeon
     ROOM_AREA = '.',
     ROOM_BORDER = '=',
     ROOM_CORNER = '#',
-    //Dungeon and PostDungeon
-    FLOOR = 'F',
-    SPECIAL_FLOOR = 'S',
+    //Walls: Dungeon and PostDungeon
     WALL = 'W',
     DESTRUCTIBLE_WALL = 'Z',
     BARS = 'B',
     DOOR = 'D',
+    //Floors: Dungeon and PostDungeon
+    FLOOR = 'F',
+    SPECIAL_FLOOR = 'S',
 }
 
 public static class TileTypeExtensions

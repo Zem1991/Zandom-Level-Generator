@@ -6,53 +6,10 @@ using UnityEngine;
 
 public abstract class LevelGeneratorStyle : MonoBehaviour
 {
-    [Header("Prefabs")]
-    public GameObject roomBorderTile;
-    public GameObject roomCornerTile;
-    public GameObject floorTile;
-    public GameObject specialFloorTile;
-    public GameObject wallTile;
-    public GameObject destructibleWallTile;
-    public GameObject barsTile;
-    public GameObject doorTile;
-
     [Header("Settings")]
     public int minimumArea = 2000;
     
     protected LevelGenerator LevelGenerator { get; private set; }
-
-    public GameObject GetModel(TileType tileType)
-    {
-        GameObject result = null;
-        switch (tileType)
-        {
-            case TileType.ROOM_BORDER:
-                result = roomBorderTile;
-                break;
-            case TileType.ROOM_CORNER:
-                result = roomCornerTile;
-                break;
-            case TileType.FLOOR:
-                result = floorTile;
-                break;
-            case TileType.SPECIAL_FLOOR:
-                result = specialFloorTile;
-                break;
-            case TileType.WALL:
-                result = wallTile;
-                break;
-            case TileType.DESTRUCTIBLE_WALL:
-                result = destructibleWallTile;
-                break;
-            case TileType.BARS:
-                result = barsTile;
-                break;
-            case TileType.DOOR:
-                result = doorTile;
-                break;
-        }
-        return result;
-    }
 
     public void Run(LevelGenerator levelGenerator)
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public ZandomParameters ZandomParameters;
+    public ZandomTileset ZandomTileset;
     public LevelGeneratorStyle LevelGeneratorStyle;
 
     private void Awake()

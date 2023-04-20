@@ -31,7 +31,7 @@ public class CathedralLevelGeneratorStyle : LevelGeneratorStyle
         message = null;
         new RoomTypeRandomizer(LevelGenerator).Run();
         new WallTypeRandomizer(LevelGenerator).Run();
-        new DoorSpawner(LevelGenerator).Run();
+        new DoorwaySpawner(LevelGenerator).Run();
         return true;
     }
 

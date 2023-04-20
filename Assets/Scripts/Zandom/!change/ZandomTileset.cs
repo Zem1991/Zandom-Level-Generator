@@ -5,19 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Zandom/Tileset")]
 public class ZandomTileset : ScriptableObject
 {
-    [Header("Rooms")]
+    [Header("Room")]
     public GameObject borderTile;
     public GameObject cornerTile;
 
-    [Header("Walls")]
+    [Header("Wall")]
     public GameObject wallTile;
     public GameObject destructibleWallTile;
     public GameObject barsTile;
-    public GameObject doorTile;
 
-    [Header("Floors")]
+    [Header("Floor")]
     public GameObject floorTile;
     public GameObject specialFloorTile;
+    public GameObject doorwayTile;
 
     public GameObject GetModel(TileType tileType)
     {
@@ -39,14 +39,14 @@ public class ZandomTileset : ScriptableObject
             case TileType.BARS:
                 result = barsTile;
                 break;
-            case TileType.DOOR:
-                result = doorTile;
-                break;
             case TileType.FLOOR:
                 result = floorTile;
                 break;
             case TileType.SPECIAL_FLOOR:
                 result = specialFloorTile;
+                break;
+            case TileType.DOORWAY:
+                result = doorwayTile;
                 break;
         }
         return result;

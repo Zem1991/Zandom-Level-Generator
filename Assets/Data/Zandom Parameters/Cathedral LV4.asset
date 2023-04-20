@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Cathedral LV4
   m_EditorClassIdentifier: 
   avoidSizeBoundaries: 0
-  levelSizeTarget: 0.5
+  levelSizeTarget: 0.6
   roomAgeMax: 8
   specialRoomTarget: 8
   distantNeighborAgeMin: 4
   smallDoorLengthMin: 4
   largeDoorLengthMax: 8
-  levelSizeMin: 0.4
-  levelSizeMax: 0.6
+  levelSizeMin: 0.5
+  levelSizeMax: 0.7

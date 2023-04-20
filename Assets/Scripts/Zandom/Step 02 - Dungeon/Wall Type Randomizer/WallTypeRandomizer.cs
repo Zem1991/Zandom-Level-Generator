@@ -106,7 +106,7 @@ public class WallTypeRandomizer : LevelGeneratorTask
             //{
             //    tile.Type = wall.Type;
             //}
-            if (tile.Type == TileType.DOOR) continue;
+            if (tile.Type == TileType.DOORWAY) continue;
             tile.Type = wall.Type;
         }
     }

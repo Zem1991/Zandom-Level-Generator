@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorSpawner : LevelGeneratorTask
+public class DoorwaySpawner : LevelGeneratorTask
 {
-    public DoorSpawner(LevelGenerator levelGenerator) : base(levelGenerator)
+    public DoorwaySpawner(LevelGenerator levelGenerator) : base(levelGenerator)
     {
     }
 
@@ -27,7 +27,7 @@ public class DoorSpawner : LevelGeneratorTask
         for (int i = startPos; i < endPos; i++)
         {
             Tile tile = wall.Tiles[i];
-            tile.Type = TileType.DOOR;
+            tile.Type = TileType.DOORWAY;
         }
     }
 }

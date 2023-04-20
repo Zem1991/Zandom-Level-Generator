@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public abstract class LevelGeneratorStyle : MonoBehaviour

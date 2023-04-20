@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   avoidSizeBoundaries: 1
   levelSizeTarget: 0.5
-  roomAgeMax: 8
+  roomAgeMax: 6
   specialRoomTarget: 8
   distantNeighborAgeMin: 4
   smallDoorLengthMin: 4

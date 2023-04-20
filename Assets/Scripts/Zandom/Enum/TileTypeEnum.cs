@@ -12,7 +12,7 @@ public enum TileType
     WALL = 'W',
     DESTRUCTIBLE_WALL = 'Z',
     BARS = 'B',
-    DOOR = 'D',
+    DOORWAY = 'D',
     //Floors: Dungeon and PostDungeon
     FLOOR = 'F',
     SPECIAL_FLOOR = 'S',

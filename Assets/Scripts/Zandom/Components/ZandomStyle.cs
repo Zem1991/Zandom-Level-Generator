@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class LevelGeneratorStyle : MonoBehaviour
+public abstract class ZandomStyle : MonoBehaviour
 {
     protected LevelGenerator LevelGenerator { get; private set; }
 

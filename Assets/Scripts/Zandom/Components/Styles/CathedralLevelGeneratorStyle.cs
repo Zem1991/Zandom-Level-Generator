@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class CathedralLevelGeneratorStyle : LevelGeneratorStyle
+public class CathedralLevelGeneratorStyle : ZandomStyle
 {
     protected override bool Step01_PreDungeon_Execution(out string message)
     {

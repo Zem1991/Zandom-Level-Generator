@@ -6,7 +6,7 @@ public class LevelGenerator : MonoBehaviour
 {
     public ZandomParameters ZandomParameters;
     public ZandomTileset ZandomTileset;
-    public LevelGeneratorStyle LevelGeneratorStyle;
+    public ZandomStyle ZandomStyle;
 
     public Level Level { get; private set; }
     public FinalLevel FinalLevel { get; private set; }
@@ -24,7 +24,7 @@ public class LevelGenerator : MonoBehaviour
     
     private void Start()
     {
-        LevelGeneratorStyle.Run(this);
+        ZandomStyle.Run(this);
     }
 
     private void OnDrawGizmos()

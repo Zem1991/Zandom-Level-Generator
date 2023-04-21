@@ -11,13 +11,15 @@ public class DoorSizePicker// : LevelGeneratorTask
         this.levelGenerator = levelGenerator;
     }
 
-    public int Pick(Wall wall)
+    public DoorSize Pick(Wall wall)
     {
         int length = wall.Tiles.Count;
-        if (length < levelGenerator.ZandomParameters.smallDoorLengthMin) return 2;
-        if (length > levelGenerator.ZandomParameters.largeDoorLengthMax) return 4;
+        if (length < levelGenerator.ZandomParameters.smallDoorLengthMin) return DoorSize.SMALL;
+        if (length > levelGenerator.ZandomParameters.largeDoorLengthMax) return DoorSize.LARGE;
         int rng = Random.Range(1, 3);
         rng *= 2;
-        return rng;
+        DoorSize result = DoorSize.SMALL;
+        if (rng <= 0) result = DoorSize.LARGE;
+        return result;
     }
 }

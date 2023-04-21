@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    public ZandomStyle ZandomStyle;
     public ZandomParameters ZandomParameters;
     public ZandomTileset ZandomTileset;
-    public ZandomStyle ZandomStyle;
+    public ZandomObjects ZandomObjects;
 
     public Level Level { get; private set; }
     public FinalLevel FinalLevel { get; private set; }

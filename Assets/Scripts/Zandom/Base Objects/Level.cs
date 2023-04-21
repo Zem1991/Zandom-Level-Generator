@@ -9,11 +9,13 @@ public class Level
         TileMap = new();
         Rooms = new();
         Walls = new();
+        Obstacles = new();
     }
 
     public TileMap TileMap { get; }
     public Dictionary<int, Room> Rooms { get; }
     public Dictionary<int, Wall> Walls { get; }
+    public List<Obstacle> Obstacles { get; }
 
     public bool IsInsideBounds(Vector2Int start, Vector2Int size)
     {
@@ -24,7 +26,6 @@ public class Level
         return true;
     }
 
-    //public Room CreateFinalRoom(Vector2Int start, Vector2Int size, bool vertical, Room root, Room parent)
     public Room CreateRoom(Vector2Int start, Vector2Int size, bool vertical, Room parent)
     {
         int id = Rooms.Count;

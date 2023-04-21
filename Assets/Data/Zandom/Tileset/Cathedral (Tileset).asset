@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb790ba94889dcd48b34277c05d69956, type: 3}
-  m_Name: Cathedral
+  m_Name: Cathedral (Tileset)
   m_EditorClassIdentifier: 
   borderTile: {fileID: 7278972641462252327, guid: 6c5894698c9cf8c43b40697bd9571fd3, type: 3}
   cornerTile: {fileID: 7278972641462252327, guid: f15e99b0e0e06434a8708c52a1c9b311, type: 3}

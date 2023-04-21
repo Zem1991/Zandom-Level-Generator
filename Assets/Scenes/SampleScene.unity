@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -174,9 +174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c582b153c7b6f46973ddab6bb9b574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ZandomStyle: {fileID: 482984280216652026, guid: a4cd670ac1d22f945bb19d7e06aa50b7, type: 3}
   ZandomParameters: {fileID: 11400000, guid: 30666d361fd1dca4fbbe2f9977aa9ca0, type: 2}
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
-  ZandomStyle: {fileID: 482984280216652026, guid: a4cd670ac1d22f945bb19d7e06aa50b7, type: 3}
+  ZandomObjects: {fileID: 11400000, guid: 1986b2014fa619a44bf82585be71af5d, type: 2}
 --- !u!4 &504301426
 Transform:
   m_ObjectHideFlags: 0
@@ -243,9 +244,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c582b153c7b6f46973ddab6bb9b574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ZandomStyle: {fileID: 482984280216652026, guid: a4cd670ac1d22f945bb19d7e06aa50b7, type: 3}
   ZandomParameters: {fileID: 11400000, guid: 0dc2baabe77fac3478ccb14af39df5e2, type: 2}
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
-  ZandomStyle: {fileID: 482984280216652026, guid: a4cd670ac1d22f945bb19d7e06aa50b7, type: 3}
+  ZandomObjects: {fileID: 11400000, guid: 1986b2014fa619a44bf82585be71af5d, type: 2}
 --- !u!4 &667455846
 Transform:
   m_ObjectHideFlags: 0
@@ -530,9 +532,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c582b153c7b6f46973ddab6bb9b574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ZandomStyle: {fileID: 482984280216652026, guid: a4cd670ac1d22f945bb19d7e06aa50b7, type: 3}
   ZandomParameters: {fileID: 11400000, guid: e05beba25a759c64993f5879a253b024, type: 2}
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
-  ZandomStyle: {fileID: 482984280216652026, guid: a4cd670ac1d22f945bb19d7e06aa50b7, type: 3}
+  ZandomObjects: {fileID: 11400000, guid: 1986b2014fa619a44bf82585be71af5d, type: 2}
 --- !u!114 &1630063772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,9 +607,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c582b153c7b6f46973ddab6bb9b574, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ZandomStyle: {fileID: 482984280216652026, guid: a4cd670ac1d22f945bb19d7e06aa50b7, type: 3}
   ZandomParameters: {fileID: 11400000, guid: 0ab1b6c4f15d9ab4fac08944142e9dfc, type: 2}
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
-  ZandomStyle: {fileID: 482984280216652026, guid: a4cd670ac1d22f945bb19d7e06aa50b7, type: 3}
+  ZandomObjects: {fileID: 11400000, guid: 1986b2014fa619a44bf82585be71af5d, type: 2}
 --- !u!4 &1815642860
 Transform:
   m_ObjectHideFlags: 0

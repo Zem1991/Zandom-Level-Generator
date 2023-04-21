@@ -25,6 +25,8 @@ public class Wall
     public Room NeighborRoom { get; }
     public List<Tile> Tiles { get; }
 
+    public Doorway Doorway { get; set; }
+
     public Vector2Int Start
     {
         get

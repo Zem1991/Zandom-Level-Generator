@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorwaySpawner : LevelGeneratorTask
+public class Doorway
 {
-    public DoorwaySpawner(LevelGenerator levelGenerator) : base(levelGenerator)
+    public Doorway(Wall wall, DoorSize doorSize, List<Tile> tiles)
     {
+        Wall = wall;
+        DoorSize = doorSize;
+        Tiles = tiles;
     }
 
-    public override void Run()
-    {
-        foreach (Wall wall in LevelGenerator.Level.Walls.Values)
-        {
-            if (!wall.CanHaveDoor()) continue;
-            Run(wall);
-        }
-    }
+    public Wall Wall { get; }
+    public DoorSize DoorSize { get; }
+    public List<Tile> Tiles { get; }
+
+    public Obstacle Door { get; set; }
 
     public void Run(Wall wall)
     {
         DoorSizePicker sizePicker = new(LevelGenerator);
-        int doorSize = sizePicker.Pick(wall);
-        int validLength = wall.Tiles.Count - doorSize + 1;// - 2;
+        DoorSize doorSize = sizePicker.Pick(wall);
+        int validLength = wall.Tiles.Count - doorSize + 1;
         int startPos = Random.Range(0, validLength);
         int endPos = startPos + doorSize;
         for (int i = startPos; i < endPos; i++)

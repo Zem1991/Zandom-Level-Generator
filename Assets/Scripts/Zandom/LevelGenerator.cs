@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [Header("Settings")]
+    public bool waitTasks = true;
+    public bool waitSubtasks = true;
+    [Min(0F)] public float waitTime = 0.5F;
+
+    [Header("Zandom Components")]
     public ZandomStyle ZandomStyle;
     public ZandomParameters ZandomParameters;
     public ZandomTileset ZandomTileset;

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinalRooms : LevelGeneratorTask
+public class GenerateFinalRooms : LevelGeneratorTask
 {
-    public FinalRooms(LevelGenerator levelGenerator) : base(levelGenerator)
+    public GenerateFinalRooms(LevelGenerator levelGenerator) : base(levelGenerator)
     {
     }
 

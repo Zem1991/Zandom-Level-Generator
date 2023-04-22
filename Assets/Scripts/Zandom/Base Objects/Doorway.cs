@@ -17,17 +17,17 @@ public class Doorway
 
     public Obstacle Door { get; set; }
 
-    public void Run(Wall wall)
-    {
-        DoorSizePicker sizePicker = new(LevelGenerator);
-        DoorSize doorSize = sizePicker.Pick(wall);
-        int validLength = wall.Tiles.Count - doorSize + 1;
-        int startPos = Random.Range(0, validLength);
-        int endPos = startPos + doorSize;
-        for (int i = startPos; i < endPos; i++)
-        {
-            Tile tile = wall.Tiles[i];
-            tile.Type = TileType.DOORWAY;
-        }
-    }
+    //public void Run(Wall wall)
+    //{
+    //    DoorSizePicker sizePicker = new(LevelGenerator);
+    //    DoorSize doorSize = sizePicker.Pick(wall);
+    //    int validLength = wall.Tiles.Count - doorSize + 1;
+    //    int startPos = Random.Range(0, validLength);
+    //    int endPos = startPos + doorSize;
+    //    for (int i = startPos; i < endPos; i++)
+    //    {
+    //        Tile tile = wall.Tiles[i];
+    //        tile.Type = TileType.DOORWAY;
+    //    }
+    //}
 }

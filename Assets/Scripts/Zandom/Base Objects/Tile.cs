@@ -16,6 +16,7 @@ public class Tile
     public TileType Type { get; set; }
     public Obstacle Obstacle { get; set; }
     public List<Room> MentionedRooms { get; set; }
+    public GameObject GeneratedTile { get; set; }
 
     public override string ToString()
     {

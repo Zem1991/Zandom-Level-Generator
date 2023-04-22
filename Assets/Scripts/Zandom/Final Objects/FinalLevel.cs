@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,15 @@ public class FinalLevel : MonoBehaviour
         //finalRoom.transform.SetAsFirstSibling();
         Rooms.Add(room.Id, finalRoom);
         return finalRoom;
+    }
+
+    public void CreateFinalObstacle(GameObject prefab, Vector3 position, bool vertical, FinalRoom parent)
+    {
+        Transform transform = parent.transform;
+        Vector3 rotationEuler = new();
+        if (vertical) rotationEuler.y = 90F;
+        Quaternion rotation = Quaternion.Euler(rotationEuler);
+        Instantiate(prefab, position, rotation, transform);
     }
 
     public void Optimize()

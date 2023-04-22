@@ -38,8 +38,9 @@ public class CathedralLevelGeneratorStyle : ZandomStyle
     protected override bool Step03_PostDungeon_Execution(out string message)
     {
         message = null;
-        new FinalRooms(LevelGenerator).Run();
-        new FinalTiles(LevelGenerator).Run();
+        new GenerateFinalRooms(LevelGenerator).Run();
+        new GenerateFinalTiles(LevelGenerator).Run();
+        new GenerateFinalObstacles(LevelGenerator).Run();
         return true;
     }
 }

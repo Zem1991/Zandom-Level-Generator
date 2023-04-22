@@ -37,5 +37,9 @@ public class DoorwaySpawner : LevelGeneratorTask
 
         Doorway doorway = new(wall, doorSize, tiles);
         wall.Doorway = doorway;
+
+        Level level = wall.Level;
+        Room room = wall.SourceRoom;
+        level.CreateObstacle(doorSize.ObjectName(), tiles, wall.IsVertical(), room);
     }
 }

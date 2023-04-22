@@ -45,4 +45,11 @@ public class Level
         neighborRoom.Walls.Add(wall);
         return wall;
     }
+
+    public Obstacle CreateObstacle(string name, List<Tile> tiles, bool vertical, Room room)
+    {
+        Obstacle obstacle = new(name, tiles, vertical, this, room);
+        Obstacles.Add(obstacle);
+        return obstacle;
+    }
 }

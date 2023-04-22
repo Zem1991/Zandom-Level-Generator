@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Wall
@@ -79,5 +80,10 @@ public class Wall
         bool validAsWall = IsDifferentRoot() || IsParentWall();
         bool validType = Type == TileType.WALL || Type == TileType.BARS;
         return validAsWall && validType;
+    }
+
+    public bool IsVertical()
+    {
+        return Tiles[0].Coordinates.y != Tiles[1].Coordinates.y;
     }
 }

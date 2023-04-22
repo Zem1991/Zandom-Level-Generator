@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FinalTiles : LevelGeneratorTask
+public class GenerateFinalTiles : LevelGeneratorTask
 {
-    public FinalTiles(LevelGenerator levelGenerator) : base(levelGenerator)
+    public GenerateFinalTiles(LevelGenerator levelGenerator) : base(levelGenerator)
     {
     }
 
@@ -32,6 +32,7 @@ public class FinalTiles : LevelGeneratorTask
             GameObject finalTile = Object.Instantiate(model, position, Quaternion.identity, finalRoom.transform);
             //finalRoom.AddTile(finalTile);
             finalTile.name = $"\'{tile.Type}\' {coordinates}";
+            tile.GeneratedTile = finalTile;
             return true;
         }
         TileMapIterator iterator = new(false);

@@ -25,6 +25,7 @@ public abstract class ZandomStyle : MonoBehaviour
             if (!Step03_PostDungeon()) continue;
             break;
         }
+        GenerateFinalLevel();
         Debug.Log($"Level generation finished.");
     }
     
@@ -70,10 +71,17 @@ public abstract class ZandomStyle : MonoBehaviour
         Debug.Log($"Failure at {step} with message: {message}");
     }
 
+    private void GenerateFinalLevel()
+    {
+        new GenerateFinalRooms(LevelGenerator).Run();
+        new GenerateFinalTiles(LevelGenerator).Run();
+        new GenerateFinalObstacles(LevelGenerator).Run();
+    }
+
     //Walkable areas
     protected abstract bool Step01_PreDungeon_Execution(out string message);
-    //Object placement
+    //Level details
     protected abstract bool Step02_Dungeon_Execution(out string message);
-    //Actual tiles
+    //Object placement
     protected abstract bool Step03_PostDungeon_Execution(out string message);
 }

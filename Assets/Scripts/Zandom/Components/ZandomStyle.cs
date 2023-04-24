@@ -12,7 +12,7 @@ public abstract class ZandomStyle : MonoBehaviour
         int attempts = 0;
         while (true)
         {
-            Clear();
+            LevelGenerator.ClearLevel();
             attempts++;
             if (attempts > 20)
             {
@@ -27,11 +27,6 @@ public abstract class ZandomStyle : MonoBehaviour
         }
         GenerateFinalLevel();
         Debug.Log($"Level generation finished.");
-    }
-    
-    private void Clear()
-    {
-        LevelGenerator.ClearLevel();
     }
     
     private bool Step01_PreDungeon()

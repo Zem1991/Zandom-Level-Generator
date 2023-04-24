@@ -13,7 +13,7 @@ public abstract class LevelGeneratorSubtask
 
     public void Wait()
     {
-        if (!LevelGenerator.waitSubtasks) return;
-        System.
+        //if (!LevelGenerator.waitSubtasks) return;
+        //System.
     }
 }

@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomBuilder
+public class RoomBuilder : LevelGeneratorSubtask
 {
-    public RoomBuilder(LevelGenerator levelGenerator)
+    public RoomBuilder(LevelGenerator levelGenerator) : base(levelGenerator)
     {
-        LevelGenerator = levelGenerator;
     }
-
-    private LevelGenerator LevelGenerator { get; }
 
     public bool CanBuild(Vector2Int start, Vector2Int size)
     {

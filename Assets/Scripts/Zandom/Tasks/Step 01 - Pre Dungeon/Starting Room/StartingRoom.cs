@@ -8,15 +8,18 @@ public class StartingRoom : LevelGeneratorTask
     {
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         RoomBuilder roomBuilder = new(LevelGenerator);
         Vector2Int start = new(30, 30);
         Vector2Int size = new(20, 20);
         bool can = roomBuilder.CanBuild(start, size);
-        if (!can) return;
-        Room result = roomBuilder.Build(start, size, false, null);
-        ApplyBorders applyBorders = new(LevelGenerator);
-        applyBorders.Apply(result);
+        if (can)
+        {
+            Room result = roomBuilder.Build(start, size, false, null);
+            ApplyBorders applyBorders = new(LevelGenerator);
+            applyBorders.Apply(result);
+        }
+        yield return null;
     }
 }

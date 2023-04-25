@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomPositionChecker
+public class RoomPositionChecker : LevelGeneratorCheck
 {
     public RoomPositionChecker(Level level)
     {

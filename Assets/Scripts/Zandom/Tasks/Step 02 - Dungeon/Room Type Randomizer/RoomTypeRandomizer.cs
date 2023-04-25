@@ -8,7 +8,7 @@ public class RoomTypeRandomizer : LevelGeneratorTask
     {
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         List<Room> normalRooms = new();
         List<Room> specialRooms = new();
@@ -20,6 +20,7 @@ public class RoomTypeRandomizer : LevelGeneratorTask
         }
         //RunNormal(normalRooms);
         //RunSpecial(specialRooms);
+        yield return null;
     }
 
     //public void RunNormal(List<Room> rooms)

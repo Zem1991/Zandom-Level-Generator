@@ -11,5 +11,5 @@ public abstract class LevelGeneratorTask
 
     protected LevelGenerator LevelGenerator { get; }
 
-    public abstract void Run();
+    public abstract IEnumerator Run();
 }

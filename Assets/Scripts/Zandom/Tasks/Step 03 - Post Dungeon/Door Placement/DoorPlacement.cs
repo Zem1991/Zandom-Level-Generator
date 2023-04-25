@@ -8,7 +8,7 @@ public class DoorPlacement : LevelGeneratorTask
     {
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         foreach (Wall wall in LevelGenerator.Level.Walls.Values)
         {
@@ -16,6 +16,7 @@ public class DoorPlacement : LevelGeneratorTask
             if (doorway == null) continue;
             Run(doorway);
         }
+        yield return null;
     }
 
     public void Run(Doorway doorway)

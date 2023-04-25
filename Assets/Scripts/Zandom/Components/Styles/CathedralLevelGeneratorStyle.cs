@@ -5,40 +5,59 @@ using UnityEngine;
 
 public class CathedralLevelGeneratorStyle : ZandomStyle
 {
-    protected override bool Step01_PreDungeon_Execution(out string message)
+    public override List<LevelGeneratorTask> Step01_Tasks(LevelGenerator levelGenerator)
+    {
+        return new()
+        {
+            //new StartingRoom(levelGenerator),
+            new CathedralSpine(levelGenerator),
+            new BuddingRooms(levelGenerator, levelGenerator.Level.Rooms.Values.Take(2)),
+            new CathedralSpecialRooms(levelGenerator),
+            new WallFinder(levelGenerator),
+        };
+    }
+
+    public override bool Step01_Checks(LevelGenerator levelGenerator, out string message)
     {
         message = null;
-        //new StartingRoom(LevelGenerator).Run();
-        new CathedralSpine(LevelGenerator).Run();
-        List<Room> startingBuddingRooms = new(LevelGenerator.Level.Rooms.Values.Take(2));
-        new BuddingRooms(LevelGenerator, startingBuddingRooms).Run();
-        new CathedralSpecialRooms(LevelGenerator).Run();
-        new WallFinder(LevelGenerator).Run();
-
-        AreaSumChecker dungeonAreaChecker = new(LevelGenerator);
-        int minimumArea = (int)(Constants.LEVEL_AREA_MAX * LevelGenerator.ZandomParameters.levelSizeMin);
+        AreaSumChecker dungeonAreaChecker = new(levelGenerator);
+        int minimumArea = (int)(Constants.LEVEL_AREA_MAX * levelGenerator.ZandomParameters.levelSizeMin);
         bool levelAreaMin = dungeonAreaChecker.CheckMin(minimumArea);
         message += $" | Area {dungeonAreaChecker.Area} of {minimumArea}";
-        SpecialRoomSumChecker specialRoomSumChecker = new(LevelGenerator);
-        int minimumSpecials = LevelGenerator.ZandomParameters.specialRoomTarget;
+        SpecialRoomSumChecker specialRoomSumChecker = new(levelGenerator);
+        int minimumSpecials = levelGenerator.ZandomParameters.specialRoomTarget;
         bool specialRoomsMin = specialRoomSumChecker.CheckMin(minimumSpecials);
         message += $" | Special Rooms {specialRoomSumChecker.Count} of {minimumSpecials}";
         return levelAreaMin && specialRoomsMin;
     }
 
-    protected override bool Step02_Dungeon_Execution(out string message)
+    public override List<LevelGeneratorTask> Step02_Tasks(LevelGenerator levelGenerator)
+    {
+        return new()
+        {
+            new RoomTypeRandomizer(levelGenerator),
+            new WallTypeRandomizer(levelGenerator),
+            new DoorwaySpawner(levelGenerator),
+        };
+    }
+
+    public override bool Step02_Checks(LevelGenerator levelGenerator, out string message)
     {
         message = null;
-        new RoomTypeRandomizer(LevelGenerator).Run();
-        new WallTypeRandomizer(LevelGenerator).Run();
-        new DoorwaySpawner(LevelGenerator).Run();
         return true;
     }
 
-    protected override bool Step03_PostDungeon_Execution(out string message)
+    public override List<LevelGeneratorTask> Step03_Tasks(LevelGenerator levelGenerator)
+    {
+        return new()
+        {
+            new DoorPlacement(levelGenerator),
+        };
+    }
+
+    public override bool Step03_Checks(LevelGenerator levelGenerator, out string message)
     {
         message = null;
-        new DoorPlacement(LevelGenerator).Run();
         return true;
     }
 }

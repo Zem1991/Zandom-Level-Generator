@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpecialRoomSumChecker
+public class SpecialRoomSumChecker : LevelGeneratorCheck
 {
     public SpecialRoomSumChecker(LevelGenerator levelGenerator)
     {

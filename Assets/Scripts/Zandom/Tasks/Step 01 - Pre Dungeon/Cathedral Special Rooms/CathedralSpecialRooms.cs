@@ -8,7 +8,7 @@ public class CathedralSpecialRooms : LevelGeneratorTask
     {
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         List<Room> Rooms = new(LevelGenerator.Level.Rooms.Values);
         foreach (var item in Rooms)
@@ -16,5 +16,6 @@ public class CathedralSpecialRooms : LevelGeneratorTask
             if (!item.IsEnclosed()) continue;
             item.Type = RoomType.SPECIAL;
         }
+        yield return null;
     }
 }

@@ -8,7 +8,7 @@ public class CathedralSpine : LevelGeneratorTask
     {
     }
     
-    public override void Run()
+    public override IEnumerator Run()
     {
         bool shorterVersion = LevelGenerator.ZandomParameters.avoidSizeBoundaries;
         int maxLength = shorterVersion ? 3 : 5;
@@ -19,5 +19,6 @@ public class CathedralSpine : LevelGeneratorTask
         bool vertical = Random.Range(0, 2) > 0;
         if (vertical) new VerticalCathedralSpine(LevelGenerator, firstRoomPosition, corridorLength).Run();
         else new HorizontalCathedralSpine(LevelGenerator, firstRoomPosition, corridorLength).Run();
+        yield return null;
     }
 }

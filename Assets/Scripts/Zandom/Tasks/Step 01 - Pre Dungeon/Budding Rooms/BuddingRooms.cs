@@ -6,12 +6,12 @@ public class BuddingRooms : LevelGeneratorTask
 {
     private List<Room> StartingRooms { get; set; }
 
-    public BuddingRooms(LevelGenerator levelGenerator, List<Room> startingRooms) : base(levelGenerator)
+    public BuddingRooms(LevelGenerator levelGenerator, IEnumerable<Room> startingRooms) : base(levelGenerator)
     {
-        StartingRooms = startingRooms;
+        StartingRooms = new(startingRooms);
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         bool avoidSizeBoundaries = LevelGenerator.ZandomParameters.avoidSizeBoundaries;
         RoomPositionChecker roomPositionChecker = new(LevelGenerator.Level);
@@ -42,6 +42,7 @@ public class BuddingRooms : LevelGeneratorTask
                 rooms.Enqueue(item);
             }
         }
+        yield return null;
     }
 
     public List<Room> Run(Room parent)

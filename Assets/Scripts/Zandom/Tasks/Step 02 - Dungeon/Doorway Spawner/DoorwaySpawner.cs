@@ -8,13 +8,14 @@ public class DoorwaySpawner : LevelGeneratorTask
     {
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         foreach (Wall wall in LevelGenerator.Level.Walls.Values)
         {
             if (!wall.CanHaveDoor()) continue;
             Run(wall);
         }
+        yield return null;
     }
 
     public void Run(Wall wall)

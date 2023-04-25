@@ -12,10 +12,11 @@ public class WallFinder : LevelGeneratorTask
         roomsTiles = new();
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         IterateTiles();
         BuildWalls();
+        yield return null;
     }
 
     private void IterateTiles()

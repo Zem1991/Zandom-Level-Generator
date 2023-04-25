@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AreaSumChecker
+public class AreaSumChecker : LevelGeneratorCheck
 {
     public AreaSumChecker(LevelGenerator levelGenerator)
     {

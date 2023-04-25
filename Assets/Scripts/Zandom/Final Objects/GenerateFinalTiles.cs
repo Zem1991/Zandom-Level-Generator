@@ -8,7 +8,7 @@ public class GenerateFinalTiles : LevelGeneratorTask
     {
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         Vector2Int start = new();
         Vector2Int size = Vector2Int.one * Constants.LEVEL_SIZE_MAX;
@@ -37,5 +37,6 @@ public class GenerateFinalTiles : LevelGeneratorTask
         }
         TileMapIterator iterator = new(false);
         iterator.IterateAll(start, size, finalTile);
+        yield return null;
     }
 }

@@ -8,13 +8,14 @@ public class GenerateFinalObstacles : LevelGeneratorTask
     {
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         //LevelPostGen levelLayout = levelStyle.LevelLayout;
         foreach (Obstacle obstacle in LevelGenerator.Level.Obstacles)
         {
             Run(obstacle);
         }
+        yield return null;
     }
 
     public void Run(Obstacle obstacle)

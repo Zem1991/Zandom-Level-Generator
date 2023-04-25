@@ -8,7 +8,7 @@ public class WallTypeRandomizer : LevelGeneratorTask
     {
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         List<Wall> enclosedList = new();
         List<Wall> parentList = new();
@@ -52,6 +52,7 @@ public class WallTypeRandomizer : LevelGeneratorTask
         Parent(parentList);
         DestructibleWall(destructibleList);
         NormalWall(normalList);
+        yield return null;
     }
 
     public void Enclosed(List<Wall> walls)

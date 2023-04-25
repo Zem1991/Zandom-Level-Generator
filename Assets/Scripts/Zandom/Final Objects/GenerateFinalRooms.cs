@@ -8,7 +8,7 @@ public class GenerateFinalRooms : LevelGeneratorTask
     {
     }
 
-    public override void Run()
+    public override IEnumerator Run()
     {
         //LevelPostGen levelLayout = levelStyle.LevelLayout;
         foreach (Room room in LevelGenerator.Level.Rooms.Values)
@@ -17,6 +17,7 @@ public class GenerateFinalRooms : LevelGeneratorTask
             //FinalRoom finalRoom = Run(room);
             //levelLayout.AddRoom(finalRoom);
         }
+        yield return null;
     }
 
     public void Run(Room room)

@@ -19,7 +19,10 @@ public class StartingRoom : LevelGeneratorTask
             Room result = roomBuilder.Build(start, size, false, null);
             ApplyBorders applyBorders = new(LevelGenerator);
             applyBorders.Apply(result);
+            if (LevelGenerator.waitTasks)
+            {
+                yield return new GenerateFinalRoom(LevelGenerator, result).Run();
+            }
         }
-        yield return null;
     }
 }

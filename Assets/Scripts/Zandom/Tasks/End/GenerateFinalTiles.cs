@@ -15,12 +15,14 @@ public class GenerateFinalTiles : LevelGeneratorTask
     {
         Start = room.Start;
         Size = room.Size;
-        //Start -= Vector2Int.one;
-        //Size += Vector2Int.one * 2;
+        Start -= Vector2Int.one;
+        Size += Vector2Int.one * 2;
+        TargetRoom = room;
     }
 
     public Vector2Int Start { get; }
     public Vector2Int Size { get; }
+    public Room TargetRoom { get; }
 
     public override IEnumerator Run()
     {
@@ -42,6 +44,13 @@ public class GenerateFinalTiles : LevelGeneratorTask
             if (!model) return false;
 
             Room room = tile.MentionedRooms[0];
+            bool hasTargetRoom = TargetRoom != null;
+            if (hasTargetRoom && room != TargetRoom)
+            {
+                //Attempting to generate a FinalRoom using a FinalTile that will end up in another FinalRoom later.
+                return false;
+            }
+
             FinalRoom finalRoom = room.GeneratedRoom;
             Vector3 finalRoomposition = finalRoom.transform.position;
 

@@ -49,7 +49,6 @@ public class BuddingRooms : LevelGeneratorTask
                 yield return new GenerateFinalRoom(LevelGenerator, sourceRoom).Run();
             }
         }
-        yield return null;
     }
 
     public List<Room> Run(Room parent)

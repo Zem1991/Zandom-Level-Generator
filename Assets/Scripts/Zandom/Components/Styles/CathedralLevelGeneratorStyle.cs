@@ -11,15 +11,16 @@ public class CathedralLevelGeneratorStyle : ZandomStyle
             //new StartingRoom(levelGenerator),
             new CathedralSpine(levelGenerator),
             //new BuddingRooms(levelGenerator, levelGenerator.Level.Rooms.Values.Take(2)),
-            new BuddingRooms(levelGenerator),
-            new CathedralSpecialRooms(levelGenerator),
-            new WallFinder(levelGenerator),
+            //new BuddingRooms(levelGenerator),
+            //new CathedralSpecialRooms(levelGenerator),
+            //new WallFinder(levelGenerator),
         };
     }
 
     public override bool Step01_Checks(LevelGenerator levelGenerator, out string message)
     {
         message = null;
+        return true;
         AreaSumChecker dungeonAreaChecker = new(levelGenerator);
         int minimumArea = (int)(Constants.LEVEL_AREA_MAX * levelGenerator.ZandomParameters.levelSizeMin);
         bool levelAreaMin = dungeonAreaChecker.CheckMin(minimumArea);

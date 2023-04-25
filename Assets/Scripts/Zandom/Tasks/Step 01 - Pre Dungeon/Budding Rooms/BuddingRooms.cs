@@ -1,21 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BuddingRooms : LevelGeneratorTask
 {
-    private List<Room> StartingRooms { get; set; }
+    //private List<Room> StartingRooms { get; set; }
 
-    public BuddingRooms(LevelGenerator levelGenerator, IEnumerable<Room> startingRooms) : base(levelGenerator)
+    //public BuddingRooms(LevelGenerator levelGenerator, IEnumerable<Room> startingRooms) : base(levelGenerator)
+    public BuddingRooms(LevelGenerator levelGenerator) : base(levelGenerator)
     {
-        StartingRooms = new(startingRooms);
+        //StartingRooms = new(startingRooms);
     }
 
     public override IEnumerator Run()
     {
         bool avoidSizeBoundaries = LevelGenerator.ZandomParameters.avoidSizeBoundaries;
         RoomPositionChecker roomPositionChecker = new(LevelGenerator.Level);
-        Queue<Room> rooms = new(StartingRooms);
+        //Queue<Room> rooms = new(StartingRooms);
+        Queue<Room> rooms = new(LevelGenerator.Level.Rooms.Values.Take(2));
         int levelArea = 0;
         foreach (var item in rooms)
         {
@@ -40,6 +43,10 @@ public class BuddingRooms : LevelGeneratorTask
             {
                 levelArea += item.Area;
                 rooms.Enqueue(item);
+            }
+            if (LevelGenerator.waitTasks)
+            {
+                yield return new PreviewFinalRooms(LevelGenerator).Run();
             }
         }
         yield return null;

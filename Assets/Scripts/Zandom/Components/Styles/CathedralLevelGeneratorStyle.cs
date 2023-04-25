@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class CathedralLevelGeneratorStyle : ZandomStyle
@@ -11,7 +10,8 @@ public class CathedralLevelGeneratorStyle : ZandomStyle
         {
             //new StartingRoom(levelGenerator),
             new CathedralSpine(levelGenerator),
-            new BuddingRooms(levelGenerator, levelGenerator.Level.Rooms.Values.Take(2)),
+            //new BuddingRooms(levelGenerator, levelGenerator.Level.Rooms.Values.Take(2)),
+            new BuddingRooms(levelGenerator),
             new CathedralSpecialRooms(levelGenerator),
             new WallFinder(levelGenerator),
         };

@@ -22,6 +22,7 @@ public class ZandomStateEnd : ZandomState
 
     protected override List<LevelGeneratorTask> GetTasks()
     {
+        LevelGenerator.FinalLevel.Clear();
         return new()
         {
             new GenerateFinalRooms(LevelGenerator),
@@ -32,6 +33,7 @@ public class ZandomStateEnd : ZandomState
 
     protected override bool GetChecks(out string message)
     {
+        //message = $"Level generation finished!";
         message = null;
         return true;
     }

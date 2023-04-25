@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+using System.Linq;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -25,10 +25,20 @@ public class LevelGenerator : MonoBehaviour
     public Level Level { get; private set; }
     public FinalLevel FinalLevel { get; private set; }
 
+    public ZandomState State 
+    { 
+        get => state; 
+        private set
+        {
+            state = value;
+            stateName = State != null ? State.Name : ZandomStateName.NONE;
+        }
+    }
+
     public void Clear()
     {
         Level = new();
-        //TODO: remove child gameobjects generated before
+        FinalLevel.Clear();
     }
 
     public void Run()
@@ -36,35 +46,33 @@ public class LevelGenerator : MonoBehaviour
         //ZandomStyle.Run(this);
         //state = new ZandomStateBegin(this);
         attempts = 0;
-        state = new ZandomStateStep01(this);
-        stateName = state.Name;
+        State = new ZandomStateStep01(this);
         NewAttempt();
     }
 
     private void NewAttempt()
     {
+        Clear();
         attempts++;
         if (attempts > maxAttempts)
         {
             Debug.LogWarning($"Too many attempts!");
-            state = null;
-            stateName = ZandomStateName.NONE;
+            State = null;
         }
         else
         {
             Debug.Log($"Starting attempt #{attempts} at generating the next level.");
         }
-        Clear();
     }
 
     private void DebugMessageSuccess(string message)
     {
-        Debug.Log($"Success at {state} with message: {message}");
+        Debug.Log($"Success at {stateName} with message: {message}");
     }
 
     private void DebugMessageFailure(string message)
     {
-        Debug.Log($"Failure at {state} with message: {message}");
+        Debug.Log($"Failure at {stateName} with message: {message}");
     }
 
     private void Awake()
@@ -79,24 +87,24 @@ public class LevelGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (state == null) return;
-        if (!state.TasksStarted)
+        if (State == null) return;
+        if (!State.TasksStarted)
         {
-            StartCoroutine(state.RunTasks());
+            StartCoroutine(State.RunTasks());
         }
-        if (state.TasksFinished)
+        if (State.TasksFinished)
         {
-            bool stateResult = state.RunChecks(out string message);
+            bool stateResult = State.RunChecks(out string message);
             if (stateResult)
             {
-                state = state.NextIfSuccess();
                 DebugMessageSuccess(message);
-                if (state == null) Debug.Log($"Level generation finished.");
+                State = State.NextIfSuccess();
+                if (State == null) Debug.Log($"Level generation finished.");
             }
             else
             {
-                state = state.NextIfFailure();
                 DebugMessageFailure(message);
+                State = State.NextIfFailure();
                 NewAttempt();
             }
         }

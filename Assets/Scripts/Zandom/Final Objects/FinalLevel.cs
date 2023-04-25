@@ -5,7 +5,16 @@ using UnityEngine;
 
 public class FinalLevel : MonoBehaviour
 {
-    public Dictionary<int, FinalRoom> Rooms { get; } = new();
+    public Dictionary<int, FinalRoom> Rooms { get; private set; } = new();
+
+    public void Clear()
+    {
+        foreach (var item in Rooms)
+        {
+            Destroy(item.Value.gameObject);
+        }
+        Rooms = new();
+    }
 
     public FinalRoom CreateFinalRoom(Room room, FinalRoom parent)
     {

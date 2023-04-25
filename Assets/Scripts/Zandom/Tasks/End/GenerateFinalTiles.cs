@@ -6,19 +6,36 @@ public class GenerateFinalTiles : LevelGeneratorTask
 {
     public GenerateFinalTiles(LevelGenerator levelGenerator) : base(levelGenerator)
     {
+        int size = Constants.LEVEL_SIZE_MAX;
+        Start = new();
+        Size = new(size, size);
     }
+
+    public GenerateFinalTiles(LevelGenerator levelGenerator, Room room) : this(levelGenerator)
+    {
+        Start = room.Start;
+        Size = room.Size;
+        //Start -= Vector2Int.one;
+        //Size += Vector2Int.one * 2;
+    }
+
+    public Vector2Int Start { get; }
+    public Vector2Int Size { get; }
 
     public override IEnumerator Run()
     {
-        Vector2Int start = new();
-        Vector2Int size = Vector2Int.one * Constants.LEVEL_SIZE_MAX;
-        start -= Vector2Int.one;
-        size += Vector2Int.one * 2;
+        //Vector2Int start = new();
+        //Vector2Int size = Vector2Int.one * Constants.LEVEL_SIZE_MAX;
+        //start -= Vector2Int.one;
+        //size += Vector2Int.one * 2;
         bool finalTile(int col, int row)
         {
             Vector2Int coordinates = new(col, row);
             Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
             if (tile == null) return false;
+
+            GameObject currentFinalTile = tile.GeneratedTile;
+            if (currentFinalTile) Object.Destroy(currentFinalTile);
 
             TileType tileType = tile.Type;
             GameObject model = LevelGenerator.ZandomTileset.GetModel(tileType);
@@ -36,7 +53,7 @@ public class GenerateFinalTiles : LevelGeneratorTask
             return true;
         }
         TileMapIterator iterator = new(false);
-        iterator.IterateAll(start, size, finalTile);
+        iterator.IterateAll(Start, Size, finalTile);
         yield return null;
     }
 }

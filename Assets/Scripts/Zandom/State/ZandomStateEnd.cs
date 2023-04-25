@@ -22,12 +22,9 @@ public class ZandomStateEnd : ZandomState
 
     protected override List<LevelGeneratorTask> GetTasks()
     {
-        LevelGenerator.FinalLevel.Clear();
         return new()
         {
-            new GenerateFinalRooms(LevelGenerator),
-            new GenerateFinalTiles(LevelGenerator),
-            new GenerateFinalObstacles(LevelGenerator),
+            new GenerateFinalLevel(LevelGenerator),
         };
     }
 

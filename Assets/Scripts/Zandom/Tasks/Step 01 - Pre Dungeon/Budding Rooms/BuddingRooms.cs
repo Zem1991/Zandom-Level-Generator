@@ -46,7 +46,7 @@ public class BuddingRooms : LevelGeneratorTask
             }
             if (LevelGenerator.waitTasks)
             {
-                yield return new PreviewFinalRooms(LevelGenerator).Run();
+                yield return new GenerateFinalRoom(LevelGenerator, sourceRoom).Run();
             }
         }
         yield return null;

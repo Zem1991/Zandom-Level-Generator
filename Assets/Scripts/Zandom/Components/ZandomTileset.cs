@@ -6,47 +6,51 @@ using UnityEngine;
 public class ZandomTileset : ScriptableObject
 {
     [Header("Room")]
+    public GameObject areaTile;
     public GameObject borderTile;
     public GameObject cornerTile;
 
     [Header("Wall")]
-    public GameObject wallTile;
-    public GameObject destructibleWallTile;
-    public GameObject barsTile;
+    public GameObject normalWallTile;
+    public GameObject agedWallTile;
+    public GameObject barsWallTile;
 
     [Header("Floor")]
-    public GameObject floorTile;
+    public GameObject normalFloorTile;
     public GameObject specialFloorTile;
-    public GameObject doorwayTile;
+    public GameObject doorwayFloorTile;
 
     public GameObject GetModel(TileType tileType)
     {
         GameObject result = null;
         switch (tileType)
         {
+            case TileType.ROOM_AREA:
+                result = areaTile;
+                break;
             case TileType.ROOM_BORDER:
                 result = borderTile;
                 break;
             case TileType.ROOM_CORNER:
                 result = cornerTile;
                 break;
-            case TileType.WALL:
-                result = wallTile;
+            case TileType.NORMAL_WALL:
+                result = normalWallTile;
                 break;
-            case TileType.DESTRUCTIBLE_WALL:
-                result = destructibleWallTile;
+            case TileType.AGED_WALL:
+                result = agedWallTile;
                 break;
-            case TileType.BARS:
-                result = barsTile;
+            case TileType.BARS_WALL:
+                result = barsWallTile;
                 break;
-            case TileType.FLOOR:
-                result = floorTile;
+            case TileType.NORMAL_FLOOR:
+                result = normalFloorTile;
                 break;
             case TileType.SPECIAL_FLOOR:
                 result = specialFloorTile;
                 break;
-            case TileType.DOORWAY:
-                result = doorwayTile;
+            case TileType.DOORWAY_FLOOR:
+                result = doorwayFloorTile;
                 break;
         }
         return result;

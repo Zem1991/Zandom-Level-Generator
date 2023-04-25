@@ -7,7 +7,7 @@ public class WallTypePicker
     public TileType Enclosed()
     {
         int rng = Random.Range(0, 2);
-        if (rng > 0) return TileType.BARS;
+        if (rng > 0) return TileType.BARS_WALL;
         return Normal();
     }
 
@@ -15,16 +15,16 @@ public class WallTypePicker
     {
         int rng = Random.Range(0, 2);
         if (rng > 0) return Enclosed();
-        return TileType.FLOOR;
+        return TileType.NORMAL_FLOOR;
     }
     
-    public TileType Destructible()
+    public TileType AgedDestructible()
     {
-        return TileType.DESTRUCTIBLE_WALL;
+        return TileType.AGED_WALL;
     }
 
     public TileType Normal()
     {
-        return TileType.WALL;
+        return TileType.NORMAL_WALL;
     }
 }

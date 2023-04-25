@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7278972641462252324}
   m_Layer: 0
-  m_Name: Wall (Cathedral) (Wall)
+  m_Name: Normal Wall (Cathedral) (Wall)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

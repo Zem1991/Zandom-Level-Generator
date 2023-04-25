@@ -46,7 +46,7 @@ public class RoomTypeRandomizer : LevelGeneratorTask
         foreach (Tile tile in room.Tiles)
         {
             if (tile.Type != TileType.ROOM_AREA) continue;
-            TileType newType = TileType.FLOOR;
+            TileType newType = TileType.NORMAL_FLOOR;
             if (room.Type == RoomType.SPECIAL) newType = TileType.SPECIAL_FLOOR;
             tile.Type = newType;
         }

@@ -80,7 +80,7 @@ public class WallTypeRandomizer : LevelGeneratorTask
         WallTypePicker picker = new();
         foreach (Wall wall in walls)
         {
-            wall.Type = picker.Destructible();
+            wall.Type = picker.AgedDestructible();
             Run(wall);
         }
     }
@@ -107,7 +107,7 @@ public class WallTypeRandomizer : LevelGeneratorTask
             //{
             //    tile.Type = wall.Type;
             //}
-            if (tile.Type == TileType.DOORWAY) continue;
+            if (tile.Type == TileType.DOORWAY_FLOOR) continue;
             tile.Type = wall.Type;
         }
     }

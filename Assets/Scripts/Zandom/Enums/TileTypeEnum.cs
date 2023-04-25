@@ -4,18 +4,18 @@ using UnityEngine;
 
 public enum TileType
 {
-    //Rooms: PreDungeon
+    //Room: PreDungeon
     ROOM_AREA = '.',
     ROOM_BORDER = '=',
     ROOM_CORNER = '#',
-    //Walls: Dungeon and PostDungeon
-    WALL = 'W',
-    DESTRUCTIBLE_WALL = 'Z',
-    BARS = 'B',
-    DOORWAY = 'D',
-    //Floors: Dungeon and PostDungeon
-    FLOOR = 'F',
+    //Wall: Dungeon and PostDungeon
+    NORMAL_WALL = 'W',
+    AGED_WALL = 'Z',
+    BARS_WALL = 'B',
+    //Floor: Dungeon and PostDungeon
+    NORMAL_FLOOR = 'F',
     SPECIAL_FLOOR = 'S',
+    DOORWAY_FLOOR = 'D',
 }
 
 public static class TileTypeExtensions
@@ -27,6 +27,6 @@ public static class TileTypeExtensions
 
     public static bool IsFloor(this TileType tileType)
     {
-        return tileType == TileType.FLOOR || tileType == TileType.SPECIAL_FLOOR;
+        return tileType == TileType.NORMAL_FLOOR || tileType == TileType.SPECIAL_FLOOR || tileType == TileType.DOORWAY_FLOOR;
     }
 }

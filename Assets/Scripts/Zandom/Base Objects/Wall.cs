@@ -78,7 +78,7 @@ public class Wall
     public bool CanHaveDoor()
     {
         bool validAsWall = IsDifferentRoot() || IsParentWall();
-        bool validType = Type == TileType.WALL || Type == TileType.BARS;
+        bool validType = Type == TileType.NORMAL_WALL || Type == TileType.BARS_WALL;
         return validAsWall && validType;
     }
 

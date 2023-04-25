@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb790ba94889dcd48b34277c05d69956, type: 3}
   m_Name: Cathedral (Tileset)
   m_EditorClassIdentifier: 
+  areaTile: {fileID: 9033375250853195897, guid: a5d5a4c61a07fa141b80b8f083bcf78a, type: 3}
   borderTile: {fileID: 7278972641462252327, guid: 6c5894698c9cf8c43b40697bd9571fd3, type: 3}
   cornerTile: {fileID: 7278972641462252327, guid: f15e99b0e0e06434a8708c52a1c9b311, type: 3}
-  wallTile: {fileID: 7278972641462252327, guid: 2ac5d9dc592c4f2439f5e2f3a427d7bf, type: 3}
-  destructibleWallTile: {fileID: 7278972641462252327, guid: dc3e3a6161f6beb429787efe7a718af0, type: 3}
-  barsTile: {fileID: 9007022588645392120, guid: 0f0fd4eb404056941a6cc3f56bf99ac7, type: 3}
-  floorTile: {fileID: 9033375250853195897, guid: 718ee50b78b3b2b478f171e79d5056bd, type: 3}
+  normalWallTile: {fileID: 7278972641462252327, guid: 2ac5d9dc592c4f2439f5e2f3a427d7bf, type: 3}
+  agedWallTile: {fileID: 7278972641462252327, guid: dc3e3a6161f6beb429787efe7a718af0, type: 3}
+  barsWallTile: {fileID: 9007022588645392120, guid: 0f0fd4eb404056941a6cc3f56bf99ac7, type: 3}
+  normalFloorTile: {fileID: 9033375250853195897, guid: 718ee50b78b3b2b478f171e79d5056bd, type: 3}
   specialFloorTile: {fileID: 9033375250853195897, guid: a8cc82b1b0a5c24418fff0cea41e20ed, type: 3}
-  doorwayTile: {fileID: 877962812885065705, guid: eb656376ab351fc4999777671c1ffe1c, type: 3}
+  doorwayFloorTile: {fileID: 877962812885065705, guid: eb656376ab351fc4999777671c1ffe1c, type: 3}

@@ -32,7 +32,7 @@ public class DoorwaySpawner : LevelGeneratorTask
         for (int i = startPos; i < endPos; i++)
         {
             Tile tile = wall.Tiles[i];
-            tile.Type = TileType.DOORWAY;
+            tile.Type = TileType.DOORWAY_FLOOR;
             tiles.Add(tile);
         }
 

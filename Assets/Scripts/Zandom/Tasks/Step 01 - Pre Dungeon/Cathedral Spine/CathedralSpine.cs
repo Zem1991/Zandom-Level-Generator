@@ -17,7 +17,6 @@ public class CathedralSpine : LevelGeneratorTask
         int firstRoomPosition = Random.Range(0, maxPosition);
         if (shorterVersion) firstRoomPosition++;
         bool vertical = Random.Range(0, 2) > 0;
-        
         AxisCathedralSpine axisCathedralSpine;
         if (vertical)
         {
@@ -28,10 +27,8 @@ public class CathedralSpine : LevelGeneratorTask
             axisCathedralSpine = new HorizontalCathedralSpine(LevelGenerator, firstRoomPosition, corridorLength);
         }
         List<Room> newRooms = axisCathedralSpine.Run();
-
         foreach (var item in newRooms)
         {
-            //call build
             if (LevelGenerator.waitTasks)
             {
                 yield return new GenerateFinalRoom(LevelGenerator, item).Run();

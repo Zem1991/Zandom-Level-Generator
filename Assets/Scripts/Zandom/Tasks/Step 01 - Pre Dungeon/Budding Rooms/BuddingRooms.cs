@@ -43,10 +43,10 @@ public class BuddingRooms : LevelGeneratorTask
             {
                 levelArea += item.Area;
                 rooms.Enqueue(item);
-            }
-            if (LevelGenerator.waitTasks)
-            {
-                yield return new GenerateFinalRoom(LevelGenerator, sourceRoom).Run();
+                if (LevelGenerator.waitTasks)
+                {
+                    yield return new GenerateFinalRoom(LevelGenerator, item).Run();
+                }
             }
         }
     }

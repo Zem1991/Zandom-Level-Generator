@@ -16,20 +16,20 @@ public abstract class AxisCathedralSpine
         this.corridorLength = corridorLength;
     }
 
-    public void Run()
+    public List<Room> Run()
     {
         Vector2Int position1 = GetPositionRoom1();
         Vector2Int position2 = GetPositionRoom2();
         position1 *= Constants.MODULE_SIZE;
         position2 *= Constants.MODULE_SIZE;
         List<Room> rooms = new();
-        Room room1 = Room(position1);
-        Room room2 = Room(position2);
+        Room room1 = SpineRoom(position1);
+        Room room2 = SpineRoom(position2);
         rooms.Add(room1);
         rooms.Add(room2);
         if (corridorLength > 0)
         {
-            List<Room> corridors = Corridor();
+            List<Room> corridors = SpineCorridor();
             rooms.AddRange(corridors);
         }
         ApplyBorders applyBorders = new(levelGenerator);
@@ -37,16 +37,17 @@ public abstract class AxisCathedralSpine
         {
             applyBorders.Apply(item);
         }
+        return rooms;
     }
 
-    private Room Room(Vector2Int startPos)
+    private Room SpineRoom(Vector2Int startPos)
     {
         SetPiece setPiece = new CathedralSpineRoom();
         if (rotate) setPiece.Rotate();
         return Build(startPos, setPiece);
     }
 
-    private List<Room> Corridor()
+    private List<Room> SpineCorridor()
     {
         List<Room> result = new();
         SetPiece setPiece = new CathedralSpineCorridor();

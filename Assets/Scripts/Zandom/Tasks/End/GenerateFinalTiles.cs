@@ -36,9 +36,6 @@ public class GenerateFinalTiles : LevelGeneratorTask
             Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
             if (tile == null) return false;
 
-            GameObject currentFinalTile = tile.GeneratedTile;
-            if (currentFinalTile) Object.Destroy(currentFinalTile);
-
             TileType tileType = tile.Type;
             GameObject model = LevelGenerator.ZandomTileset.GetModel(tileType);
             if (!model) return false;
@@ -53,9 +50,12 @@ public class GenerateFinalTiles : LevelGeneratorTask
 
             FinalRoom finalRoom = room.GeneratedRoom;
             Vector3 finalRoomposition = finalRoom.transform.position;
-
             Vector3 position = finalRoomposition + new Vector3(coordinates.x, 0, coordinates.y);
+
+            GameObject currentFinalTile = tile.GeneratedTile;
+            if (currentFinalTile) Object.Destroy(currentFinalTile);
             GameObject finalTile = Object.Instantiate(model, position, Quaternion.identity, finalRoom.transform);
+            
             //finalRoom.AddTile(finalTile);
             finalTile.name = $"\'{tile.Type}\' {coordinates}";
             tile.GeneratedTile = finalTile;

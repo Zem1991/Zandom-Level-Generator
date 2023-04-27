@@ -11,13 +11,9 @@ public class GenerateFinalLevel : LevelGeneratorTask
     public override IEnumerator Run()
     {
         Level level = LevelGenerator.Level;
-        //if (true)
-        if (!LevelGenerator.waitTasks)
+        foreach (Room room in level.Rooms.Values)
         {
-            foreach (Room room in level.Rooms.Values)
-            {
-                yield return new GenerateFinalRoom(LevelGenerator, room).Run();
-            }
+            yield return new GenerateFinalRoom(LevelGenerator, room).Run();
         }
         yield return new GenerateFinalTiles(LevelGenerator).Run();
         yield return new GenerateFinalObstacles(LevelGenerator).Run();

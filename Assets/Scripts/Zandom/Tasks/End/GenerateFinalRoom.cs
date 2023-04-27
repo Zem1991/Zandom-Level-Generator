@@ -13,9 +13,17 @@ public class GenerateFinalRoom : LevelGeneratorTask
 
     public override IEnumerator Run()
     {
-        FinalRoom parent = Room.Parent?.GeneratedRoom;
-        FinalLevel finalLevel = LevelGenerator.FinalLevel;
-        finalLevel.CreateFinalRoom(Room, parent);
-        yield return new GenerateFinalTiles(LevelGenerator, Room).Run();
+        FinalRoom generatedRoom = Room.GeneratedRoom;
+        if (generatedRoom)
+        {
+            yield return null;
+        }
+        else
+        {
+            FinalRoom parent = Room.Parent?.GeneratedRoom;
+            FinalLevel finalLevel = LevelGenerator.FinalLevel;
+            finalLevel.CreateFinalRoom(Room, parent);
+            yield return new GenerateFinalTiles(LevelGenerator, Room).Run();
+        }
     }
 }

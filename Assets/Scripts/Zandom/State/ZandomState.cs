@@ -22,8 +22,6 @@ public abstract class ZandomState
         foreach (var item in tasks)
         {
             yield return item.Run();
-            if (!LevelGenerator.waitTasks) continue;
-            yield return new WaitForSeconds(LevelGenerator.waitTime);
         }
         TasksFinished = true;
     }

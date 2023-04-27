@@ -11,11 +11,11 @@ public class LevelGenerator : MonoBehaviour
     public ZandomTileset ZandomTileset;
     public ZandomObjects ZandomObjects;
 
-    [Header("Settings")]
-    public bool waitTasks = true;
-    public bool waitSubtasks = true;
-    [Min(0F)] public float waitTime = 0.5F;
+    [Header("Settings: Generator")]
     [Min(1)] public int maxAttempts = 20;
+
+    [Header("Settings: Task Waiting")]
+    [Min(0F)] public int taskWaitingTier = 1;
 
     [Header("Runtime")]
     [SerializeField] private int attempts;

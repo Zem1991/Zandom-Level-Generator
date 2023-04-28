@@ -20,6 +20,12 @@ public class GenerateFinalTiles : LevelGeneratorTask
         TargetRoom = room;
     }
 
+    public GenerateFinalTiles(LevelGenerator levelGenerator, Wall wall) : this(levelGenerator)
+    {
+        Start = wall.Start;
+        Size = wall.Size;
+    }
+
     public Vector2Int Start { get; }
     public Vector2Int Size { get; }
     public Room TargetRoom { get; }

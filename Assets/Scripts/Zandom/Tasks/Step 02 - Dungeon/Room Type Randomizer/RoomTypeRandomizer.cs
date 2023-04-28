@@ -16,34 +16,12 @@ public class RoomTypeRandomizer : LevelGeneratorTask
         foreach (Room item in LevelGenerator.Level.Rooms.Values)
         {
             Run(item);
-            //if (room.IsEnclosed()) specialRooms.Add(room);
-            //else normalRooms.Add(room);
             if (LevelGenerator.taskWaitingTier > 0)
             {
                 yield return new GenerateFinalRoom(LevelGenerator, item).Run();
             }
         }
-        //RunNormal(normalRooms);
-        //RunSpecial(specialRooms);
     }
-
-    //public void RunNormal(List<Room> rooms)
-    //{
-    //    foreach (Room room in rooms)
-    //    {
-    //        room.Type = RoomType.NORMAL;
-    //        Run(room);
-    //    }
-    //}
-
-    //public void RunSpecial(List<Room> rooms)
-    //{
-    //    foreach (Room room in rooms)
-    //    {
-    //        room.Type = RoomType.SPECIAL;
-    //        Run(room);
-    //    }
-    //}
 
     private void Run(Room room)
     {

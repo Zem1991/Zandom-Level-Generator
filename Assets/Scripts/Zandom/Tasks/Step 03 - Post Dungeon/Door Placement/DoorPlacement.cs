@@ -17,7 +17,8 @@ public class DoorPlacement : LevelGeneratorTask
             Run(doorway);
             if (LevelGenerator.taskWaitingTier > 0)
             {
-                yield return null;
+                Obstacle door = doorway.Door;
+                yield return new GenerateFinalObstacles(LevelGenerator).Run(door);
             }
         }
     }
@@ -27,6 +28,7 @@ public class DoorPlacement : LevelGeneratorTask
         Wall wall = doorway.Wall;
         Level level = wall.Level;
         Room room = wall.SourceRoom;
-        level.CreateObstacle(doorway.DoorSize.ObjectName(), doorway.Tiles, wall.IsVertical(), room);
+        Obstacle door = level.CreateObstacle(doorway.DoorSize.ObjectName(), doorway.Tiles, wall.IsVertical(), room);
+        doorway.Door = door;
     }
 }

@@ -13,19 +13,11 @@ public class GenerateFinalObstacles : LevelGeneratorTask
         //LevelPostGen levelLayout = levelStyle.LevelLayout;
         foreach (Obstacle obstacle in LevelGenerator.Level.Obstacles)
         {
-            Run(obstacle);
-            if (LevelGenerator.taskWaitingTier > 0)
-            {
-                yield return null;
-            }
-            else
-            {
-                yield return null;
-            }
+            yield return Run(obstacle);
         }
     }
 
-    public void Run(Obstacle obstacle)
+    public IEnumerator Run(Obstacle obstacle)
     {
         FinalLevel finalLevel = LevelGenerator.FinalLevel;
         GameObject gameObject = LevelGenerator.ZandomObjects.Get(obstacle.Name);
@@ -33,5 +25,9 @@ public class GenerateFinalObstacles : LevelGeneratorTask
         bool vertical = obstacle.Vertical;
         FinalRoom finalRoom = obstacle.Room.GeneratedRoom;
         finalLevel.CreateFinalObstacle(gameObject, position, vertical, finalRoom);
+        if (LevelGenerator.taskWaitingTier > 0)
+        {
+            yield return null;
+        }
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -31,9 +30,10 @@ public class LevelGenerator : MonoBehaviour
         private set
         {
             state = value;
-            stateName = State != null ? State.Name : ZandomStateName.NONE;
+            StateName = State != null ? State.Name : ZandomStateName.NONE;
         }
     }
+    public ZandomStateName StateName { get => stateName; private set => stateName = value; }
 
     public void Clear()
     {
@@ -67,12 +67,12 @@ public class LevelGenerator : MonoBehaviour
 
     private void DebugMessageSuccess(string message)
     {
-        Debug.Log($"Success at {stateName} with message: {message}");
+        Debug.Log($"Success at state {StateName} with message: {message}");
     }
 
     private void DebugMessageFailure(string message)
     {
-        Debug.Log($"Failure at {stateName} with message: {message}");
+        Debug.Log($"Failure at state {StateName} with message: {message}");
     }
 
     private void Awake()
@@ -95,11 +95,16 @@ public class LevelGenerator : MonoBehaviour
         if (State.TasksFinished)
         {
             bool stateResult = State.RunChecks(out string message);
+            if (string.IsNullOrEmpty(message))
+            {
+                message = "--";
+            }
             if (stateResult)
             {
                 DebugMessageSuccess(message);
                 State = State.NextIfSuccess();
                 if (State == null) Debug.Log($"Level generation finished.");
+                else Debug.Log($"Entering state {StateName}...");
             }
             else
             {

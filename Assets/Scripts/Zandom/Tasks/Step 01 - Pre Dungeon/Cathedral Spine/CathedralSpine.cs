@@ -29,7 +29,7 @@ public class CathedralSpine : LevelGeneratorTask
         List<Room> newRooms = axisCathedralSpine.Run();
         foreach (var item in newRooms)
         {
-            if (LevelGenerator.waitTasks)
+            if (LevelGenerator.taskWaitingTier > 0)
             {
                 yield return new GenerateFinalRoom(LevelGenerator, item).Run();
             }

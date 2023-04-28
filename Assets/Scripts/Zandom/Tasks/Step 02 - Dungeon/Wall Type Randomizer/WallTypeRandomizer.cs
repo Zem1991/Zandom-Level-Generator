@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class WallTypeRandomizer : LevelGeneratorTask
 {
@@ -52,7 +53,10 @@ public class WallTypeRandomizer : LevelGeneratorTask
         Parent(parentList);
         DestructibleWall(destructibleList);
         NormalWall(normalList);
-        yield return null;
+        if (LevelGenerator.taskWaitingTier > 0)
+        {
+            yield return new GenerateFinalTiles(LevelGenerator).Run();
+        }
     }
 
     public void Enclosed(List<Wall> walls)

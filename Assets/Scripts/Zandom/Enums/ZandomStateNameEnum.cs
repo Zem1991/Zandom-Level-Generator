@@ -5,7 +5,7 @@ using UnityEngine;
 public enum ZandomStateName
 {
     NONE,
-    BEGIN,
+    //BEGIN,
     STEP01,
     STEP02,
     STEP03,

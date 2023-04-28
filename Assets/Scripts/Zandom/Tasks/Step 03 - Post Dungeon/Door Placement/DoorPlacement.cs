@@ -15,8 +15,11 @@ public class DoorPlacement : LevelGeneratorTask
             Doorway doorway = wall.Doorway;
             if (doorway == null) continue;
             Run(doorway);
+            if (LevelGenerator.taskWaitingTier > 0)
+            {
+                yield return null;
+            }
         }
-        yield return null;
     }
 
     public void Run(Doorway doorway)

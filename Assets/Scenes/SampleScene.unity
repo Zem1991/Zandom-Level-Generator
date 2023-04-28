@@ -178,10 +178,8 @@ MonoBehaviour:
   ZandomParameters: {fileID: 11400000, guid: 30666d361fd1dca4fbbe2f9977aa9ca0, type: 2}
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
   ZandomObjects: {fileID: 11400000, guid: 1986b2014fa619a44bf82585be71af5d, type: 2}
-  waitTasks: 1
-  waitSubtasks: 1
-  waitTime: 0.5
   maxAttempts: 20
+  taskWaitingTier: 1
   attempts: 0
   stateName: 0
 --- !u!4 &504301426
@@ -254,10 +252,8 @@ MonoBehaviour:
   ZandomParameters: {fileID: 11400000, guid: 0dc2baabe77fac3478ccb14af39df5e2, type: 2}
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
   ZandomObjects: {fileID: 11400000, guid: 1986b2014fa619a44bf82585be71af5d, type: 2}
-  waitTasks: 1
-  waitSubtasks: 1
-  waitTime: 0.5
   maxAttempts: 20
+  taskWaitingTier: 1
   attempts: 0
   stateName: 0
 --- !u!4 &667455846
@@ -548,10 +544,8 @@ MonoBehaviour:
   ZandomParameters: {fileID: 11400000, guid: e05beba25a759c64993f5879a253b024, type: 2}
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
   ZandomObjects: {fileID: 11400000, guid: 1986b2014fa619a44bf82585be71af5d, type: 2}
-  waitTasks: 1
-  waitSubtasks: 1
-  waitTime: 0.5
   maxAttempts: 20
+  taskWaitingTier: 1
   attempts: 0
   stateName: 0
 --- !u!114 &1630063772
@@ -629,10 +623,8 @@ MonoBehaviour:
   ZandomParameters: {fileID: 11400000, guid: 0ab1b6c4f15d9ab4fac08944142e9dfc, type: 2}
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
   ZandomObjects: {fileID: 11400000, guid: 1986b2014fa619a44bf82585be71af5d, type: 2}
-  waitTasks: 1
-  waitSubtasks: 1
-  waitTime: 0.5
   maxAttempts: 20
+  taskWaitingTier: 1
   attempts: 0
   stateName: 0
 --- !u!4 &1815642860

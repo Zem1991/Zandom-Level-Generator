@@ -15,7 +15,10 @@ public class DoorwaySpawner : LevelGeneratorTask
             if (!wall.CanHaveDoor()) continue;
             Run(wall);
         }
-        yield return null;
+        if (LevelGenerator.taskWaitingTier > 0)
+        {
+            yield return new GenerateFinalTiles(LevelGenerator).Run();
+        }
     }
 
     public void Run(Wall wall)

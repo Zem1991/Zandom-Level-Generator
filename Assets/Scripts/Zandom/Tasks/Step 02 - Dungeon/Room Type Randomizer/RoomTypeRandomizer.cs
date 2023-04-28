@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class RoomTypeRandomizer : LevelGeneratorTask
 {
@@ -12,15 +13,18 @@ public class RoomTypeRandomizer : LevelGeneratorTask
     {
         List<Room> normalRooms = new();
         List<Room> specialRooms = new();
-        foreach (Room room in LevelGenerator.Level.Rooms.Values)
+        foreach (Room item in LevelGenerator.Level.Rooms.Values)
         {
-            Run(room);
+            Run(item);
             //if (room.IsEnclosed()) specialRooms.Add(room);
             //else normalRooms.Add(room);
+            if (LevelGenerator.taskWaitingTier > 0)
+            {
+                yield return new GenerateFinalRoom(LevelGenerator, item).Run();
+            }
         }
         //RunNormal(normalRooms);
         //RunSpecial(specialRooms);
-        yield return null;
     }
 
     //public void RunNormal(List<Room> rooms)

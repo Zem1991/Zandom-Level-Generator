@@ -14,8 +14,15 @@ public class GenerateFinalObstacles : LevelGeneratorTask
         foreach (Obstacle obstacle in LevelGenerator.Level.Obstacles)
         {
             Run(obstacle);
+            if (LevelGenerator.taskWaitingTier > 0)
+            {
+                yield return null;
+            }
+            else
+            {
+                yield return null;
+            }
         }
-        yield return null;
     }
 
     public void Run(Obstacle obstacle)

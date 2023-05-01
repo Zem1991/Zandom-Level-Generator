@@ -11,6 +11,10 @@ public class GenerateFinalLevel : LevelGeneratorTask
     public override IEnumerator Run()
     {
         Level level = LevelGenerator.Level;
+        if (LevelGenerator.taskWaitingTier > 0)
+        {
+            Debug.LogWarning("Some generator tasks can be producing duplicate results because taskWaitingTier > 0.");
+        }
         foreach (Room room in level.Rooms.Values)
         {
             yield return new GenerateFinalRoom(LevelGenerator, room).Run();

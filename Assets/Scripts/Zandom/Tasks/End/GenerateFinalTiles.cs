@@ -58,11 +58,10 @@ public class GenerateFinalTiles : LevelGeneratorTask
             Vector3 finalRoomposition = finalRoom.transform.position;
             Vector3 position = finalRoomposition + new Vector3(coordinates.x, 0, coordinates.y);
 
-            GameObject currentFinalTile = tile.GeneratedTile;
-            if (currentFinalTile) Object.Destroy(currentFinalTile);
-            GameObject finalTile = Object.Instantiate(model, position, Quaternion.identity, finalRoom.transform);
+            GameObject currentGenerated = tile.GeneratedTile;
+            if (currentGenerated) Object.Destroy(currentGenerated);
             
-            //finalRoom.AddTile(finalTile);
+            GameObject finalTile = Object.Instantiate(model, position, Quaternion.identity, finalRoom.transform);
             finalTile.name = $"\'{tile.Type}\' {coordinates}";
             tile.GeneratedTile = finalTile;
             return true;

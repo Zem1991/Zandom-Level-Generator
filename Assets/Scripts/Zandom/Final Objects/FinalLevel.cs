@@ -5,6 +5,7 @@ using UnityEngine;
 public class FinalLevel : MonoBehaviour
 {
     public Dictionary<int, FinalRoom> Rooms { get; private set; } = new();
+    public Dictionary<int, GameObject> Obstacles { get; private set; } = new();
 
     public void Clear()
     {
@@ -12,30 +13,37 @@ public class FinalLevel : MonoBehaviour
         {
             Destroy(item.Value.gameObject);
         }
+        foreach (var item in Obstacles)
+        {
+            Destroy(item.Value.gameObject);
+        }
         Rooms = new();
+        Obstacles = new();
     }
 
-    public FinalRoom CreateFinalRoom(Room room, FinalRoom parent)
+    public FinalRoom CreateFinalRoom(Room origin, FinalRoom parent)
     {
         Transform transform = this.transform;
         //Transform transform = parent?.transform;
         //if (!transform) transform = this.transform;
         FinalRoom prefab = ZLGPrefabs.Instance.finalRoom;
-        FinalRoom finalRoom = Instantiate(prefab, transform.position, Quaternion.identity, transform);
-        finalRoom.Setup(room, parent);
-        room.GeneratedRoom = finalRoom;
-        //finalRoom.transform.SetAsFirstSibling();
-        Rooms.Add(room.Id, finalRoom);
-        return finalRoom;
+        FinalRoom result = Instantiate(prefab, transform.position, Quaternion.identity, transform);
+        result.Setup(origin, parent);
+        origin.GeneratedRoom = result;
+        Rooms.Add(origin.Id, result);
+        return result;
     }
 
-    public void CreateFinalObstacle(GameObject prefab, Vector3 position, bool vertical, FinalRoom parent)
+    public GameObject CreateFinalObstacle(Obstacle origin, GameObject prefab, Vector3 position, bool vertical, FinalRoom parent)
     {
         Transform transform = parent.transform;
         Vector3 rotationEuler = new();
         if (vertical) rotationEuler.y = 90F;
         Quaternion rotation = Quaternion.Euler(rotationEuler);
-        Instantiate(prefab, position, rotation, transform);
+        GameObject result = Instantiate(prefab, position, rotation, transform);
+        origin.GeneratedObstacle = result;
+        Obstacles.Add(origin.Id, result);
+        return result;
     }
 
     public void Optimize()

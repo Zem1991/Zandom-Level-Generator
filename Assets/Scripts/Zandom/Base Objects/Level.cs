@@ -48,7 +48,8 @@ public class Level
 
     public Obstacle CreateObstacle(string name, List<Tile> tiles, bool vertical, Room room)
     {
-        Obstacle obstacle = new(name, tiles, vertical, this, room);
+        int id = Obstacles.Count;
+        Obstacle obstacle = new(id, name, tiles, vertical, this, room);
         Obstacles.Add(obstacle);
         return obstacle;
     }

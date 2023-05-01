@@ -19,12 +19,19 @@ public class GenerateFinalObstacles : LevelGeneratorTask
 
     public IEnumerator Run(Obstacle obstacle)
     {
+        GameObject currentGenerated = obstacle.GeneratedObstacle;
+        if (currentGenerated)
+        {
+            yield break;
+        }
+
         FinalLevel finalLevel = LevelGenerator.FinalLevel;
-        GameObject gameObject = LevelGenerator.ZandomObjects.Get(obstacle.Name);
+        GameObject prefab = LevelGenerator.ZandomObjects.Get(obstacle.Name);
         Vector3 position = obstacle.GetFinalPosition();
         bool vertical = obstacle.Vertical;
         FinalRoom finalRoom = obstacle.Room.GeneratedRoom;
-        finalLevel.CreateFinalObstacle(gameObject, position, vertical, finalRoom);
+
+        finalLevel.CreateFinalObstacle(obstacle, prefab, position, vertical, finalRoom);
         if (LevelGenerator.taskWaitingTier > 0)
         {
             yield return null;

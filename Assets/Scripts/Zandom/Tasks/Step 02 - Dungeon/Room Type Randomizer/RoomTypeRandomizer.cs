@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class RoomTypeRandomizer : LevelGeneratorTask
 {
@@ -11,8 +10,8 @@ public class RoomTypeRandomizer : LevelGeneratorTask
 
     public override IEnumerator Run()
     {
-        List<Room> normalRooms = new();
-        List<Room> specialRooms = new();
+        //List<Room> normalRooms = new();
+        //List<Room> specialRooms = new();
         foreach (Room item in LevelGenerator.Level.Rooms.Values)
         {
             Run(item);

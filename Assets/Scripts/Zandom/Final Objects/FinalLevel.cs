@@ -36,7 +36,15 @@ public class FinalLevel : MonoBehaviour
         FinalRoom result = Instantiate(prefab, transform.position, Quaternion.identity, transform);
         result.Setup(origin, parent);
         origin.GeneratedRoom = result;
-        Rooms.Add(origin.Id, result);
+
+        int key = origin.Id;
+        bool oldVersion = Rooms.TryGetValue(key, out FinalRoom oldResult);
+        if (oldVersion)
+        {
+            Destroy(oldResult.gameObject);
+            Rooms.Remove(key);
+        }
+        Rooms.Add(key, result);
         return result;
     }
 
@@ -47,9 +55,17 @@ public class FinalLevel : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(rotationEuler);
         Transform transform = parent.transform;
         GameObject result = Instantiate(prefab, position, rotation, transform);
-        result.name = $"\'{origin.Type}\' {origin.Coordinates}";
+        result.name = $"{origin.Coordinates} \'{origin.Type}\'";
         origin.GeneratedTile = result;
-        Tiles.Add(origin.Coordinates, result);
+
+        Vector2Int key = origin.Coordinates;
+        bool oldVersion = Tiles.TryGetValue(key, out GameObject oldResult);
+        if (oldVersion)
+        {
+            Destroy(oldResult.gameObject);
+            Tiles.Remove(key);
+        }
+        Tiles.Add(key, result);
         return result;
     }
 
@@ -60,9 +76,17 @@ public class FinalLevel : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(rotationEuler);
         Transform transform = parent.transform;
         GameObject result = Instantiate(prefab, position, rotation, transform);
-        result.name = $"{origin.Id} {origin.Name}";
+        result.name = $"Obstacle #{origin.Id} \'{origin.Name}\'";
         origin.GeneratedObstacle = result;
-        Obstacles.Add(origin.Id, result);
+
+        int key = origin.Id;
+        bool oldVersion = Obstacles.TryGetValue(key, out GameObject oldResult);
+        if (oldVersion)
+        {
+            Destroy(oldResult.gameObject);
+            Obstacles.Remove(key);
+        }
+        Obstacles.Add(key, result);
         return result;
     }
 

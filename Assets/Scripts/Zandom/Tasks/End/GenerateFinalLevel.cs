@@ -13,7 +13,9 @@ public class GenerateFinalLevel : LevelGeneratorTask
         Level level = LevelGenerator.Level;
         if (LevelGenerator.taskWaitingTier > 0)
         {
-            Debug.LogWarning("Generator tasks can produce duplicated results when taskWaitingTier > 0.");
+            //Debug.LogWarning("Generator tasks can produce duplicated results when taskWaitingTier > 0.");
+            Debug.LogWarning("Skipping GenerateFinalLevel since by task waiting you should have everything already done.");
+            yield break;
         }
         foreach (Room room in level.Rooms.Values)
         {

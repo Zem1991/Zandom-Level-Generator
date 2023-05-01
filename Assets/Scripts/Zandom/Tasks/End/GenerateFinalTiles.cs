@@ -24,11 +24,13 @@ public class GenerateFinalTiles : LevelGeneratorTask
     {
         Start = wall.Start;
         Size = wall.Size;
+        Vertical = wall.IsVertical();
     }
 
     public Vector2Int Start { get; }
     public Vector2Int Size { get; }
     public Room TargetRoom { get; }
+    public bool Vertical { get; }
 
     public override IEnumerator Run()
     {
@@ -42,10 +44,6 @@ public class GenerateFinalTiles : LevelGeneratorTask
             Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
             if (tile == null) return false;
 
-            TileType tileType = tile.Type;
-            GameObject model = LevelGenerator.ZandomTileset.GetModel(tileType);
-            if (!model) return false;
-
             Room room = tile.MentionedRooms[0];
             bool hasTargetRoom = TargetRoom != null;
             if (hasTargetRoom && room != TargetRoom)
@@ -55,15 +53,8 @@ public class GenerateFinalTiles : LevelGeneratorTask
             }
 
             FinalRoom finalRoom = room.GeneratedRoom;
-            Vector3 finalRoomposition = finalRoom.transform.position;
-            Vector3 position = finalRoomposition + new Vector3(coordinates.x, 0, coordinates.y);
-
-            GameObject currentGenerated = tile.GeneratedTile;
-            if (currentGenerated) Object.Destroy(currentGenerated);
-            
-            GameObject finalTile = Object.Instantiate(model, position, Quaternion.identity, finalRoom.transform);
-            finalTile.name = $"\'{tile.Type}\' {coordinates}";
-            tile.GeneratedTile = finalTile;
+            Vector3 position = finalRoom.transform.position + new Vector3(coordinates.x, 0, coordinates.y);
+            Run(tile, position, finalRoom);
             return true;
         }
         TileMapIterator iterator = new(false);
@@ -72,5 +63,18 @@ public class GenerateFinalTiles : LevelGeneratorTask
         {
             yield return null;
         }
+    }
+
+    private void Run(Tile tile, Vector3 position, FinalRoom finalRoom)
+    {
+        GameObject currentGenerated = tile.GeneratedTile;
+        if (currentGenerated)
+        {
+            Object.Destroy(currentGenerated);
+            //yield break;
+        }
+        FinalLevel finalLevel = LevelGenerator.FinalLevel;
+        GameObject prefab = LevelGenerator.ZandomTileset.GetModel(tile.Type);
+        finalLevel.CreateFinalTile(tile, prefab, position, Vertical, finalRoom);
     }
 }

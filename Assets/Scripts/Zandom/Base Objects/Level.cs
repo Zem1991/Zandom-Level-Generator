@@ -10,12 +10,16 @@ public class Level
         Rooms = new();
         Walls = new();
         Obstacles = new();
+        PointsOfInterest = new();
     }
 
     public TileMap TileMap { get; }
     public Dictionary<int, Room> Rooms { get; }
     public Dictionary<int, Wall> Walls { get; }
     public List<Obstacle> Obstacles { get; }
+
+    public StartLocation StartLocation { get; private set; }
+    public List<PointOfInterest> PointsOfInterest { get; }
 
     public bool IsInsideBounds(Vector2Int start, Vector2Int size)
     {
@@ -40,9 +44,9 @@ public class Level
     {
         int id = Walls.Count;
         Wall wall = new(id, this, sourceRoom, neighborRoom, tiles);
-        Walls.Add(id, wall);
         sourceRoom.Walls.Add(wall);
         neighborRoom.Walls.Add(wall);
+        Walls.Add(id, wall);
         return wall;
     }
 
@@ -52,5 +56,21 @@ public class Level
         Obstacle obstacle = new(id, name, tiles, vertical, this, room);
         Obstacles.Add(obstacle);
         return obstacle;
+    }
+
+    public void AddPointOfInterest(Vector3 position, string name)
+    {
+        PointOfInterest point = new(position, name);
+        PointsOfInterest.Add(point);
+    }
+
+    public void SetStartLocation(Vector3 position)
+    {
+        if (StartLocation != null)
+        {
+            Debug.LogWarning("Start Location is already defined!");
+            return;
+        }
+        StartLocation = new(position);
     }
 }

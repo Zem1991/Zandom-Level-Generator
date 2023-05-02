@@ -12,6 +12,12 @@ public class Obstacle
         Vertical = vertical;
         Level = level;
         Room = room;
+        CenterPosition = FindCenterPosition();
+
+        foreach (var item in tiles)
+        {
+            item.Obstacles.Add(this);
+        }
     }
 
     public int Id { get; }
@@ -20,14 +26,17 @@ public class Obstacle
     public bool Vertical { get; }
     public Level Level { get; }
     public Room Room { get; }
+    public Vector3 CenterPosition { get; }
     public GameObject GeneratedObstacle { get; set; }
 
-    public Vector3 GetFinalPosition()
+    private Vector3 FindCenterPosition()
     {
         Vector3 result = new();
         foreach (var item in MentionedTiles)
         {
-            result += item.GeneratedTile.transform.position;
+            //result += item.GeneratedTile.transform.position;
+            result.x += item.Coordinates.x;
+            result.z += item.Coordinates.y;
         }
         result /= MentionedTiles.Count;
         return result;

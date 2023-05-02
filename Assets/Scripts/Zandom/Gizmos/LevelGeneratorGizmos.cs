@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class LevelGeneratorGizmos
@@ -16,6 +17,8 @@ public class LevelGeneratorGizmos
         SizeBounds();
         SafetyBounds();
         AllStates();
+        StartLocation();
+        PointsOfInterest();
     }
 
     private void SizeBounds()
@@ -25,9 +28,9 @@ public class LevelGeneratorGizmos
         center += levelGenerator.transform.position;
         center.x -= 0.5F;
         center.z -= 0.5F;
-        DrawCube(Color.green, center, size);
+        DrawCube(Constants.SizeBoundsColor, center, size);
         size += new Vector3(2, 0, 2);
-        DrawCube(Color.green, center, size);
+        DrawCube(Constants.SizeBoundsColor, center, size);
     }
 
     private void SafetyBounds()
@@ -40,7 +43,7 @@ public class LevelGeneratorGizmos
         center += levelGenerator.transform.position;
         center.x += Constants.MODULE_SIZE - 0.5F;
         center.z += Constants.MODULE_SIZE - 0.5F;
-        DrawCube(Color.yellow, center, size);
+        DrawCube(Constants.SafetyBoundsColor, center, size);
     }
 
     private void AllStates()
@@ -51,7 +54,7 @@ public class LevelGeneratorGizmos
         int currentIndex = (int)levelGenerator.StateName;
         for (int i = startIndex; i <= endIndex; i++)
         {
-            State(i, Color.white, i <= currentIndex);
+            State(i, Constants.StateBoxColor, i <= currentIndex);
         }
     }
 
@@ -61,9 +64,33 @@ public class LevelGeneratorGizmos
         int offset = 2;
         int sizeUnit = 4;
         int xCoord = index * (sizeUnit + offset) + offset;
-        Vector3 center = new(xCoord, 0, -sizeUnit);
+        Vector3 center = levelGenerator.transform.position;
+        center += new Vector3(xCoord, 0, -sizeUnit);
         Vector3 size = new(sizeUnit, 0, sizeUnit);
         DrawCube(color, center, size, !visited);
+    }
+
+    private void StartLocation()
+    {
+        StartLocation startLocation = levelGenerator?.Level?.StartLocation;
+        if (startLocation == null) return;
+        Vector3 center = levelGenerator.transform.position;
+        center += levelGenerator.Level.StartLocation.Position;
+        float radius = Constants.EntranceSafetyRadius;
+        DrawSphere(Constants.EntranceZoneColor, center, radius);
+    }
+
+    private void PointsOfInterest()
+    {
+        List<PointOfInterest> pointsOfInterest = levelGenerator?.Level?.PointsOfInterest;
+        if (pointsOfInterest == null) return;
+        foreach (var item in pointsOfInterest)
+        {
+            Vector3 center = levelGenerator.transform.position;
+            center += item.Position;
+            float radius = Constants.ExitSafetyRadius;
+            DrawSphere(Constants.ExitZoneColor, center, radius);
+        }
     }
 
     private void DrawCube(Color color, Vector3 center, Vector3 size, bool wireframe = true)
@@ -71,5 +98,12 @@ public class LevelGeneratorGizmos
         Gizmos.color = color;
         if (wireframe) Gizmos.DrawWireCube(center, size);
         else Gizmos.DrawCube(center, size);
+    }
+
+    private void DrawSphere(Color color, Vector3 center, float radius, bool wireframe = true)
+    {
+        Gizmos.color = color;
+        if (wireframe) Gizmos.DrawWireSphere(center, radius);
+        else Gizmos.DrawSphere(center, radius);
     }
 }

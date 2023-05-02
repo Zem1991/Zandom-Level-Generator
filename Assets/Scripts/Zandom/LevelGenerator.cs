@@ -8,13 +8,13 @@ public class LevelGenerator : MonoBehaviour
     public ZandomStyle ZandomStyle;
     public ZandomParameters ZandomParameters;
     public ZandomTileset ZandomTileset;
-    public ZandomObjects ZandomObjects;
+    public ZandomObstacles ZandomObjects;
 
     [Header("Settings: Generator")]
     [Min(1)] public int maxAttempts = 20;
 
     [Header("Settings: Task Waiting")]
-    [Min(0F)] public int taskWaitingTier = 1;
+    [Min(0F)] public int taskWaitingTier = 0;
 
     [Header("Runtime")]
     [SerializeField] private int attempts;

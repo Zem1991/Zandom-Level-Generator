@@ -9,16 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a3ec6e9e17d9a5449b741169a6c57be, type: 3}
-  m_Name: Cathedral (Objects)
+  m_Script: {fileID: 11500000, guid: c4a5626829cd68744819e91bde1cb131, type: 3}
+  m_Name: Cathedral (Obstacles)
   m_EditorClassIdentifier: 
   names:
+  - Entrance
   - Exit
   - Small Door
   - Large Door
   - Treasure
   - Enemy
-  finalObjects:
+  finalObstacles:
+  - {fileID: 877962812885065705, guid: 1157740882c8a5446b8b25467568696f, type: 3}
   - {fileID: 877962812885065705, guid: 55b332c3c99def143b1fa826c1c3f1af, type: 3}
   - {fileID: 877962812885065705, guid: 7376b42a909c120479c386a3f94e9e40, type: 3}
   - {fileID: 877962812885065705, guid: e4c7b597b1c606d4e9b2301ee9d292a0, type: 3}

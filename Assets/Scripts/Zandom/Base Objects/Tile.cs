@@ -8,14 +8,15 @@ public class Tile
     {
         Coordinates = coordinates;
         MentionedRooms = new();
+        Obstacles = new();
     }
 
     public Vector2Int Coordinates { get; }
 
     public bool FromSetPiece { get; set; }
     public TileType Type { get; set; }
-    public Obstacle Obstacle { get; set; }
     public List<Room> MentionedRooms { get; set; }
+    public List<Obstacle> Obstacles { get; set; }
     public GameObject GeneratedTile { get; set; }
 
     public override string ToString()

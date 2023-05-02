@@ -17,6 +17,7 @@ public class Room
         Tiles = new();
         Walls = new();
         Children = new();
+        Type = RoomType.NORMAL;
         DefineRootAndAge();
     }
 
@@ -32,9 +33,9 @@ public class Room
     public List<Wall> Walls { get; }
     public List<Room> Children { get; }
     
+    public RoomType Type { get; set; }
     public Room Root { get; private set; }
     public int Age { get; private set; }
-    public RoomType Type { get; set; }
     public FinalRoom GeneratedRoom { get; set; }
     public bool FromSetPiece { get; set; }
 
@@ -45,6 +46,16 @@ public class Room
             int x = Size.x;// - Start.x + 1;
             int y = Size.y;// - Start.y + 1;
             return x * y;
+        }
+    }
+
+    public Vector3 Center
+    {
+        get
+        {
+            float x = (Size.x - 1) / 2F + Start.x;
+            float z = (Size.y - 1) / 2F + Start.y;
+            return new(x, 0, z);
         }
     }
 

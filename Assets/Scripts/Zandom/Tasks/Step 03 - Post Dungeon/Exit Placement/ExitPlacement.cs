@@ -68,6 +68,7 @@ public class ExitPlacement : LevelGeneratorTask
             Vector2Int coordinates = new(col, row);
             Tile tile = tileMap.Get(coordinates);
             if (tile == null) return false;
+            if (tile.HasObstacle()) return false;
             foundTiles.Add(tile);
             return true;
         }

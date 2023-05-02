@@ -24,4 +24,9 @@ public class Tile
     {
         return $"Tile {Coordinates} \'{Type}\'";
     }
+
+    public bool HasObstacle()
+    {
+        return Obstacles.Count > 0;
+    }
 }

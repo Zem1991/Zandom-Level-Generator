@@ -12,6 +12,13 @@ public class Wall
         SourceRoom = sourceRoom;
         NeighborRoom = neighborRoom;
         Tiles = tiles;
+        Vertical = Tiles[0].Coordinates.y != Tiles[1].Coordinates.y;
+
+        foreach (var item in tiles)
+        {
+            item.Vertical = Vertical;
+        }
+
         //TileMap = new();
         //Start = start;
         //Size = size;
@@ -24,6 +31,7 @@ public class Wall
     public Room SourceRoom { get; }
     public Room NeighborRoom { get; }
     public List<Tile> Tiles { get; }
+    public bool Vertical { get; }
 
     public Doorway Doorway { get; set; }
 
@@ -79,10 +87,5 @@ public class Wall
         bool validAsWall = IsDifferentRoot() || IsParentWall();
         bool validType = Type == TileType.NORMAL_WALL || Type == TileType.BARS_WALL;
         return validAsWall && validType;
-    }
-
-    public bool IsVertical()
-    {
-        return Tiles[0].Coordinates.y != Tiles[1].Coordinates.y;
     }
 }

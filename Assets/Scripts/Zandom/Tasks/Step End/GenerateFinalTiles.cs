@@ -24,13 +24,11 @@ public class GenerateFinalTiles : LevelGeneratorTask
     {
         Start = wall.Start;
         Size = wall.Size;
-        Vertical = wall.IsVertical();
     }
 
     public Vector2Int Start { get; }
     public Vector2Int Size { get; }
     public Room TargetRoom { get; }
-    public bool Vertical { get; }
 
     public override IEnumerator Run()
     {
@@ -75,6 +73,6 @@ public class GenerateFinalTiles : LevelGeneratorTask
         }
         FinalLevel finalLevel = LevelGenerator.FinalLevel;
         GameObject prefab = LevelGenerator.ZandomTileset.GetModel(tile.Type);
-        finalLevel.CreateFinalTile(tile, prefab, position, Vertical, finalRoom);
+        finalLevel.CreateFinalTile(tile, prefab, position, tile.Vertical, finalRoom);
     }
 }

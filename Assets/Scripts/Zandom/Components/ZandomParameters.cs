@@ -21,6 +21,8 @@ public class ZandomParameters : ScriptableObject
     [Header("Obstacles")]
     public Vector2Int entranceSize = new(4, 4);
     public Vector2Int exitSize = new(4, 4);
+    [Min(0)] public int treasures = 6;
+    [Min(0)] public int enemies = 60;
 
     [Header("Requirements")]
     [Range(0F, 1F)] public float levelSizeMin = 0.4F;

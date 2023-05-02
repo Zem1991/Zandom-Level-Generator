@@ -16,6 +16,7 @@ public class Tile
     public bool FromSetPiece { get; set; }
     public TileType Type { get; set; }
     public List<Room> MentionedRooms { get; set; }
+    public bool Vertical { get; set; }
     public List<Obstacle> Obstacles { get; set; }
     public GameObject GeneratedTile { get; set; }
 

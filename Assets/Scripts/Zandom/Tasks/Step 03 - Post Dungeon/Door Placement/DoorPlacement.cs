@@ -28,7 +28,7 @@ public class DoorPlacement : LevelGeneratorTask
         Wall wall = doorway.Wall;
         Level level = wall.Level;
         Room room = wall.SourceRoom;
-        Obstacle door = level.CreateObstacle(doorway.DoorSize.ObjectName(), doorway.Tiles, wall.IsVertical(), room);
+        Obstacle door = level.CreateObstacle(doorway.DoorSize.ObjectName(), doorway.Tiles, wall.Vertical, room);
         doorway.Door = door;
     }
 }

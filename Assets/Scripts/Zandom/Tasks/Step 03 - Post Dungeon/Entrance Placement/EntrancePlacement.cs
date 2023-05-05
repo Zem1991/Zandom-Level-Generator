@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class EntrancePlacement : LevelGeneratorTask
+public class EntrancePlacement : ObstaclePlacement
 {
     public EntrancePlacement(LevelGenerator levelGenerator) : base(levelGenerator)
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TreasurePlacement : ObstaclePlacement
+public class ObstaclePlacement : LevelGeneratorTask
 {
-    public TreasurePlacement(LevelGenerator levelGenerator) : base(levelGenerator)
+    protected ObstaclePlacement(LevelGenerator levelGenerator) : base(levelGenerator)
     {
     }
 

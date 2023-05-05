@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorPlacement : LevelGeneratorTask
+public class DoorPlacement : ObstaclePlacement
 {
     public DoorPlacement(LevelGenerator levelGenerator) : base(levelGenerator)
     {

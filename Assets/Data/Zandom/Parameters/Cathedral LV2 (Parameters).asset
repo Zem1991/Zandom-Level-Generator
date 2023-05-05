@@ -21,7 +21,9 @@ MonoBehaviour:
   largeDoorLengthMax: 8
   entranceSize: {x: 4, y: 4}
   exitSize: {x: 4, y: 4}
+  treasureSize: {x: 2, y: 2}
+  encounterSize: {x: 4, y: 4}
   treasures: 8
-  enemies: 70
+  encounters: 45
   levelSizeMin: 0.4
   levelSizeMax: 0.6

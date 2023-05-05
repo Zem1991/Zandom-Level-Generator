@@ -49,10 +49,11 @@ public class CathedralLevelGeneratorStyle : ZandomStyle
     {
         return new()
         {
-            new DoorPlacement(levelGenerator),
             new EntrancePlacement(levelGenerator),
             new ExitPlacement(levelGenerator),
+            new DoorPlacement(levelGenerator),
             new TreasurePlacement(levelGenerator),
+            new EncounterPlacement(levelGenerator),
         };
     }
 

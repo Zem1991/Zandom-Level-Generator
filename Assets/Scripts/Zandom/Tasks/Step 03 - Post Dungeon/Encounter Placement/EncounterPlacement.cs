@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TreasurePlacement : ObstaclePlacement
+public class EncounterPlacement : ObstaclePlacement
 {
-    public TreasurePlacement(LevelGenerator levelGenerator) : base(levelGenerator)
+    public EncounterPlacement(LevelGenerator levelGenerator) : base(levelGenerator)
     {
     }
 
@@ -15,12 +15,12 @@ public class TreasurePlacement : ObstaclePlacement
         List<Room> validRooms = new();
         foreach (var item in allRooms)
         {
-            if (item.Type != RoomType.SPECIAL) continue;
+            //if (item.Type == RoomType.SPECIAL) continue;
             validRooms.Add(item);
         }
         validRooms = validRooms.OrderBy(x => Random.value).ToList();
         int validRoomIndex = 0;
-        for (int i = 0; i < LevelGenerator.ZandomParameters.treasures; i++)
+        for (int i = 0; i < LevelGenerator.ZandomParameters.encounters; i++)
         {
             validRoomIndex++;
             validRoomIndex %= validRooms.Count;
@@ -42,7 +42,7 @@ public class TreasurePlacement : ObstaclePlacement
     private Obstacle Run(Room room, List<Tile> tiles)
     {
         Level level = LevelGenerator.Level;
-        Obstacle result = level.CreateObstacle("Treasure", tiles, false, room);
+        Obstacle result = level.CreateObstacle("Encounter", tiles, false, room);
         return result;
     }
 
@@ -50,7 +50,7 @@ public class TreasurePlacement : ObstaclePlacement
     {
         tiles = new();
         Vector2Int position = room.Start;
-        Vector2Int objectSize = LevelGenerator.ZandomParameters.treasureSize;
+        Vector2Int objectSize = LevelGenerator.ZandomParameters.encounterSize;
         int extraX = Random.Range(1, room.Size.x - objectSize.x);
         int extraY = Random.Range(1, room.Size.y - objectSize.y);
         position.x += extraX;

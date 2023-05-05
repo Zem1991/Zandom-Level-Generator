@@ -18,11 +18,13 @@ public class ZandomParameters : ScriptableObject
     [Min(0)] public int smallDoorLengthMin = 4;
     [Min(0)] public int largeDoorLengthMax = 8;
 
-    [Header("Obstacles")]
-    public Vector2Int entranceSize = new(4, 4);
-    public Vector2Int exitSize = new(4, 4);
-    [Min(0)] public int treasures = 6;
-    [Min(0)] public int enemies = 60;
+    //[Header("Obstacles")]
+    //public Vector2Int entranceSize = new(4, 4);
+    //public Vector2Int exitSize = new(4, 4);
+    //public Vector2Int treasureSize = new(2, 2);
+    //public Vector2Int encounterSize = new(4, 4);
+    //[Min(0)] public int treasures = 6;
+    //[Min(0)] public int encounters = 40;
 
     [Header("Requirements")]
     [Range(0F, 1F)] public float levelSizeMin = 0.4F;

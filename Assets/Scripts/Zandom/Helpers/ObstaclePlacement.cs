@@ -3,38 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class ObstaclePlacement : LevelGeneratorTask
+public class ObstaclePlacement
 {
-    protected ObstaclePlacement(LevelGenerator levelGenerator) : base(levelGenerator)
+    public ObstaclePlacement(LevelGenerator levelGenerator, ZandomObstacleData obstacleData, List<Room> validRooms)
     {
+        LevelGenerator = levelGenerator;
+        ObstacleData = obstacleData;
+        ValidRooms = validRooms.OrderBy(x => Random.value).ToList();
+        Results = new();
     }
 
-    public override IEnumerator Run()
+    public LevelGenerator LevelGenerator { get; }
+    public ZandomObstacleData ObstacleData { get; }
+    public List<Room> ValidRooms { get; }
+    public List<Obstacle> Results { get; }
+
+    public IEnumerator Run()
     {
-        List<Room> allRooms = LevelGenerator.Level.Rooms.Values.ToList();
-        List<Room> validRooms = new();
-        foreach (var item in allRooms)
-        {
-            if (item.Type != RoomType.SPECIAL) continue;
-            validRooms.Add(item);
-        }
-        validRooms = validRooms.OrderBy(x => Random.value).ToList();
         int validRoomIndex = 0;
-        for (int i = 0; i < LevelGenerator.ZandomParameters.treasures; i++)
+        for (int i = 0; i < ObstacleData.amountDesired; i++)
         {
             validRoomIndex++;
-            validRoomIndex %= validRooms.Count;
-            Room room = validRooms[validRoomIndex];
+            validRoomIndex %= ValidRooms.Count;
+            Room room = ValidRooms[validRoomIndex];
             bool gotTiles = TryGetTiles(room, out List<Tile> tiles);
             if (!gotTiles)
             {
-                i--;
+                //i--;
                 continue;
             }
-            Obstacle treasure = Run(room, tiles);
+            Obstacle obstacle = Run(room, tiles);
+            Results.Add(obstacle);
             if (LevelGenerator.taskWaitingTier > 0)
             {
-                yield return new GenerateFinalObstacles(LevelGenerator).Run(treasure);
+                yield return new GenerateFinalObstacles(LevelGenerator).Run(obstacle);
             }
         }
     }
@@ -42,7 +44,7 @@ public class ObstaclePlacement : LevelGeneratorTask
     private Obstacle Run(Room room, List<Tile> tiles)
     {
         Level level = LevelGenerator.Level;
-        Obstacle result = level.CreateObstacle("Treasure", tiles, false, room);
+        Obstacle result = level.CreateObstacle(ObstacleData, tiles, false, room);
         return result;
     }
 
@@ -50,7 +52,7 @@ public class ObstaclePlacement : LevelGeneratorTask
     {
         tiles = new();
         Vector2Int position = room.Start;
-        Vector2Int objectSize = LevelGenerator.ZandomParameters.treasureSize;
+        Vector2Int objectSize = ObstacleData.size;
         int extraX = Random.Range(1, room.Size.x - objectSize.x);
         int extraY = Random.Range(1, room.Size.y - objectSize.y);
         position.x += extraX;

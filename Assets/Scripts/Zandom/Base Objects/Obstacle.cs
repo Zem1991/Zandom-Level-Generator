@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Obstacle
 {
-    public Obstacle(int id, string name, List<Tile> tiles, bool vertical, Level level, Room room)
+    public Obstacle(int id, ZandomObstacleData obstacleData, List<Tile> tiles, bool vertical, Level level, Room room)
     {
         Id = id;
-        Name = name;
+        ZandomObstacleData = obstacleData;
         MentionedTiles = tiles;
         Vertical = vertical;
         Level = level;
@@ -21,7 +21,7 @@ public class Obstacle
     }
 
     public int Id { get; }
-    public string Name { get; }
+    public ZandomObstacleData ZandomObstacleData { get; }
     public List<Tile> MentionedTiles { get; }
     public bool Vertical { get; }
     public Level Level { get; }

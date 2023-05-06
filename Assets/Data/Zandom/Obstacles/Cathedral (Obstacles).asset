@@ -20,9 +20,9 @@ MonoBehaviour:
   - Treasure
   - Encounter
   finalObstacles:
-  - {fileID: 877962812885065705, guid: 1157740882c8a5446b8b25467568696f, type: 3}
-  - {fileID: 877962812885065705, guid: 55b332c3c99def143b1fa826c1c3f1af, type: 3}
-  - {fileID: 877962812885065705, guid: 7376b42a909c120479c386a3f94e9e40, type: 3}
-  - {fileID: 877962812885065705, guid: e4c7b597b1c606d4e9b2301ee9d292a0, type: 3}
-  - {fileID: 877962812885065705, guid: 2e02b134eb3429549aa62f7316e97b84, type: 3}
-  - {fileID: 877962812885065705, guid: f547deebf3f949248b4e7d69f055b32e, type: 3}
+  - {fileID: 11400000, guid: d6e33646737b8d24fbe645492514b58d, type: 2}
+  - {fileID: 11400000, guid: a3357a990f5a59940a479a747442b441, type: 2}
+  - {fileID: 11400000, guid: 3ebecab07062a8e4688a9bcb38349904, type: 2}
+  - {fileID: 11400000, guid: 5065191c51615e94f8c784a93bc8f876, type: 2}
+  - {fileID: 11400000, guid: e71ae5a066989f746bc04bf01b77ef81, type: 2}
+  - {fileID: 11400000, guid: 30a5abaca1dc2ff46b786191d25f28ca, type: 2}

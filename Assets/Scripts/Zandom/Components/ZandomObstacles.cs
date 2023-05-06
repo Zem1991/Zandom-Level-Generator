@@ -10,9 +10,9 @@ public class ZandomObstacles : ScriptableObject
 {
     [Header("Room")]
     [SerializeField] private List<string> names = new();
-    [SerializeField] private List<GameObject> finalObstacles = new();
+    [SerializeField] private List<ZandomObstacleData> finalObstacles = new();
 
-    public GameObject Get(string name)
+    public ZandomObstacleData Get(string name)
     {
         int index = names.IndexOf(name);
         return finalObstacles[index];

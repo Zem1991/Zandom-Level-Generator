@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c21c409cf9a4542ad123239b300998, type: 3}
   m_Name: Large Door (Cathedral)
   m_EditorClassIdentifier: 
+  amountMinimum: 1
+  amountDesired: 10
+  size: {x: 4, y: 4}
+  gameObject: {fileID: 877962812885065705, guid: e4c7b597b1c606d4e9b2301ee9d292a0, type: 3}

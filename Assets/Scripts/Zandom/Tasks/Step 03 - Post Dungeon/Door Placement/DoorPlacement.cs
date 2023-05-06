@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorPlacement : ObstaclePlacement
+public class DoorPlacement : LevelGeneratorTask
 {
     public DoorPlacement(LevelGenerator levelGenerator) : base(levelGenerator)
     {
@@ -28,7 +28,9 @@ public class DoorPlacement : ObstaclePlacement
         Wall wall = doorway.Wall;
         Level level = wall.Level;
         Room room = wall.SourceRoom;
-        Obstacle door = level.CreateObstacle(doorway.DoorSize.ObjectName(), doorway.Tiles, wall.Vertical, room);
+        string objectName = doorway.DoorSize.ObjectName();
+        ZandomObstacleData obstacleData = LevelGenerator.ZandomObstacles.Get(objectName);
+        Obstacle door = level.CreateObstacle(obstacleData, doorway.Tiles, wall.Vertical, room);
         doorway.Door = door;
     }
 }

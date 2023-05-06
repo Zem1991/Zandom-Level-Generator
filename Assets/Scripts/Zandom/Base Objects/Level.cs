@@ -50,10 +50,10 @@ public class Level
         return wall;
     }
 
-    public Obstacle CreateObstacle(string name, List<Tile> tiles, bool vertical, Room room)
+    public Obstacle CreateObstacle(ZandomObstacleData obstacleData, List<Tile> tiles, bool vertical, Room room)
     {
         int id = Obstacles.Count;
-        Obstacle obstacle = new(id, name, tiles, vertical, this, room);
+        Obstacle obstacle = new(id, obstacleData, tiles, vertical, this, room);
         Obstacles.Add(obstacle);
         return obstacle;
     }

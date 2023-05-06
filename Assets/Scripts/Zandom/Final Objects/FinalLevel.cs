@@ -76,7 +76,7 @@ public class FinalLevel : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(rotationEuler);
         Transform transform = parent.transform;
         GameObject result = Instantiate(prefab, position, rotation, transform);
-        result.name = $"Obstacle #{origin.Id} \'{origin.Name}\'";
+        result.name = $"Obstacle #{origin.Id} \'{origin.ZandomObstacleData.gameObject.name}\'";
         origin.GeneratedObstacle = result;
 
         int key = origin.Id;

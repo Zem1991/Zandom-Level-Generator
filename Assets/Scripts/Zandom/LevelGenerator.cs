@@ -8,7 +8,7 @@ public class LevelGenerator : MonoBehaviour
     public ZandomStyle ZandomStyle;
     public ZandomParameters ZandomParameters;
     public ZandomTileset ZandomTileset;
-    public ZandomObstacles ZandomObjects;
+    public ZandomObstacles ZandomObstacles;
 
     [Header("Settings: Generator")]
     [Min(1)] public int maxAttempts = 20;

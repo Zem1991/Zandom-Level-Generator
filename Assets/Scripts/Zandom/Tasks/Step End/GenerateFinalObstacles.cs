@@ -26,7 +26,7 @@ public class GenerateFinalObstacles : LevelGeneratorTask
         }
 
         FinalLevel finalLevel = LevelGenerator.FinalLevel;
-        GameObject prefab = LevelGenerator.ZandomObjects.Get(obstacle.Name);
+        GameObject prefab = obstacle.ZandomObstacleData.gameObject;
         Vector3 position = finalLevel.transform.position + obstacle.CenterPosition;
         bool vertical = obstacle.Vertical;
         FinalRoom finalRoom = obstacle.Room.GeneratedRoom;

@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02c21c409cf9a4542ad123239b300998, type: 3}
   m_Name: Treasure (Cathedral)
   m_EditorClassIdentifier: 
+  amountMinimum: 10
+  amountDesired: 10
+  size: {x: 4, y: 4}
+  gameObject: {fileID: 877962812885065705, guid: 2e02b134eb3429549aa62f7316e97b84, type: 3}

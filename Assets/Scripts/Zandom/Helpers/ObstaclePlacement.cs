@@ -9,13 +9,21 @@ public class ObstaclePlacement
     {
         LevelGenerator = levelGenerator;
         ObstacleData = obstacleData;
-        ValidRooms = validRooms.OrderBy(x => Random.value).ToList();
+        ValidRooms = validRooms;// validRooms.OrderBy(x => Random.value).ToList();
+        ValidTiles = new();
         Results = new();
+
+        foreach (var item in ValidRooms)
+        {
+            ValidTiles.AddRange(item.Tiles);
+        }
+        ValidTiles = ValidTiles.OrderBy(x => Random.value).ToList();
     }
 
     public LevelGenerator LevelGenerator { get; }
     public ZandomObstacleData ObstacleData { get; }
     public List<Room> ValidRooms { get; }
+    public List<Tile> ValidTiles { get; }
     public List<Obstacle> Results { get; }
 
     public IEnumerator Run()
@@ -24,15 +32,17 @@ public class ObstaclePlacement
         for (int i = 0; i < ObstacleData.amountDesired; i++)
         {
             validRoomIndex++;
-            validRoomIndex %= ValidRooms.Count;
-            Room room = ValidRooms[validRoomIndex];
-            bool gotTiles = TryGetTiles(room, out List<Tile> tiles);
+            validRoomIndex %= ValidTiles.Count;
+            Tile tile = ValidTiles[validRoomIndex];
+            //Room room = tile.MentionedRooms[0];
+            bool gotTiles = TryGetTiles(tile, out List<Tile> tiles);
             if (!gotTiles)
             {
-                //i--;
+                i--;
                 continue;
             }
-            Obstacle obstacle = Run(room, tiles);
+            //Obstacle obstacle = Run(room, tiles);
+            Obstacle obstacle = Run(tiles);
             Results.Add(obstacle);
             if (LevelGenerator.taskWaitingTier > 0)
             {
@@ -41,20 +51,22 @@ public class ObstaclePlacement
         }
     }
 
-    private Obstacle Run(Room room, List<Tile> tiles)
+    private Obstacle Run(List<Tile> tiles)
     {
         Level level = LevelGenerator.Level;
-        Obstacle result = level.CreateObstacle(ObstacleData, tiles, false, room);
+        Obstacle result = level.CreateObstacle(ObstacleData, tiles, false);
         return result;
     }
 
-    private bool TryGetTiles(Room room, out List<Tile> tiles)
+    private bool TryGetTiles(Tile tile, out List<Tile> tiles)
     {
         tiles = new();
+        Room room = tile.MentionedRooms[0];
         Vector2Int position = room.Start;
-        Vector2Int objectSize = ObstacleData.size;
-        int extraX = Random.Range(1, room.Size.x - objectSize.x);
-        int extraY = Random.Range(1, room.Size.y - objectSize.y);
+        Vector2Int size = ObstacleData.size;
+        Vector2Int padding = ObstacleData.padding;
+        int extraX = Random.Range(padding.x, room.Size.x - size.x - padding.x + 1);
+        int extraY = Random.Range(padding.y, room.Size.y - size.y - padding.y + 1);
         position.x += extraX;
         position.y += extraY;
 
@@ -65,12 +77,13 @@ public class ObstaclePlacement
             Vector2Int coordinates = new(col, row);
             Tile tile = tileMap.Get(coordinates);
             if (tile == null) return false;
+            if (!tile.Type.IsFloor()) return false;
             if (tile.HasObstacle()) return false;
             foundTiles.Add(tile);
             return true;
         }
         TileMapIterator iterator = new();
-        bool result = iterator.IterateAll(position, objectSize, addTile);
+        bool result = iterator.IterateAll(position, size, addTile);
         tiles = new(foundTiles);
         return result;
     }

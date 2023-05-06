@@ -17,12 +17,14 @@ MonoBehaviour:
   - Exit
   - Small Door
   - Large Door
-  - Treasure
-  - Encounter
+  - Normal Encounter
+  - Treasure Encounter
+  - Challenge Encounter
   finalObstacles:
   - {fileID: 11400000, guid: d6e33646737b8d24fbe645492514b58d, type: 2}
   - {fileID: 11400000, guid: a3357a990f5a59940a479a747442b441, type: 2}
   - {fileID: 11400000, guid: 3ebecab07062a8e4688a9bcb38349904, type: 2}
   - {fileID: 11400000, guid: 5065191c51615e94f8c784a93bc8f876, type: 2}
-  - {fileID: 11400000, guid: e71ae5a066989f746bc04bf01b77ef81, type: 2}
   - {fileID: 11400000, guid: 30a5abaca1dc2ff46b786191d25f28ca, type: 2}
+  - {fileID: 11400000, guid: e71ae5a066989f746bc04bf01b77ef81, type: 2}
+  - {fileID: 11400000, guid: 57346da9ba2b0534abf719014e9b8f61, type: 2}

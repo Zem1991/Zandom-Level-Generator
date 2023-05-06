@@ -30,7 +30,7 @@ public class DoorPlacement : LevelGeneratorTask
         Room room = wall.SourceRoom;
         string objectName = doorway.DoorSize.ObjectName();
         ZandomObstacleData obstacleData = LevelGenerator.ZandomObstacles.Get(objectName);
-        Obstacle door = level.CreateObstacle(obstacleData, doorway.Tiles, wall.Vertical, room);
+        Obstacle door = level.CreateObstacle(obstacleData, doorway.Tiles, wall.Vertical);
         doorway.Door = door;
     }
 }

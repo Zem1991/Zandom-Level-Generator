@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EncounterPlacement : LevelGeneratorTask
+public class NormalEncounterPlacement : LevelGeneratorTask
 {
-    public EncounterPlacement(LevelGenerator levelGenerator) : base(levelGenerator)
+    public NormalEncounterPlacement(LevelGenerator levelGenerator) : base(levelGenerator)
     {
     }
 
     public override IEnumerator Run()
     {
-        ZandomObstacleData obstacleData = LevelGenerator.ZandomObstacles.Get("Encounter");
+        ZandomObstacleData obstacleData = LevelGenerator.ZandomObstacles.Get("Normal Encounter");
         List<Room> validRooms = new();
         foreach (var item in LevelGenerator.Level.Rooms.Values)
         {

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02c21c409cf9a4542ad123239b300998, type: 3}
-  m_Name: Treasure (Cathedral)
+  m_Name: Challenge Encounter (Cathedral)
   m_EditorClassIdentifier: 
-  amountMinimum: 10
-  amountDesired: 10
+  amountMinimum: 5
+  amountDesired: 5
   size: {x: 4, y: 4}
-  gameObject: {fileID: 877962812885065705, guid: 2e02b134eb3429549aa62f7316e97b84, type: 3}
+  padding: {x: 2, y: 2}
+  gameObject: {fileID: 877962812885065705, guid: 954718f391fb53f479cb79a26e8aa77e, type: 3}

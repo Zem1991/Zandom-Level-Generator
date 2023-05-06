@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Obstacle
 {
-    public Obstacle(int id, ZandomObstacleData obstacleData, List<Tile> tiles, bool vertical, Level level, Room room)
+    public Obstacle(int id, ZandomObstacleData obstacleData, List<Tile> tiles, bool vertical, Level level)
     {
         Id = id;
         ZandomObstacleData = obstacleData;
         MentionedTiles = tiles;
         Vertical = vertical;
         Level = level;
-        Room = room;
+        Room = tiles[0].MentionedRooms[0];
         CenterPosition = FindCenterPosition();
 
         foreach (var item in tiles)

@@ -52,8 +52,9 @@ public class CathedralLevelGeneratorStyle : ZandomStyle
             new EntrancePlacement(levelGenerator),
             new ExitPlacement(levelGenerator),
             new DoorPlacement(levelGenerator),
-            new TreasurePlacement(levelGenerator),
-            new EncounterPlacement(levelGenerator),
+            new TreasureEncounterPlacement(levelGenerator),
+            new ChallengeEncounterPlacement(levelGenerator),
+            new NormalEncounterPlacement(levelGenerator),
         };
     }
 

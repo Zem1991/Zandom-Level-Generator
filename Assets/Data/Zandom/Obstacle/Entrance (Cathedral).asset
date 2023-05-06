@@ -15,4 +15,5 @@ MonoBehaviour:
   amountMinimum: 1
   amountDesired: 1
   size: {x: 4, y: 4}
+  padding: {x: 1, y: 1}
   gameObject: {fileID: 877962812885065705, guid: 1157740882c8a5446b8b25467568696f, type: 3}

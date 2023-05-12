@@ -141,7 +141,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &504301423
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -179,7 +179,7 @@ MonoBehaviour:
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
   ZandomObstacles: {fileID: 11400000, guid: 07e35a66021307f43ba64cff7e7bd968, type: 2}
   maxAttempts: 20
-  taskWaitingTier: 0
+  taskWaitSetting: 0
   attempts: 0
   stateName: 0
 --- !u!4 &504301426
@@ -215,7 +215,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &667455843
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
   ZandomObstacles: {fileID: 11400000, guid: 07e35a66021307f43ba64cff7e7bd968, type: 2}
   maxAttempts: 20
-  taskWaitingTier: 0
+  taskWaitSetting: 0
   attempts: 0
   stateName: 0
 --- !u!4 &667455846
@@ -545,7 +545,7 @@ MonoBehaviour:
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
   ZandomObstacles: {fileID: 11400000, guid: 07e35a66021307f43ba64cff7e7bd968, type: 2}
   maxAttempts: 20
-  taskWaitingTier: 0
+  taskWaitSetting: 0
   attempts: 0
   stateName: 0
 --- !u!114 &1630063772
@@ -586,7 +586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &1815642857
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -624,7 +624,7 @@ MonoBehaviour:
   ZandomTileset: {fileID: 11400000, guid: d3abd43c05d859a478bcac0e72c0aa88, type: 2}
   ZandomObstacles: {fileID: 11400000, guid: 07e35a66021307f43ba64cff7e7bd968, type: 2}
   maxAttempts: 20
-  taskWaitingTier: 0
+  taskWaitSetting: 0
   attempts: 0
   stateName: 0
 --- !u!4 &1815642860

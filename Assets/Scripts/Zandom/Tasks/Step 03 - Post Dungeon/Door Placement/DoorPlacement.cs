@@ -15,7 +15,7 @@ public class DoorPlacement : LevelGeneratorTask
             Doorway doorway = wall.Doorway;
             if (doorway == null) continue;
             Run(doorway);
-            if (LevelGenerator.taskWaitingTier > 0)
+            if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
             {
                 Obstacle door = doorway.Door;
                 yield return new GenerateFinalObstacles(LevelGenerator).Run(door);

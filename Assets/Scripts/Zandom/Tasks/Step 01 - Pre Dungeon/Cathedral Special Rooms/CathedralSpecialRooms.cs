@@ -16,7 +16,7 @@ public class CathedralSpecialRooms : LevelGeneratorTask
             if (!item.IsEnclosed()) continue;
             item.Type = RoomType.SPECIAL;
         }
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             yield return null;
         }

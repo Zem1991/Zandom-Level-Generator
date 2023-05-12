@@ -43,12 +43,16 @@ public class BuddingRooms : LevelGeneratorTask
             {
                 levelArea += item.Area;
                 rooms.Enqueue(item);
-                if (LevelGenerator.taskWaitingTier > 0)
+                if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
                 {
                     yield return new GenerateFinalRoom(LevelGenerator, item).Run();
                 }
             }
         }
+        //if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_TASK)
+        //{
+        //    yield return new GenerateFinalObstacles(LevelGenerator).Run();
+        //}
     }
 
     public List<Room> Run(Room parent)

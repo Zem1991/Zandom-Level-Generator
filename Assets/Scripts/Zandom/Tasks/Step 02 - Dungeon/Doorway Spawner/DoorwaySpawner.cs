@@ -15,7 +15,7 @@ public class DoorwaySpawner : LevelGeneratorTask
             if (!wall.CanHaveDoor()) continue;
             Run(wall);
         }
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             foreach (Wall wall in LevelGenerator.Level.Walls.Values)
             {

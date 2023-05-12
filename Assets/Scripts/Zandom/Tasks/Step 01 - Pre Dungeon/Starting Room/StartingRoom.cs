@@ -19,7 +19,7 @@ public class StartingRoom : LevelGeneratorTask
             Room result = roomBuilder.Build(start, size, false, null);
             ApplyBorders applyBorders = new(LevelGenerator);
             applyBorders.Apply(result);
-            if (LevelGenerator.taskWaitingTier > 0)
+            if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
             {
                 yield return new GenerateFinalRoom(LevelGenerator, result).Run();
             }

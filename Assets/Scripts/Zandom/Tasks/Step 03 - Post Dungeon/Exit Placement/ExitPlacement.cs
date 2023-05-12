@@ -28,7 +28,7 @@ public class ExitPlacement : LevelGeneratorTask
         yield return obstaclePlacement.Run();
         Obstacle result = obstaclePlacement.Results[0];
         level.AddPointOfInterest(result.CenterPosition, "Exit Zone");
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             yield return new GenerateFinalObstacles(LevelGenerator).Run();
         }
@@ -51,7 +51,7 @@ public class ExitPlacement : LevelGeneratorTask
         //        if (gotTiles) break;
         //    }
         //    Obstacle entrance = Run(randomRoom, tiles);
-        //    if (LevelGenerator.taskWaitingTier > 0)
+        //    if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         //    {
         //        yield return new GenerateFinalObstacles(LevelGenerator).Run(entrance);
         //    }

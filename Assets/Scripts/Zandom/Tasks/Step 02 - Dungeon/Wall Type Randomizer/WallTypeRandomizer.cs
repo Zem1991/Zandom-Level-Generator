@@ -53,7 +53,7 @@ public class WallTypeRandomizer : LevelGeneratorTask
         Parent(parentList);
         DestructibleWall(destructibleList);
         NormalWall(normalList);
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             foreach (Wall wall in LevelGenerator.Level.Walls.Values)
             {

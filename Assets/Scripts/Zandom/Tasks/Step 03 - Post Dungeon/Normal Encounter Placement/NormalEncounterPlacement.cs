@@ -19,7 +19,7 @@ public class NormalEncounterPlacement : LevelGeneratorTask
         }
         ObstaclePlacement obstaclePlacement = new(LevelGenerator, obstacleData, validRooms);
         yield return obstaclePlacement.Run();
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             yield return new GenerateFinalObstacles(LevelGenerator).Run();
         }
@@ -38,7 +38,7 @@ public class NormalEncounterPlacement : LevelGeneratorTask
         //        continue;
         //    }
         //    Obstacle treasure = Run(room, tiles);
-        //    if (LevelGenerator.taskWaitingTier > 0)
+        //    if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         //    {
         //        yield return new GenerateFinalObstacles(LevelGenerator).Run(treasure);
         //    }

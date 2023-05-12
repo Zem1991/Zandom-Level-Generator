@@ -24,7 +24,7 @@ public class EntrancePlacement : LevelGeneratorTask
         yield return obstaclePlacement.Run();
         Obstacle result = obstaclePlacement.Results[0];
         level.SetStartLocation(result.CenterPosition);
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             yield return new GenerateFinalObstacles(LevelGenerator).Run();
         }
@@ -44,7 +44,7 @@ public class EntrancePlacement : LevelGeneratorTask
         //        if (gotTiles) break;
         //    }
         //    Obstacle entrance = Run(randomRoom, tiles);
-        //    if (LevelGenerator.taskWaitingTier > 0)
+        //    if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         //    {
         //        yield return new GenerateFinalObstacles(LevelGenerator).Run(entrance);
         //    }

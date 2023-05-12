@@ -11,7 +11,7 @@ public class GenerateFinalLevel : LevelGeneratorTask
     public override IEnumerator Run()
     {
         Level level = LevelGenerator.Level;
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             //Debug.LogWarning("Generator tasks can produce duplicated results when taskWaitingTier > 0.");
             Debug.LogWarning("Skipping GenerateFinalLevel since by task waiting you should have everything already done.");

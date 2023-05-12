@@ -44,10 +44,14 @@ public class ObstaclePlacement
             //Obstacle obstacle = Run(room, tiles);
             Obstacle obstacle = Run(tiles);
             Results.Add(obstacle);
-            if (LevelGenerator.taskWaitingTier > 0)
+            if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
             {
                 yield return new GenerateFinalObstacles(LevelGenerator).Run(obstacle);
             }
+        }
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_TASK)
+        {
+            yield return new GenerateFinalObstacles(LevelGenerator).Run();
         }
     }
 

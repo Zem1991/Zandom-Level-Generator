@@ -32,7 +32,7 @@ public class GenerateFinalObstacles : LevelGeneratorTask
         FinalRoom finalRoom = obstacle.Room.GeneratedRoom;
 
         finalLevel.CreateFinalObstacle(obstacle, prefab, position, vertical, finalRoom);
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             yield return null;
         }

@@ -15,7 +15,7 @@ public class RoomTypeRandomizer : LevelGeneratorTask
         foreach (Room item in LevelGenerator.Level.Rooms.Values)
         {
             Run(item);
-            if (LevelGenerator.taskWaitingTier > 0)
+            if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
             {
                 yield return new GenerateFinalRoom(LevelGenerator, item).Run();
             }

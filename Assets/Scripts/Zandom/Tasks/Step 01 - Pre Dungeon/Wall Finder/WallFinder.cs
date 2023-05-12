@@ -16,7 +16,7 @@ public class WallFinder : LevelGeneratorTask
     {
         IterateTiles();
         BuildWalls();
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             yield return null;
         }

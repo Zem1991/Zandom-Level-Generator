@@ -14,7 +14,8 @@ public class LevelGenerator : MonoBehaviour
     [Min(1)] public int maxAttempts = 20;
 
     [Header("Settings: Task Waiting")]
-    [Min(0F)] public int taskWaitingTier = 0;
+    public TaskWaitSettings taskWaitSetting;
+    //[Min(0F)] public int taskWaitingTier = 0;
 
     [Header("Runtime")]
     [SerializeField] private int attempts;

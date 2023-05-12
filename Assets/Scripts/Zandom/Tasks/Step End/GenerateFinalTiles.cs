@@ -57,7 +57,7 @@ public class GenerateFinalTiles : LevelGeneratorTask
         }
         TileMapIterator iterator = new(false);
         iterator.IterateAll(Start, Size, finalTile);
-        if (LevelGenerator.taskWaitingTier > 0)
+        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
         {
             yield return null;
         }

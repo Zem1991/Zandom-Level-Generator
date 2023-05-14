@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class LevelGeneratorTask
+namespace ZandomLevelGenerator.Task
 {
-    public LevelGeneratorTask(LevelGenerator levelGenerator)
+    public abstract class LevelGeneratorTask
     {
-        LevelGenerator = levelGenerator;
+        public LevelGeneratorTask(LevelGenerator levelGenerator)
+        {
+            LevelGenerator = levelGenerator;
+        }
+
+        protected LevelGenerator LevelGenerator { get; }
+
+        public abstract IEnumerator Run();
     }
-
-    protected LevelGenerator LevelGenerator { get; }
-
-    public abstract IEnumerator Run();
 }

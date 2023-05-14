@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.BaseObjects;
 
 public class CathedralSpineCorridor : SetPiece
 {

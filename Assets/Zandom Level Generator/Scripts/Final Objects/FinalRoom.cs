@@ -1,22 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Utility;
+using ZandomLevelGenerator.BaseObjects;
+using ZemReusables;
 
-public class FinalRoom : MonoBehaviour
+namespace ZandomLevelGenerator.FinalObjects
 {
-    public Room Room { get; private set; }
-    public FinalRoom Parent { get; private set; }
-
-    public void Setup(Room room, FinalRoom parent)
+    public class FinalRoom : MonoBehaviour
     {
-        Room = room;
-        Parent = parent;
-        name = room.ToString();
-    }
+        public Room Room { get; private set; }
+        public FinalRoom Parent { get; private set; }
 
-    public void Optimize()
-    {
-        gameObject.MeshCombine(true);
+        public void Setup(Room room, FinalRoom parent)
+        {
+            Room = room;
+            Parent = parent;
+            name = room.ToString();
+        }
+
+        public void Optimize()
+        {
+            gameObject.MeshCombine(true);
+        }
     }
 }

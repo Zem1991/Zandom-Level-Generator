@@ -1,52 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Enums;
+using ZandomLevelGenerator.Helpers;
 
-public class DoorwaySpawner : LevelGeneratorTask
+namespace ZandomLevelGenerator.Task
 {
-    public DoorwaySpawner(LevelGenerator levelGenerator) : base(levelGenerator)
+    public class DoorwaySpawner : LevelGeneratorTask
     {
-    }
-
-    public override IEnumerator Run()
-    {
-        foreach (Wall wall in LevelGenerator.Level.Walls.Values)
+        public DoorwaySpawner(LevelGenerator levelGenerator) : base(levelGenerator)
         {
-            if (!wall.CanHaveDoor()) continue;
-            Run(wall);
         }
-        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
+
+        public override IEnumerator Run()
         {
             foreach (Wall wall in LevelGenerator.Level.Walls.Values)
             {
-                yield return new GenerateFinalTiles(LevelGenerator, wall).Run();
+                if (!wall.CanHaveDoor()) continue;
+                Run(wall);
+            }
+            if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
+            {
+                foreach (Wall wall in LevelGenerator.Level.Walls.Values)
+                {
+                    yield return new GenerateFinalTiles(LevelGenerator, wall).Run();
+                }
             }
         }
-    }
 
-    public void Run(Wall wall)
-    {
-        DoorSizePicker sizePicker = new(LevelGenerator);
-        DoorSize doorSize = sizePicker.Pick(wall);
-        int doorSizeInt = (int)doorSize;
-        
-        int validLength = wall.Tiles.Count - doorSizeInt + 1;
-        int startPos = Random.Range(0, validLength);
-        int endPos = startPos + doorSizeInt;
-
-        List<Tile> tiles = new();
-        for (int i = startPos; i < endPos; i++)
+        public void Run(Wall wall)
         {
-            Tile tile = wall.Tiles[i];
-            tile.Type = TileType.DOORWAY_FLOOR;
-            tiles.Add(tile);
+            DoorSizePicker sizePicker = new(LevelGenerator);
+            DoorSize doorSize = sizePicker.Pick(wall);
+            int doorSizeInt = (int)doorSize;
+
+            int validLength = wall.Tiles.Count - doorSizeInt + 1;
+            int startPos = Random.Range(0, validLength);
+            int endPos = startPos + doorSizeInt;
+
+            List<Tile> tiles = new();
+            for (int i = startPos; i < endPos; i++)
+            {
+                Tile tile = wall.Tiles[i];
+                tile.Type = TileType.DOORWAY_FLOOR;
+                tiles.Add(tile);
+            }
+
+            Doorway doorway = new(wall, doorSize, tiles);
+            wall.Doorway = doorway;
+
+            //Level level = wall.Level;
+            //Room room = wall.SourceRoom;
+            //level.CreateObstacle(doorSize.ObjectName(), tiles, wall.IsVertical(), room);
         }
-
-        Doorway doorway = new(wall, doorSize, tiles);
-        wall.Doorway = doorway;
-
-        //Level level = wall.Level;
-        //Room room = wall.SourceRoom;
-        //level.CreateObstacle(doorSize.ObjectName(), tiles, wall.IsVertical(), room);
     }
 }

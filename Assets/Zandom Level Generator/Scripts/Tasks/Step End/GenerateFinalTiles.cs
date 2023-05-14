@@ -1,78 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Enums;
+using ZandomLevelGenerator.FinalObjects;
+using ZandomLevelGenerator.Helpers;
 
-public class GenerateFinalTiles : LevelGeneratorTask
+namespace ZandomLevelGenerator.Task
 {
-    public GenerateFinalTiles(LevelGenerator levelGenerator) : base(levelGenerator)
+    public class GenerateFinalTiles : LevelGeneratorTask
     {
-        int size = Constants.LEVEL_SIZE_MAX;
-        Start = new();
-        Size = new(size, size);
-    }
-
-    public GenerateFinalTiles(LevelGenerator levelGenerator, Room room) : this(levelGenerator)
-    {
-        Start = room.Start;
-        Size = room.Size;
-        Start -= Vector2Int.one;
-        Size += Vector2Int.one * 2;
-        TargetRoom = room;
-    }
-
-    public GenerateFinalTiles(LevelGenerator levelGenerator, Wall wall) : this(levelGenerator)
-    {
-        Start = wall.Start;
-        Size = wall.Size;
-    }
-
-    public Vector2Int Start { get; }
-    public Vector2Int Size { get; }
-    public Room TargetRoom { get; }
-
-    public override IEnumerator Run()
-    {
-        //Vector2Int start = new();
-        //Vector2Int size = Vector2Int.one * Constants.LEVEL_SIZE_MAX;
-        //start -= Vector2Int.one;
-        //size += Vector2Int.one * 2;
-        bool finalTile(int col, int row)
+        public GenerateFinalTiles(LevelGenerator levelGenerator) : base(levelGenerator)
         {
-            Vector2Int coordinates = new(col, row);
-            Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
-            if (tile == null) return false;
+            int size = Constants.LEVEL_SIZE_MAX;
+            Start = new();
+            Size = new(size, size);
+        }
 
-            Room room = tile.MentionedRooms[0];
-            bool hasTargetRoom = TargetRoom != null;
-            if (hasTargetRoom && room != TargetRoom)
+        public GenerateFinalTiles(LevelGenerator levelGenerator, Room room) : this(levelGenerator)
+        {
+            Start = room.Start;
+            Size = room.Size;
+            Start -= Vector2Int.one;
+            Size += Vector2Int.one * 2;
+            TargetRoom = room;
+        }
+
+        public GenerateFinalTiles(LevelGenerator levelGenerator, Wall wall) : this(levelGenerator)
+        {
+            Start = wall.Start;
+            Size = wall.Size;
+        }
+
+        public Vector2Int Start { get; }
+        public Vector2Int Size { get; }
+        public Room TargetRoom { get; }
+
+        public override IEnumerator Run()
+        {
+            //Vector2Int start = new();
+            //Vector2Int size = Vector2Int.one * Constants.LEVEL_SIZE_MAX;
+            //start -= Vector2Int.one;
+            //size += Vector2Int.one * 2;
+            bool finalTile(int col, int row)
             {
-                //Attempting to generate a FinalRoom using a FinalTile that will end up in another FinalRoom later.
-                return false;
+                Vector2Int coordinates = new(col, row);
+                Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
+                if (tile == null) return false;
+
+                Room room = tile.MentionedRooms[0];
+                bool hasTargetRoom = TargetRoom != null;
+                if (hasTargetRoom && room != TargetRoom)
+                {
+                    //Attempting to generate a FinalRoom using a FinalTile that will end up in another FinalRoom later.
+                    return false;
+                }
+
+                FinalRoom finalRoom = room.GeneratedRoom;
+                Vector3 position = finalRoom.transform.position + new Vector3(coordinates.x, 0, coordinates.y);
+                Run(tile, position, finalRoom);
+                return true;
             }
+            TileMapIterator iterator = new(false);
+            iterator.IterateAll(Start, Size, finalTile);
+            if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
+            {
+                yield return null;
+            }
+        }
 
-            FinalRoom finalRoom = room.GeneratedRoom;
-            Vector3 position = finalRoom.transform.position + new Vector3(coordinates.x, 0, coordinates.y);
-            Run(tile, position, finalRoom);
-            return true;
-        }
-        TileMapIterator iterator = new(false);
-        iterator.IterateAll(Start, Size, finalTile);
-        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
+        private void Run(Tile tile, Vector3 position, FinalRoom finalRoom)
         {
-            yield return null;
+            GameObject currentGenerated = tile.GeneratedTile;
+            if (currentGenerated)
+            {
+                Object.Destroy(currentGenerated);
+                //yield break;
+            }
+            FinalLevel finalLevel = LevelGenerator.FinalLevel;
+            GameObject prefab = LevelGenerator.ZandomTileset.GetModel(tile.Type);
+            finalLevel.CreateFinalTile(tile, prefab, position, tile.Vertical, finalRoom);
         }
-    }
-
-    private void Run(Tile tile, Vector3 position, FinalRoom finalRoom)
-    {
-        GameObject currentGenerated = tile.GeneratedTile;
-        if (currentGenerated)
-        {
-            Object.Destroy(currentGenerated);
-            //yield break;
-        }
-        FinalLevel finalLevel = LevelGenerator.FinalLevel;
-        GameObject prefab = LevelGenerator.ZandomTileset.GetModel(tile.Type);
-        finalLevel.CreateFinalTile(tile, prefab, position, tile.Vertical, finalRoom);
     }
 }

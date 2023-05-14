@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DoorSize
+namespace ZandomLevelGenerator.Enums
 {
-    SMALL = 2,//'S',
-    LARGE = 4,//'L',
-}
-
-public static class DoorSizeExtensions
-{
-    public static string ObjectName(this DoorSize doorSize)
+    public enum DoorSize
     {
-        string result = null;
-        switch (doorSize)
+        SMALL = 2,//'S',
+        LARGE = 4,//'L',
+    }
+
+    public static class DoorSizeExtensions
+    {
+        public static string ObjectName(this DoorSize doorSize)
         {
-            case DoorSize.SMALL:
-                result = "Small Door";
-                break;
-            case DoorSize.LARGE:
-                result = "Large Door";
-                break;
+            string result = null;
+            switch (doorSize)
+            {
+                case DoorSize.SMALL:
+                    result = "Small Door";
+                    break;
+                case DoorSize.LARGE:
+                    result = "Large Door";
+                    break;
+            }
+            return result;
         }
-        return result;
     }
 }

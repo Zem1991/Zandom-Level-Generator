@@ -1,27 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.FinalObjects;
 
-public class GenerateFinalRoom : LevelGeneratorTask
+namespace ZandomLevelGenerator.Task
 {
-    public GenerateFinalRoom(LevelGenerator levelGenerator, Room room) : base(levelGenerator)
+    public class GenerateFinalRoom : LevelGeneratorTask
     {
-        Room = room;
-    }
-
-    public Room Room { get; }
-
-    public override IEnumerator Run()
-    {
-        FinalRoom currentGenerated = Room.GeneratedRoom;
-        //if (currentGenerated)
-        if (!currentGenerated)
+        public GenerateFinalRoom(LevelGenerator levelGenerator, Room room) : base(levelGenerator)
         {
-            //yield break;
-            FinalRoom parent = Room.Parent?.GeneratedRoom;
-            FinalLevel finalLevel = LevelGenerator.FinalLevel;
-            finalLevel.CreateFinalRoom(Room, parent);
+            Room = room;
         }
-        yield return new GenerateFinalTiles(LevelGenerator, Room).Run();
+
+        public Room Room { get; }
+
+        public override IEnumerator Run()
+        {
+            FinalRoom currentGenerated = Room.GeneratedRoom;
+            //if (currentGenerated)
+            if (!currentGenerated)
+            {
+                //yield break;
+                FinalRoom parent = Room.Parent?.GeneratedRoom;
+                FinalLevel finalLevel = LevelGenerator.FinalLevel;
+                finalLevel.CreateFinalRoom(Room, parent);
+            }
+            yield return new GenerateFinalTiles(LevelGenerator, Room).Run();
+        }
     }
 }

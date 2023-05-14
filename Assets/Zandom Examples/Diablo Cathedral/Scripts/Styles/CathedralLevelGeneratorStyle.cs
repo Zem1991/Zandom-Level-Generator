@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator;
+using ZandomLevelGenerator.Checks;
+using ZandomLevelGenerator.Components;
+using ZandomLevelGenerator.Task;
 
 public class CathedralLevelGeneratorStyle : ZandomStyle
 {

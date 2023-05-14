@@ -1,38 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.Enums;
+using ZandomLevelGenerator.Task;
 
-public abstract class ZandomState
+namespace ZandomLevelGenerator.State
 {
-    public ZandomState(LevelGenerator levelGenerator)
+    public abstract class ZandomState
     {
-        LevelGenerator = levelGenerator;
-    }
-
-    public LevelGenerator LevelGenerator { get; }
-    public abstract ZandomStateName Name { get; }
-
-    public bool TasksStarted { get; private set; }
-    public bool TasksFinished { get; private set; }
-
-    public IEnumerator RunTasks()
-    {
-        TasksStarted = true;
-        List<LevelGeneratorTask> tasks = GetTasks();
-        foreach (var item in tasks)
+        public ZandomState(LevelGenerator levelGenerator)
         {
-            yield return item.Run();
+            LevelGenerator = levelGenerator;
         }
-        TasksFinished = true;
-    }
 
-    public bool RunChecks(out string message)
-    {
-        return GetChecks(out message);
-    }
+        public LevelGenerator LevelGenerator { get; }
+        public abstract ZandomStateName Name { get; }
 
-    public abstract ZandomState NextIfFailure();
-    public abstract ZandomState NextIfSuccess();
-    protected abstract List<LevelGeneratorTask> GetTasks();
-    protected abstract bool GetChecks(out string message);
+        public bool TasksStarted { get; private set; }
+        public bool TasksFinished { get; private set; }
+
+        public IEnumerator RunTasks()
+        {
+            TasksStarted = true;
+            List<LevelGeneratorTask> tasks = GetTasks();
+            foreach (var item in tasks)
+            {
+                yield return item.Run();
+            }
+            TasksFinished = true;
+        }
+
+        public bool RunChecks(out string message)
+        {
+            return GetChecks(out message);
+        }
+
+        public abstract ZandomState NextIfFailure();
+        public abstract ZandomState NextIfSuccess();
+        protected abstract List<LevelGeneratorTask> GetTasks();
+        protected abstract bool GetChecks(out string message);
+    }
 }

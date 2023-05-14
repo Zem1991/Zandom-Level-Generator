@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator;
+using ZandomLevelGenerator.BaseObjects;
 
 public class VerticalCathedralSpine : AxisCathedralSpine
 {

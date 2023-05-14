@@ -7,7 +7,7 @@ using System.Linq;
 using UnityEngine;
 using static UnityEngine.Object;
 
-namespace Utility
+namespace ZemReusables
 {
     public static class MaterialSafeMeshCombine
     {

@@ -1,36 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Enums;
 
-public class SetPieceBuilder
+namespace ZandomLevelGenerator.Helpers
 {
-    public SetPieceBuilder(LevelGenerator levelGenerator)
+    public class SetPieceBuilder
     {
-        LevelGenerator = levelGenerator;
-    }
-
-    private LevelGenerator LevelGenerator { get; }
-
-    public bool CanBuild(Vector2Int start, SetPiece setPiece)
-    {
-        bool insideLevelBounds = LevelGenerator.Level.IsInsideBounds(start, setPiece.Size);
-        bool availableOnTilemap = LevelGenerator.Level.TileMap.IsAvailable(start, setPiece.Size);
-        return insideLevelBounds && availableOnTilemap;
-    }
-
-    public bool Build(Vector2Int start, SetPiece setPiece)
-    {
-        bool setPieceTile(int col, int row)
+        public SetPieceBuilder(LevelGenerator levelGenerator)
         {
-            Vector2Int coordinates = new(col, row);
-            char tileType = setPiece.Get(coordinates.x - start.x, coordinates.y - start.y);
-            Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
-            tile.Type = (TileType)tileType;
-            tile.FromSetPiece = true;
+            LevelGenerator = levelGenerator;
+        }
+
+        private LevelGenerator LevelGenerator { get; }
+
+        public bool CanBuild(Vector2Int start, SetPiece setPiece)
+        {
+            bool insideLevelBounds = LevelGenerator.Level.IsInsideBounds(start, setPiece.Size);
+            bool availableOnTilemap = LevelGenerator.Level.TileMap.IsAvailable(start, setPiece.Size);
+            return insideLevelBounds && availableOnTilemap;
+        }
+
+        public bool Build(Vector2Int start, SetPiece setPiece)
+        {
+            bool setPieceTile(int col, int row)
+            {
+                Vector2Int coordinates = new(col, row);
+                char tileType = setPiece.Get(coordinates.x - start.x, coordinates.y - start.y);
+                Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
+                tile.Type = (TileType)tileType;
+                tile.FromSetPiece = true;
+                return true;
+            }
+            TileMapIterator iterator = new();
+            iterator.IterateAll(start, setPiece.Size, setPieceTile);
             return true;
         }
-        TileMapIterator iterator = new();
-        iterator.IterateAll(start, setPiece.Size, setPieceTile);
-        return true;
     }
 }

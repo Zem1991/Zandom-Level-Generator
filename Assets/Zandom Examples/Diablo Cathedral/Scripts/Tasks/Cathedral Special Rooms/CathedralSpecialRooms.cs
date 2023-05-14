@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator;
+using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Enums;
+using ZandomLevelGenerator.Task;
 
 public class CathedralSpecialRooms : LevelGeneratorTask
 {

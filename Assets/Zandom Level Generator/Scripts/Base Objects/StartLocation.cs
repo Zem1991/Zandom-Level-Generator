@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartLocation : PointOfInterest
+namespace ZandomLevelGenerator.BaseObjects
 {
-    public StartLocation(Vector3 position) : base(position, "Start Location")
+    public class StartLocation : PointOfInterest
     {
+        public StartLocation(Vector3 position) : base(position, "Start Location")
+        {
+        }
     }
 }

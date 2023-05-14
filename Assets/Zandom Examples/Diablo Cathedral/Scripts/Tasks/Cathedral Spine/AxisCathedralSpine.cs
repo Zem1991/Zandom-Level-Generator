@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator;
+using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Helpers;
 
 public abstract class AxisCathedralSpine
 {

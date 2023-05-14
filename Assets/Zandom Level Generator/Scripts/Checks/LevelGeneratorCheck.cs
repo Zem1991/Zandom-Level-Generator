@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class LevelGeneratorCheck
+namespace ZandomLevelGenerator.Checks
 {
+    public abstract class LevelGeneratorCheck
+    {
 
+    }
 }

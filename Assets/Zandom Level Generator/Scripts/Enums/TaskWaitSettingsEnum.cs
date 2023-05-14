@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TaskWaitSettings
+namespace ZandomLevelGenerator.Enums
 {
-    NONE,
-    PER_TASK,
-    PER_ITERATION
+    public enum TaskWaitSettings
+    {
+        NONE,
+        PER_TASK,
+        PER_ITERATION
+    }
 }

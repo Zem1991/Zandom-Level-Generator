@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum RoomType
+namespace ZandomLevelGenerator.Enums
 {
-    NORMAL = 'N',
-    SPECIAL = 'S',
+    public enum RoomType
+    {
+        NORMAL = 'N',
+        SPECIAL = 'S',
+    }
 }

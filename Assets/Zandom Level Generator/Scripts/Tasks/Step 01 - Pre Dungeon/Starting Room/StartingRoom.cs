@@ -1,27 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Enums;
+using ZandomLevelGenerator.Helpers;
 
-public class StartingRoom : LevelGeneratorTask
+namespace ZandomLevelGenerator.Task
 {
-    public StartingRoom(LevelGenerator levelGenerator) : base(levelGenerator)
+    public class StartingRoom : LevelGeneratorTask
     {
-    }
-
-    public override IEnumerator Run()
-    {
-        RoomBuilder roomBuilder = new(LevelGenerator);
-        Vector2Int start = new(30, 30);
-        Vector2Int size = new(20, 20);
-        bool can = roomBuilder.CanBuild(start, size);
-        if (can)
+        public StartingRoom(LevelGenerator levelGenerator) : base(levelGenerator)
         {
-            Room result = roomBuilder.Build(start, size, false, null);
-            ApplyBorders applyBorders = new(LevelGenerator);
-            applyBorders.Apply(result);
-            if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
+        }
+
+        public override IEnumerator Run()
+        {
+            RoomBuilder roomBuilder = new(LevelGenerator);
+            Vector2Int start = new(30, 30);
+            Vector2Int size = new(20, 20);
+            bool can = roomBuilder.CanBuild(start, size);
+            if (can)
             {
-                yield return new GenerateFinalRoom(LevelGenerator, result).Run();
+                Room result = roomBuilder.Build(start, size, false, null);
+                ApplyBorders applyBorders = new(LevelGenerator);
+                applyBorders.Apply(result);
+                if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
+                {
+                    yield return new GenerateFinalRoom(LevelGenerator, result).Run();
+                }
             }
         }
     }

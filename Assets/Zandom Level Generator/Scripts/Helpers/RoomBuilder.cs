@@ -1,45 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Enums;
 
-public class RoomBuilder
+namespace ZandomLevelGenerator.Helpers
 {
-    public LevelGenerator LevelGenerator { get; }
-
-    public RoomBuilder(LevelGenerator levelGenerator)
+    public class RoomBuilder
     {
-        LevelGenerator = levelGenerator;
-    }
+        public LevelGenerator LevelGenerator { get; }
 
-    public bool CanBuild(Vector2Int start, Vector2Int size)
-    {
-        bool insideLevelBounds = LevelGenerator.Level.IsInsideBounds(start, size);
-        bool availableOnTilemap = LevelGenerator.Level.TileMap.IsAvailable(start, size);
-        return insideLevelBounds && availableOnTilemap;
-    }
-
-    public Room Build(Vector2Int start, Vector2Int size, bool vertical, Room parent)
-    {
-        Room room = LevelGenerator.Level.CreateRoom(start, size, vertical, parent);
-        bool areaTile(int col, int row)
+        public RoomBuilder(LevelGenerator levelGenerator)
         {
-            Vector2Int coordinates = new(col, row);
-            Tile tile = LevelGenerator.Level.TileMap.Create(coordinates);
-            //room.TileMap.Add(tile);
-            room.Tiles.Add(tile);
-            tile.MentionedRooms.Add(room);
-            tile.Type = TileType.ROOM_AREA;
-            return true;
+            LevelGenerator = levelGenerator;
         }
-        TileMapIterator iterator = new();
-        iterator.IterateAll(start, size, areaTile);
-        return room;
-    }
 
-    public Room Build(Vector2Int start, SetPiece setPiece, bool vertical, Room parent)
-    {
-        Room room = Build(start, setPiece.Size, vertical, parent);
-        room.FromSetPiece = true;
-        return room;
+        public bool CanBuild(Vector2Int start, Vector2Int size)
+        {
+            bool insideLevelBounds = LevelGenerator.Level.IsInsideBounds(start, size);
+            bool availableOnTilemap = LevelGenerator.Level.TileMap.IsAvailable(start, size);
+            return insideLevelBounds && availableOnTilemap;
+        }
+
+        public Room Build(Vector2Int start, Vector2Int size, bool vertical, Room parent)
+        {
+            Room room = LevelGenerator.Level.CreateRoom(start, size, vertical, parent);
+            bool areaTile(int col, int row)
+            {
+                Vector2Int coordinates = new(col, row);
+                Tile tile = LevelGenerator.Level.TileMap.Create(coordinates);
+                //room.TileMap.Add(tile);
+                room.Tiles.Add(tile);
+                tile.MentionedRooms.Add(room);
+                tile.Type = TileType.ROOM_AREA;
+                return true;
+            }
+            TileMapIterator iterator = new();
+            iterator.IterateAll(start, size, areaTile);
+            return room;
+        }
+
+        public Room Build(Vector2Int start, SetPiece setPiece, bool vertical, Room parent)
+        {
+            Room room = Build(start, setPiece.Size, vertical, parent);
+            room.FromSetPiece = true;
+            return room;
+        }
     }
 }

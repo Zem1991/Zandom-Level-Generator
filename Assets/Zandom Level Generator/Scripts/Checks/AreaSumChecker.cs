@@ -1,35 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.BaseObjects;
 
-public class AreaSumChecker : LevelGeneratorCheck
+namespace ZandomLevelGenerator.Checks
 {
-    public AreaSumChecker(LevelGenerator levelGenerator)
+    public class AreaSumChecker : LevelGeneratorCheck
     {
-        Rooms = levelGenerator.Level.Rooms.Values;
-        Area = Get();
-    }
-
-    public IEnumerable<Room> Rooms { get; }
-    public int Area { get; }
-
-    public bool CheckMin(int minimum)
-    {
-        return Area >= minimum;
-    }
-
-    public bool CheckMax(int maximum)
-    {
-        return Area <= maximum;
-    }
-
-    private int Get()
-    {
-        int levelArea = 0;
-        foreach (var item in Rooms)
+        public AreaSumChecker(LevelGenerator levelGenerator)
         {
-            levelArea += item.Area;
+            Rooms = levelGenerator.Level.Rooms.Values;
+            Area = Get();
         }
-        return levelArea;
+
+        public IEnumerable<Room> Rooms { get; }
+        public int Area { get; }
+
+        public bool CheckMin(int minimum)
+        {
+            return Area >= minimum;
+        }
+
+        public bool CheckMax(int maximum)
+        {
+            return Area <= maximum;
+        }
+
+        private int Get()
+        {
+            int levelArea = 0;
+            foreach (var item in Rooms)
+            {
+                levelArea += item.Area;
+            }
+            return levelArea;
+        }
     }
 }

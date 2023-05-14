@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PointOfInterest
+namespace ZandomLevelGenerator.BaseObjects
 {
-    public PointOfInterest(Vector3 position, string name)
+    public class PointOfInterest
     {
-        Position = position;
-        Name = name;
-    }
+        public PointOfInterest(Vector3 position, string name)
+        {
+            Position = position;
+            Name = name;
+        }
 
-    public Vector3 Position { get; }
-    public string Name { get; }
+        public Vector3 Position { get; }
+        public string Name { get; }
+    }
 }

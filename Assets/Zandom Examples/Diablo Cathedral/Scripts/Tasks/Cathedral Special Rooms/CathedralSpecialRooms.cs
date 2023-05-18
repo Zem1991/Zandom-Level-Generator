@@ -1,28 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ZandomLevelGenerator;
 using ZandomLevelGenerator.BaseObjects;
 using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.Task;
 
-public class CathedralSpecialRooms : LevelGeneratorTask
+namespace ZandomLevelGenerator.Examples.DiabloCathedral
 {
-    public CathedralSpecialRooms(LevelGenerator levelGenerator) : base(levelGenerator)
+    public class CathedralSpecialRooms : LevelGeneratorTask
     {
-    }
-
-    public override IEnumerator Run()
-    {
-        List<Room> Rooms = new(LevelGenerator.Level.Rooms.Values);
-        foreach (var item in Rooms)
+        public CathedralSpecialRooms(LevelGenerator levelGenerator) : base(levelGenerator)
         {
-            if (!item.IsEnclosed()) continue;
-            item.Type = RoomType.SPECIAL;
         }
-        if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
+
+        public override IEnumerator Run()
         {
-            yield return null;
+            List<Room> Rooms = new(LevelGenerator.Level.Rooms.Values);
+            foreach (var item in Rooms)
+            {
+                if (!item.IsEnclosed()) continue;
+                item.Type = RoomType.SPECIAL;
+            }
+            if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
+            {
+                yield return null;
+            }
         }
     }
 }

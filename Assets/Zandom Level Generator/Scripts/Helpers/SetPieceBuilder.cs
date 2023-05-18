@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Components;
 using ZandomLevelGenerator.Enums;
 
 namespace ZandomLevelGenerator.Helpers
@@ -15,14 +16,14 @@ namespace ZandomLevelGenerator.Helpers
 
         private LevelGenerator LevelGenerator { get; }
 
-        public bool CanBuild(Vector2Int start, SetPiece setPiece)
+        public bool CanBuild(Vector2Int start, SetPiecePattern setPiece)
         {
             bool insideLevelBounds = LevelGenerator.Level.IsInsideBounds(start, setPiece.Size);
             bool availableOnTilemap = LevelGenerator.Level.TileMap.IsAvailable(start, setPiece.Size);
             return insideLevelBounds && availableOnTilemap;
         }
 
-        public bool Build(Vector2Int start, SetPiece setPiece)
+        public bool Build(Vector2Int start, SetPiecePattern setPiece)
         {
             bool setPieceTile(int col, int row)
             {

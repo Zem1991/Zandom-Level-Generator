@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Components;
 using ZandomLevelGenerator.Enums;
 
 namespace ZandomLevelGenerator.Helpers
@@ -40,7 +41,7 @@ namespace ZandomLevelGenerator.Helpers
             return room;
         }
 
-        public Room Build(Vector2Int start, SetPiece setPiece, bool vertical, Room parent)
+        public Room Build(Vector2Int start, SetPiecePattern setPiece, bool vertical, Room parent)
         {
             Room room = Build(start, setPiece.Size, vertical, parent);
             room.FromSetPiece = true;

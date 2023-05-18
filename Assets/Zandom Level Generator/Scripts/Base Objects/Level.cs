@@ -53,7 +53,7 @@ namespace ZandomLevelGenerator.BaseObjects
             return wall;
         }
 
-        public Obstacle CreateObstacle(ZandomObstacleData obstacleData, List<Tile> tiles, bool vertical)
+        public Obstacle CreateObstacle(ZandomObstacle obstacleData, List<Tile> tiles, bool vertical)
         {
             int id = Obstacles.Count;
             Obstacle obstacle = new(id, obstacleData, tiles, vertical, this);

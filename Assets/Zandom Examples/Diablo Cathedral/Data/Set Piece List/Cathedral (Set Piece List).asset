@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67d4163c3ed6d7842b22778bb5739355, type: 3}
+  m_Name: Cathedral (Set Piece List)
+  m_EditorClassIdentifier: 
+  names:
+  - Cathedral Spine Corridor
+  - Cathedral Spine Room
+  items:
+  - {fileID: 11400000, guid: a319d29baea1a544a8ea32005a95f4ed, type: 2}
+  - {fileID: 11400000, guid: 85bae3779c10fae418a24ed0b8579615, type: 2}

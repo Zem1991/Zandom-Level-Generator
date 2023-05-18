@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Components;
 using ZandomLevelGenerator.Helpers;
 
 namespace ZandomLevelGenerator.Examples.DiabloCathedral
@@ -15,7 +16,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral
             this.levelGenerator = levelGenerator;
         }
 
-        public Room Run(Vector2Int position, SetPiece setPiece, bool verticalOrientation)
+        public Room Run(Vector2Int position, SetPiecePattern setPiece, bool verticalOrientation)
         {
             RoomBuilder roomBuilder = new(levelGenerator);
             //if (!roomBuilder.CanBuild(position, setPiece.Size)) return;

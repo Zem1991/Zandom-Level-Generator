@@ -7,7 +7,7 @@ namespace ZandomLevelGenerator.BaseObjects
 {
     public class Obstacle
     {
-        public Obstacle(int id, ZandomObstacleData obstacleData, List<Tile> tiles, bool vertical, Level level)
+        public Obstacle(int id, ZandomObstacle obstacleData, List<Tile> tiles, bool vertical, Level level)
         {
             Id = id;
             ZandomObstacleData = obstacleData;
@@ -24,7 +24,7 @@ namespace ZandomLevelGenerator.BaseObjects
         }
 
         public int Id { get; }
-        public ZandomObstacleData ZandomObstacleData { get; }
+        public ZandomObstacle ZandomObstacleData { get; }
         public List<Tile> MentionedTiles { get; }
         public bool Vertical { get; }
         public Level Level { get; }

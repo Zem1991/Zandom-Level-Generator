@@ -11,7 +11,7 @@ namespace ZandomLevelGenerator.Helpers
 {
     public class ObstaclePlacement
     {
-        public ObstaclePlacement(LevelGenerator levelGenerator, ZandomObstacleData obstacleData, List<Room> validRooms)
+        public ObstaclePlacement(LevelGenerator levelGenerator, ZandomObstacle obstacleData, List<Room> validRooms)
         {
             LevelGenerator = levelGenerator;
             ObstacleData = obstacleData;
@@ -27,7 +27,7 @@ namespace ZandomLevelGenerator.Helpers
         }
 
         public LevelGenerator LevelGenerator { get; }
-        public ZandomObstacleData ObstacleData { get; }
+        public ZandomObstacle ObstacleData { get; }
         public List<Room> ValidRooms { get; }
         public List<Tile> ValidTiles { get; }
         public List<Obstacle> Results { get; }

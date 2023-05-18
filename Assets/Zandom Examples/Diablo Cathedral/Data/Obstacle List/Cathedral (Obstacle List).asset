@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4a5626829cd68744819e91bde1cb131, type: 3}
-  m_Name: Cathedral (Obstacles)
+  m_Name: Cathedral (Obstacle List)
   m_EditorClassIdentifier: 
   names:
   - Entrance
@@ -20,7 +20,7 @@ MonoBehaviour:
   - Normal Encounter
   - Treasure Encounter
   - Challenge Encounter
-  finalObstacles:
+  items:
   - {fileID: 11400000, guid: d6e33646737b8d24fbe645492514b58d, type: 2}
   - {fileID: 11400000, guid: a3357a990f5a59940a479a747442b441, type: 2}
   - {fileID: 11400000, guid: 3ebecab07062a8e4688a9bcb38349904, type: 2}

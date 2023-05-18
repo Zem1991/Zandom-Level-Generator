@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Components;
 
 namespace ZandomLevelGenerator.Examples.DiabloCathedral
 {
@@ -27,7 +28,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral
             return new(3, index);
         }
 
-        protected override Room Build(Vector2Int position, SetPiece setPiece)
+        protected override Room Build(Vector2Int position, SetPiecePattern setPiece)
         {
             return new CathedralSpineExecutor(levelGenerator).Run(position, setPiece, true);
         }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.Components
 {
-    [CreateAssetMenu(menuName = "Zandom/Obstacle Data")]
-    public class ZandomObstacleData : ScriptableObject
+    [CreateAssetMenu(menuName = "Zandom/Obstacle")]
+    public class ZandomObstacle : ScriptableObject
     {
         [Header("Generator Settings")]
         [Min(1)] public int amountMinimum = 1;

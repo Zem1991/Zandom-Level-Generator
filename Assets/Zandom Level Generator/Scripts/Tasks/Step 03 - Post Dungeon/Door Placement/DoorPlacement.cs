@@ -34,7 +34,7 @@ namespace ZandomLevelGenerator.Task
             Level level = wall.Level;
             Room room = wall.SourceRoom;
             string objectName = doorway.DoorSize.ObjectName();
-            ZandomObstacleData obstacleData = LevelGenerator.ZandomObstacles.Get(objectName);
+            ZandomObstacle obstacleData = LevelGenerator.ZandomObstacleList.Get(objectName);
             Obstacle door = level.CreateObstacle(obstacleData, doorway.Tiles, wall.Vertical);
             doorway.Door = door;
         }

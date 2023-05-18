@@ -14,9 +14,10 @@ namespace ZandomLevelGenerator
     {
         [Header("References")]
         public ZandomStyle ZandomStyle;
-        public ZandomParameters ZandomParameters;
         public ZandomTileset ZandomTileset;
-        public ZandomObstacles ZandomObstacles;
+        public ZandomParameters ZandomParameters;
+        public ZandomSetPieceList ZandomSetPieceList;
+        public ZandomObstacleList ZandomObstacleList;
 
         [Header("Settings: Generator")]
         [Min(1)] public int maxAttempts = 20;

@@ -79,6 +79,10 @@ namespace ZandomLevelGenerator.Task
             }
             FinalLevel finalLevel = LevelGenerator.FinalLevel;
             GameObject prefab = LevelGenerator.ZandomTileset.GetModel(tile.Type);
+            if (prefab == null)
+            {
+                Debug.Log("what");
+            }
             finalLevel.CreateFinalTile(tile, prefab, position, tile.Vertical, finalRoom);
         }
     }

@@ -16,7 +16,7 @@ namespace ZandomLevelGenerator.Task
 
         public override IEnumerator Run()
         {
-            ZandomObstacleData obstacleData = LevelGenerator.ZandomObstacles.Get("Treasure Encounter");
+            ZandomObstacle obstacleData = LevelGenerator.ZandomObstacleList.Get("Treasure Encounter");
             List<Room> validRooms = new();
             foreach (var item in LevelGenerator.Level.Rooms.Values)
             {

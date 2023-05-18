@@ -13,6 +13,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral
         {
             return new()
             {
+                //new StartingRoom(levelGenerator),
                 new CathedralSpine(levelGenerator),
                 new BuddingRooms(levelGenerator),
                 new CathedralSpecialRooms(levelGenerator),

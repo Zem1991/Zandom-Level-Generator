@@ -7,17 +7,17 @@ namespace ZandomLevelGenerator.Components
     /// <summary>
     /// Using two lists instead of a dictionary because those are natively serializable inside Unity's inspector.
     /// </summary>
-    [CreateAssetMenu(menuName = "Zandom/Obstacles")]
-    public class ZandomObstacles : ScriptableObject
+    [CreateAssetMenu(menuName = "Zandom/Obstacle List")]
+    public class ZandomObstacleList : ScriptableObject
     {
-        [Header("Room")]
+        [Header("List")]
         [SerializeField] private List<string> names = new();
-        [SerializeField] private List<ZandomObstacleData> finalObstacles = new();
+        [SerializeField] private List<ZandomObstacle> items = new();
 
-        public ZandomObstacleData Get(string name)
+        public ZandomObstacle Get(string name)
         {
             int index = names.IndexOf(name);
-            return finalObstacles[index];
+            return items[index];
         }
     }
 }

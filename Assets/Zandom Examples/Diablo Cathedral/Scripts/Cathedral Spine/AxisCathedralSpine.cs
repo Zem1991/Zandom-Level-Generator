@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.BaseObjects;
+using ZandomLevelGenerator.Components;
 using ZandomLevelGenerator.Helpers;
 
 namespace ZandomLevelGenerator.Examples.DiabloCathedral
@@ -46,16 +47,18 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral
 
         private Room SpineRoom(Vector2Int startPos)
         {
-            SetPiece setPiece = new CathedralSpineRoom();
-            if (rotate) setPiece.Rotate();
-            return Build(startPos, setPiece);
+            ZandomSetPiece setPiece = levelGenerator.ZandomSetPieceList.Get("Cathedral Spine Room");
+            SetPiecePattern setPiecePattern = new(setPiece);
+            if (rotate) setPiecePattern.Rotate90Negative();
+            return Build(startPos, setPiecePattern);
         }
 
         private List<Room> SpineCorridor()
         {
             List<Room> result = new();
-            SetPiece setPiece = new CathedralSpineCorridor();
-            if (rotate) setPiece.Rotate();
+            ZandomSetPiece setPiece = levelGenerator.ZandomSetPieceList.Get("Cathedral Spine Corridor");
+            SetPiecePattern setPiecePattern = new(setPiece);
+            if (rotate) setPiecePattern.Rotate90Negative();
             for (int i = 0; i < corridorLength; i++)
             {
                 int pos = firstRoomPosition + 2 + i;
@@ -63,7 +66,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral
                 position *= Constants.MODULE_SIZE;
                 if (rotate) position.x += 3;
                 else position.y += 3;
-                Room room = Build(position, setPiece);
+                Room room = Build(position, setPiecePattern);
                 result.Add(room);
             }
             return result;
@@ -72,6 +75,6 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral
         protected abstract Vector2Int GetPositionRoom1();
         protected abstract Vector2Int GetPositionRoom2();
         protected abstract Vector2Int GetPositionCorridor(int index);
-        protected abstract Room Build(Vector2Int position, SetPiece setPiece);
+        protected abstract Room Build(Vector2Int position, SetPiecePattern setPiece);
     }
 }

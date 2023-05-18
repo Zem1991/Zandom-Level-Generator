@@ -7,14 +7,14 @@ namespace ZandomLevelGenerator.Helpers
 {
     public class SetPieceRotator
     {
-        private SetPiece setPiece;
+        private SetPiecePattern setPiece;
 
-        public SetPieceRotator(SetPiece setPiece)
+        public SetPieceRotator(SetPiecePattern setPiece)
         {
             this.setPiece = setPiece;
         }
 
-        public char[,] Layout { get; private set; }
+        //public char[,] Layout { get; private set; }
 
         public char[,] Rotate90Negative()
         {

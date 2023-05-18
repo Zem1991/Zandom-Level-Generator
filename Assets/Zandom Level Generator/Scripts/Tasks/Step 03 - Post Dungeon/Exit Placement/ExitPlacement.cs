@@ -18,7 +18,7 @@ namespace ZandomLevelGenerator.Task
         public override IEnumerator Run()
         {
             Level level = LevelGenerator.Level;
-            ZandomObstacleData obstacleData = LevelGenerator.ZandomObstacles.Get("Exit");
+            ZandomObstacle obstacleData = LevelGenerator.ZandomObstacleList.Get("Exit");
             List<Room> validRooms = new();
             Vector3 startPosition = level.StartLocation.Position;
             foreach (var item in level.Rooms.Values)

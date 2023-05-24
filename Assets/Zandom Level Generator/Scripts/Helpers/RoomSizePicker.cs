@@ -6,10 +6,16 @@ namespace ZandomLevelGenerator.Helpers
 {
     public class RoomSizePicker
     {
+        private readonly LevelGenerator levelGenerator;
+
+        public RoomSizePicker(LevelGenerator levelGenerator)
+        {
+            this.levelGenerator = levelGenerator;
+        }
+
         public int PickInt()
         {
-            //int size = Random.Range(0, 4);
-            int size = Random.Range(0, 3);
+            int size = levelGenerator.SeededRandom.Range(0, 3);
             size += 3;  //Solid, Floor, Floor
             size *= 2;  //Mirrored
                         //6, 8, 10[, 12]

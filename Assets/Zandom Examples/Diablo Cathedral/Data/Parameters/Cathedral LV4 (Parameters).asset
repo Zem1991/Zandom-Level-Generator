@@ -19,11 +19,5 @@ MonoBehaviour:
   distantNeighborAgeMin: 4
   smallDoorLengthMin: 4
   largeDoorLengthMax: 8
-  entranceSize: {x: 4, y: 4}
-  exitSize: {x: 4, y: 4}
-  treasureSize: {x: 2, y: 2}
-  encounterSize: {x: 4, y: 4}
-  treasures: 12
-  encounters: 55
   levelSizeMin: 0.5
   levelSizeMax: 0.7

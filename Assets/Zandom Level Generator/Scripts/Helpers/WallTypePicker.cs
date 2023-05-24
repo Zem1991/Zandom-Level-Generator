@@ -7,16 +7,23 @@ namespace ZandomLevelGenerator.Helpers
 {
     public class WallTypePicker
     {
+        private readonly LevelGenerator levelGenerator;
+
+        public WallTypePicker(LevelGenerator levelGenerator)
+        {
+            this.levelGenerator = levelGenerator;
+        }
+
         public TileType Enclosed()
         {
-            int rng = Random.Range(0, 2);
+            int rng = levelGenerator.SeededRandom.Range(0, 2);
             if (rng > 0) return TileType.BARS_WALL;
             return Normal();
         }
 
         public TileType Parent()
         {
-            int rng = Random.Range(0, 2);
+            int rng = levelGenerator.SeededRandom.Range(0, 2);
             if (rng > 0) return Enclosed();
             return TileType.NORMAL_FLOOR;
         }

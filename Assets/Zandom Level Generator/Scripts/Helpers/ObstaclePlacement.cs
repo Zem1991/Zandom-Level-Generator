@@ -15,7 +15,7 @@ namespace ZandomLevelGenerator.Helpers
         {
             LevelGenerator = levelGenerator;
             ObstacleData = obstacleData;
-            ValidRooms = validRooms;// validRooms.OrderBy(x => Random.value).ToList();
+            ValidRooms = validRooms;
             ValidTiles = new();
             Results = new();
 
@@ -23,7 +23,10 @@ namespace ZandomLevelGenerator.Helpers
             {
                 ValidTiles.AddRange(item.Tiles);
             }
-            ValidTiles = ValidTiles.OrderBy(x => Random.value).ToList();
+            //ValidTiles = ValidTiles.OrderBy(x => Random.value).ToList();
+            ValidTiles = ValidTiles.OrderBy(x => LevelGenerator.SeededRandom.Next()).ToList();
+            //int rng = LevelGenerator.SeededRandom.Next();
+            //ValidTiles = ValidTiles.OrderBy(x => rng).ToList();
         }
 
         public LevelGenerator LevelGenerator { get; }
@@ -84,8 +87,8 @@ namespace ZandomLevelGenerator.Helpers
             Vector2Int position = room.Start;
             Vector2Int size = ObstacleData.size;
             Vector2Int padding = ObstacleData.padding;
-            int extraX = Random.Range(padding.x, room.Size.x - size.x - padding.x + 1);
-            int extraY = Random.Range(padding.y, room.Size.y - size.y - padding.y + 1);
+            int extraX = LevelGenerator.SeededRandom.Range(padding.x, room.Size.x - size.x - padding.x + 1);
+            int extraY = LevelGenerator.SeededRandom.Range(padding.y, room.Size.y - size.y - padding.y + 1);
             position.x += extraX;
             position.y += extraY;
 

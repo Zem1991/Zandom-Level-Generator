@@ -1,4 +1,3 @@
-encounters não podem spawnar proximos ao spawn point do jogador
 receber uma seed ou gerar uma aleatoria para usar em todo o processo de geração
 task wait 0 = não faz wait além da coroutine do level generator em si
 task wait 1 = waits simples para o total das tasks

@@ -36,7 +36,7 @@ namespace ZandomLevelGenerator.Task
             int doorSizeInt = (int)doorSize;
 
             int validLength = wall.Tiles.Count - doorSizeInt + 1;
-            int startPos = Random.Range(0, validLength);
+            int startPos = LevelGenerator.SeededRandom.Range(0, validLength);
             int endPos = startPos + doorSizeInt;
 
             List<Tile> tiles = new();

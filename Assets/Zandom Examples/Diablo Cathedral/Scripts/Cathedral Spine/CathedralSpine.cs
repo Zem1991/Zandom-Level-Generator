@@ -17,11 +17,11 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral
         {
             bool shorterVersion = LevelGenerator.ZandomParameters.avoidSizeBoundaries;
             int maxLength = shorterVersion ? 3 : 5;
-            int corridorLength = Random.Range(0, maxLength);
+            int corridorLength = LevelGenerator.SeededRandom.Range(0, maxLength);
             int maxPosition = maxLength - corridorLength;
-            int firstRoomPosition = Random.Range(0, maxPosition);
+            int firstRoomPosition = LevelGenerator.SeededRandom.Range(0, maxPosition);
             if (shorterVersion) firstRoomPosition++;
-            bool vertical = Random.Range(0, 2) > 0;
+            bool vertical = LevelGenerator.SeededRandom.Range(0, 2) > 0;
             AxisCathedralSpine axisCathedralSpine;
             if (vertical)
             {

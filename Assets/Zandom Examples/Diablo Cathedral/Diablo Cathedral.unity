@@ -179,10 +179,13 @@ MonoBehaviour:
   ZandomParameters: {fileID: 11400000, guid: 30666d361fd1dca4fbbe2f9977aa9ca0, type: 2}
   ZandomSetPieceList: {fileID: 11400000, guid: bc2e46089aed1544fbd998b127d3b75f, type: 2}
   ZandomObstacleList: {fileID: 11400000, guid: 07e35a66021307f43ba64cff7e7bd968, type: 2}
+  seed: DIABLO
   maxAttempts: 20
   taskWaitSetting: 0
   attempts: 0
   stateName: 0
+  currentSeed: 
+  currentSeedInt: 0
 --- !u!4 &504301426
 Transform:
   m_ObjectHideFlags: 0
@@ -254,10 +257,13 @@ MonoBehaviour:
   ZandomParameters: {fileID: 11400000, guid: 0dc2baabe77fac3478ccb14af39df5e2, type: 2}
   ZandomSetPieceList: {fileID: 11400000, guid: bc2e46089aed1544fbd998b127d3b75f, type: 2}
   ZandomObstacleList: {fileID: 11400000, guid: 07e35a66021307f43ba64cff7e7bd968, type: 2}
+  seed: DIABLO
   maxAttempts: 20
   taskWaitSetting: 0
   attempts: 0
   stateName: 0
+  currentSeed: 
+  currentSeedInt: 0
 --- !u!4 &667455846
 Transform:
   m_ObjectHideFlags: 0
@@ -502,10 +508,13 @@ MonoBehaviour:
   ZandomParameters: {fileID: 11400000, guid: e05beba25a759c64993f5879a253b024, type: 2}
   ZandomSetPieceList: {fileID: 11400000, guid: bc2e46089aed1544fbd998b127d3b75f, type: 2}
   ZandomObstacleList: {fileID: 11400000, guid: 07e35a66021307f43ba64cff7e7bd968, type: 2}
+  seed: DIABLO
   maxAttempts: 20
   taskWaitSetting: 0
   attempts: 0
   stateName: 0
+  currentSeed: 
+  currentSeedInt: 0
 --- !u!114 &1630063772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,10 +591,13 @@ MonoBehaviour:
   ZandomParameters: {fileID: 11400000, guid: 0ab1b6c4f15d9ab4fac08944142e9dfc, type: 2}
   ZandomSetPieceList: {fileID: 11400000, guid: bc2e46089aed1544fbd998b127d3b75f, type: 2}
   ZandomObstacleList: {fileID: 11400000, guid: 07e35a66021307f43ba64cff7e7bd968, type: 2}
+  seed: DIABLO
   maxAttempts: 20
   taskWaitSetting: 0
   attempts: 0
   stateName: 0
+  currentSeed: 
+  currentSeedInt: 0
 --- !u!4 &1815642860
 Transform:
   m_ObjectHideFlags: 0

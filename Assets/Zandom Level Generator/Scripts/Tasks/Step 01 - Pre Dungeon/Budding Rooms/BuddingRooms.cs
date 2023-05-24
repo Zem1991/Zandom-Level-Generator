@@ -65,7 +65,7 @@ namespace ZandomLevelGenerator.Task
         {
             bool vertical = PickAxis(parent);
             bool canRetry = CanRetry(parent);
-            Vector2Int size = new RoomSizePicker().PickVector2Int();
+            Vector2Int size = new RoomSizePicker(LevelGenerator).PickVector2Int();
             List<Room> newRooms = Run(vertical, size, parent);
             if (newRooms.Count <= 0 && canRetry) newRooms = Run(!vertical, size, parent);
             return newRooms;
@@ -84,7 +84,7 @@ namespace ZandomLevelGenerator.Task
                 }
                 else
                 {
-                    bool keepSame = Random.Range(0, 4) <= 0;
+                    bool keepSame = LevelGenerator.SeededRandom.Range(0, 4) <= 0;
                     if (keepSame) result = parent.Vertical;
                     else result = !parent.Vertical;
                 }

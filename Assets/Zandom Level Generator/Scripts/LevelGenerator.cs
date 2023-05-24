@@ -7,6 +7,7 @@ using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.FinalObjects;
 using ZandomLevelGenerator.Gizmos;
 using ZandomLevelGenerator.State;
+using ZemReusables;
 
 namespace ZandomLevelGenerator
 {
@@ -19,6 +20,9 @@ namespace ZandomLevelGenerator
         public ZandomSetPieceList ZandomSetPieceList;
         public ZandomObstacleList ZandomObstacleList;
 
+        [Header("Settings: SEED")]
+        public string seed = null;
+
         [Header("Settings: Generator")]
         [Min(1)] public int maxAttempts = 20;
 
@@ -30,8 +34,11 @@ namespace ZandomLevelGenerator
         [SerializeField] private int attempts;
         [SerializeField] private ZandomState state;
         [SerializeField] private ZandomStateName stateName = ZandomStateName.NONE;
+        [SerializeField] private string currentSeed;
+        [SerializeField] private int currentSeedInt;
 
         public Level Level { get; private set; }
+        public SeededRandom SeededRandom { get; private set; }
         public FinalLevel FinalLevel { get; private set; }
 
         public ZandomState State
@@ -48,11 +55,15 @@ namespace ZandomLevelGenerator
         public void Clear()
         {
             Level = new();
+            //SeededRandom = null;
             FinalLevel.Clear();
         }
 
         public void Run()
         {
+            SeededRandom = new(seed);
+            currentSeed = SeededRandom.Seed;
+            currentSeedInt = SeededRandom.SeedInt;
             //ZandomStyle.Run(this);
             //state = new ZandomStateBegin(this);
             attempts = 0;

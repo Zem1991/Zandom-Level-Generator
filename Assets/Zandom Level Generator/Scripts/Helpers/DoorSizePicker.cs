@@ -20,7 +20,7 @@ namespace ZandomLevelGenerator.Helpers
             int length = wall.Tiles.Count;
             if (length < levelGenerator.ZandomParameters.smallDoorLengthMin) return DoorSize.SMALL;
             if (length > levelGenerator.ZandomParameters.largeDoorLengthMax) return DoorSize.LARGE;
-            int rng = Random.Range(1, 3);
+            int rng = levelGenerator.SeededRandom.Range(1, 3);
             rng *= 2;
             DoorSize result = DoorSize.SMALL;
             if (rng <= 0) result = DoorSize.LARGE;

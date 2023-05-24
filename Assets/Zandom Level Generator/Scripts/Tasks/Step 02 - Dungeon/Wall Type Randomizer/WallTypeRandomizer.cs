@@ -68,7 +68,7 @@ namespace ZandomLevelGenerator.Task
 
         public void Enclosed(List<Wall> walls)
         {
-            WallTypePicker picker = new();
+            WallTypePicker picker = new(LevelGenerator);
             foreach (Wall wall in walls)
             {
                 wall.Type = picker.Enclosed();
@@ -78,7 +78,7 @@ namespace ZandomLevelGenerator.Task
 
         public void Parent(List<Wall> walls)
         {
-            WallTypePicker picker = new();
+            WallTypePicker picker = new(LevelGenerator);
             foreach (Wall wall in walls)
             {
                 wall.Type = picker.Parent();
@@ -88,7 +88,7 @@ namespace ZandomLevelGenerator.Task
 
         public void DestructibleWall(List<Wall> walls)
         {
-            WallTypePicker picker = new();
+            WallTypePicker picker = new(LevelGenerator);
             foreach (Wall wall in walls)
             {
                 wall.Type = picker.AgedDestructible();
@@ -98,7 +98,7 @@ namespace ZandomLevelGenerator.Task
 
         public void NormalWall(List<Wall> walls)
         {
-            WallTypePicker picker = new();
+            WallTypePicker picker = new(LevelGenerator);
             foreach (Wall wall in walls)
             {
                 wall.Type = picker.Normal();

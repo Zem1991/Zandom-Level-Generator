@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amountMinimum: 5
   amountDesired: 5
+  canPlaceWithinStartPosition: 0
   size: {x: 4, y: 4}
   padding: {x: 2, y: 2}
   gameObject: {fileID: 877962812885065705, guid: 954718f391fb53f479cb79a26e8aa77e, type: 3}

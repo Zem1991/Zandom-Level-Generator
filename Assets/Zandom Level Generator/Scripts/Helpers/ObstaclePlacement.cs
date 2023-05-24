@@ -47,7 +47,16 @@ namespace ZandomLevelGenerator.Helpers
                     i--;
                     continue;
                 }
-                //Obstacle obstacle = Run(room, tiles);
+                if (!ObstacleData.canPlaceWithinStartPosition)
+                {
+                    Vector3 centerPosition = new TileListPositionFinder().Find(tiles);
+                    float distanceToStart = Vector3.Distance(centerPosition, LevelGenerator.Level.StartLocation.Position);
+                    if (distanceToStart < Constants.EntranceSafetyRadius)
+                    {
+                        i--;
+                        continue;
+                    }
+                }
                 Obstacle obstacle = Run(tiles);
                 Results.Add(obstacle);
                 if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)

@@ -5,18 +5,19 @@ using ZandomLevelGenerator.BaseObjects;
 using ZandomLevelGenerator.Components;
 using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.Helpers;
+using ZandomLevelGenerator.Task;
 
-namespace ZandomLevelGenerator.Task
+namespace ZandomLevelGenerator.Examples.DiabloCathedral
 {
-    public class NormalEncounterPlacement : LevelGeneratorTask
+    public class ChallengeEncounterPlacement : LevelGeneratorTask
     {
-        public NormalEncounterPlacement(LevelGenerator levelGenerator) : base(levelGenerator)
+        public ChallengeEncounterPlacement(LevelGenerator levelGenerator) : base(levelGenerator)
         {
         }
 
         public override IEnumerator Run()
         {
-            ZandomObstacle obstacleData = LevelGenerator.ZandomObstacleList.Get("Normal Encounter");
+            ZandomObstacle obstacleData = LevelGenerator.ZandomObstacleList.Get("Challenge Encounter");
             List<Room> validRooms = new();
             foreach (var item in LevelGenerator.Level.Rooms.Values)
             {

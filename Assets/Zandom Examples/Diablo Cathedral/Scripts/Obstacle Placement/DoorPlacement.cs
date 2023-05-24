@@ -4,8 +4,9 @@ using UnityEngine;
 using ZandomLevelGenerator.BaseObjects;
 using ZandomLevelGenerator.Components;
 using ZandomLevelGenerator.Enums;
+using ZandomLevelGenerator.Task;
 
-namespace ZandomLevelGenerator.Task
+namespace ZandomLevelGenerator.Examples.DiabloCathedral
 {
     public class DoorPlacement : LevelGeneratorTask
     {

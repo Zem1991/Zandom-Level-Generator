@@ -5,22 +5,23 @@ using ZandomLevelGenerator.BaseObjects;
 using ZandomLevelGenerator.Components;
 using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.Helpers;
+using ZandomLevelGenerator.Task;
 
-namespace ZandomLevelGenerator.Task
+namespace ZandomLevelGenerator.Examples.DiabloCathedral
 {
-    public class TreasureEncounterPlacement : LevelGeneratorTask
+    public class NormalEncounterPlacement : LevelGeneratorTask
     {
-        public TreasureEncounterPlacement(LevelGenerator levelGenerator) : base(levelGenerator)
+        public NormalEncounterPlacement(LevelGenerator levelGenerator) : base(levelGenerator)
         {
         }
 
         public override IEnumerator Run()
         {
-            ZandomObstacle obstacleData = LevelGenerator.ZandomObstacleList.Get("Treasure Encounter");
+            ZandomObstacle obstacleData = LevelGenerator.ZandomObstacleList.Get("Normal Encounter");
             List<Room> validRooms = new();
             foreach (var item in LevelGenerator.Level.Rooms.Values)
             {
-                if (item.Type != RoomType.SPECIAL) continue;
+                //if (item.Type == RoomType.SPECIAL) continue;
                 validRooms.Add(item);
             }
             ObstaclePlacement obstaclePlacement = new(LevelGenerator, obstacleData, validRooms);
@@ -30,15 +31,9 @@ namespace ZandomLevelGenerator.Task
                 yield return new GenerateFinalObstacles(LevelGenerator).Run();
             }
             //List<Room> allRooms = LevelGenerator.Level.Rooms.Values.ToList();
-            //List<Room> validRooms = new();
-            //foreach (var item in allRooms)
-            //{
-            //    if (item.Type != RoomType.SPECIAL) continue;
-            //    validRooms.Add(item);
-            //}
             //validRooms = validRooms.OrderBy(x => Random.value).ToList();
             //int validRoomIndex = 0;
-            //for (int i = 0; i < LevelGenerator.ZandomParameters.treasures; i++)
+            //for (int i = 0; i < LevelGenerator.ZandomParameters.encounters; i++)
             //{
             //    validRoomIndex++;
             //    validRoomIndex %= validRooms.Count;
@@ -60,7 +55,7 @@ namespace ZandomLevelGenerator.Task
         //private Obstacle Run(Room room, List<Tile> tiles)
         //{
         //    Level level = LevelGenerator.Level;
-        //    Obstacle result = level.CreateObstacle("Treasure", tiles, false, room);
+        //    Obstacle result = level.CreateObstacle("Encounter", tiles, false, room);
         //    return result;
         //}
 
@@ -68,7 +63,7 @@ namespace ZandomLevelGenerator.Task
         //{
         //    tiles = new();
         //    Vector2Int position = room.Start;
-        //    Vector2Int objectSize = LevelGenerator.ZandomParameters.treasureSize;
+        //    Vector2Int objectSize = LevelGenerator.ZandomParameters.encounterSize;
         //    int extraX = Random.Range(1, room.Size.x - objectSize.x);
         //    int extraY = Random.Range(1, room.Size.y - objectSize.y);
         //    position.x += extraX;

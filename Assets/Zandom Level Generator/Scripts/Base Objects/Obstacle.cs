@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Components;
+using ZandomLevelGenerator.Helpers;
 
 namespace ZandomLevelGenerator.BaseObjects
 {
@@ -15,7 +16,7 @@ namespace ZandomLevelGenerator.BaseObjects
             Vertical = vertical;
             Level = level;
             Room = tiles[0].MentionedRooms[0];
-            CenterPosition = FindCenterPosition();
+            CenterPosition = new TileListPositionFinder().Find(tiles);
 
             foreach (var item in tiles)
             {
@@ -31,18 +32,5 @@ namespace ZandomLevelGenerator.BaseObjects
         public Room Room { get; }
         public Vector3 CenterPosition { get; }
         public GameObject GeneratedObstacle { get; set; }
-
-        private Vector3 FindCenterPosition()
-        {
-            Vector3 result = new();
-            foreach (var item in MentionedTiles)
-            {
-                //result += item.GeneratedTile.transform.position;
-                result.x += item.Coordinates.x;
-                result.z += item.Coordinates.y;
-            }
-            result /= MentionedTiles.Count;
-            return result;
-        }
     }
 }

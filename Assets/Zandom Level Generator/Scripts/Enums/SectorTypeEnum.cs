@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.Enums
 {
-    public enum TileTypeNew
+    public enum SectorType
     {
-        AREA,
-        BORDER,
-        CORNER,
+        NORMAL,
+        IMPORTANT,
+        SECRET,
     }
 }

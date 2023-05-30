@@ -4,16 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.Enums;
+using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Gizmos;
 using ZandomLevelGenerator.ResultObjects;
+using ZandomLevelGenerator.Factories;
 
 namespace ZandomLevelGenerator
 {
     public class ZandomLevelGenerator : MonoBehaviour
     {
-        [Header("References: Result")]
-        private readonly LevelResult levelResult;
-
         [Header("References: Parameters")]
         private readonly GeneratorStyle zandomStyle;
         private readonly StyleParameters zandomParameters;
@@ -32,8 +31,7 @@ namespace ZandomLevelGenerator
         [SerializeField] private DateTime startTime;
         [SerializeField] private DateTime endTime;
         [SerializeField] private float timeTaken;
-
-        public LevelResult LevelResult => levelResult;
+        [SerializeField] private ZandomLevel result;
 
         public GeneratorStyle ZandomStyle => zandomStyle;
         public StyleParameters ZandomParameters => zandomParameters;
@@ -50,12 +48,19 @@ namespace ZandomLevelGenerator
         public DateTime StartTime { get => startTime; private set => startTime = value; }
         public DateTime EndTime { get => endTime; private set => endTime = value; }
         public float TimeTaken { get => timeTaken; private set => timeTaken = value; }
+        public ZandomLevel Result { get => result; private set => result = value; }
 
         public bool TryGenerate()
         {
             bool can = !IsRunning;
             if (can) GenerateStart();
             return can;
+        }
+
+        public void RegisterNewAttempt(LevelPlan level)
+        {
+            ZandomLevel zandomLevel = new ZandomLevelFactory().Create(level, transform.parent);
+            Result = zandomLevel;
         }
 
         private void GenerateStart()

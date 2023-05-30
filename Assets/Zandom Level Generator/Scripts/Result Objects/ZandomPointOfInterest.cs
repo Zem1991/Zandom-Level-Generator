@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.ResultObjects
 {
-    public class SectorResult : MonoBehaviour
+    public class ZandomPointOfInterest : MonoBehaviour
     {
 
     }

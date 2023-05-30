@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.ResultObjects;
 
 namespace ZandomLevelGenerator.GeneratorObjects
 {
@@ -12,13 +13,14 @@ namespace ZandomLevelGenerator.GeneratorObjects
             Sectors = new();
             Obstacles = new();
             PointsOfInterest = new();
-            StartLocation = null;
         }
 
-        public Dictionary<Vector3Int, TilePlan> Tiles { get; private set; }
-        public Dictionary<int, SectorPlan> Sectors { get; private set; }
-        public Dictionary<int, Obstacle> Obstacles { get; private set; }
-        public Dictionary<int, PointOfInterest> PointsOfInterest { get; private set; }
-        public StartLocation StartLocation { get; private set; }
+        public Dictionary<Vector3Int, TilePlan> Tiles { get; }
+        public Dictionary<int, SectorPlan> Sectors { get; }
+        public Dictionary<int, Obstacle> Obstacles { get; }
+        public Dictionary<int, PointOfInterest> PointsOfInterest { get; }
+
+        public StartLocation StartLocation { get; set; }
+        public ZandomLevel Result { get; set; }
     }
 }

@@ -16,22 +16,30 @@ namespace ZandomLevelGenerator.GeneratorStages
 
         public override GeneratorStage NextIfFailure()
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
         public override GeneratorStage NextIfSuccess()
         {
-            throw new System.NotImplementedException();
-        }
-
-        protected override bool GetChecks(out string message)
-        {
-            throw new System.NotImplementedException();
+            return null;
         }
 
         protected override List<GeneratorTask> GetTasks()
         {
-            throw new System.NotImplementedException();
+            List<GeneratorTask> result = new();
+            bool addTask = ZandomLevelGenerator.WaitType == WaitType.ZANDOM_ONLY;
+            if (addTask)
+            {
+                //GeneratorTask task = ...
+                //result.Add(task);
+            }
+            return result;
+        }
+
+        protected override bool GetChecks(out string message)
+        {
+            message = null;
+            return true;
         }
     }
 }

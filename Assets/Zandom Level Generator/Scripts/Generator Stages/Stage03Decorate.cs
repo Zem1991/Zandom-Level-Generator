@@ -16,22 +16,22 @@ namespace ZandomLevelGenerator.GeneratorStages
 
         public override GeneratorStage NextIfFailure()
         {
-            throw new System.NotImplementedException();
+            return new Stage01Plan(ZandomLevelGenerator);
         }
 
         public override GeneratorStage NextIfSuccess()
         {
-            throw new System.NotImplementedException();
-        }
-
-        protected override bool GetChecks(out string message)
-        {
-            throw new System.NotImplementedException();
+            return new Stage04Result(ZandomLevelGenerator);
         }
 
         protected override List<GeneratorTask> GetTasks()
         {
-            throw new System.NotImplementedException();
+            return ZandomLevelGenerator.ZandomStyle.Step03_Tasks(ZandomLevelGenerator);
+        }
+
+        protected override bool GetChecks(out string message)
+        {
+            return ZandomLevelGenerator.ZandomStyle.Step03_Checks(ZandomLevelGenerator, out message);
         }
     }
 }

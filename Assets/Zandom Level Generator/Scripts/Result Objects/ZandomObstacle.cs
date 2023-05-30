@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.ResultObjects
 {
-    public class TileResult : MonoBehaviour
+    public class ZandomObstacle : MonoBehaviour
     {
 
     }

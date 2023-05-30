@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.GeneratorObjects
 {
-    public class RectSectorPlan : SectorPlan
+    public class StartLocation : PointOfInterest
     {
-        public RectSectorPlan(LevelPlan levelPlan, int id, SectorPlan parent = null) : base(levelPlan, id, parent)
+        public StartLocation(Vector3 position) : base(position, "Start Location")
         {
         }
     }

@@ -6,6 +6,8 @@ namespace ZandomLevelGenerator.GeneratorObjects
 {
     public class LineSectorPlan : SectorPlan
     {
-
+        public LineSectorPlan(LevelPlan levelPlan, int id, SectorPlan parent = null) : base(levelPlan, id, parent)
+        {
+        }
     }
 }

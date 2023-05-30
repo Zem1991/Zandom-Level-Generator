@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZemReusables;
 
 namespace ZandomLevelGenerator.Customizables
 {
-    public class SetPieceDataList 
+    [CreateAssetMenu(menuName = "Zandom2/SetPieceDataList")]
+    public class SetPieceDataList : PseudoDictionaryScriptableObject<SetPieceData>
     {
 
     }

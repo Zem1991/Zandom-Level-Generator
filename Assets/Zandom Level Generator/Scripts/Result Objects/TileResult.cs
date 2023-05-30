@@ -4,18 +4,8 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.ResultObjects
 {
-    public class TileFinal : MonoBehaviour
+    public class TileResult : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-        
-        }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }

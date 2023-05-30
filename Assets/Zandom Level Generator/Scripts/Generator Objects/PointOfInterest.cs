@@ -6,6 +6,13 @@ namespace ZandomLevelGenerator.GeneratorObjects
 {
     public class PointOfInterest
     {
+        public PointOfInterest(Vector3 position, string name)
+        {
+            Position = position;
+            Name = name;
+        }
 
+        public Vector3 Position { get; }
+        public string Name { get; }
     }
 }

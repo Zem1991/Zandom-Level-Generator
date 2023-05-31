@@ -14,6 +14,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
             Id = id;
             TilesIds = new(tilesIds);
             Parent = parent;
+            GenerationAge = parent?.GenerationAge + 1 ?? 0;
             ChildrenIds = new();
         }
 
@@ -21,6 +22,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public int Id { get; }
         public HashSet<Vector3Int> TilesIds { get; }
         public SectorPlan Parent { get; }
+        public int GenerationAge { get; }
         public HashSet<int> ChildrenIds { get; }
 
         public SectorType Type { get; set; }

@@ -18,9 +18,9 @@ namespace ZandomLevelGenerator.Enums
         /// Every generator task will be waited for, and their results will be provided after iterating over their sectors.
         /// </summary>
         TASK,
-        /// <summary>
-        /// Every sector mentioned in a task will be waited for, and their results will be provided individually.
-        /// </summary>
-        SECTOR,
+        ///// <summary>
+        ///// Every sector mentioned in a task will be waited for, and their results will be provided individually.
+        ///// </summary>
+        //SECTOR,
     }
 }

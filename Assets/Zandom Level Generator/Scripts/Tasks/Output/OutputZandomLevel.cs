@@ -4,7 +4,7 @@ using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 
-namespace ZandomLevelGenerator.OutputTasks
+namespace ZandomLevelGenerator.Tasks.Output
 {
     public class OutputZandomLevel : GeneratorTask
     {
@@ -15,17 +15,17 @@ namespace ZandomLevelGenerator.OutputTasks
 
         public LevelPlan Plan { get; }
 
-        public override IEnumerator Run()
+        public override void RunContents()
         {
             foreach (var item in Plan.Tiles)
             {
                 TilePlan plan = item.Value;
-                yield return new OutputZandomTile(ZandomLevelGenerator, plan).Run();
+                new OutputZandomTile(ZandomLevelGenerator, plan).Run();
             }
             foreach (var item in Plan.Sectors)
             {
                 SectorPlan plan = item.Value;
-                yield return new OutputZandomSector(ZandomLevelGenerator, plan).Run();
+                new OutputZandomSector(ZandomLevelGenerator, plan).Run();
             }
             foreach (var item in Plan.Obstacles)
             {

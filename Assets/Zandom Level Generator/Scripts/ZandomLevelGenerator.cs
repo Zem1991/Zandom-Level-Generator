@@ -7,7 +7,7 @@ using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Gizmos;
 using ZandomLevelGenerator.ResultObjects;
-using ZandomLevelGenerator.Factories;
+using ZandomLevelGenerator.Tools.Factories;
 
 namespace ZandomLevelGenerator
 {

@@ -7,14 +7,14 @@ namespace ZandomLevelGenerator.Helpers
 {
     public class RoomDistanceFinder
     {
-        public int Find(Room r1, Room r2)
+        public int Find(Room sector1, Room sector2)
         {
-            Room earlier = r1;
-            Room later = r2;
-            if (r1.Age > r2.Age)
+            Room earlier = sector1;
+            Room later = sector2;
+            if (sector1.Age > sector2.Age)
             {
-                earlier = r2;
-                later = r1;
+                earlier = sector2;
+                later = sector1;
             }
             int steps = 0;
             while (earlier.Age < later.Age)

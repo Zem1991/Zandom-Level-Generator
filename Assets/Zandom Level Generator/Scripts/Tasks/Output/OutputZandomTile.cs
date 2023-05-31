@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
-using ZandomLevelGenerator.Factories;
+using ZandomLevelGenerator.Tools.Factories;
 using ZandomLevelGenerator.GeneratorObjects;
 
-namespace ZandomLevelGenerator.OutputTasks
+namespace ZandomLevelGenerator.Tasks.Output
 {
     public class OutputZandomTile : GeneratorTask
     {
@@ -16,13 +16,12 @@ namespace ZandomLevelGenerator.OutputTasks
 
         public TilePlan Plan { get; }
 
-        public override IEnumerator Run()
+        public override void RunContents()
         {
             string modelName = Plan.Code;
             GameObject model = ZandomLevelGenerator.ZandomTileset.Get(modelName);
             ZandomTileFactory factory = new(Plan.Level);
             factory.Create(Plan, model);
-            yield return null;
         }
     }
 }

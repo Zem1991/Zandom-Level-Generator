@@ -4,7 +4,7 @@ using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.GeneratorObjects;
-using ZandomLevelGenerator.OutputTasks;
+using ZandomLevelGenerator.Tasks.Output;
 
 namespace ZandomLevelGenerator.GeneratorStages
 {

@@ -14,7 +14,16 @@ namespace ZemReusables
 
         public bool StopAllWhenFalse { get; }
 
-        public bool Iterate(Vector3Int start, Vector3Int size, bool boundsOnly, Func<int, int, int, bool> function)
+        public bool Iterate(Vector3Int start, Vector3Int size,
+            Func<int, int, int, bool> function)
+        {
+            return Iterate(start, size, function, function, function);
+        }
+
+        public bool Iterate(Vector3Int start, Vector3Int size,
+            Func<int, int, int, bool> areaFunction, 
+            Func<int, int, int, bool> borderFunction, 
+            Func<int, int, int, bool> cornerFunction)
         {
             int minX = start.x;
             int minZ = start.z;
@@ -28,13 +37,15 @@ namespace ZemReusables
                 {
                     for (int col = minX; col < maxX; col++)
                     {
-                        if (boundsOnly)
-                        {
-                            bool notX = col != minX && col != maxX - 1;
-                            bool notZ = row != minZ && row != maxZ - 1;
-                            bool notY = floor != minY && floor != maxY - 1;
-                            if (notX && notZ && notY) continue;
-                        }
+                        bool borderX = col == minX || col == maxX - 1;
+                        bool borderZ = row == minZ || row == maxZ - 1;
+                        bool borderY = floor == minY || floor == maxY - 1;
+                        bool atCorner = borderX && borderZ && borderY;
+                        bool atBorder = borderX || borderZ || borderY;
+                        Func<int, int, int, bool> function;
+                        if (atCorner) function = cornerFunction;
+                        else if (atBorder) function = borderFunction;
+                        else function = areaFunction;
                         bool success = function(col, floor, row);
                         if (!success && StopAllWhenFalse) return false;
                     }

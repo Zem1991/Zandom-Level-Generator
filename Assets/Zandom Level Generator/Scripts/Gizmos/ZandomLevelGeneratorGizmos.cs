@@ -39,7 +39,7 @@ namespace ZandomLevelGenerator.Gizmos
 
         private void SafetyBounds()
         {
-            if (!ZandomLevelGenerator.ZandomParameters.AvoidSizeBoundaries) return;
+            if (!ZandomLevelGenerator.ZandomParameters.AvoidSafetyBounds) return;
             int subtract = Constants.MODULE_SIZE * 2;
             int sizeInt = Constants.LEVEL_SIZE_MAX - subtract;
             Vector3 size = new(sizeInt, 0, sizeInt);

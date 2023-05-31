@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.GeneratorObjects;
 
-namespace ZandomLevelGenerator.Factories
+namespace ZandomLevelGenerator.Tools.Factories
 {
     public class SectorPlanFactory
     {

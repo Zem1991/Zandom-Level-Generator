@@ -4,29 +4,37 @@ using UnityEngine;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.ResultObjects;
 
-namespace ZandomLevelGenerator.Factories
+namespace ZandomLevelGenerator.Tools.Factories
 {
-    public class ZandomLevelFactory
+    public class ZandomSectorFactory
     {
-        public ZandomLevel Create(LevelPlan plan, Transform parent = null)
+        public ZandomSectorFactory(LevelPlan levelPlan)
         {
-            ZandomLevel result = plan.Result;
+            LevelPlan = levelPlan;
+        }
+
+        public LevelPlan LevelPlan { get; }
+
+        public ZandomSector Create(SectorPlan plan)
+        {
+            ZandomSector result = plan.Result;
             if (result)
             {
                 Object.Destroy(result.gameObject);
             }
-            result = ForceCreate(plan, parent);
+            result = ForceCreate(plan);
             return result;
         }
 
-        private ZandomLevel ForceCreate(LevelPlan plan, Transform parent = null)
+        private ZandomSector ForceCreate(SectorPlan plan)
         {
             GameObject instance = new();
             Transform transform = instance.transform;
-            Vector3 position = parent == null ? Vector3.zero : parent.position;
+            Transform parent = plan.Result.transform;
+            Vector3 position = parent.position;
             Quaternion rotation = Quaternion.identity;
             transform.SetPositionAndRotation(position, rotation);
-            ZandomLevel result = instance.AddComponent<ZandomLevel>();
+            ZandomSector result = instance.AddComponent<ZandomSector>();
             plan.Result = result;
             return result;
         }

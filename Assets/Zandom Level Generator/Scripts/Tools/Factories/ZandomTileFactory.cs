@@ -4,7 +4,7 @@ using UnityEngine;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.ResultObjects;
 
-namespace ZandomLevelGenerator.Factories
+namespace ZandomLevelGenerator.Tools.Factories
 {
     public class ZandomTileFactory
     {

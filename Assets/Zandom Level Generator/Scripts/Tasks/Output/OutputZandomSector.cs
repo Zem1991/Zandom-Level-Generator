@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
-using ZandomLevelGenerator.Factories;
+using ZandomLevelGenerator.Tools.Factories;
 using ZandomLevelGenerator.GeneratorObjects;
 
-namespace ZandomLevelGenerator.OutputTasks
+namespace ZandomLevelGenerator.Tasks.Output
 {
     public class OutputZandomSector : GeneratorTask
     {
@@ -16,11 +16,10 @@ namespace ZandomLevelGenerator.OutputTasks
 
         public SectorPlan Plan { get; }
 
-        public override IEnumerator Run()
+        public override void RunContents()
         {
             ZandomSectorFactory factory = new(Plan.Level);
             factory.Create(Plan);
-            yield return null;
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.Enums;
+using ZandomLevelGenerator.GeneratorObjects;
+using ZandomLevelGenerator.OutputTasks;
 
 namespace ZandomLevelGenerator.GeneratorStages
 {
@@ -27,11 +29,12 @@ namespace ZandomLevelGenerator.GeneratorStages
         protected override List<GeneratorTask> GetTasks()
         {
             List<GeneratorTask> result = new();
-            bool addTask = ZandomLevelGenerator.WaitType == WaitType.ZANDOM_ONLY;
-            if (addTask)
+            bool addOutputZandomLevel = ZandomLevelGenerator.WaitType == WaitType.ZANDOM_ONLY;
+            if (addOutputZandomLevel)
             {
-                //GeneratorTask task = ...
-                //result.Add(task);
+                LevelPlan levelPlan = ZandomLevelGenerator.GeneratorCoroutine.Level;
+                GeneratorTask task = new OutputZandomLevel(ZandomLevelGenerator, levelPlan);
+                result.Add(task);
             }
             return result;
         }

@@ -6,9 +6,13 @@ namespace ZandomLevelGenerator.Customizables
 {
     public abstract class GeneratorTask
     {
-        public IEnumerator Run()
+        public GeneratorTask(ZandomLevelGenerator zandomLevelGenerator)
         {
-            throw new System.NotImplementedException();
+            ZandomLevelGenerator = zandomLevelGenerator;
         }
+
+        public ZandomLevelGenerator ZandomLevelGenerator { get; }
+
+        public abstract IEnumerator Run();
     }
 }

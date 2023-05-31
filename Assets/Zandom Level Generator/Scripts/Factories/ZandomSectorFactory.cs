@@ -15,23 +15,25 @@ namespace ZandomLevelGenerator.Factories
 
         public LevelPlan LevelPlan { get; }
 
-        public ZandomSector Create(SectorPlan plan, GameObject model)
+        public ZandomSector Create(SectorPlan plan)
         {
             ZandomSector result = plan.Result;
             if (result)
             {
                 Object.Destroy(result.gameObject);
             }
-            result = ForceCreate(plan, model);
+            result = ForceCreate(plan);
             return result;
         }
 
-        private ZandomSector ForceCreate(SectorPlan plan, GameObject model)
+        private ZandomSector ForceCreate(SectorPlan plan)
         {
-            Transform parent = LevelPlan.Result.transform;
+            GameObject instance = new();
+            Transform transform = instance.transform;
+            Transform parent = plan.Result.transform;
             Vector3 position = parent.position;
             Quaternion rotation = Quaternion.identity;
-            GameObject instance = Object.Instantiate(model, position, rotation, parent);
+            transform.SetPositionAndRotation(position, rotation);
             ZandomSector result = instance.AddComponent<ZandomSector>();
             plan.Result = result;
             return result;

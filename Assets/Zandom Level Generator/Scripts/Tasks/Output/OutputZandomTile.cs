@@ -16,7 +16,7 @@ namespace ZandomLevelGenerator.Tasks.Output
 
         public TilePlan Plan { get; }
 
-        public override void RunContents()
+        protected override void RunContents()
         {
             string modelName = Plan.Code;
             GameObject model = ZandomLevelGenerator.ZandomTileset.Get(modelName);

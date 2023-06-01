@@ -15,7 +15,7 @@ namespace ZandomLevelGenerator.Tasks.Output
 
         public LevelPlan Plan { get; }
 
-        public override void RunContents()
+        protected override void RunContents()
         {
             foreach (var item in Plan.Tiles)
             {

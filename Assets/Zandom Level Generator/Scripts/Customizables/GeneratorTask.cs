@@ -27,6 +27,6 @@ namespace ZandomLevelGenerator.Customizables
             }
         }
         
-        public abstract void RunContents();
+        protected abstract void RunContents();
     }
 }

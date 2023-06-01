@@ -13,17 +13,17 @@ namespace ZandomLevelGenerator
 {
     public class ZandomLevelGenerator : MonoBehaviour
     {
-        [Header("References: Parameters")]
-        private readonly GeneratorStyle zandomStyle;
-        private readonly StyleParameters zandomParameters;
-        private readonly TileSet zandomTileset;
-        private readonly SetPieceDataList zandomSetPieceList;
-        private readonly ObstacleDataList zandomObstacleList;
+        [Header("References")]
+        [SerializeField] private GeneratorStyle zandomStyle;
+        [SerializeField] private StyleParameters zandomParameters;
+        [SerializeField] private TileSet zandomTileset;
+        [SerializeField] private SetPieceDataList zandomSetPieceList;
+        [SerializeField] private ObstacleDataList zandomObstacleList;
 
         [Header("Settings")]
-        private readonly string seed = null;
-        [Min(1)] private readonly int maxAttempts = 10;
-        private readonly WaitType waitType;
+        [SerializeField] private string seed = null;
+        [SerializeField][Min(1)] private int maxAttempts = 10;
+        [SerializeField] private WaitType waitType;
 
         [Header("Runtime")]
         [SerializeField] private bool isRunning;

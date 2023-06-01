@@ -133,6 +133,8 @@ GameObject:
   m_Component:
   - component: {fileID: 262048963}
   - component: {fileID: 262048964}
+  - component: {fileID: 262048966}
+  - component: {fileID: 262048965}
   m_Layer: 0
   m_Name: Zandom Level Generator
   m_TagString: Untagged
@@ -167,9 +169,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f381941bf52261640b9dad7aa942e19f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zandomStyle: {fileID: 262048965}
+  zandomParameters: {fileID: 11400000, guid: 6d4ed12806b95bd4cb535dc32cfa41a0, type: 2}
+  zandomTileset: {fileID: 11400000, guid: 2b4a37ad6cf70684aa2f8a0cf9ede01d, type: 2}
+  zandomSetPieceList: {fileID: 0}
+  zandomObstacleList: {fileID: 0}
+  seed: 
+  maxAttempts: 10
+  waitType: 0
   isRunning: 0
   timeTaken: 0
   result: {fileID: 0}
+--- !u!114 &262048965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262048959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f66bbce3c3b3db4a85dc37bb9e7cd48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &262048966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262048959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1511f9373f12ed47900829dfb06b878, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1694396883
 GameObject:
   m_ObjectHideFlags: 0

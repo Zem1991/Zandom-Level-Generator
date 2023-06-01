@@ -39,6 +39,7 @@ namespace ZandomLevelGenerator.Gizmos
 
         private void SafetyBounds()
         {
+            if (!ZandomLevelGenerator.ZandomParameters) return;
             if (!ZandomLevelGenerator.ZandomParameters.AvoidSafetyBounds) return;
             int subtract = Constants.MODULE_SIZE * 2;
             int sizeInt = Constants.LEVEL_SIZE_MAX - subtract;
@@ -52,6 +53,7 @@ namespace ZandomLevelGenerator.Gizmos
 
         private void AllStates()
         {
+            if (ZandomLevelGenerator.GeneratorCoroutine == null) return;
             if (ZandomLevelGenerator.GeneratorCoroutine.Stage == null) return;
             int startIndex = (int)ZandomStateName.STEP01;
             int endIndex = (int)ZandomStateName.END;

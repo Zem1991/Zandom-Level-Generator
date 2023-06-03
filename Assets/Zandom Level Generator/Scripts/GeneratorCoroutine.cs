@@ -97,7 +97,7 @@ namespace ZandomLevelGenerator
             ZandomLevelGenerator.RegisterNewAttempt(Level);
             if (Attempts > ZandomLevelGenerator.MaxAttempts)
             {
-                Debug.LogWarning($"Too many attempts!");
+                Debug.LogError($"Too many attempts!");
                 Stage = null;
             }
             else

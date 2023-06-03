@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,13 @@ namespace ZandomLevelGenerator.Tasks.Common
 
         protected override void RunContents()
         {
-            new PlaceObstacles(ZandomLevelGenerator, Constants.ZandomStartLocation, PlaceObstaclesParameters).Run();
+            PlaceObstacles placeObstacles = new PlaceObstacles(ZandomLevelGenerator, Constants.ZandomStartLocation, PlaceObstaclesParameters);
+            placeObstacles.Run();
+            Vector3 positionFunction()
+            {
+                return placeObstacles.NewObstacles[0].Position;
+            }
+            new PlaceStartLocation(ZandomLevelGenerator, positionFunction).Run();
         }
     }
 }

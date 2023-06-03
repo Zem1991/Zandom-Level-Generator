@@ -1,8 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
+using ZandomLevelGenerator.Tools.Checkers;
+using ZandomLevelGenerator.Tools.Factories;
+using ZandomLevelGenerator.Tools.Helpers;
 
 namespace ZandomLevelGenerator.Tasks.Common
 {
@@ -26,20 +30,19 @@ namespace ZandomLevelGenerator.Tasks.Common
             List<TilePlan> validTiles = Parameters.ValidTilesFunction(ZandomLevelGenerator);
             Queue<TilePlan> validTilesQueue = new(validTiles);
             //while (!Parameters.TaskStopFunction(ZandomLevelGenerator, current) && NewRooms.Count > 0)
-            while (NewObstacles.Count <= amount)
+            while (NewObstacles.Count < amount && validTilesQueue.Count > 0)
             {
                 TilePlan tile = validTilesQueue.Dequeue();
-                RunForTile(data, tile);
+                bool canUseTile = TryTile(data, tile, out HashSet<Vector3Int> coordinates);
+                if (!canUseTile) continue;
+                ObstacleFactory factory = new(ZandomLevelGenerator.GeneratorCoroutine.Level);
+                int obstacleId = factory.NextId();
+                Obstacle obstacle = factory.Create(obstacleId, coordinates, data);
+                NewObstacles.Add(obstacleId, obstacle);
             }
         }
 
-        private void RunForTile(ObstacleData data, TilePlan tile)
-        {
-            bool gotTiles = TryGetTiles(data, tile, out List<TilePlan> tiles);
-            if (!gotTiles) return;
-        }
-
-        private bool TryGetTiles(ObstacleData data, TilePlan tile, out List<TilePlan> tiles)
+        private bool TryTile(ObstacleData data, TilePlan tile, out HashSet<Vector3Int> coordinates)
         {
             Vector3Int start = tile.Coordinates;
             Vector3Int size = data.Size;
@@ -48,21 +51,9 @@ namespace ZandomLevelGenerator.Tasks.Common
             //int extraY = LevelGenerator.SeededRandom.Range(padding.y, room.Size.y - size.y - padding.y + 1);
             //position.x += extraX;
             //position.y += extraY;
-            List<TilePlan> foundTiles = new();
-            bool addTile(int col, int floor, int row)
-            {
-                Vector3Int coordinates = new(col, floor, row);
-                bool hasTile = ZandomLevelGenerator.GeneratorCoroutine.Level.Tiles.TryGetValue(coordinates, out TilePlan tile);
-                if (!hasTile) return false;
-                if (!tile.Type.IsFloor()) return false;
-                if (tile.HasObstacle()) return false;
-                foundTiles.Add(tile);
-                return true;
-            }
-            TileMapIterator iterator = new();
-            bool result = iterator.IterateAll(start, size, addTile);
-            tiles = new(foundTiles);
-            return result;
+            coordinates = new CoordinatesGetter().Get(start, size);
+            bool canBuild = new AreaAvailabilityChecker(ZandomLevelGenerator.GeneratorCoroutine.Level).IsAvailableForObstacle(coordinates);
+            return canBuild;
         }
     }
 }

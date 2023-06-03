@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using ZandomLevelGenerator.GeneratorObjects;
 
@@ -25,15 +26,21 @@ namespace ZandomLevelGenerator.Tools.Helpers
             return result;
         }
 
-        public Vector3 GetCenter(List<TilePlan> tiles)
+        public Vector3 GetCenter(IEnumerable<TilePlan> tiles)
+        {
+            IEnumerable<Vector3Int> coordinates = tiles.Select(item => item.Coordinates);
+            return GetCenter(coordinates);
+        }
+
+        public Vector3 GetCenter(IEnumerable<Vector3Int> coordinates)
         {
             Vector3 result = new();
-            foreach (var item in tiles)
+            foreach (var item in coordinates)
             {
-                result.x += item.Coordinates.x;
-                result.z += item.Coordinates.y;
+                result.x += item.x;
+                result.z += item.y;
             }
-            result /= tiles.Count;
+            result /= coordinates.Count();
             return result;
         }
     }

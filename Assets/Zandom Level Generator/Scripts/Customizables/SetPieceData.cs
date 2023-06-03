@@ -8,12 +8,12 @@ namespace ZandomLevelGenerator.Customizables
     public class SetPieceData : ScriptableObject
     {
         [Header("Settings")]
-        [TextArea] private string layout;
-        private Vector2Int size;
-        private bool addBorders;
+        [SerializeField][TextArea] private string layout;
+        [SerializeField] private Vector2Int size;
+        [SerializeField] private bool addBorders;
 
-        public string Layout { get => layout; set => layout = value; }
-        public Vector2Int Size { get => size; set => size = value; }
-        public bool AddBorders { get => addBorders; set => addBorders = value; }
+        public string Layout { get => layout; }
+        public Vector2Int Size { get => size; }
+        public bool AddBorders { get => addBorders; }
     }
 }

@@ -13,10 +13,11 @@ namespace ZandomTemplate.Styles
         {
             message = null;
             int sectorCount = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors.Count;
-            int sectorCountTarget = 10;
-            bool result = sectorCount >= sectorCountTarget;
-            if (!result) message = $"Sector count below target value: {sectorCount}/{sectorCountTarget}";
-            return result;
+            ZandomTemplateStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
+            int sectorCountTarget = zandomTemplateStyleParameters.SectorCountTarget;
+            bool sectorCountOk = sectorCount >= sectorCountTarget;
+            if (!sectorCountOk) message = $"Sector count below target value: {sectorCount}/{sectorCountTarget}.";
+            return sectorCountOk;
         }
 
         public override List<GeneratorTask> Step01_Tasks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
@@ -45,14 +46,18 @@ namespace ZandomTemplate.Styles
 
         public override bool Step03_Checks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, out string message)
         {
-            throw new System.NotImplementedException();
+            message = null;
+            bool startLocationOk = zandomLevelGenerator.GeneratorCoroutine.Level.StartLocation != null;
+            if (!startLocationOk) message = $"Start Location was not set.";
+            return startLocationOk;
         }
 
         public override List<GeneratorTask> Step03_Tasks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
         {
+            PlaceObstaclesParameters parameters = new ZandomTemplatePlaceStartLocationWithObstacleParameters(zandomLevelGenerator).CreateParameters();
             List<GeneratorTask> result = new()
             {
-
+                new PlaceStartLocationWithObstacle(zandomLevelGenerator, parameters),
             };
             return result;
         }

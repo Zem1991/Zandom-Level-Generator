@@ -8,14 +8,20 @@ namespace ZandomLevelGenerator.Customizables
     public class ObstacleData : ScriptableObject
     {
         [Header("Settings")]
-        private readonly bool canPlaceWithinStartPosition = true;
-        private readonly Vector2Int size = new(4, 4);
-        private readonly Vector2Int padding = new(0, 0);
-        private readonly GameObject gameObject;
+        [SerializeField] private GameObject gameObject;
+        [SerializeField] private bool canPlaceWithinStartPosition = true;
+        [SerializeField] private Vector3Int size = new(4, 0, 4);
+        [SerializeField] private Vector3Int padding = new(0, 0, 0);
+        [SerializeField] private bool normalSectorAllowed = true;
+        [SerializeField] private bool importantSectorAllowed = false;
+        [SerializeField] private bool secretSectorAllowed = false;
 
-        public bool CanPlaceWithinStartPosition => canPlaceWithinStartPosition;
-        public Vector2Int Size => size;
-        public Vector2Int Padding => padding;
-        public GameObject GameObject => gameObject;
+        public GameObject GameObject { get => gameObject; }
+        public bool CanPlaceWithinStartPosition { get => canPlaceWithinStartPosition; }
+        public Vector3Int Size { get => size; }
+        public Vector3Int Padding { get => padding; }
+        public bool NormalSectorAllowed { get => normalSectorAllowed; }
+        public bool ImportantSectorAllowed { get => importantSectorAllowed; }
+        public bool SecretSectorAllowed { get => secretSectorAllowed; }
     }
 }

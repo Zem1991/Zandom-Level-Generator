@@ -9,7 +9,7 @@ namespace ZemReusables
         [Header("List")]
         [SerializeField] protected List<T> items = new();
 
-        public T Get(string name)
+        public virtual T Get(string name)
         {
             return items.Find(item => item.name == name);
         }

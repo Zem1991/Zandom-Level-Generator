@@ -82,8 +82,8 @@ namespace ZandomTemplate.Styles
             {
                 Dictionary<int, SectorPlan> sectors = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors;
                 ZandomTemplateStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
-                int roomCountTarget = zandomTemplateStyleParameters.RoomCountTarget;
-                bool stop = sectors.Count >= roomCountTarget;
+                int sectorCountTarget = zandomTemplateStyleParameters.SectorCountTarget;
+                bool stop = sectors.Count >= sectorCountTarget;
                 return stop;
             }
             return result;

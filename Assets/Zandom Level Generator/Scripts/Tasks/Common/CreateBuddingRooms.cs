@@ -29,7 +29,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             RootSectors = Parameters.RootRoomsFunction(ZandomLevelGenerator);
             NewRooms = new(RootSectors);
             RoomPlan current = null;
-            while (!Parameters.TaskStopFunction(ZandomLevelGenerator, current) && NewRooms.Count() > 0)
+            while (!Parameters.TaskStopFunction(ZandomLevelGenerator, current) && NewRooms.Count > 0)
             {
                 current = NewRooms.Dequeue();
                 if (!IsCurrentValid(current)) continue;
@@ -80,7 +80,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             RoomPlan result = null;
             LevelPlan levelPlan = ZandomLevelGenerator.GeneratorCoroutine.Level;
             HashSet<Vector3Int> coordinates = new CoordinatesGetter().Get(position, size);
-            bool canBuild = new AreaAvailabilityChecker(levelPlan).IsAvailable(coordinates);
+            bool canBuild = new AreaAvailabilityChecker(levelPlan).IsAvailableForTiles(coordinates);
             if (canBuild)
             {
                 RoomPlanFactory factory = new(levelPlan);

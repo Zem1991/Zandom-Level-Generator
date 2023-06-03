@@ -13,6 +13,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
             Level = levelPlan;
             Coordinates = coordinates;
             SectorsIds = new();
+            ObstacleId = -1;
         }
 
         public LevelPlan Level { get; }
@@ -27,6 +28,11 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public override string ToString()
         {
             return $"TilePlan {Coordinates} \'{Type}\' {Code}";
+        }
+
+        public bool HasObstacle()
+        {
+            return ObstacleId >= 0;
         }
     }
 }

@@ -25,6 +25,7 @@ namespace ZandomLevelGenerator.Customizables
             {
                 yield return null;
             }
+            Debug.Log($"Finished task {this}");
         }
         
         protected abstract void RunContents();

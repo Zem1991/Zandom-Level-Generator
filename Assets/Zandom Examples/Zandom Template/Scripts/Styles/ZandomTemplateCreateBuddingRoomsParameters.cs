@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using UnityEngine;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tasks.Common;
+using ZandomTemplate.Customizables;
 
 namespace ZandomTemplate.Styles
 {
@@ -50,7 +51,8 @@ namespace ZandomTemplate.Styles
         {
             Vector3Int result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
             {
-                Vector3Int result = ZandomLevelGenerator.ZandomParameters.GetValueFromJsonParameters<Vector3Int>("BuddingRoomSize");
+                ZandomTemplateStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
+                Vector3Int result = zandomTemplateStyleParameters.BuddingRoomSize;
                 return result;
             }
             return result;
@@ -78,7 +80,11 @@ namespace ZandomTemplate.Styles
         {
             bool result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
             {
-                return false;
+                Dictionary<int, SectorPlan> sectors = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors;
+                ZandomTemplateStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
+                int roomCountTarget = zandomTemplateStyleParameters.RoomCountTarget;
+                bool stop = sectors.Count >= roomCountTarget;
+                return stop;
             }
             return result;
         }

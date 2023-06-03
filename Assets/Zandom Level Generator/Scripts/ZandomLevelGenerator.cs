@@ -66,6 +66,7 @@ namespace ZandomLevelGenerator
 
         private void GenerateStart()
         {
+            Debug.Log($"ZandomLevelGenerator GenerateStart");
             IsRunning = true;
             GeneratorCoroutine = new(this);
             GeneratorCoroutine.OnFinish += GenerateFinish;
@@ -74,7 +75,6 @@ namespace ZandomLevelGenerator
             TimeTaken = 0F;
             IEnumerator coroutine = GeneratorCoroutine.Run();
             StartCoroutine(coroutine);
-            Debug.Log($"ZandomLevelGenerator GenerateStart");
         }
 
         private void GenerateFinish()

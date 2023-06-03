@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.Tasks.Common;
+using ZandomTemplate.Customizables;
 
 namespace ZandomTemplate.Styles
 {
@@ -20,8 +21,8 @@ namespace ZandomTemplate.Styles
 
         public override List<GeneratorTask> Step01_Tasks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
         {
-            //TODO: add a string/json field in ZandomParameters, and a method to retrive its values.
-            Vector3Int centralRoomSize = zandomLevelGenerator.ZandomParameters.GetValueFromJsonParameters<Vector3Int>("CentralRoomSize");
+            ZandomTemplateStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
+            Vector3Int centralRoomSize = zandomTemplateStyleParameters.CentralRoomSize;
             CreateBuddingRoomsParameters parameters = new ZandomTemplateCreateBuddingRoomsParameters(zandomLevelGenerator).CreateParameters();
             List<GeneratorTask> result = new()
             {

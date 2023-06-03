@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zandomStyle: {fileID: 262048965}
-  zandomParameters: {fileID: 11400000, guid: 6d4ed12806b95bd4cb535dc32cfa41a0, type: 2}
+  zandomParameters: {fileID: 11400000, guid: 5e172f66c88193b40b8f1dfc0984f98b, type: 2}
   zandomTileset: {fileID: 11400000, guid: 2b4a37ad6cf70684aa2f8a0cf9ede01d, type: 2}
   zandomSetPieceList: {fileID: 0}
   zandomObstacleList: {fileID: 0}

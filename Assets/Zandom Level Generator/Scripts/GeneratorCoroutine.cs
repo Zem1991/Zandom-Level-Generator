@@ -8,12 +8,13 @@ using ZemReusables;
 
 namespace ZandomLevelGenerator
 {
+    [Serializable]
     public class GeneratorCoroutine
     {
         [Header("RNG")]
-        [SerializeField] private SeededRandom seededRandom;
         [SerializeField] private string currentSeed;
         [SerializeField] private int currentSeedInt;
+        [SerializeField] private SeededRandom seededRandom;
 
         [Header("Zandom")]
         [SerializeField] private int attempts;
@@ -28,9 +29,9 @@ namespace ZandomLevelGenerator
         public ZandomLevelGenerator ZandomLevelGenerator { get; }
         public Action OnFinish { get; set; }
 
-        public SeededRandom SeededRandom { get => seededRandom; private set => seededRandom = value; }
         public string CurrentSeed { get => currentSeed; private set => currentSeed = value; }
         public int CurrentSeedInt { get => currentSeedInt; private set => currentSeedInt = value; }
+        public SeededRandom SeededRandom { get => seededRandom; private set => seededRandom = value; }
 
         public int Attempts { get => attempts; private set => attempts = value; }
         public LevelPlan Level { get => level; private set => level = value; }
@@ -73,7 +74,7 @@ namespace ZandomLevelGenerator
                 {
                     DebugMessageSuccess(message);
                     Stage = Stage.NextIfSuccess();
-                    if (Stage != null) Debug.Log($"Entering state {Stage.Name}...");
+                    if (Stage != null) Debug.Log($"Entering state {Stage.Name}");
                 }
                 else
                 {

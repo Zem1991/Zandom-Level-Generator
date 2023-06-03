@@ -1,0 +1,13 @@
+{
+	"CentralRoomSize":{
+		"x": 12,
+		"y": 0,
+		"z": 12
+	},
+	"BuddingRoomSize":{
+		"x": 8,
+		"y": 0,
+		"z": 8
+	},
+	"RoomCountTarget": 15
+}

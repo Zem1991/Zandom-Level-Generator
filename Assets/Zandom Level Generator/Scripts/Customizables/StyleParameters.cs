@@ -1,25 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using ZandomLevelGenerator.Components;
 
 namespace ZandomLevelGenerator.Customizables
 {
     [CreateAssetMenu(menuName = "Zandom2/StyleParameters")]
     public class StyleParameters : ScriptableObject
     {
-        [Header("Level Size")]
-        [SerializeField] private bool avoidSafetyBounds = true;
-        [SerializeField][Range(0F, 1F)] private float levelSizeTarget = 0.5F;
+        [Header("Level Size Options")]
+        [SerializeField] private Vector3Int levelSize = new(80, 80);
+        [SerializeField] private Vector3Int moduleSize = new(10, 10);
+        [SerializeField] private Vector3Int safetySize = new(10, 10);
 
-        [Header("Room Size")]
-        [SerializeField] private Vector3Int centralRoomSize = new(16, 16);
-        [SerializeField] private Vector3Int buddingRoomSize = new(10, 10);
+        [Header("JSON Parameters")]
+        [SerializeField] private TextAsset jsonParameters;
 
-        public bool AvoidSafetyBounds { get => avoidSafetyBounds; }
-        public float LevelSizeTarget { get => levelSizeTarget; }
+        public Vector3Int LevelSize { get => levelSize; }
+        public Vector3Int ModuleSize { get => moduleSize; }
+        public Vector3Int SafetySize { get => safetySize; }
+        public TextAsset JsonParameters { get => jsonParameters; }
 
-        //TODO: add a string/json field in ZandomParameters, and a method to retrive its values.
-        public Vector3Int CentralRoomSize { get => centralRoomSize; }
-        public Vector3Int BuddingRoomSize { get => buddingRoomSize; }
+        public T GetValueFromJsonParameters<T>(string key)
+        {
+            string json = JsonParameters.ToString();
+            Dictionary<string, string> jsonParameters = JsonUtility.FromJson<Dictionary<string, string>>(json);
+            jsonParameters.TryGetValue(key, out string value);
+            T result = (T)Convert.ChangeType(value, typeof(T));
+            return result;
+        }
     }
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.GeneratorStages;
-using ZandomLevelGenerator.ResultObjects;
 using ZemReusables;
 
 namespace ZandomLevelGenerator

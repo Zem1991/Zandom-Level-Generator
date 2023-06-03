@@ -32,10 +32,10 @@ namespace ZandomLevelGenerator.Tools.Factories
             return result;
         }
         
-        public SectorPlan Create(int id, Vector3Int start, Vector3Int size, SectorPlan parent = null)
-        {
-            HashSet<Vector3Int> tilesIds = new CoordinatesGetter().Get(start, size);
-            return Create(id, tilesIds, parent);
-        }
+        //public SectorPlan Create(int id, Vector3Int start, Vector3Int size, SectorPlan parent = null)
+        //{
+        //    HashSet<Vector3Int> tilesIds = new CoordinatesGetter().Get(start, size);
+        //    return Create(id, tilesIds, parent);
+        //}
     }
 }

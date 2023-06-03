@@ -43,6 +43,7 @@ namespace ZandomLevelGenerator
         public int MaxAttempts => maxAttempts;
         public WaitType WaitType => waitType;
 
+        //public Dictionary<string, string> JsonParameters { get; private set; }
         public bool IsRunning { get => isRunning; private set => isRunning = value; }
         public GeneratorCoroutine GeneratorCoroutine { get => generatorCoroutine; private set => generatorCoroutine = value; }
         public DateTime StartTime { get => startTime; private set => startTime = value; }
@@ -86,6 +87,16 @@ namespace ZandomLevelGenerator
             TimeTaken = (float)(tmElapsed.TotalMilliseconds / 1000F);
             Debug.Log($"ZandomLevelGenerator GenerateFinish after {TimeTaken} seconds");
         }
+
+        //private void Awake()
+        //{
+        //    string jsonParameters = ZandomParameters.JsonParameters.ToString();
+        //    bool hasJson = string.IsNullOrEmpty(jsonParameters);
+        //    if (hasJson)
+        //    {
+        //        JsonParameters = JsonUtility.FromJson<Dictionary<string, string>>(jsonParameters);
+        //    }
+        //}
 
         private void OnDrawGizmos()
         {

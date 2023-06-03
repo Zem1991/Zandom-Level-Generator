@@ -40,14 +40,16 @@ namespace ZandomLevelGenerator.Gizmos
         private void SafetyBounds()
         {
             if (!ZandomLevelGenerator.ZandomParameters) return;
-            if (!ZandomLevelGenerator.ZandomParameters.AvoidSafetyBounds) return;
-            int subtract = Constants.MODULE_SIZE * 2;
-            int sizeInt = Constants.LEVEL_SIZE_MAX - subtract;
+            Vector3Int levelSize = ZandomLevelGenerator.ZandomParameters.LevelSize;
+            //Vector3Int moduleSize = ZandomLevelGenerator.ZandomParameters.ModuleSize;
+            Vector3Int safetySize = ZandomLevelGenerator.ZandomParameters.SafetySize;
+            int subtract = safetySize.x * 2;
+            int sizeInt = levelSize.x - subtract;
             Vector3 size = new(sizeInt, 0, sizeInt);
             Vector3 center = size / 2F;
             center += ZandomLevelGenerator.transform.position;
-            center.x += Constants.MODULE_SIZE - 0.5F;
-            center.z += Constants.MODULE_SIZE - 0.5F;
+            center.x += safetySize.x - 0.5F;
+            center.z += safetySize.x - 0.5F;
             DrawCube(Constants.SafetyBoundsColor, center, size);
         }
 

@@ -23,7 +23,6 @@ namespace ZandomLevelGenerator.Tools.Factories
         
         public RoomPlan Create(int id, Vector3Int start, Vector3Int size, SectorPlan parent = null)
         {
-            HashSet<Vector3Int> tilesIds = new CoordinatesGetter().Get(start, size);
             bool exists = LevelPlan.Sectors.TryGetValue(id, out SectorPlan sector);
             RoomPlan result = sector as RoomPlan;
             if (!exists || result == null)
@@ -32,6 +31,7 @@ namespace ZandomLevelGenerator.Tools.Factories
                 result = new RoomPlan(LevelPlan, id, start, size, parent);
                 LevelPlan.Sectors.Add(id, result);
             }
+            HashSet<Vector3Int> tilesIds = new CoordinatesGetter().Get(start, size);
             new SectorToTilesLinker(LevelPlan).Link(id, tilesIds);
             new AreaBorderCornerBuilder(result).Rectangle(start, size);
             return result;

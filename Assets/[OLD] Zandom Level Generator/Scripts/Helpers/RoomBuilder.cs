@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.BaseObjects;
-using ZandomLevelGenerator.Components;
 using ZandomLevelGenerator.Enums;
 
 namespace ZandomLevelGenerator.Helpers

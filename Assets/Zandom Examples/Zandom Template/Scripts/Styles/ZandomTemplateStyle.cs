@@ -21,12 +21,12 @@ namespace ZandomTemplate.Styles
         public override List<GeneratorTask> Step01_Tasks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
         {
             //TODO: add a string/json field in ZandomParameters, and a method to retrive its values.
-            Vector3Int centralRoomSize = zandomLevelGenerator.ZandomParameters.CentralRoomSize;
-            Vector3Int buddingRoomSize = zandomLevelGenerator.ZandomParameters.BuddingRoomSize;
+            Vector3Int centralRoomSize = zandomLevelGenerator.ZandomParameters.GetValueFromJsonParameters<Vector3Int>("CentralRoomSize");
+            CreateBuddingRoomsParameters parameters = new ZandomTemplateCreateBuddingRoomsParameters(zandomLevelGenerator).CreateParameters();
             List<GeneratorTask> result = new()
             {
                 new CreateCentralRoom(zandomLevelGenerator, centralRoomSize),
-                new CreateBuddingRooms(zandomLevelGenerator, 1, buddingRoomSize),
+                new CreateBuddingRooms(zandomLevelGenerator, parameters),
             };
             return result;
         }

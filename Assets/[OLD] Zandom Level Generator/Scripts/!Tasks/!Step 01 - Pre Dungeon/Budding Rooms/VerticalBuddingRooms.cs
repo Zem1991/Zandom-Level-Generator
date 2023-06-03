@@ -15,11 +15,8 @@ namespace ZandomLevelGenerator.Task
         {
             Vector2Int referencePosition = parent.Start;
             Vector2Int referenceSize = parent.Size;
-            //int centeredX = referencePosition.x + (referenceSize.x / 2) - (size.x / 2);
             int roomX = referenceSize.x - size.x;
-            //roomX /= 2;
             roomX = LevelGenerator.SeededRandom.Range(0, roomX);
-            //roomX *= 2;
             int randomX = referencePosition.x + roomX;
             int minZ = referencePosition.y - size.y;
             int maxZ = referencePosition.y + referenceSize.y;

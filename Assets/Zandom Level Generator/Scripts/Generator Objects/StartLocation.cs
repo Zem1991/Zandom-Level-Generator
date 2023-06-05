@@ -6,7 +6,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
 {
     public class StartLocation : PointOfInterest
     {
-        public StartLocation(Vector3 position) : base(position, "Start Location")
+        public StartLocation(LevelPlan levelPlan, Vector3 position, Obstacle obstacle = null) : base(levelPlan, 0, Constants.ZandomStartLocation, position, obstacle)
         {
         }
     }

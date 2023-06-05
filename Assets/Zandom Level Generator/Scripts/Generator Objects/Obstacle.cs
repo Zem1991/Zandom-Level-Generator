@@ -15,6 +15,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
             TilesIds = tilesIds;
             Data = data;
             Position = new PositionGetter().GetCenter(tilesIds);
+            PointOfInterestId = -1;
         }
 
         public LevelPlan LevelPlan { get; }
@@ -22,5 +23,17 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public HashSet<Vector3Int> TilesIds { get; }
         public ObstacleData Data { get; }
         public Vector3 Position { get; }
+
+        public int PointOfInterestId { get; set; }
+
+        public override string ToString()
+        {
+            return $"Obstacle #{Id} \'{Data.GameObject.name}\'";
+        }
+
+        public bool HasPointOfInterest()
+        {
+            return PointOfInterestId >= 0;
+        }
     }
 }

@@ -17,5 +17,10 @@ namespace ZandomLevelGenerator.GeneratorObjects
 
         public Vector3Int Start { get; }
         public Vector3Int Size { get; }
+
+        public override string ToString()
+        {
+            return $"RoomPlan #{Id} \'{Type}\' {Code}";
+        }
     }
 }

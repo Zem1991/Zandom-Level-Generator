@@ -1,8 +1,8 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
+using ZandomLevelGenerator.GeneratorObjects;
 
 namespace ZandomLevelGenerator.Tasks.Common
 {
@@ -17,13 +17,19 @@ namespace ZandomLevelGenerator.Tasks.Common
 
         protected override void RunContents()
         {
-            PlaceObstacles placeObstacles = new PlaceObstacles(ZandomLevelGenerator, Constants.ZandomStartLocation, PlaceObstaclesParameters);
+            PlaceObstacles placeObstacles = new(ZandomLevelGenerator, Constants.ZandomStartLocation, PlaceObstaclesParameters);
             placeObstacles.Run();
+            Obstacle obstacle = placeObstacles.NewObstacles[0];
+            //TODO: consider creating a PlaceStartLocationParameters struct too
             Vector3 positionFunction()
             {
-                return placeObstacles.NewObstacles[0].Position;
+                return obstacle.Position;
             }
-            new PlaceStartLocation(ZandomLevelGenerator, positionFunction).Run();
+            Obstacle obstacleFunction()
+            {
+                return obstacle;
+            }
+            new PlaceStartLocation(ZandomLevelGenerator, positionFunction, obstacleFunction).Run();
         }
     }
 }

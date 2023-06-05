@@ -83,7 +83,7 @@ namespace ZandomLevelGenerator.Gizmos
             StartLocation startLocation = ZandomLevelGenerator?.GeneratorCoroutine?.Level?.StartLocation;
             if (startLocation == null) return;
             Vector3 center = ZandomLevelGenerator.transform.position;
-            center += ZandomLevelGenerator.GeneratorCoroutine.Level.StartLocation.Position;
+            center += startLocation.Position;
             float radius = Constants.EntranceSafetyRadius;
             DrawSphere(Constants.EntranceZoneColor, center, radius);
         }

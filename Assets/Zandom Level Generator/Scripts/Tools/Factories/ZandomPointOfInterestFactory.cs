@@ -7,18 +7,18 @@ using ZandomLevelGenerator.Tools.Helpers;
 
 namespace ZandomLevelGenerator.Tools.Factories
 {
-    public class ZandomSectorFactory
+    public class ZandomPointOfInterestFactory
     {
-        public ZandomSectorFactory(LevelPlan levelPlan)
+        public ZandomPointOfInterestFactory(LevelPlan levelPlan)
         {
             LevelPlan = levelPlan;
         }
 
         public LevelPlan LevelPlan { get; }
 
-        public ZandomSector Create(SectorPlan plan)
+        public ZandomPointOfInterest Create(PointOfInterest plan)
         {
-            ZandomSector result = plan.Result;
+            ZandomPointOfInterest result = plan.Result;
             if (result)
             {
                 Object.Destroy(result.gameObject);
@@ -26,22 +26,19 @@ namespace ZandomLevelGenerator.Tools.Factories
             result = ForceCreate(plan);
             return result;
         }
-
-        private ZandomSector ForceCreate(SectorPlan plan)
+        
+        private ZandomPointOfInterest ForceCreate(PointOfInterest plan)
         {
-            LevelPlan levelPlan = plan.Level;
             GameObject instance = new();
             Transform instanceTransform = instance.transform;
-            //Transform parent = plan.Parent?.Result?.transform ?? plan.Level?.Result?.transform;
-            Transform parent = levelPlan.Result.transform;
-            Vector3 position = parent.position;
+            Transform parent = LevelPlan.Result.transform;
+            Vector3 position = parent.position + plan.Position;
             Quaternion rotation = Quaternion.identity;
             instanceTransform.SetPositionAndRotation(position, rotation);
             instanceTransform.parent = parent;
-            ZandomSector result = instance.AddComponent<ZandomSector>();
+            ZandomPointOfInterest result = instance.AddComponent<ZandomPointOfInterest>();
             result.PseudoConstructor(plan);
             plan.Result = result;
-            new SectorToTilesLinker(levelPlan).LinkTransforms(result);
             return result;
         }
     }

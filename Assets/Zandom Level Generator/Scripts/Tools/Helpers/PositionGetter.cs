@@ -38,7 +38,7 @@ namespace ZandomLevelGenerator.Tools.Helpers
             foreach (var item in coordinates)
             {
                 result.x += item.x;
-                result.z += item.y;
+                result.z += item.z;
             }
             result /= coordinates.Count();
             return result;

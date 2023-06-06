@@ -22,5 +22,10 @@ namespace ZandomLevelGenerator.GeneratorObjects
 
         public StartLocation StartLocation { get; set; }
         public ZandomLevel Result { get; set; }
+
+        public override string ToString()
+        {
+            return $"LevelPlan";
+        }
     }
 }

@@ -10,7 +10,7 @@ namespace ZandomLevelGenerator.Customizables
         [Header("Settings")]
         [SerializeField] private GameObject gameObject;
         [SerializeField] private bool canPlaceWithinStartPosition = true;
-        [SerializeField] private Vector3Int size = new(4, 0, 4);
+        [SerializeField] private Vector3Int size = new(4, 1, 4);
         [SerializeField] private Vector3Int padding = new(0, 0, 0);
         [SerializeField] private bool normalSectorAllowed = true;
         [SerializeField] private bool importantSectorAllowed = false;

@@ -21,21 +21,21 @@ namespace ZandomLevelGenerator.Tasks.Output
             {
                 TilePlan plan = item.Value;
                 new OutputZandomTile(ZandomLevelGenerator, plan).RunContents();
-                //new OutputZandomTile(ZandomLevelGenerator, plan).Run();
             }
             foreach (var item in Plan.Sectors)
             {
                 SectorPlan plan = item.Value;
                 new OutputZandomSector(ZandomLevelGenerator, plan).RunContents();
-                //new OutputZandomSector(ZandomLevelGenerator, plan).Run();
             }
             foreach (var item in Plan.Obstacles)
             {
-                //TODO:
+                Obstacle plan = item.Value;
+                new OutputZandomObstacle(ZandomLevelGenerator, plan).RunContents();
             }
             foreach (var item in Plan.PointsOfInterest)
             {
-                //TODO:
+                PointOfInterest plan = item.Value;
+                new OutputZandomPointOfInterest(ZandomLevelGenerator, plan).RunContents();
             }
         }
     }

@@ -31,8 +31,8 @@ namespace ZandomLevelGenerator.Tools.Factories
                 result = new RoomPlan(LevelPlan, id, start, size, vertical, parent);
                 LevelPlan.Sectors.Add(id, result);
             }
-            HashSet<Vector3Int> tilesIds = new CoordinatesGetter().Get(start, size);
-            new SectorToTilesLinker(LevelPlan).Link(id, tilesIds);
+            //HashSet<Vector3Int> tilesIds = new CoordinatesGetter().Get(start, size);
+            new SectorToTilesLinker(LevelPlan).LinkIds(result);
             new AreaBorderCornerBuilder(result).Rectangle(start, size);
             return result;
         }

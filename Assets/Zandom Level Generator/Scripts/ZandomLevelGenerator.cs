@@ -60,7 +60,7 @@ namespace ZandomLevelGenerator
         public void RegisterNewAttempt(LevelPlan level)
         {
             Destroy(Result?.gameObject);
-            ZandomLevel zandomLevel = new ZandomLevelFactory().Create(level, transform.parent);
+            ZandomLevel zandomLevel = new ZandomLevelFactory().Create(level, transform.position, transform.parent);
             Result = zandomLevel;
         }
 

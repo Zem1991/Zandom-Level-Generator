@@ -13,12 +13,12 @@ namespace ZemReusables
         {
             return items.Find(item => item.key == key).value;
         }
+    }
 
-        [System.Serializable]
-        public class PseudoItem<T>
-        {
-            public string key;
-            public T value;
-        }
+    [System.Serializable]
+    public struct PseudoItem<T>
+    {
+        public string key;
+        public T value;
     }
 }

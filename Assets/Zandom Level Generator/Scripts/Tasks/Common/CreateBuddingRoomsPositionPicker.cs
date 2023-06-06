@@ -22,7 +22,8 @@ namespace ZandomLevelGenerator.Tasks.Common
             roomZ = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, roomZ);
             int randomZ = referencePosition.z + roomZ;
             int minX = referencePosition.x - size.x;
-            minX--;
+            //minX--;
+            minX++;
             Vector3Int result = new(minX, 0, randomZ);
             return result;
         }
@@ -35,7 +36,8 @@ namespace ZandomLevelGenerator.Tasks.Common
             roomZ = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, roomZ);
             int randomZ = referencePosition.z + roomZ;
             int maxX = referencePosition.x + referenceSize.x;
-            maxX++;
+            //maxX++;
+            maxX--;
             Vector3Int result = new(maxX, 0, randomZ);
             return result;
         }
@@ -48,7 +50,8 @@ namespace ZandomLevelGenerator.Tasks.Common
             roomX = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, roomX);
             int randomX = referencePosition.x + roomX;
             int minZ = referencePosition.z - size.z;
-            minZ--;
+            //minZ--;
+            minZ++;
             Vector3Int result = new(randomX, 0, minZ);
             return result;
         }
@@ -61,7 +64,8 @@ namespace ZandomLevelGenerator.Tasks.Common
             roomX = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, roomX);
             int randomX = referencePosition.x + roomX;
             int maxZ = referencePosition.z + referenceSize.z;
-            maxZ++;
+            //maxZ++;
+            maxZ--;
             Vector3Int result = new(randomX, 0, maxZ);
             return result;
         }

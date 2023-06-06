@@ -19,8 +19,10 @@ namespace ZandomLevelGenerator.Tools.Checkers
         {
             foreach (var item in coordinates)
             {
-                bool occupied = LevelPlan.Tiles.TryGetValue(item, out TilePlan tile);
-                if (occupied) return false;
+                bool hasTile = LevelPlan.Tiles.TryGetValue(item, out TilePlan tile);
+                if (!hasTile) continue;
+                bool isArea = tile.Type == TileTypeNew.AREA;
+                if (isArea) return false;
             }
             return true;
         }
@@ -29,8 +31,8 @@ namespace ZandomLevelGenerator.Tools.Checkers
         {
             foreach (var item in coordinates)
             {
-                bool occupied = LevelPlan.Tiles.TryGetValue(item, out TilePlan tile);
-                if (!occupied) return false;
+                bool hasTile = LevelPlan.Tiles.TryGetValue(item, out TilePlan tile);
+                if (!hasTile) return false;
                 bool hasObstacle = tile.HasObstacle();
                 if (hasObstacle) return false;
             }

@@ -6,33 +6,33 @@ using ZandomLevelGenerator.ResultObjects;
 
 namespace ZandomLevelGenerator.Tools.Factories
 {
-    public class ZandomTileFactory
+    public class ZandomObstacleFactory
     {
-        public ZandomTileFactory(LevelPlan levelPlan)
+        public ZandomObstacleFactory(LevelPlan levelPlan)
         {
             LevelPlan = levelPlan;
         }
 
         public LevelPlan LevelPlan { get; }
 
-        public ZandomTile Create(TilePlan plan, GameObject model)
+        public ZandomObstacle Create(Obstacle plan)
         {
-            ZandomTile result = plan.Result;
+            ZandomObstacle result = plan.Result;
             if (result)
             {
                 Object.Destroy(result.gameObject);
             }
-            result = ForceCreate(plan, model);
+            result = ForceCreate(plan);
             return result;
         }
 
-        private ZandomTile ForceCreate(TilePlan plan, GameObject model)
+        private ZandomObstacle ForceCreate(Obstacle plan)
         {
             Transform parent = LevelPlan.Result.transform;
-            Vector3 position = parent.position + plan.Coordinates;
+            Vector3 position = parent.position + plan.Position;
             Quaternion rotation = Quaternion.identity;
-            GameObject instance = Object.Instantiate(model, position, rotation, parent);
-            ZandomTile result = instance.AddComponent<ZandomTile>();
+            GameObject instance = Object.Instantiate(plan.Data.GameObject, position, rotation, parent);
+            ZandomObstacle result = instance.AddComponent<ZandomObstacle>();
             result.PseudoConstructor(plan);
             plan.Result = result;
             return result;

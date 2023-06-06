@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.ResultObjects;
 
 namespace ZandomLevelGenerator.GeneratorObjects
 {
@@ -21,6 +22,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public Vector3 Position { get; }
 
         public int ObstacleId { get; set; }
+        public ZandomPointOfInterest Result { get; set; }
 
         public override string ToString()
         {

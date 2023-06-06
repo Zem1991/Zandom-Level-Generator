@@ -30,7 +30,7 @@ namespace ZandomLevelGenerator.Tools.Factories
                 result = new(LevelPlan, id, tilesIds, data);
                 LevelPlan.Obstacles.Add(id, result);
             }
-            new ObstacleToTilesLinker(LevelPlan).Link(id, tilesIds);
+            new ObstacleToTilesLinker(LevelPlan).LinkIds(result);
             return result;
         }
     }

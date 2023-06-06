@@ -36,9 +36,13 @@ namespace ZandomLevelGenerator.Tools.Builders
             Vector3Int coordinates = new(col, floor, row);
             bool hasTile = levelPlan.Tiles.TryGetValue(coordinates, out TilePlan tile);
             if (!hasTile) return false;
-            tile.Type = tileType;
-            bool noCode = string.IsNullOrEmpty(tile.Code);
-            if (noCode) tile.Code = tileType.ToString();
+            if (tile.Type != TileTypeNew.CORNER)
+            {
+                tile.Type = tileType;
+                tile.Code = tileType.ToString();
+            }
+            //bool noCode = string.IsNullOrEmpty(tile.Code);
+            //if (noCode) tile.Code = tileType.ToString();
             return true;
         }
     }

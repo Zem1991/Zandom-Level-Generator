@@ -8,26 +8,27 @@ namespace ZandomLevelGenerator.Tools.Factories
 {
     public class ZandomLevelFactory
     {
-        public ZandomLevel Create(LevelPlan plan, Transform parent = null)
+        public ZandomLevel Create(LevelPlan plan, Vector3 position, Transform parent = null)
         {
             ZandomLevel result = plan.Result;
             if (result)
             {
                 Object.Destroy(result.gameObject);
             }
-            result = ForceCreate(plan, parent);
+            result = ForceCreate(plan, position, parent);
             return result;
         }
 
-        private ZandomLevel ForceCreate(LevelPlan plan, Transform parent = null)
+        private ZandomLevel ForceCreate(LevelPlan plan, Vector3 position, Transform parent = null)
         {
             GameObject instance = new();
-            Transform transform = instance.transform;
-            Vector3 position = parent == null ? Vector3.zero : parent.position;
+            Transform instanceTransform = instance.transform;
             Quaternion rotation = Quaternion.identity;
-            transform.SetPositionAndRotation(position, rotation);
+            instanceTransform.SetPositionAndRotation(position, rotation);
+            instanceTransform.parent = parent;
             ZandomLevel result = instance.AddComponent<ZandomLevel>();
             plan.Result = result;
+            result.name = plan.ToString();
             return result;
         }
     }

@@ -28,7 +28,7 @@ namespace ZandomLevelGenerator.Tools.Factories
                 result = new(LevelPlan, id, tilesIds, vertical, parent);
                 LevelPlan.Sectors.Add(id, result);
             }
-            new SectorToTilesLinker(LevelPlan).Link(id, tilesIds);
+            new SectorToTilesLinker(LevelPlan).LinkIds(result);
             return result;
         }
         

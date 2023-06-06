@@ -27,7 +27,7 @@ namespace ZandomLevelGenerator.Customizables
             }
             Debug.Log($"Finished task {this}");
         }
-        
-        protected abstract void RunContents();
+
+        public abstract void RunContents();
     }
 }

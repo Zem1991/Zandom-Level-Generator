@@ -7,11 +7,18 @@ namespace ZemReusables
     public abstract class PseudoDictionaryScriptableObject<T> : ScriptableObject where T : Object
     {
         [Header("List")]
-        [SerializeField] protected List<T> items = new();
+        [SerializeField] protected List<PseudoItem<T>> items = new();
 
-        public virtual T Get(string name)
+        public virtual T Get(string key)
         {
-            return items.Find(item => item.name == name);
+            return items.Find(item => item.key == key).value;
+        }
+
+        [System.Serializable]
+        public class PseudoItem<T>
+        {
+            public string key;
+            public T value;
         }
     }
 }

@@ -11,13 +11,6 @@ namespace ZandomTemplate.Styles
 {
     public class ZandomTemplatePlaceStartLocationWithObstacleParameters
     {
-        public ZandomTemplatePlaceStartLocationWithObstacleParameters(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
-        {
-            ZandomLevelGenerator = zandomLevelGenerator;
-        }
-
-        public ZandomLevelGenerator.ZandomLevelGenerator ZandomLevelGenerator { get; }
-        
         public PlaceObstaclesParameters CreateParameters()
         {
             var amountFunction = AmountFunction();
@@ -40,13 +33,13 @@ namespace ZandomTemplate.Styles
             List<TilePlan> result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
             {
                 List<TilePlan> tiles = new();
-                foreach (var item in ZandomLevelGenerator.GeneratorCoroutine.Level.Tiles.Values)
+                foreach (var item in zandomLevelGenerator.GeneratorCoroutine.Level.Tiles.Values)
                 {
                     bool canPlaceObstacle = item.Type == TileTypeNew.AREA;
                     if (!canPlaceObstacle) continue;
                     tiles.Add(item);
                 }
-                tiles = tiles.OrderBy(x => ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Next()).ToList();
+                tiles = tiles.OrderBy(x => zandomLevelGenerator.GeneratorCoroutine.SeededRandom.Next()).ToList();
                 return tiles;
             }
             return result;

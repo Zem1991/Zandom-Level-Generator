@@ -173,11 +173,15 @@ MonoBehaviour:
   zandomParameters: {fileID: 11400000, guid: 5e172f66c88193b40b8f1dfc0984f98b, type: 2}
   zandomTileset: {fileID: 11400000, guid: 2b4a37ad6cf70684aa2f8a0cf9ede01d, type: 2}
   zandomSetPieceList: {fileID: 0}
-  zandomObstacleList: {fileID: 0}
+  zandomObstacleList: {fileID: 11400000, guid: b04bf73015a2a4e4f8e6c67396186c37, type: 2}
   seed: 
   maxAttempts: 10
   waitType: 0
   isRunning: 0
+  generatorCoroutine:
+    currentSeed: 
+    currentSeedInt: 0
+    attempts: 0
   timeTaken: 0
   result: {fileID: 0}
 --- !u!114 &262048965

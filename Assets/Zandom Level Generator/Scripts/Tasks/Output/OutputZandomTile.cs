@@ -16,10 +16,14 @@ namespace ZandomLevelGenerator.Tasks.Output
 
         public TilePlan Plan { get; }
 
-        protected override void RunContents()
+        public override void RunContents()
         {
             string modelName = Plan.Code;
             GameObject model = ZandomLevelGenerator.ZandomTileset.Get(modelName);
+            if (!model)
+            {
+                Debug.LogWarning($"ModelName {modelName} doesn't exist.");
+            }
             ZandomTileFactory factory = new(Plan.Level);
             factory.Create(Plan, model);
         }

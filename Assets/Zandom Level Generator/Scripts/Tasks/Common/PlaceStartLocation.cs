@@ -19,7 +19,7 @@ namespace ZandomLevelGenerator.Tasks.Common
         public Func<Vector3> PositionFunction { get; }
         public Func<Obstacle> ObstacleFunction { get; }
 
-        protected override void RunContents()
+        public override void RunContents()
         {
             Vector3 position = PositionFunction();
             Obstacle obstacle = ObstacleFunction();

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tools.Checkers;
@@ -23,7 +22,7 @@ namespace ZandomLevelGenerator.Tasks.Common
         public PlaceObstaclesParameters Parameters { get; }
         public Dictionary<int, Obstacle> NewObstacles { get; }
 
-        protected override void RunContents()
+        public override void RunContents()
         {
             ObstacleData data = ZandomLevelGenerator.ZandomObstacleList.Get(ObjectName);
             int amount = Parameters.AmountFunction(ZandomLevelGenerator);

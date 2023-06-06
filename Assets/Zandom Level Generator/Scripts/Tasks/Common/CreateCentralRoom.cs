@@ -8,20 +8,23 @@ namespace ZandomLevelGenerator.Tasks.Common
 {
     public class CreateCentralRoom : GeneratorTask
     {
-        public CreateCentralRoom(ZandomLevelGenerator zandomLevelGenerator, Vector3Int centralRoomSize) : base(zandomLevelGenerator)
+        public CreateCentralRoom(ZandomLevelGenerator zandomLevelGenerator, Vector3Int centralRoomSize, bool vertical) : base(zandomLevelGenerator)
         {
             RoomSize = centralRoomSize;
+            Vertical = vertical;
         }
 
         public Vector3Int RoomSize { get; }
+        public bool Vertical { get; }
 
-        protected override void RunContents()
+        public override void RunContents()
         {
             RoomPlanFactory factory = new(ZandomLevelGenerator.GeneratorCoroutine.Level);
             int roomId = factory.NextId();
-            Vector3Int halfSize = RoomSize / 2;
-            Vector3Int start = halfSize;
-            factory.Create(roomId, start, RoomSize, null);
+            Vector3Int halfRoomSize = RoomSize / 2;
+            Vector3Int start = ZandomLevelGenerator.ZandomParameters.LevelSize / 2;
+            start -= halfRoomSize;
+            factory.Create(roomId, start, RoomSize, Vertical, null);
         }
     }
 }

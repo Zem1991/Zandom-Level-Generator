@@ -16,7 +16,7 @@ namespace ZandomLevelGenerator.Tasks.Output
 
         public SectorPlan Plan { get; }
 
-        protected override void RunContents()
+        public override void RunContents()
         {
             ZandomSectorFactory factory = new(Plan.Level);
             factory.Create(Plan);

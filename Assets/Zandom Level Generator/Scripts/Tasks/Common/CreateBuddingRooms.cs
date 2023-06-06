@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
-using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.GeneratorObjects;
-using ZandomLevelGenerator.Helpers;
 using ZandomLevelGenerator.Tools.Checkers;
 using ZandomLevelGenerator.Tools.Factories;
 using ZandomLevelGenerator.Tools.Helpers;
@@ -18,27 +15,31 @@ namespace ZandomLevelGenerator.Tasks.Common
         public CreateBuddingRooms(ZandomLevelGenerator zandomLevelGenerator, CreateBuddingRoomsParameters parameters) : base(zandomLevelGenerator)
         {
             Parameters = parameters;
+            NewRooms = new();
         }
 
         public CreateBuddingRoomsParameters Parameters { get; }
-        public List<RoomPlan> RootSectors { get; private set; }
-        public Queue<RoomPlan> NewRooms { get; private set; }
+        public List<RoomPlan> NewRooms { get; }
 
-        protected override void RunContents()
+        public List<RoomPlan> RootSectors { get; private set; }
+        public Queue<RoomPlan> LoopRooms { get; private set; }
+
+        public override void RunContents()
         {
             RootSectors = Parameters.RootRoomsFunction(ZandomLevelGenerator);
-            NewRooms = new(RootSectors);
+            LoopRooms = new(RootSectors);
             RoomPlan current = null;
-            while (!Parameters.TaskStopFunction(ZandomLevelGenerator, current) && NewRooms.Count > 0)
+            while (!Parameters.TaskStopFunction(ZandomLevelGenerator, current) && LoopRooms.Count > 0)
             {
-                current = NewRooms.Dequeue();
+                current = LoopRooms.Dequeue();
                 if (!IsCurrentValid(current)) continue;
                 List<RoomPlan> currentChilds = BudRoom(current);
                 currentChilds = currentChilds.OrderBy(x => ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Next()).ToList();
                 foreach (var item in currentChilds)
                 {
                     if (item == null) continue;
-                    NewRooms.Enqueue(item);
+                    LoopRooms.Enqueue(item);
+                    NewRooms.Add(item);
                 }
                 //TODO: wait type item, wait per room created here
             }
@@ -85,7 +86,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             {
                 RoomPlanFactory factory = new(levelPlan);
                 int roomId = factory.NextId();
-                result = factory.Create(roomId, position, size, parent);
+                result = factory.Create(roomId, position, size, vertical, parent);
             }
             return result;
 

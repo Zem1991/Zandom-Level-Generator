@@ -8,11 +8,12 @@ namespace ZandomLevelGenerator.GeneratorObjects
 {
     public class SectorPlan
     {
-        public SectorPlan(LevelPlan levelPlan, int id, HashSet<Vector3Int> tilesIds, SectorPlan parent = null)
+        public SectorPlan(LevelPlan levelPlan, int id, HashSet<Vector3Int> tilesIds, bool vertical, SectorPlan parent = null)
         {
             Level = levelPlan;
             Id = id;
             TilesIds = new(tilesIds);
+            Vertical = vertical;
             Parent = parent;
             GenerationAge = parent?.GenerationAge + 1 ?? 0;
             ChildrenIds = new();
@@ -21,6 +22,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public LevelPlan Level { get; }
         public int Id { get; }
         public HashSet<Vector3Int> TilesIds { get; }
+        public bool Vertical { get; }
         public SectorPlan Parent { get; }
         public int GenerationAge { get; }
         public HashSet<int> ChildrenIds { get; }

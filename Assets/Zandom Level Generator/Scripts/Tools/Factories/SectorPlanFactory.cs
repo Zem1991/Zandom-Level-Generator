@@ -20,12 +20,12 @@ namespace ZandomLevelGenerator.Tools.Factories
             return LevelPlan.Sectors.Count;
         }
 
-        public SectorPlan Create(int id, HashSet<Vector3Int> tilesIds, SectorPlan parent = null)
+        public SectorPlan Create(int id, HashSet<Vector3Int> tilesIds, bool vertical, SectorPlan parent = null)
         {
             bool exists = LevelPlan.Sectors.TryGetValue(id, out SectorPlan result);
             if (!exists)
             {
-                result = new(LevelPlan, id, tilesIds, parent);
+                result = new(LevelPlan, id, tilesIds, vertical, parent);
                 LevelPlan.Sectors.Add(id, result);
             }
             new SectorToTilesLinker(LevelPlan).Link(id, tilesIds);

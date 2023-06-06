@@ -21,14 +21,14 @@ namespace ZandomLevelGenerator.Tools.Factories
             return LevelPlan.Sectors.Count;
         }
         
-        public RoomPlan Create(int id, Vector3Int start, Vector3Int size, SectorPlan parent = null)
+        public RoomPlan Create(int id, Vector3Int start, Vector3Int size, bool vertical, SectorPlan parent = null)
         {
             bool exists = LevelPlan.Sectors.TryGetValue(id, out SectorPlan sector);
             RoomPlan result = sector as RoomPlan;
             if (!exists || result == null)
             {
                 //TODO: doesn't delete the old one if it's not a RoomPlan
-                result = new RoomPlan(LevelPlan, id, start, size, parent);
+                result = new RoomPlan(LevelPlan, id, start, size, vertical, parent);
                 LevelPlan.Sectors.Add(id, result);
             }
             HashSet<Vector3Int> tilesIds = new CoordinatesGetter().Get(start, size);

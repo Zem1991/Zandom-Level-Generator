@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c3f231fb8df244baf512cc4bfb1595, type: 3}
   m_Name: Zandom Template Style Parameters
   m_EditorClassIdentifier: 
-  levelSize: {x: 80, y: 0, z: 80}
-  moduleSize: {x: 10, y: 0, z: 10}
-  safetySize: {x: 10, y: 0, z: 10}
-  centralRoomSize: {x: 12, y: 0, z: 12}
-  buddingRoomSize: {x: 8, y: 0, z: 8}
+  levelSize: {x: 80, y: 1, z: 80}
+  moduleSize: {x: 10, y: 1, z: 10}
+  safetySize: {x: 10, y: 1, z: 10}
+  centralRoomSize: {x: 12, y: 1, z: 12}
+  buddingRoomSize: {x: 8, y: 1, z: 8}
+  sectorCountTarget: 15

@@ -15,10 +15,10 @@ namespace ZandomLevelGenerator.Tasks.Common
 
         public PlaceObstaclesParameters PlaceObstaclesParameters { get; }
 
-        protected override void RunContents()
+        public override void RunContents()
         {
             PlaceObstacles placeObstacles = new(ZandomLevelGenerator, Constants.ZandomStartLocation, PlaceObstaclesParameters);
-            placeObstacles.Run();
+            placeObstacles.RunContents();
             Obstacle obstacle = placeObstacles.NewObstacles[0];
             //TODO: consider creating a PlaceStartLocationParameters struct too
             Vector3 positionFunction()
@@ -29,7 +29,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             {
                 return obstacle;
             }
-            new PlaceStartLocation(ZandomLevelGenerator, positionFunction, obstacleFunction).Run();
+            new PlaceStartLocation(ZandomLevelGenerator, positionFunction, obstacleFunction).RunContents();
         }
     }
 }

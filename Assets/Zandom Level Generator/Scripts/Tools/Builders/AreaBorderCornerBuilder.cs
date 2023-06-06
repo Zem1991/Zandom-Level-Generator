@@ -37,6 +37,8 @@ namespace ZandomLevelGenerator.Tools.Builders
             bool hasTile = levelPlan.Tiles.TryGetValue(coordinates, out TilePlan tile);
             if (!hasTile) return false;
             tile.Type = tileType;
+            bool noCode = string.IsNullOrEmpty(tile.Code);
+            if (noCode) tile.Code = tileType.ToString();
             return true;
         }
     }

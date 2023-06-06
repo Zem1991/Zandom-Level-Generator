@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9527811bdff1df4bbc86e3e9d17fb26, type: 3}
+  m_Name: ZandomStartLocation (Zandom Template)
+  m_EditorClassIdentifier: 
+  gameObject: {fileID: 877962812885065705, guid: 645f0809c22a37747b91485b42e3a18d, type: 3}
+  canPlaceWithinStartPosition: 1
+  size: {x: 4, y: 0, z: 4}
+  padding: {x: 0, y: 0, z: 0}
+  normalSectorAllowed: 1
+  importantSectorAllowed: 0
+  secretSectorAllowed: 0

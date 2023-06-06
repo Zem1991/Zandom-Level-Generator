@@ -23,7 +23,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             int randomZ = referencePosition.z + roomZ;
             int minX = referencePosition.x - size.x;
             minX--;
-            Vector3Int result = new(minX, randomZ);
+            Vector3Int result = new(minX, 0, randomZ);
             return result;
         }
 
@@ -36,7 +36,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             int randomZ = referencePosition.z + roomZ;
             int maxX = referencePosition.x + referenceSize.x;
             maxX++;
-            Vector3Int result = new(maxX, randomZ);
+            Vector3Int result = new(maxX, 0, randomZ);
             return result;
         }
 
@@ -49,7 +49,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             int randomX = referencePosition.x + roomX;
             int minZ = referencePosition.z - size.z;
             minZ--;
-            Vector3Int result = new(randomX, minZ);
+            Vector3Int result = new(randomX, 0, minZ);
             return result;
         }
 
@@ -62,7 +62,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             int randomX = referencePosition.x + roomX;
             int maxZ = referencePosition.z + referenceSize.z;
             maxZ++;
-            Vector3Int result = new(randomX, maxZ);
+            Vector3Int result = new(randomX, 0, maxZ);
             return result;
         }
     }

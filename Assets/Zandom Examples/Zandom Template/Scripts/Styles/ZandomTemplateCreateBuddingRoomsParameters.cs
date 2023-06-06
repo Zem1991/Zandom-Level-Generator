@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using UnityEngine;
+using ZandomLevelGenerator;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tasks.Common;
 using ZandomTemplate.Customizables;
@@ -12,13 +13,6 @@ namespace ZandomTemplate.Styles
 {
     public class ZandomTemplateCreateBuddingRoomsParameters
     {
-        public ZandomTemplateCreateBuddingRoomsParameters(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
-        {
-            ZandomLevelGenerator = zandomLevelGenerator;
-        }
-
-        public ZandomLevelGenerator.ZandomLevelGenerator ZandomLevelGenerator { get; }
-        
         public CreateBuddingRoomsParameters CreateParameters()
         {
             var rootRoomsFunction = RootRoomsFunction();
@@ -60,9 +54,29 @@ namespace ZandomTemplate.Styles
 
         public Func<ZandomLevelGenerator.ZandomLevelGenerator, SectorPlan, bool> RoomVerticalFunction()
         {
-            bool result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
+            bool result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, SectorPlan parent)
             {
-                return false;
+                bool result;
+                bool enoughParents = parent?.Parent != null;
+                if (enoughParents)
+                {
+                    bool parentsWithSameOrientation = parent.Vertical == parent.Parent.Vertical;
+                    if (parentsWithSameOrientation)
+                    {
+                        result = !parent.Vertical;
+                    }
+                    else
+                    {
+                        bool keepSame = zandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, 4) <= 0;
+                        if (keepSame) result = parent.Vertical;
+                        else result = !parent.Vertical;
+                    }
+                }
+                else
+                {
+                    result = !parent.Vertical;
+                }
+                return result;
             }
             return result;
         }

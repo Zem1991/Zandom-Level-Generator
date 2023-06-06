@@ -24,10 +24,10 @@ namespace ZandomTemplate.Styles
         {
             ZandomTemplateStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
             Vector3Int centralRoomSize = zandomTemplateStyleParameters.CentralRoomSize;
-            CreateBuddingRoomsParameters parameters = new ZandomTemplateCreateBuddingRoomsParameters(zandomLevelGenerator).CreateParameters();
+            CreateBuddingRoomsParameters parameters = new ZandomTemplateCreateBuddingRoomsParameters().CreateParameters();
             List<GeneratorTask> result = new()
             {
-                new CreateCentralRoom(zandomLevelGenerator, centralRoomSize),
+                new CreateCentralRoom(zandomLevelGenerator, centralRoomSize, false),
                 new CreateBuddingRooms(zandomLevelGenerator, parameters),
             };
             return result;
@@ -54,7 +54,7 @@ namespace ZandomTemplate.Styles
 
         public override List<GeneratorTask> Step03_Tasks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
         {
-            PlaceObstaclesParameters parameters = new ZandomTemplatePlaceStartLocationWithObstacleParameters(zandomLevelGenerator).CreateParameters();
+            PlaceObstaclesParameters parameters = new ZandomTemplatePlaceStartLocationWithObstacleParameters().CreateParameters();
             List<GeneratorTask> result = new()
             {
                 new PlaceStartLocationWithObstacle(zandomLevelGenerator, parameters),

@@ -30,7 +30,7 @@ namespace ZandomLevelGenerator.Tools.Factories
         {
             GameObject instance = new();
             Transform transform = instance.transform;
-            Transform parent = plan.Result.transform;
+            Transform parent = plan.Parent?.Result?.transform ?? plan.Level?.Result?.transform;
             Vector3 position = parent.position;
             Quaternion rotation = Quaternion.identity;
             transform.SetPositionAndRotation(position, rotation);

@@ -22,6 +22,21 @@ namespace ZandomLevelGenerator.GeneratorObjects
 
         public int ObstacleId { get; set; }
         public TileTypeNew Type { get; set; }
+        //public TileTypeNew Type
+        //{
+        //    get
+        //    {
+        //        return Type;
+        //    }
+        //    set
+        //    {
+        //        Type = value;
+        //        if (string.IsNullOrEmpty(Code))
+        //        {
+        //            Code = value.ToString();
+        //        }
+        //    }
+        //}
         public string Code { get; set; }
         public ZandomTile Result { get; set; }
 

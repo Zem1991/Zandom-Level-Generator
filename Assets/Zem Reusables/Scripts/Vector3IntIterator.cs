@@ -39,9 +39,10 @@ namespace ZemReusables
                     {
                         bool borderX = col == minX || col == maxX - 1;
                         bool borderZ = row == minZ || row == maxZ - 1;
-                        bool borderY = floor == minY || floor == maxY - 1;
-                        bool atCorner = borderX && borderZ && borderY;
-                        bool atBorder = borderX || borderZ || borderY;
+                        //TODO: Not using this one because I'm not doing fancy 3D maps (yet?)
+                        //bool borderY = floor == minY || floor == maxY - 1;
+                        bool atCorner = borderX && borderZ;// && borderY;
+                        bool atBorder = borderX || borderZ;// || borderY;
                         Func<int, int, int, bool> function;
                         if (atCorner) function = cornerFunction;
                         else if (atBorder) function = borderFunction;

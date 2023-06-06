@@ -15,17 +15,19 @@ namespace ZandomLevelGenerator.Tasks.Output
 
         public LevelPlan Plan { get; }
 
-        protected override void RunContents()
+        public override void RunContents()
         {
             foreach (var item in Plan.Tiles)
             {
                 TilePlan plan = item.Value;
-                new OutputZandomTile(ZandomLevelGenerator, plan).Run();
+                new OutputZandomTile(ZandomLevelGenerator, plan).RunContents();
+                //new OutputZandomTile(ZandomLevelGenerator, plan).Run();
             }
             foreach (var item in Plan.Sectors)
             {
                 SectorPlan plan = item.Value;
-                new OutputZandomSector(ZandomLevelGenerator, plan).Run();
+                new OutputZandomSector(ZandomLevelGenerator, plan).RunContents();
+                //new OutputZandomSector(ZandomLevelGenerator, plan).Run();
             }
             foreach (var item in Plan.Obstacles)
             {

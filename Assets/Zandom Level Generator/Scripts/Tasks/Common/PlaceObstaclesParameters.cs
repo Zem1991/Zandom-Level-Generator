@@ -11,15 +11,15 @@ namespace ZandomLevelGenerator.Tasks.Common
         public PlaceObstaclesParameters(
             //string objectName, 
             Func<ZandomLevelGenerator, int> amountFunction,
-            Func<ZandomLevelGenerator, List<TilePlan>> validTilesFunction)
+            Func<ZandomLevelGenerator, TilePlan, bool> validTileFunction)
         {
             //ObjectName = objectName;
             AmountFunction = amountFunction;
-            ValidTilesFunction = validTilesFunction;
+            ValidTileFunction = validTileFunction;
         }
         
         //public string ObjectName { get; }
         public Func<ZandomLevelGenerator, int> AmountFunction { get; }
-        public Func<ZandomLevelGenerator, List<TilePlan>> ValidTilesFunction { get; }
+        public Func<ZandomLevelGenerator, TilePlan, bool> ValidTileFunction { get; }
     }
 }

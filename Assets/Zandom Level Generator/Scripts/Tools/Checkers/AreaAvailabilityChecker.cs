@@ -27,16 +27,16 @@ namespace ZandomLevelGenerator.Tools.Checkers
             return true;
         }
 
-        public bool IsAvailableForObstacle(HashSet<Vector3Int> coordinates)
-        {
-            foreach (var item in coordinates)
-            {
-                bool hasTile = LevelPlan.Tiles.TryGetValue(item, out TilePlan tile);
-                if (!hasTile) return false;
-                bool hasObstacle = tile.HasObstacle();
-                if (hasObstacle) return false;
-            }
-            return true;
-        }
+        //public bool IsAvailableForObstacle(HashSet<Vector3Int> coordinates)
+        //{
+        //    foreach (var item in coordinates)
+        //    {
+        //        bool hasTile = LevelPlan.Tiles.TryGetValue(item, out TilePlan tile);
+        //        if (!hasTile) return false;
+        //        bool hasObstacle = tile.HasObstacle();
+        //        if (hasObstacle) return false;
+        //    }
+        //    return true;
+        //}
     }
 }

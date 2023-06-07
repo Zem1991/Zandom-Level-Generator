@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.GeneratorObjects;
@@ -28,19 +27,12 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public Func<ZandomLevelGenerator.ZandomLevelGenerator, List<TilePlan>> ValidTilesFunction()
+        public Func<ZandomLevelGenerator.ZandomLevelGenerator, TilePlan, bool> ValidTilesFunction()
         {
-            List<TilePlan> result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
+            bool result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, TilePlan tile)
             {
-                List<TilePlan> tiles = new();
-                foreach (var item in zandomLevelGenerator.GeneratorCoroutine.Level.Tiles.Values)
-                {
-                    bool canPlaceObstacle = item.Type == TileTypeNew.AREA;
-                    if (!canPlaceObstacle) continue;
-                    tiles.Add(item);
-                }
-                tiles = tiles.OrderBy(x => zandomLevelGenerator.GeneratorCoroutine.SeededRandom.Next()).ToList();
-                return tiles;
+                bool canPlaceObstacle = tile.Type == TileTypeNew.AREA;
+                return canPlaceObstacle;
             }
             return result;
         }

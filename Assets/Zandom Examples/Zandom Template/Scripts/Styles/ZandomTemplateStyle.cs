@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.Tasks.Common;
@@ -41,7 +42,11 @@ namespace ZandomTemplate.Styles
 
         public override List<GeneratorTask> Step02_Tasks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
         {
-            return new();
+            List<GeneratorTask> result = new()
+            {
+                new CreateBorderOverlapWalls(zandomLevelGenerator),
+            };
+            return result;
         }
 
         public override bool Step03_Checks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, out string message)

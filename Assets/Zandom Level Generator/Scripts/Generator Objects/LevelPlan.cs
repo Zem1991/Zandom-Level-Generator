@@ -11,12 +11,16 @@ namespace ZandomLevelGenerator.GeneratorObjects
         {
             Tiles = new();
             Sectors = new();
+            BorderOverlapWalls = new();
+            BorderOverlapDoorways = new();
             Obstacles = new();
             PointsOfInterest = new();
         }
 
         public Dictionary<Vector3Int, TilePlan> Tiles { get; }
         public Dictionary<int, SectorPlan> Sectors { get; }
+        public Dictionary<int, BorderOverlapWall> BorderOverlapWalls { get; }
+        public Dictionary<int, BorderOverlapDoorway> BorderOverlapDoorways { get; }
         public Dictionary<int, Obstacle> Obstacles { get; }
         public Dictionary<int, PointOfInterest> PointsOfInterest { get; }
 

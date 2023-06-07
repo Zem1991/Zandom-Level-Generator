@@ -17,4 +17,5 @@ MonoBehaviour:
   safetySize: {x: 10, y: 1, z: 10}
   centralRoomSize: {x: 12, y: 1, z: 12}
   buddingRoomSize: {x: 8, y: 1, z: 8}
-  sectorCountTarget: 15
+  doorwayLength: 4
+  sectorCountTarget: 20

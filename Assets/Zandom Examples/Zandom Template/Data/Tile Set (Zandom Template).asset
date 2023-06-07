@@ -19,3 +19,7 @@ MonoBehaviour:
     value: {fileID: 9033375250853195897, guid: f0a906bb76869ba44991817a06e152d1, type: 3}
   - key: CORNER
     value: {fileID: 9033375250853195897, guid: debcb797d02bf85448bb8d0151521603, type: 3}
+  - key: Doorway
+    value: {fileID: 9033375250853195897, guid: dcb13cc5f9f9e074d8777e2a2d6d444c, type: 3}
+  - key: Wall
+    value: {fileID: 9033375250853195897, guid: 2d5e08fdd8ecf974eb7c864103b77260, type: 3}

@@ -4,19 +4,23 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.GeneratorObjects
 {
-    public class SectorOverlap
+    public class BorderOverlapWall
     {
-        public SectorOverlap(int sourceId, int otherId, HashSet<Vector3Int> tilesIds)
+        public BorderOverlapWall(LevelPlan levelPlan, int id, int sourceId, int otherId, HashSet<Vector3Int> tilesIds)
         {
-            Id = new(sourceId, otherId);
+            LevelPlan = levelPlan;
+            Id = id;
             SourceId = sourceId;
             OtherId = otherId;
             TilesIds = tilesIds;
         }
 
-        public Vector2Int Id { get; }
+        public LevelPlan LevelPlan { get; }
+        public int Id { get; }
         public int SourceId { get; }
         public int OtherId { get; }
         public HashSet<Vector3Int> TilesIds { get; }
+
+        public int DoorwayId { get; set; }
     }
 }

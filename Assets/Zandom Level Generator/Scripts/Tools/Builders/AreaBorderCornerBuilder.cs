@@ -39,7 +39,6 @@ namespace ZandomLevelGenerator.Tools.Builders
             if (tile.Type != TileTypeNew.CORNER)
             {
                 tile.Type = tileType;
-                tile.Code = tileType.ToString();
             }
             //bool noCode = string.IsNullOrEmpty(tile.Code);
             //if (noCode) tile.Code = tileType.ToString();

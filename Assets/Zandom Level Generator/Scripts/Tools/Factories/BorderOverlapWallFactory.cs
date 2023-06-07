@@ -28,7 +28,7 @@ namespace ZandomLevelGenerator.Tools.Factories
                 result = new(LevelPlan, id, sourceId, otherId, tilesIds);
                 LevelPlan.BorderOverlapWalls.Add(id, result);
             }
-            new WallBuilder(result).FillWall();
+            new WallTileBuilder(result).FillWall();
             return result;
         }
     }

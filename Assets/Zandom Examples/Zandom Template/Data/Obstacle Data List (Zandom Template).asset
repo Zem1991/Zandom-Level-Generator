@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Obstacle Data List (Zandom Template)
   m_EditorClassIdentifier: 
   items: []
-  startLocation: {fileID: 11400000, guid: 7969e86c85e66094890dc7fc5fa408b6, type: 2}
+  zandomStartLocation: {fileID: 11400000, guid: 7969e86c85e66094890dc7fc5fa408b6, type: 2}

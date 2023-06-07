@@ -8,9 +8,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
 {
     public class TilePlan
     {
-        //[Header("TilePlan")]
-        //[SerializeField] private TileTypeNew type;
-        //[SerializeField] private string code;
+        [SerializeField] private string code;
 
         public TilePlan(LevelPlan levelPlan, Vector3Int coordinates)
         {
@@ -19,7 +17,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
             SectorsIds = new();
             ObstacleId = -1;
             Type = TileTypeNew.AREA;
-            Code = Type.ToString();
+            Overlap = TileOverlap.NONE;
         }
 
         public LevelPlan Level { get; }
@@ -28,25 +26,26 @@ namespace ZandomLevelGenerator.GeneratorObjects
 
         public int ObstacleId { get; set; }
         public TileTypeNew Type { get; set; }
-        //public TileTypeNew Type
-        //{
-        //    get => type;
-        //    set
-        //    {
-        //        type = value;
-        //        RefreshTypeCode();
-        //    }
-        //}
-        public string Code { get; set; }
-        //public string Code
-        //{
-        //    get => code;
-        //    set
-        //    {
-        //        code = value;
-        //        RefreshTypeCode();
-        //    }
-        //}
+        public TileOverlap Overlap { get; set; }
+        public string Code
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(code))
+                {
+                    return code;
+                }
+                else if (Overlap != TileOverlap.NONE)
+                {
+                    return Overlap.ToString();
+                }
+                else
+                {
+                    return Type.ToString();
+                }
+            }
+            set => code = value;
+        }
         public ZandomTile Result { get; set; }
 
         public override string ToString()
@@ -58,13 +57,5 @@ namespace ZandomLevelGenerator.GeneratorObjects
         {
             return ObstacleId >= 0;
         }
-
-        //private void RefreshTypeCode()
-        //{
-        //    if (string.IsNullOrEmpty(Code))
-        //    {
-        //        Code = Type.ToString();
-        //    }
-        //}
     }
 }

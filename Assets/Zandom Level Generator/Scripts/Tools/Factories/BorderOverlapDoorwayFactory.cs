@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.GeneratorObjects;
+using ZandomLevelGenerator.Tools.Builders;
 
 namespace ZandomLevelGenerator.Tools.Factories
 {
@@ -16,7 +17,7 @@ namespace ZandomLevelGenerator.Tools.Factories
 
         public int NextId()
         {
-            return LevelPlan.Sectors.Count;
+            return LevelPlan.BorderOverlapDoorways.Count;
         }
 
         public BorderOverlapDoorway Create(int id, int wallId, HashSet<Vector3Int> tilesIds)
@@ -27,6 +28,7 @@ namespace ZandomLevelGenerator.Tools.Factories
                 result = new(LevelPlan, id, wallId, tilesIds);
                 LevelPlan.BorderOverlapDoorways.Add(id, result);
             }
+            new DoorwayTileBuilder(result).FillDoorway();
             return result;
         }
     }

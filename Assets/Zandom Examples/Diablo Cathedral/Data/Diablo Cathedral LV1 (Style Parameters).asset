@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71691f9ca8d5bfe47a39f2db0c298051, type: 3}
+  m_Name: Diablo Cathedral LV1 (Style Parameters)
+  m_EditorClassIdentifier: 
+  levelSize: {x: 80, y: 1, z: 80}
+  moduleSize: {x: 10, y: 1, z: 10}
+  safetySize: {x: 10, y: 1, z: 10}
+  centralRoomSize: {x: 12, y: 1, z: 12}
+  buddingRoomSize: {x: 8, y: 1, z: 8}
+  doorwayLength: 4
+  sectorCountTarget: 20

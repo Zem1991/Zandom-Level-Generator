@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c21c409cf9a4542ad123239b300998, type: 3}
-  m_Name: Treasure Encounter (Cathedral)
+  m_Script: {fileID: 11500000, guid: e9527811bdff1df4bbc86e3e9d17fb26, type: 3}
+  m_Name: Treasure Encounter (Diablo Cathedral)
   m_EditorClassIdentifier: 
-  amountMinimum: 6
-  amountDesired: 6
-  size: {x: 4, y: 4}
-  padding: {x: 1, y: 1}
   gameObject: {fileID: 877962812885065705, guid: 2e02b134eb3429549aa62f7316e97b84, type: 3}
+  canPlaceWithinStartPosition: 1
+  size: {x: 4, y: 1, z: 4}
+  padding: {x: 1, y: 0, z: 1}
+  normalSectorAllowed: 0
+  importantSectorAllowed: 1
+  secretSectorAllowed: 0

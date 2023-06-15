@@ -11,9 +11,9 @@
 //{
 //    public class ObstaclePlacement
 //    {
-//        public ObstaclePlacement(LevelGenerator levelGenerator, ZandomObstacle obstacleData, List<Room> validRooms)
+//        public ObstaclePlacement(ZandomLevelGenerator levelGenerator, ZandomObstacle obstacleData, List<Room> validRooms)
 //        {
-//            LevelGenerator = levelGenerator;
+//            ZandomLevelGenerator = levelGenerator;
 //            ObstacleData = obstacleData;
 //            ValidRooms = validRooms;
 //            ValidTiles = new();
@@ -24,12 +24,12 @@
 //                ValidTiles.AddRange(item.Tiles);
 //            }
 //            //ValidTiles = ValidTiles.OrderBy(x => Random.value).ToList();
-//            ValidTiles = ValidTiles.OrderBy(x => LevelGenerator.SeededRandom.Next()).ToList();
-//            //int rng = LevelGenerator.SeededRandom.Next();
+//            ValidTiles = ValidTiles.OrderBy(x => ZandomLevelGenerator.SeededRandom.Next()).ToList();
+//            //int rng = ZandomLevelGenerator.SeededRandom.Next();
 //            //ValidTiles = ValidTiles.OrderBy(x => rng).ToList();
 //        }
 
-//        public LevelGenerator LevelGenerator { get; }
+//        public ZandomLevelGenerator ZandomLevelGenerator { get; }
 //        public ZandomObstacle ObstacleData { get; }
 //        public List<Room> ValidRooms { get; }
 //        public List<Tile> ValidTiles { get; }
@@ -53,7 +53,7 @@
 //                if (!ObstacleData.canPlaceWithinStartPosition)
 //                {
 //                    Vector3 centerPosition = new TileListPositionFinder().Find(tiles);
-//                    float distanceToStart = Vector3.Distance(centerPosition, LevelGenerator.Level.StartLocation.Position);
+//                    float distanceToStart = Vector3.Distance(centerPosition, ZandomLevelGenerator.Level.StartLocation.Position);
 //                    if (distanceToStart < Constants.EntranceSafetyRadius)
 //                    {
 //                        i--;
@@ -62,20 +62,20 @@
 //                }
 //                Obstacle obstacle = Run(tiles);
 //                Results.Add(obstacle);
-//                if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
+//                if (ZandomLevelGenerator.taskWaitSetting == TaskWaitSettings.PER_ITERATION)
 //                {
-//                    yield return new GenerateFinalObstacles(LevelGenerator).Run(obstacle);
+//                    yield return new GenerateFinalObstacles(ZandomLevelGenerator).Run(obstacle);
 //                }
 //            }
-//            if (LevelGenerator.taskWaitSetting == TaskWaitSettings.PER_TASK)
+//            if (ZandomLevelGenerator.taskWaitSetting == TaskWaitSettings.PER_TASK)
 //            {
-//                yield return new GenerateFinalObstacles(LevelGenerator).Run();
+//                yield return new GenerateFinalObstacles(ZandomLevelGenerator).Run();
 //            }
 //        }
 
 //        private Obstacle Run(List<Tile> tiles)
 //        {
-//            Level level = LevelGenerator.Level;
+//            Level level = ZandomLevelGenerator.Level;
 //            Obstacle result = level.CreateObstacle(ObstacleData, tiles, false);
 //            return result;
 //        }
@@ -87,15 +87,15 @@
 //            Vector2Int position = room.Start;
 //            Vector2Int size = ObstacleData.size;
 //            Vector2Int padding = ObstacleData.padding;
-//            int extraX = LevelGenerator.SeededRandom.Range(padding.x, room.Size.x - size.x - padding.x + 1);
-//            int extraY = LevelGenerator.SeededRandom.Range(padding.y, room.Size.y - size.y - padding.y + 1);
+//            int extraX = ZandomLevelGenerator.SeededRandom.Range(padding.x, room.Size.x - size.x - padding.x + 1);
+//            int extraY = ZandomLevelGenerator.SeededRandom.Range(padding.y, room.Size.y - size.y - padding.y + 1);
 //            position.x += extraX;
 //            position.y += extraY;
 
 //            List<Tile> foundTiles = new();
 //            bool addTile(int col, int row)
 //            {
-//                TileMap tileMap = LevelGenerator.Level.TileMap;
+//                TileMap tileMap = ZandomLevelGenerator.Level.TileMap;
 //                Vector2Int coordinates = new(col, row);
 //                Tile tile = tileMap.Get(coordinates);
 //                if (tile == null) return false;

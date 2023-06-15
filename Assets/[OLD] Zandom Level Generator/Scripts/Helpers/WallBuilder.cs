@@ -7,12 +7,12 @@
 //{
 //    public class WallBuilder
 //    {
-//        public WallBuilder(LevelGenerator levelGenerator)
+//        public WallBuilder(ZandomLevelGenerator levelGenerator)
 //        {
-//            LevelGenerator = levelGenerator;
+//            ZandomLevelGenerator = levelGenerator;
 //        }
 
-//        private LevelGenerator LevelGenerator { get; }
+//        private ZandomLevelGenerator ZandomLevelGenerator { get; }
 
 //        public bool CanBuild(Room sourceRoom, Room neighborRoom, List<Tile> tiles)
 //        {
@@ -24,7 +24,7 @@
 
 //        public Wall Build(Room sourceRoom, Room neighborRoom, List<Tile> tiles)
 //        {
-//            Wall wall = LevelGenerator.Level.CreateWall(sourceRoom, neighborRoom, tiles);
+//            Wall wall = ZandomLevelGenerator.Level.CreateWall(sourceRoom, neighborRoom, tiles);
 //            //foreach (var item in tiles)
 //            //{
 //            //    wall.TileMap.Add(item);

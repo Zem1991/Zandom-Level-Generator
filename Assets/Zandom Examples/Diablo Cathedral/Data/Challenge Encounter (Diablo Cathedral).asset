@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02c21c409cf9a4542ad123239b300998, type: 3}
-  m_Name: Challenge Encounter (Cathedral)
+  m_Script: {fileID: 11500000, guid: e9527811bdff1df4bbc86e3e9d17fb26, type: 3}
+  m_Name: Challenge Encounter (Diablo Cathedral)
   m_EditorClassIdentifier: 
-  amountMinimum: 5
-  amountDesired: 5
-  canPlaceWithinStartPosition: 0
-  size: {x: 4, y: 4}
-  padding: {x: 2, y: 2}
   gameObject: {fileID: 877962812885065705, guid: 954718f391fb53f479cb79a26e8aa77e, type: 3}
+  canPlaceWithinStartPosition: 1
+  size: {x: 4, y: 1, z: 4}
+  padding: {x: 2, y: 0, z: 2}
+  normalSectorAllowed: 1
+  importantSectorAllowed: 0
+  secretSectorAllowed: 0

@@ -8,9 +8,9 @@
 //{
 //    public class DoorSizePicker// : LevelGeneratorTask
 //    {
-//        private LevelGenerator levelGenerator;
+//        private ZandomLevelGenerator levelGenerator;
 
-//        public DoorSizePicker(LevelGenerator levelGenerator)
+//        public DoorSizePicker(ZandomLevelGenerator levelGenerator)
 //        {
 //            this.levelGenerator = levelGenerator;
 //        }

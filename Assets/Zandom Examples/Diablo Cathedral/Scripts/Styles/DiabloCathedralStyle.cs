@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.Examples.DiabloCathedral.Tasks;
-using ZandomLevelGenerator.Examples.ZandomTemplate.Customizables;
-using ZandomLevelGenerator.Task;
 using ZandomLevelGenerator.Tasks.Common;
 
 namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles

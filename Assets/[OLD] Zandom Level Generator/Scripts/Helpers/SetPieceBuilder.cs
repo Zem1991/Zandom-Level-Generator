@@ -9,17 +9,17 @@
 //{
 //    public class SetPieceBuilder
 //    {
-//        public SetPieceBuilder(LevelGenerator levelGenerator)
+//        public SetPieceBuilder(ZandomLevelGenerator levelGenerator)
 //        {
-//            LevelGenerator = levelGenerator;
+//            ZandomLevelGenerator = levelGenerator;
 //        }
 
-//        private LevelGenerator LevelGenerator { get; }
+//        private ZandomLevelGenerator ZandomLevelGenerator { get; }
 
 //        public bool CanBuild(Vector2Int start, SetPiecePattern setPiece)
 //        {
-//            bool insideLevelBounds = LevelGenerator.Level.IsInsideBounds(start, setPiece.Size);
-//            bool availableOnTilemap = LevelGenerator.Level.TileMap.IsAvailable(start, setPiece.Size);
+//            bool insideLevelBounds = ZandomLevelGenerator.Level.IsInsideBounds(start, setPiece.Size);
+//            bool availableOnTilemap = ZandomLevelGenerator.Level.TileMap.IsAvailable(start, setPiece.Size);
 //            return insideLevelBounds && availableOnTilemap;
 //        }
 
@@ -29,7 +29,7 @@
 //            {
 //                Vector2Int coordinates = new(col, row);
 //                char tileType = setPiece.Get(coordinates.x - start.x, coordinates.y - start.y);
-//                Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
+//                Tile tile = ZandomLevelGenerator.Level.TileMap.Get(coordinates);
 //                tile.Type = (TileType)tileType;
 //                tile.FromSetPiece = true;
 //                return true;

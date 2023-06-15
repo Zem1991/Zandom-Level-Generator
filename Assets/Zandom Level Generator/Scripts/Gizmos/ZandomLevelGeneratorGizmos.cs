@@ -57,8 +57,8 @@ namespace ZandomLevelGenerator.Gizmos
         {
             if (ZandomLevelGenerator.GeneratorCoroutine == null) return;
             if (ZandomLevelGenerator.GeneratorCoroutine.Stage == null) return;
-            int startIndex = (int)ZandomStateName.STEP01;
-            int endIndex = (int)ZandomStateName.END;
+            int startIndex = (int)StageName.STEP01_PLAN;
+            int endIndex = (int)StageName.STEP04_RESULT;
             int currentIndex = (int)ZandomLevelGenerator.GeneratorCoroutine.Stage.Name;
             for (int i = startIndex; i <= endIndex; i++)
             {

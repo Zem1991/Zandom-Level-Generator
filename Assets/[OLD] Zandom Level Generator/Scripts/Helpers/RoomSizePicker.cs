@@ -6,9 +6,9 @@
 //{
 //    public class RoomSizePicker
 //    {
-//        private readonly LevelGenerator levelGenerator;
+//        private readonly ZandomLevelGenerator levelGenerator;
 
-//        public RoomSizePicker(LevelGenerator levelGenerator)
+//        public RoomSizePicker(ZandomLevelGenerator levelGenerator)
 //        {
 //            this.levelGenerator = levelGenerator;
 //        }

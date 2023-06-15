@@ -8,27 +8,27 @@
 //{
 //    public class RoomBuilder
 //    {
-//        public LevelGenerator LevelGenerator { get; }
+//        public ZandomLevelGenerator ZandomLevelGenerator { get; }
 
-//        public RoomBuilder(LevelGenerator levelGenerator)
+//        public RoomBuilder(ZandomLevelGenerator levelGenerator)
 //        {
-//            LevelGenerator = levelGenerator;
+//            ZandomLevelGenerator = levelGenerator;
 //        }
 
 //        public bool CanBuild(Vector2Int start, Vector2Int size)
 //        {
-//            bool insideLevelBounds = LevelGenerator.Level.IsInsideBounds(start, size);
-//            bool availableOnTilemap = LevelGenerator.Level.TileMap.IsAvailable(start, size);
+//            bool insideLevelBounds = ZandomLevelGenerator.Level.IsInsideBounds(start, size);
+//            bool availableOnTilemap = ZandomLevelGenerator.Level.TileMap.IsAvailable(start, size);
 //            return insideLevelBounds && availableOnTilemap;
 //        }
 
 //        public Room Build(Vector2Int start, Vector2Int size, bool vertical, Room parent)
 //        {
-//            Room room = LevelGenerator.Level.CreateRoom(start, size, vertical, parent);
+//            Room room = ZandomLevelGenerator.Level.CreateRoom(start, size, vertical, parent);
 //            bool areaTile(int col, int row)
 //            {
 //                Vector2Int coordinates = new(col, row);
-//                Tile tile = LevelGenerator.Level.TileMap.Create(coordinates);
+//                Tile tile = ZandomLevelGenerator.Level.TileMap.Create(coordinates);
 //                //room.TileMap.Add(tile);
 //                room.Tiles.Add(tile);
 //                tile.MentionedRooms.Add(room);

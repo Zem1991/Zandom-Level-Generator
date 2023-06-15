@@ -7,9 +7,9 @@
 //{
 //    public class WallTypePicker
 //    {
-//        private readonly LevelGenerator levelGenerator;
+//        private readonly ZandomLevelGenerator levelGenerator;
 
-//        public WallTypePicker(LevelGenerator levelGenerator)
+//        public WallTypePicker(ZandomLevelGenerator levelGenerator)
 //        {
 //            this.levelGenerator = levelGenerator;
 //        }

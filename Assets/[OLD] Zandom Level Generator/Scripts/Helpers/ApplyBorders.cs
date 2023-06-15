@@ -8,12 +8,12 @@
 //{
 //    public class ApplyBorders
 //    {
-//        public ApplyBorders(LevelGenerator levelGenerator)
+//        public ApplyBorders(ZandomLevelGenerator levelGenerator)
 //        {
-//            LevelGenerator = levelGenerator;
+//            ZandomLevelGenerator = levelGenerator;
 //        }
 
-//        private LevelGenerator LevelGenerator { get; }
+//        private ZandomLevelGenerator ZandomLevelGenerator { get; }
 
 //        public void Apply(Room room)
 //        {
@@ -28,11 +28,11 @@
 //            bool borderTile(int col, int row)
 //            {
 //                Vector2Int coordinates = new(col, row);
-//                bool alreadyHaveTile = LevelGenerator.Level.TileMap.Has(coordinates);
-//                Tile tile = LevelGenerator.Level.TileMap.Get(coordinates);
+//                bool alreadyHaveTile = ZandomLevelGenerator.Level.TileMap.Has(coordinates);
+//                Tile tile = ZandomLevelGenerator.Level.TileMap.Get(coordinates);
 //                if (tile == null)
 //                {
-//                    tile = LevelGenerator.Level.TileMap.Create(coordinates);
+//                    tile = ZandomLevelGenerator.Level.TileMap.Create(coordinates);
 //                    room.Tiles.Add(tile);
 //                }
 //                //else if (tile.Type != TileType.ROOM_BORDER)
@@ -57,10 +57,10 @@
 //            Vector2Int tr = new(br.x, tl.y);
 //            List<Tile> tiles = new()
 //        {
-//            LevelGenerator.Level.TileMap.Get(bl),
-//            LevelGenerator.Level.TileMap.Get(br),
-//            LevelGenerator.Level.TileMap.Get(tl),
-//            LevelGenerator.Level.TileMap.Get(tr),
+//            ZandomLevelGenerator.Level.TileMap.Get(bl),
+//            ZandomLevelGenerator.Level.TileMap.Get(br),
+//            ZandomLevelGenerator.Level.TileMap.Get(tl),
+//            ZandomLevelGenerator.Level.TileMap.Get(tr),
 //        };
 //            foreach (Tile tile in tiles)
 //            {

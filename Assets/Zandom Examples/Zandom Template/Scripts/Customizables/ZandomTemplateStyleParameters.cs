@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 
-namespace ZandomTemplate.Customizables
+namespace ZandomLevelGenerator.Examples.ZandomTemplate.Customizables
 {
     [CreateAssetMenu(menuName = "Zandom Examples/Zandom Template/StyleParameters")]
     public class ZandomTemplateStyleParameters : StyleParameters

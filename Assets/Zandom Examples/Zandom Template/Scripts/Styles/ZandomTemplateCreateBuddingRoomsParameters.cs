@@ -7,9 +7,9 @@ using UnityEngine;
 using ZandomLevelGenerator;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tasks.Common;
-using ZandomTemplate.Customizables;
+using ZandomLevelGenerator.Examples.ZandomTemplate.Customizables;
 
-namespace ZandomTemplate.Styles
+namespace ZandomLevelGenerator.Examples.ZandomTemplate.Styles
 {
     public class ZandomTemplateCreateBuddingRoomsParameters
     {
@@ -24,9 +24,9 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public Func<ZandomLevelGenerator.ZandomLevelGenerator, List<RoomPlan>> RootRoomsFunction()
+        public Func<ZandomLevelGenerator, List<RoomPlan>> RootRoomsFunction()
         {
-            List<RoomPlan> result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
+            List<RoomPlan> result(ZandomLevelGenerator zandomLevelGenerator)
             {
                 List<SectorPlan> sectorPlans = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors.Values.Take(1).ToList();
                 List<RoomPlan> result = new();
@@ -41,9 +41,9 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public Func<ZandomLevelGenerator.ZandomLevelGenerator, SectorPlan, Vector3Int> RoomSizeFunction()
+        public Func<ZandomLevelGenerator, SectorPlan, Vector3Int> RoomSizeFunction()
         {
-            Vector3Int result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
+            Vector3Int result(ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
             {
                 ZandomTemplateStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
                 Vector3Int result = zandomTemplateStyleParameters.BuddingRoomSize;
@@ -52,9 +52,9 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public Func<ZandomLevelGenerator.ZandomLevelGenerator, SectorPlan, bool> RoomVerticalFunction()
+        public Func<ZandomLevelGenerator, SectorPlan, bool> RoomVerticalFunction()
         {
-            bool result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, SectorPlan parent)
+            bool result(ZandomLevelGenerator zandomLevelGenerator, SectorPlan parent)
             {
                 bool result;
                 bool enoughParents = parent?.Parent != null;
@@ -81,18 +81,18 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public Func<ZandomLevelGenerator.ZandomLevelGenerator, SectorPlan, bool> RetryFunction()
+        public Func<ZandomLevelGenerator, SectorPlan, bool> RetryFunction()
         {
-            bool result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
+            bool result(ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
             {
                 return false;
             }
             return result;
         }
 
-        public Func<ZandomLevelGenerator.ZandomLevelGenerator, SectorPlan, bool> TaskStopFunction()
+        public Func<ZandomLevelGenerator, SectorPlan, bool> TaskStopFunction()
         {
-            bool result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
+            bool result(ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
             {
                 Dictionary<int, SectorPlan> sectors = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors;
                 ZandomTemplateStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;

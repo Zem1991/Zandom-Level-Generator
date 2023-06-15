@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.Tasks.Common;
-using ZandomTemplate.Customizables;
+using ZandomLevelGenerator.Examples.ZandomTemplate.Customizables;
 
-namespace ZandomTemplate.Styles
+namespace ZandomLevelGenerator.Examples.ZandomTemplate.Styles
 {
     public class ZandomTemplateStyle : GeneratorStyle
     {
-        public override bool Step01_Checks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, out string message)
+        public override bool Step01_Checks(ZandomLevelGenerator zandomLevelGenerator, out string message)
         {
             message = null;
             int sectorCount = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors.Count;
@@ -20,7 +20,7 @@ namespace ZandomTemplate.Styles
             return sectorCountOk;
         }
 
-        public override List<GeneratorTask> Step01_Tasks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
+        public override List<GeneratorTask> Step01_Tasks(ZandomLevelGenerator zandomLevelGenerator)
         {
             ZandomTemplateStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
             Vector3Int centralRoomSize = zandomTemplateStyleParameters.CentralRoomSize;
@@ -33,13 +33,13 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public override bool Step02_Checks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, out string message)
+        public override bool Step02_Checks(ZandomLevelGenerator zandomLevelGenerator, out string message)
         {
             message = null;
             return true;
         }
 
-        public override List<GeneratorTask> Step02_Tasks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
+        public override List<GeneratorTask> Step02_Tasks(ZandomLevelGenerator zandomLevelGenerator)
         {
             CreateBorderOverlapDoorwaysParameters parameters = new ZandomTemplateCreateBorderOverlapDoorwaysParameters().CreateParameters();
             List<GeneratorTask> result = new()
@@ -50,7 +50,7 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public override bool Step03_Checks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, out string message)
+        public override bool Step03_Checks(ZandomLevelGenerator zandomLevelGenerator, out string message)
         {
             message = null;
             bool startLocationOk = zandomLevelGenerator.GeneratorCoroutine.Level.StartLocation != null;
@@ -58,7 +58,7 @@ namespace ZandomTemplate.Styles
             return startLocationOk;
         }
 
-        public override List<GeneratorTask> Step03_Tasks(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
+        public override List<GeneratorTask> Step03_Tasks(ZandomLevelGenerator zandomLevelGenerator)
         {
             PlaceObstaclesParameters parameters = new ZandomTemplatePlaceStartLocationWithObstacleParameters().CreateParameters();
             List<GeneratorTask> result = new()

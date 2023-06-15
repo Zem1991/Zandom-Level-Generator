@@ -6,9 +6,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tasks.Common;
-using ZandomTemplate.Customizables;
+using ZandomLevelGenerator.Examples.ZandomTemplate.Customizables;
 
-namespace ZandomTemplate.Styles
+namespace ZandomLevelGenerator.Examples.ZandomTemplate.Styles
 {
     public class ZandomTemplateCreateBorderOverlapDoorwaysParameters
     {
@@ -21,9 +21,9 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public Func<ZandomLevelGenerator.ZandomLevelGenerator, List<BorderOverlapWall>> WallListFunction()
+        public Func<ZandomLevelGenerator, List<BorderOverlapWall>> WallListFunction()
         {
-            List<BorderOverlapWall> result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator)
+            List<BorderOverlapWall> result(ZandomLevelGenerator zandomLevelGenerator)
             {
                 ZandomTemplateStyleParameters parameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
                 int minSize = parameters.DoorwayLength;
@@ -43,9 +43,9 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public Func<ZandomLevelGenerator.ZandomLevelGenerator, BorderOverlapWall, int> DoorwayLengthFunction()
+        public Func<ZandomLevelGenerator, BorderOverlapWall, int> DoorwayLengthFunction()
         {
-            int result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, BorderOverlapWall wall)
+            int result(ZandomLevelGenerator zandomLevelGenerator, BorderOverlapWall wall)
             {
                 ZandomTemplateStyleParameters parameters = zandomLevelGenerator.ZandomParameters as ZandomTemplateStyleParameters;
                 return parameters.DoorwayLength;
@@ -53,9 +53,9 @@ namespace ZandomTemplate.Styles
             return result;
         }
 
-        public Func<ZandomLevelGenerator.ZandomLevelGenerator, BorderOverlapWall, int, Vector3Int> DoorwayPositionFunction()
+        public Func<ZandomLevelGenerator, BorderOverlapWall, int, Vector3Int> DoorwayPositionFunction()
         {
-            Vector3Int result(ZandomLevelGenerator.ZandomLevelGenerator zandomLevelGenerator, BorderOverlapWall wall, int length)
+            Vector3Int result(ZandomLevelGenerator zandomLevelGenerator, BorderOverlapWall wall, int length)
             {
                 int count = wall.TilesIds.Count;
                 count /= 2;             //Central position

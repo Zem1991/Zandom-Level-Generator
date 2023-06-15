@@ -4,12 +4,9 @@ using System.Data;
 using System.Linq;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
-using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.GeneratorObjects;
-using ZandomLevelGenerator.Tools.Checkers;
 using ZandomLevelGenerator.Tools.Factories;
 using ZandomLevelGenerator.Tools.Helpers;
-using static UnityEditor.Progress;
 
 namespace ZandomLevelGenerator.Tasks.Common
 {
@@ -28,7 +25,8 @@ namespace ZandomLevelGenerator.Tasks.Common
 
         public override void RunContents()
         {
-            ObstacleData data = ZandomLevelGenerator.ZandomObstacleList.Get(ObjectName);
+            string name = ObjectName;
+            ObstacleData data = ZandomLevelGenerator.ZandomObstacleList.Get(name);
             int amount = Parameters.AmountFunction(ZandomLevelGenerator);
             List<TilePlan> startTiles = FindStartTiles();
             Queue<TilePlan> startTilesQueue = new(startTiles);

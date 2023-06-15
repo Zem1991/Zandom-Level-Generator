@@ -26,6 +26,16 @@ namespace ZemReusables
             return Random.Next();
         }
 
+        public float NextFloat()
+        {
+            return (float)Random.NextDouble();
+        }
+
+        public bool NextBool()
+        {
+            return Range(0, 2) > 0;
+        }
+
         public int Range(int minInclusive, int maxExclusive)
         {
             if (maxExclusive < minInclusive)

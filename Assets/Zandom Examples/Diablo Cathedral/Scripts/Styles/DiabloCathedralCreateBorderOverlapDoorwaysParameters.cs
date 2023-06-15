@@ -2,11 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
+using ZandomLevelGenerator.Examples.DiabloCathedral.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tasks.Common;
-using ZandomLevelGenerator.Examples.DiabloCathedral.Customizables;
 
 namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
 {
@@ -26,7 +25,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
             List<BorderOverlapWall> result(ZandomLevelGenerator zandomLevelGenerator)
             {
                 DiabloCathedralStyleParameters parameters = zandomLevelGenerator.ZandomParameters as DiabloCathedralStyleParameters;
-                int minSize = parameters.DoorwayLength;
+                int minSize = parameters.SmallDoorwayLength;
                 List<BorderOverlapWall> result = new();
                 foreach (var item in zandomLevelGenerator.GeneratorCoroutine.Level.BorderOverlapWalls)
                 {
@@ -48,20 +47,26 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
             int result(ZandomLevelGenerator zandomLevelGenerator, BorderOverlapWall wall)
             {
                 DiabloCathedralStyleParameters parameters = zandomLevelGenerator.ZandomParameters as DiabloCathedralStyleParameters;
-                return parameters.DoorwayLength;
+                int small = parameters.SmallDoorwayLength;
+                int large = parameters.LargeDoorwayLength;
+                int wallLength = wall.TilesIds.Count;
+                if (wallLength < 2 * small) return small;
+                if (wallLength >= 2 * large) return large;
+                bool useLarge = zandomLevelGenerator.GeneratorCoroutine.SeededRandom.NextBool();
+                return useLarge ? large : small;
             }
             return result;
         }
 
         public Func<ZandomLevelGenerator, BorderOverlapWall, int, Vector3Int> DoorwayPositionFunction()
         {
-            Vector3Int result(ZandomLevelGenerator zandomLevelGenerator, BorderOverlapWall wall, int length)
+            Vector3Int result(ZandomLevelGenerator zandomLevelGenerator, BorderOverlapWall wall, int doorLength)
             {
-                int count = wall.TilesIds.Count;
-                count /= 2;             //Central position
-                //count -= 1;             //Zero-based numbering
-                count -= length / 2;    //Half doorway length
-                Vector3Int result = wall.TilesIds.ElementAt(count);
+                int available = wall.TilesIds.Count;
+                available -= doorLength;
+                available++;
+                int index = zandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, available);
+                Vector3Int result = wall.TilesIds.ElementAt(index);
                 return result;
             }
             return result;

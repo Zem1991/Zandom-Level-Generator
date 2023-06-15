@@ -15,7 +15,5 @@ MonoBehaviour:
   levelSize: {x: 80, y: 1, z: 80}
   moduleSize: {x: 10, y: 1, z: 10}
   safetySize: {x: 10, y: 1, z: 10}
-  centralRoomSize: {x: 12, y: 1, z: 12}
-  buddingRoomSize: {x: 8, y: 1, z: 8}
-  doorwayLength: 4
-  sectorCountTarget: 20
+  dae: 0
+  sectorCountTarget: 30

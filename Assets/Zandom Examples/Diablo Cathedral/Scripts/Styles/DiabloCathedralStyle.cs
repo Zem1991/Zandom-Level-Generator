@@ -78,10 +78,10 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
 
         public override List<GeneratorTask> Step03_Tasks(ZandomLevelGenerator zandomLevelGenerator)
         {
-            PlaceObstaclesParameters parameters = new DiabloCathedralPlaceStartLocationWithObstacleParameters().CreateParameters();
+            PlaceObstaclesParameters startLocationParameters = new DiabloCathedralPlaceStartLocationWithObstacleParameters().CreateParameters();
             List<GeneratorTask> result = new()
             {
-                new PlaceStartLocationWithObstacle(zandomLevelGenerator, parameters),
+                new PlaceStartLocationWithObstacle(zandomLevelGenerator, startLocationParameters),
                 //new ExitPlacement(zandomLevelGenerator),
                 //new DoorPlacement(zandomLevelGenerator),
                 new PlaceTreasureEncounter(zandomLevelGenerator),

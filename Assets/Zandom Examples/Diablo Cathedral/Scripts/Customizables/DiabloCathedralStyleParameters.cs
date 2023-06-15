@@ -5,18 +5,17 @@ using ZandomLevelGenerator.Customizables;
 
 namespace ZandomLevelGenerator.Examples.DiabloCathedral.Customizables
 {
-    [CreateAssetMenu(menuName = "Zandom Examples/Diablo Cathedral/StyleParameters")]
+    [CreateAssetMenu(menuName = "Zandom Examples/Diablo Cathedral/Style Parameters")]
     public class DiabloCathedralStyleParameters : StyleParameters
     {
         [Header("Diablo Cathedral")]
-        [SerializeField] private Vector3Int centralRoomSize = new(12, 1, 12);
-        [SerializeField] private Vector3Int buddingRoomSize = new(8, 1, 8);
-        [SerializeField] private int doorwayLength = 4;
-        [SerializeField] private int sectorCountTarget = 20;
+        public int dae;
+        [SerializeField] private int smallDoorwayLength = 2;
+        [SerializeField] private int largeDoorwayLength = 4;
+        [SerializeField] private int sectorCountTarget = 30;
 
-        public Vector3Int CentralRoomSize { get => centralRoomSize; }
-        public Vector3Int BuddingRoomSize { get => buddingRoomSize; }
-        public int DoorwayLength { get => doorwayLength; }
+        public int SmallDoorwayLength { get => smallDoorwayLength; }
+        public int LargeDoorwayLength { get => largeDoorwayLength; }
         public int SectorCountTarget { get => sectorCountTarget; }
     }
 }

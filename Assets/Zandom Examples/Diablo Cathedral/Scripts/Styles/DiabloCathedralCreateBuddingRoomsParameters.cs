@@ -26,7 +26,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
         {
             List<RoomPlan> result(ZandomLevelGenerator zandomLevelGenerator)
             {
-                List<SectorPlan> sectorPlans = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors.Values.Take(1).ToList();
+                List<SectorPlan> sectorPlans = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors.Values.Take(2).ToList();
                 List<RoomPlan> result = new();
                 foreach (var item in sectorPlans)
                 {
@@ -43,9 +43,20 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
         {
             Vector3Int result(ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
             {
-                DiabloCathedralStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as DiabloCathedralStyleParameters;
-                Vector3Int result = zandomTemplateStyleParameters.BuddingRoomSize;
-                return result;
+                int PickInt()
+                {
+                    int size = zandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(3, 6);
+                    size *= 2;      //Mirrored for {6, 8, 10} sizes
+                    size += 2;      //+2 for each Border on each orientation
+                    return size;
+                }
+                Vector3Int PickVector2Int()
+                {
+                    int sizeX = PickInt();
+                    int sizeZ = PickInt();
+                    return new(sizeX, 1, sizeZ);
+                }
+                return PickVector2Int();
             }
             return result;
         }
@@ -83,7 +94,11 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
         {
             bool result(ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
             {
-                return false;
+                SectorPlan parent = sectorPlan.Parent;
+                if (parent == null) return true;
+                SectorPlan grandparent = parent.Parent;
+                if (grandparent == null) return true;
+                return sectorPlan.Vertical != parent.Vertical;
             }
             return result;
         }
@@ -94,6 +109,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
             {
                 Dictionary<int, SectorPlan> sectors = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors;
                 DiabloCathedralStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as DiabloCathedralStyleParameters;
+                //TODO: change this?
                 int sectorCountTarget = zandomTemplateStyleParameters.SectorCountTarget;
                 bool stop = sectors.Count >= sectorCountTarget;
                 return stop;

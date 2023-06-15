@@ -59,26 +59,30 @@ namespace ZandomLevelGenerator.Tasks.Common
             bool vertical = Parameters.RoomVerticalFunction(ZandomLevelGenerator, current);
             bool canRetry = Parameters.RetryFunction(ZandomLevelGenerator, current);
             List<RoomPlan> result = BudRoomAlongAxis(current, size, vertical);
-            if (result.Count <= 0 && canRetry) result = BudRoomAlongAxis(current, size, !vertical);
+            if (result.Count <= 0 && canRetry)
+            {
+                result = BudRoomAlongAxis(current, size, !vertical);
+            }
             return result;
         }
 
         private List<RoomPlan> BudRoomAlongAxis(RoomPlan parent, Vector3Int size, bool vertical)
         {
             CreateBuddingRoomsPositionPicker positionPicker = new(ZandomLevelGenerator);
+            //TODO: have same X or same Z coordinate, like Diablo
             Vector3Int position1 = vertical ? positionPicker.BackRandom(parent, size) : positionPicker.LeftRandom(parent, size);
             Vector3Int position2 = vertical ? positionPicker.FrontRandom(parent, size) : positionPicker.RightRandom(parent, size);
-            List<RoomPlan> result = new()
-            {
-                Run(position1, size, vertical, parent),
-                Run(position2, size, vertical, parent),
-            };
+            bool gotRoom1 = TryRun(position1, size, vertical, parent, out RoomPlan room1);
+            bool gotRoom2 = TryRun(position2, size, vertical, parent, out RoomPlan room2);
+            List<RoomPlan> result = new();
+            if (gotRoom1) result.Add(room1);
+            if (gotRoom2) result.Add(room2);
             return result;
         }
 
-        private RoomPlan Run(Vector3Int position, Vector3Int size, bool vertical, SectorPlan parent)
+        private bool TryRun(Vector3Int position, Vector3Int size, bool vertical, SectorPlan parent, out RoomPlan child)
         {
-            RoomPlan result = null;
+            child = null;
             LevelPlan levelPlan = ZandomLevelGenerator.GeneratorCoroutine.Level;
             HashSet<Vector3Int> coordinates = new CoordinatesGetter().Get(position, size);
             bool canBuild = new AreaAvailabilityChecker(levelPlan).IsAvailableForTiles(coordinates);
@@ -86,10 +90,9 @@ namespace ZandomLevelGenerator.Tasks.Common
             {
                 RoomPlanFactory factory = new(levelPlan);
                 int roomId = factory.NextId();
-                result = factory.Create(roomId, position, size, vertical, parent);
+                child = factory.Create(roomId, position, size, vertical, parent);
             }
-            return result;
-
+            return canBuild;
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.Customizables
 {
-    [CreateAssetMenu(menuName = "Zandom2/StyleParameters")]
+    [CreateAssetMenu(menuName = "Zandom2/Style Parameters")]
     public class StyleParameters : ScriptableObject
     {
         [Header("Level Size Options")]

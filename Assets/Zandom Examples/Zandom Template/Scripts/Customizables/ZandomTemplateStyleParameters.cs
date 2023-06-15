@@ -5,7 +5,7 @@ using ZandomLevelGenerator.Customizables;
 
 namespace ZandomLevelGenerator.Examples.ZandomTemplate.Customizables
 {
-    [CreateAssetMenu(menuName = "Zandom Examples/Zandom Template/StyleParameters")]
+    [CreateAssetMenu(menuName = "Zandom Examples/Zandom Template/Style Parameters")]
     public class ZandomTemplateStyleParameters : StyleParameters
     {
         [Header("Zandom Template")]

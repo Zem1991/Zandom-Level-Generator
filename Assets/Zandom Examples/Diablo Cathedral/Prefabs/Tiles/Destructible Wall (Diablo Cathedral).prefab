@@ -425,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7278972641462252324}
   m_Layer: 0
-  m_Name: Aged Wall (Diablo Cathedral)
+  m_Name: Destructible Wall (Diablo Cathedral)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

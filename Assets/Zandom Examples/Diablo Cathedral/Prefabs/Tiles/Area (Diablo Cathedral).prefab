@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9033375250853195898}
   m_Layer: 0
-  m_Name: Normal Floor (Diablo Cathedral)
+  m_Name: Area (Diablo Cathedral)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e3239dbcb944239418f95eb5c3936fe0, type: 2}
+  - {fileID: 2100000, guid: df355ce0d12df5d42b2766159f041cb4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

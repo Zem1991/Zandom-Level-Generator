@@ -4,6 +4,7 @@ using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.GeneratorObjects;
+using ZandomLevelGenerator.Tools.Helpers;
 
 namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
 {
@@ -15,7 +16,9 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
 
         public override void RunContents()
         {
-            foreach (var item in ZandomLevelGenerator.GeneratorCoroutine.Level.Sectors)
+            LevelPlan level = ZandomLevelGenerator.GeneratorCoroutine.Level;
+            TileCodeReplacer tileCodeReplacer = new(level);
+            foreach (var item in level.Sectors)
             {
                 SectorPlan sector = item.Value;
                 RoomPlan room = sector as RoomPlan;
@@ -23,6 +26,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                 int wallCount = CountWalls(room);
                 if (wallCount > 1) continue;
                 room.Type = SectorType.IMPORTANT;
+                tileCodeReplacer.ReplaceArea(sector, "Important Floor");
             }
         }
 

@@ -60,10 +60,9 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
             List<GeneratorTask> result = new()
             {
                 new CreateBorderOverlapWalls(zandomLevelGenerator),
-                new CreateBorderOverlapDoorways(zandomLevelGenerator, parameters),
                 new SelectImportantRooms(zandomLevelGenerator),
-                //new RoomTypeRandomizer(zandomLevelGenerator),
                 //new WallTypeRandomizer(zandomLevelGenerator),
+                new CreateBorderOverlapDoorways(zandomLevelGenerator, parameters),
             };
             return result;
         }
@@ -79,11 +78,14 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
         public override List<GeneratorTask> Step03_Tasks(ZandomLevelGenerator zandomLevelGenerator)
         {
             PlaceObstaclesParameters startLocationParameters = new DiabloCathedralPlaceStartLocationWithObstacleParameters().CreateParameters();
+            PlaceDoorwayObstaclesParameters smallDoorParameters = new DiabloCathedralPlaceSmallDoorParameters().CreateParameters();
+            PlaceDoorwayObstaclesParameters largeDoorParameters = new DiabloCathedralPlaceLargeDoorParameters().CreateParameters();
             List<GeneratorTask> result = new()
             {
                 new PlaceStartLocationWithObstacle(zandomLevelGenerator, startLocationParameters),
                 //new ExitPlacement(zandomLevelGenerator),
-                //new DoorPlacement(zandomLevelGenerator),
+                new PlaceDoorwayObstacles(zandomLevelGenerator, smallDoorParameters),
+                new PlaceDoorwayObstacles(zandomLevelGenerator, largeDoorParameters),
                 new PlaceTreasureEncounter(zandomLevelGenerator),
                 new PlaceChallengeEncounter(zandomLevelGenerator),
                 new PlaceNormalEncounter(zandomLevelGenerator),

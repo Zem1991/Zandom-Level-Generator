@@ -39,7 +39,7 @@ namespace ZandomLevelGenerator.Tasks.Common
                 ObstacleFactory factory = new(ZandomLevelGenerator.GeneratorCoroutine.Level);
                 int obstacleId = factory.NextId();
                 //TODO: make padding tiles only pad and not actually register an obstacle over them
-                Obstacle obstacle = factory.Create(obstacleId, coordinates, data);
+                Obstacle obstacle = factory.Create(obstacleId, coordinates, Vector3.zero, data);
                 NewObstacles.Add(obstacleId, obstacle);
             }
         }

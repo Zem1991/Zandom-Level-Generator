@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9527811bdff1df4bbc86e3e9d17fb26, type: 3}
+  m_Name: Small Door (Diablo Cathedral)
+  m_EditorClassIdentifier: 
+  gameObject: {fileID: 877962812885065705, guid: 7376b42a909c120479c386a3f94e9e40, type: 3}
+  canPlaceWithinStartPosition: 1
+  size: {x: 4, y: 1, z: 4}
+  padding: {x: 0, y: 0, z: 0}
+  normalSectorAllowed: 1
+  importantSectorAllowed: 1
+  secretSectorAllowed: 1

@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: Obstacle Data List (Diablo Cathedral)
   m_EditorClassIdentifier: 
   items:
+  - key: Small Door
+    value: {fileID: 11400000, guid: 44afb89f84b5b82439ef513133861c81, type: 2}
+  - key: Large Door
+    value: {fileID: 11400000, guid: 0abb83e4fbf05ca42bf71ca5e6c0ba0f, type: 2}
   - key: Normal Encounter
     value: {fileID: 11400000, guid: 0585de2ad1ffdfd4a960808a9dcb3af5, type: 2}
   - key: Challenge Encounter
     value: {fileID: 11400000, guid: 749947819eeda12428dad746afe7e68f, type: 2}
   - key: Treasure Encounter
     value: {fileID: 11400000, guid: e6067f6acf985cd4090b8366d1c40733, type: 2}
-  zandomStartLocation: {fileID: 11400000, guid: 7969e86c85e66094890dc7fc5fa408b6, type: 2}
+  zandomStartLocation: {fileID: 11400000, guid: dcb9246143bb5a04aaf273ccb2b92e67, type: 2}

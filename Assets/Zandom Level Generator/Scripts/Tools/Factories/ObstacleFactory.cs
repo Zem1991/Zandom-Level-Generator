@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tools.Helpers;
@@ -22,12 +21,12 @@ namespace ZandomLevelGenerator.Tools.Factories
             return LevelPlan.Obstacles.Count;
         }
         
-        public Obstacle Create(int id, HashSet<Vector3Int> tilesIds, ObstacleData data)
+        public Obstacle Create(int id, HashSet<Vector3Int> tilesIds, Vector3 rotationEuler, ObstacleData data)
         {
             bool exists = LevelPlan.Obstacles.TryGetValue(id, out Obstacle result);
             if (!exists)
             {
-                result = new(LevelPlan, id, tilesIds, data);
+                result = new(LevelPlan, id, tilesIds, rotationEuler, data);
                 LevelPlan.Obstacles.Add(id, result);
             }
             new ObstacleToTilesLinker(LevelPlan).LinkIds(result);

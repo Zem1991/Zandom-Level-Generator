@@ -107,11 +107,14 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
         {
             bool result(ZandomLevelGenerator zandomLevelGenerator, SectorPlan sectorPlan)
             {
-                Dictionary<int, SectorPlan> sectors = zandomLevelGenerator.GeneratorCoroutine.Level.Sectors;
+                LevelPlan level = zandomLevelGenerator.GeneratorCoroutine.Level;
+                Dictionary<int, SectorPlan> sectors = level.Sectors;
                 DiabloCathedralStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as DiabloCathedralStyleParameters;
-                //TODO: change this?
-                int sectorCountTarget = zandomTemplateStyleParameters.SectorCountTarget;
-                bool stop = sectors.Count >= sectorCountTarget;
+                int currentArea = level.Tiles.Count;
+                int levelArea = zandomTemplateStyleParameters.Area;
+                float fillTarget = zandomTemplateStyleParameters.AreaFillTarget;
+                int targetArea = Mathf.RoundToInt(levelArea * fillTarget);
+                bool stop = currentArea >= targetArea;
                 return stop;
             }
             return result;

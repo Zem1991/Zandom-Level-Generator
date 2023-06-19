@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9527811bdff1df4bbc86e3e9d17fb26, type: 3}
-  m_Name: ZandomStartLocation (Diablo Cathedral)
+  m_Name: Large Door (Diablo Cathedral)
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 877962812885065705, guid: 645f0809c22a37747b91485b42e3a18d, type: 3}
+  gameObject: {fileID: 877962812885065705, guid: e4c7b597b1c606d4e9b2301ee9d292a0, type: 3}
   canPlaceWithinStartPosition: 1
   size: {x: 4, y: 1, z: 4}
-  padding: {x: 1, y: 0, z: 1}
+  padding: {x: 0, y: 0, z: 0}
   normalSectorAllowed: 1
-  importantSectorAllowed: 0
-  secretSectorAllowed: 0
+  importantSectorAllowed: 1
+  secretSectorAllowed: 1

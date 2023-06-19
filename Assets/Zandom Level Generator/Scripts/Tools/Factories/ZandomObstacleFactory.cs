@@ -31,6 +31,7 @@ namespace ZandomLevelGenerator.Tools.Factories
             Transform parent = LevelPlan.Result.transform;
             Vector3 position = parent.position + plan.Position;
             Quaternion rotation = Quaternion.identity;
+            rotation.eulerAngles = plan.RotationEuler;
             GameObject instance = Object.Instantiate(plan.Data.GameObject, position, rotation, parent);
             ZandomObstacle result = instance.AddComponent<ZandomObstacle>();
             result.PseudoConstructor(plan);

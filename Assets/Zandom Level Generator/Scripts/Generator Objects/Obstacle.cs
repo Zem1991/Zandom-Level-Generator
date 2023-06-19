@@ -9,11 +9,12 @@ namespace ZandomLevelGenerator.GeneratorObjects
 {
     public class Obstacle
     {
-        public Obstacle(LevelPlan levelPlan, int id, HashSet<Vector3Int> tilesIds, ObstacleData data)
+        public Obstacle(LevelPlan levelPlan, int id, HashSet<Vector3Int> tilesIds, Vector3 rotationEuler, ObstacleData data)
         {
             LevelPlan = levelPlan;
             Id = id;
             TilesIds = tilesIds;
+            RotationEuler = rotationEuler;
             Data = data;
             Position = new PositionGetter().GetCenter(tilesIds);
             PointOfInterestId = -1;
@@ -22,6 +23,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public LevelPlan LevelPlan { get; }
         public int Id { get; }
         public HashSet<Vector3Int> TilesIds { get; }
+        public Vector3 RotationEuler { get; }
         public ObstacleData Data { get; }
         public Vector3 Position { get; }
 

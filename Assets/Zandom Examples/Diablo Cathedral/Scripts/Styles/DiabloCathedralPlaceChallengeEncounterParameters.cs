@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Enums;
+using ZandomLevelGenerator.Examples.DiabloCathedral.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tasks.Common;
 
@@ -22,7 +23,8 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
         {
             int result(ZandomLevelGenerator zandomLevelGenerator)
             {
-                return 1;
+                DiabloCathedralStyleParameters zandomTemplateStyleParameters = zandomLevelGenerator.ZandomParameters as DiabloCathedralStyleParameters;
+                return zandomTemplateStyleParameters.ChallengeEncounters;
             }
             return result;
         }

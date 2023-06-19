@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
 
-namespace ZandomLevelGenerator.Examples.DiabloCathedral.Customizables
+namespace ZandomLevelGenerator.Examples.DiabloCathedral
 {
     [CreateAssetMenu(menuName = "Zandom Examples/Diablo Cathedral/Style Parameters")]
     public class DiabloCathedralStyleParameters : StyleParameters

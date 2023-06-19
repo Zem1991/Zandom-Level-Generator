@@ -26,9 +26,9 @@ namespace ZandomLevelGenerator.Customizables
 
         public override GameObject Get(string name)
         {
-            if (name == TileTypeNew.AREA.ToString()) return area;
-            if (name == TileTypeNew.BORDER.ToString()) return border;
-            if (name == TileTypeNew.CORNER.ToString()) return corner;
+            if (name == TileType.AREA.ToString()) return area;
+            if (name == TileType.BORDER.ToString()) return border;
+            if (name == TileType.CORNER.ToString()) return corner;
             if (name == TileOverlap.WALL.ToString()) return wall;
             if (name == TileOverlap.DOORWAY.ToString()) return doorway;
             return base.Get(name);

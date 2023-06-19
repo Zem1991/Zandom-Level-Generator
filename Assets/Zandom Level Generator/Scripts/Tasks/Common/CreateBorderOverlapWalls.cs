@@ -30,7 +30,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             {
                 TilePlan tile = item.Value;
                 if (tile == null) continue;
-                if (tile.Type != TileTypeNew.BORDER) continue;
+                if (tile.Type != TileType.BORDER) continue;
                 if (tile.SectorsIds.Count <= 1) continue;
                 int sourceRoom = tile.SectorsIds.ElementAt(0);
                 int neighborRoom = tile.SectorsIds.ElementAt(1);

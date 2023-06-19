@@ -31,7 +31,7 @@ namespace ZandomLevelGenerator.Examples.ZandomTemplate.Styles
         {
             bool result(ZandomLevelGenerator zandomLevelGenerator, TilePlan tile)
             {
-                bool canPlaceObstacle = tile.Type == TileTypeNew.AREA;
+                bool canPlaceObstacle = tile.Type == TileType.AREA;
                 return canPlaceObstacle;
             }
             return result;

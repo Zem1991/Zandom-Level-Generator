@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.Enums
 {
-    public enum TileTypeNew
+    public enum TileType
     {
         AREA,
         BORDER,

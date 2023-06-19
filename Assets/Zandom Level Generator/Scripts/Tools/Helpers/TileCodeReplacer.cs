@@ -26,7 +26,7 @@ namespace ZandomLevelGenerator.Tools.Helpers
             foreach (var item in coordinates)
             {
                 LevelPlan.Tiles.TryGetValue(item, out TilePlan tile);
-                if (tile.Type != TileTypeNew.AREA) continue;
+                if (tile.Type != TileType.AREA) continue;
                 tile.Code = code;
             }
         }

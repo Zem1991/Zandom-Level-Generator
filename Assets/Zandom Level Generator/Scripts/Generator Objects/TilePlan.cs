@@ -16,7 +16,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
             Coordinates = coordinates;
             SectorsIds = new();
             ObstacleId = -1;
-            Type = TileTypeNew.AREA;
+            Type = TileType.AREA;
             Overlap = TileOverlap.NONE;
         }
 
@@ -25,7 +25,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public HashSet<int> SectorsIds { get; }
 
         public int ObstacleId { get; set; }
-        public TileTypeNew Type { get; set; }
+        public TileType Type { get; set; }
         public TileOverlap Overlap { get; set; }
         public string Code
         {

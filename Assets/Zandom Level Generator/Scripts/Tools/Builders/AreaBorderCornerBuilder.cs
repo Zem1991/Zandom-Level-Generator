@@ -26,17 +26,17 @@ namespace ZandomLevelGenerator.Tools.Builders
             iterator.Iterate(start, size, areaFunction, borderFunction, cornerFunction);
         }
 
-        private bool RectangleArea(int col, int floor, int row) => SetTileType(col, floor, row, TileTypeNew.AREA);
-        private bool RectangleBorder(int col, int floor, int row) => SetTileType(col, floor, row, TileTypeNew.BORDER);
-        private bool RectangleCorner(int col, int floor, int row) => SetTileType(col, floor, row, TileTypeNew.CORNER);
+        private bool RectangleArea(int col, int floor, int row) => SetTileType(col, floor, row, TileType.AREA);
+        private bool RectangleBorder(int col, int floor, int row) => SetTileType(col, floor, row, TileType.BORDER);
+        private bool RectangleCorner(int col, int floor, int row) => SetTileType(col, floor, row, TileType.CORNER);
 
-        private bool SetTileType(int col, int floor, int row, TileTypeNew tileType)
+        private bool SetTileType(int col, int floor, int row, TileType tileType)
         {
             LevelPlan levelPlan = SectorPlan.Level;
             Vector3Int coordinates = new(col, floor, row);
             bool hasTile = levelPlan.Tiles.TryGetValue(coordinates, out TilePlan tile);
             if (!hasTile) return false;
-            if (tile.Type != TileTypeNew.CORNER)
+            if (tile.Type != TileType.CORNER)
             {
                 tile.Type = tileType;
             }

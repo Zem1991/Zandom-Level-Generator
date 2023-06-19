@@ -21,7 +21,7 @@ namespace ZandomLevelGenerator.Tools.Checkers
             {
                 bool hasTile = LevelPlan.Tiles.TryGetValue(item, out TilePlan tile);
                 if (!hasTile) continue;
-                bool isArea = tile.Type == TileTypeNew.AREA;
+                bool isArea = tile.Type == TileType.AREA;
                 if (isArea) return false;
             }
             return true;

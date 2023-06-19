@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using ZandomLevelGenerator.Examples.DiabloCathedral.Customizables;
+using ZandomLevelGenerator.Examples.DiabloCathedral;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tasks.Common;
 

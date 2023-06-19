@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Enums;
-using ZandomLevelGenerator.Examples.DiabloCathedral.Customizables;
+using ZandomLevelGenerator.Examples.DiabloCathedral;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tasks.Common;
 
@@ -33,7 +33,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
         {
             bool result(ZandomLevelGenerator zandomLevelGenerator, TilePlan tile)
             {
-                bool canPlaceObstacle = tile.Type == TileTypeNew.AREA;
+                bool canPlaceObstacle = tile.Type == TileType.AREA;
                 return canPlaceObstacle;
             }
             return result;

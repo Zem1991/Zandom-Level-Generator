@@ -24,5 +24,5 @@ MonoBehaviour:
   area: {fileID: 9033375250853195897, guid: 2fa3eb9a7bab9374995ce84b5fa8f2f7, type: 3}
   border: {fileID: 7278972641462252327, guid: 6e0c7534e77cee74ebc497ce75738c1d, type: 3}
   corner: {fileID: 7278972641462252327, guid: 059b609953713a246afe9bde3569c915, type: 3}
-  wall: {fileID: 7278972641462252327, guid: 6e0c7534e77cee74ebc497ce75738c1d, type: 3}
+  wall: {fileID: 7278972641462252327, guid: 363a71151e7bc4d4c913458de3e8aee2, type: 3}
   doorway: {fileID: 9033375250853195897, guid: 31804412109c89c46b0d342e6c298d24, type: 3}

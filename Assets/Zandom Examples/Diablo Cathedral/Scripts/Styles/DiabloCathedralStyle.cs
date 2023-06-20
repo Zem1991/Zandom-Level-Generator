@@ -83,7 +83,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
             List<GeneratorTask> result = new()
             {
                 new PlaceStartLocationWithObstacle(zandomLevelGenerator, startLocationParameters),
-                //new ExitPlacement(zandomLevelGenerator),
+                new PlaceExit(zandomLevelGenerator, startLocationParameters),
                 new PlaceDoorwayObstacles(zandomLevelGenerator, smallDoorParameters),
                 new PlaceDoorwayObstacles(zandomLevelGenerator, largeDoorParameters),
                 new PlaceTreasureEncounter(zandomLevelGenerator),

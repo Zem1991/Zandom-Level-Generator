@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Obstacle Data List (Diablo Cathedral)
   m_EditorClassIdentifier: 
   items:
+  - key: Exit
+    value: {fileID: 11400000, guid: 8917f098cc7b02443a7b84bcef1c47f9, type: 2}
   - key: Small Door
     value: {fileID: 11400000, guid: 44afb89f84b5b82439ef513133861c81, type: 2}
   - key: Large Door

@@ -40,9 +40,8 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
             Vector3Int centralRoomSize = new(20, 1, 20);
             List<GeneratorTask> result = new()
             {
-                //TODO: the Spine again
-                //new CathedralSpine(zandomLevelGenerator),
-                new CreateCentralRoom(zandomLevelGenerator, centralRoomSize, false),
+                new DiabloCathedralSpine(zandomLevelGenerator),
+                //new CreateCentralRoom(zandomLevelGenerator, centralRoomSize, false),
                 new CreateBuddingRooms(zandomLevelGenerator, parameters),
             };
             return result;

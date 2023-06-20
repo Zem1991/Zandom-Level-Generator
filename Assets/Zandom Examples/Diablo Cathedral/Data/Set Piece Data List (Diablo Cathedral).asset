@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 160b4b43656c2324d819a738bbbd1a06, type: 3}
+  m_Name: Set Piece Data List (Diablo Cathedral)
+  m_EditorClassIdentifier: 
+  items:
+  - key: Spine Room
+    value: {fileID: 11400000, guid: 95ce92c4bef8366499339999e17544bb, type: 2}
+  - key: Spine Corridor
+    value: {fileID: 11400000, guid: 0de190cf109a0d8479dea1de5e70d20e, type: 2}

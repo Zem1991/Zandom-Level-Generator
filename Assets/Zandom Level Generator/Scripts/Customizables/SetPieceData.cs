@@ -9,11 +9,11 @@ namespace ZandomLevelGenerator.Customizables
     {
         [Header("Settings")]
         [SerializeField][TextArea] private string layout;
-        [SerializeField] private Vector2Int size;
+        [SerializeField] private Vector3Int size;
         [SerializeField] private bool addBorders;
 
         public string Layout { get => layout; }
-        public Vector2Int Size { get => size; }
+        public Vector3Int Size { get => size; }
         public bool AddBorders { get => addBorders; }
     }
 }

@@ -15,5 +15,9 @@ MonoBehaviour:
   levelSize: {x: 80, y: 1, z: 80}
   moduleSize: {x: 10, y: 1, z: 10}
   safetySize: {x: 10, y: 1, z: 10}
-  dae: 0
-  sectorCountTarget: 30
+  areaFillTarget: 0.5
+  smallDoorwayLength: 2
+  largeDoorwayLength: 4
+  normalEncounters: 30
+  challengeEncounters: 5
+  treasureEncounters: 6

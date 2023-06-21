@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
+using ZandomLevelGenerator.Tools.Helpers;
 
 namespace ZandomLevelGenerator.GeneratorObjects
 {
@@ -10,7 +11,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public SetPiece(SetPieceData data)
         {
             Data = data;
-            Layout = new char[Data.Size.x, Data.Size.y];
+            Layout = new char[Data.Size.x, Data.Size.z];
             string cleanLayout = Data.Layout.Replace("\n", "").Replace("\r", "");
             Queue<char> chars = new(cleanLayout);
             for (int row = 0; row < Size.y; row++)
@@ -25,13 +26,13 @@ namespace ZandomLevelGenerator.GeneratorObjects
 
         public SetPieceData Data { get; }
         public char[,] Layout { get; private set; }
-        public Vector3Int Size { get => new(Layout.GetLength(0), Layout.GetLength(1)); }
+        public Vector3Int Size { get => new(Layout.GetLength(0), 1, Layout.GetLength(1)); }
         public char Get(int x, int y) => Layout[x, y];
 
         public void Rotate90Negative()
         {
-            //SetPieceRotator setPieceRotator = new(this);
-            //Layout = setPieceRotator.Rotate90Negative();
+            SetPieceRotator setPieceRotator = new(this);
+            Layout = setPieceRotator.Rotate90Negative();
         }
     }
 }

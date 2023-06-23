@@ -36,9 +36,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
         private RoomPlan SpineRoom(Vector3Int position)
         {
             SetPieceData setPieceData = DiabloCathedralSpine.ZandomLevelGenerator.ZandomSetPieceList.Get("Spine Room");
-            SetPiece setPiece = new(setPieceData);
-            bool vertical = DiabloCathedralSpine.Vertical;
-            if (vertical) setPiece.Rotate90Negative();
+            SetPiece setPiece = new(DiabloCathedralSpine.ZandomLevelGenerator.ZandomTileset, setPieceData);
             RoomPlan result = Build(setPiece, position);
             return result;
         }
@@ -47,9 +45,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
         {
             List<RoomPlan> result = new();
             SetPieceData setPieceData = DiabloCathedralSpine.ZandomLevelGenerator.ZandomSetPieceList.Get("Spine Corridor");
-            SetPiece setPiece = new(setPieceData);
-            bool vertical = DiabloCathedralSpine.Vertical;
-            if (vertical) setPiece.Rotate90Negative();
+            SetPiece setPiece = new(DiabloCathedralSpine.ZandomLevelGenerator.ZandomTileset, setPieceData);
             for (int i = 0; i < DiabloCathedralSpine.CorridorLength; i++)
             {
                 Vector3Int position = DiabloCathedralSpine.CorridorPositions[i];
@@ -59,14 +55,15 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             return result;
         }
 
-        private RoomPlan Build(SetPiece setPiece, Vector3Int position)
+        private RoomPlan Build(SetPiece setPieceBase, Vector3Int position)
         {
+            SetPiece setPieceCopy = new(setPieceBase.TileSet, setPieceBase.Data);
+            bool vertical = DiabloCathedralSpine.Vertical;
+            if (vertical) setPieceCopy.Rotate90Negative();
             RoomPlanFactory factory = new(DiabloCathedralSpine.ZandomLevelGenerator.GeneratorCoroutine.Level);
             int roomId = factory.NextId();
             Vector3Int start = position;
-            Vector3Int size = setPiece.Size;
-            bool vertical = DiabloCathedralSpine.Vertical;
-            RoomPlan result = factory.Create(roomId, start, size, vertical, null);
+            RoomPlan result = factory.Create(roomId, start, setPieceCopy, vertical, null);
             return result;
         }
     }

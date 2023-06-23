@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - key: Important Floor
-    value: {fileID: 9033375250853195897, guid: 718ee50b78b3b2b478f171e79d5056bd, type: 3}
+    value: {fileID: -6178266794486688926, guid: 718ee50b78b3b2b478f171e79d5056bd, type: 3}
   - key: Thin Wall
-    value: {fileID: 7278972641462252327, guid: f2b5ac5df75f91f428f53844b5b30f4b, type: 3}
+    value: {fileID: -402366341128000997, guid: f2b5ac5df75f91f428f53844b5b30f4b, type: 3}
   - key: Bars Wall
-    value: {fileID: 7278972641462252327, guid: 0c12de06438570146b93811297007073, type: 3}
+    value: {fileID: 6768802482302883052, guid: 0c12de06438570146b93811297007073, type: 3}
   - key: Destructible Wall
-    value: {fileID: 7278972641462252327, guid: 42cdc9870124e6b48921ea54cdfd3bee, type: 3}
-  area: {fileID: 9033375250853195897, guid: 2fa3eb9a7bab9374995ce84b5fa8f2f7, type: 3}
-  border: {fileID: 7278972641462252327, guid: 6e0c7534e77cee74ebc497ce75738c1d, type: 3}
-  corner: {fileID: 7278972641462252327, guid: 059b609953713a246afe9bde3569c915, type: 3}
-  wall: {fileID: 7278972641462252327, guid: 363a71151e7bc4d4c913458de3e8aee2, type: 3}
-  doorway: {fileID: 9033375250853195897, guid: 31804412109c89c46b0d342e6c298d24, type: 3}
+    value: {fileID: 8252177710117646288, guid: 42cdc9870124e6b48921ea54cdfd3bee, type: 3}
+  area: {fileID: 3837477199768002280, guid: 2fa3eb9a7bab9374995ce84b5fa8f2f7, type: 3}
+  border: {fileID: -306482260427708033, guid: 6e0c7534e77cee74ebc497ce75738c1d, type: 3}
+  corner: {fileID: -883933760984557558, guid: 059b609953713a246afe9bde3569c915, type: 3}
+  wall: {fileID: -8681330888586523143, guid: 363a71151e7bc4d4c913458de3e8aee2, type: 3}
+  doorway: {fileID: -7012189521092885134, guid: 31804412109c89c46b0d342e6c298d24, type: 3}

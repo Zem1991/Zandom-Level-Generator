@@ -17,7 +17,7 @@ namespace ZandomLevelGenerator.Tools.Builders
 
         public SectorPlan SectorPlan { get; }
 
-        public void Rectangle(Vector3Int start, Vector3Int size)
+        public void Build(Vector3Int start, Vector3Int size)
         {
             Func<int, int, int, bool> areaFunction = RectangleArea;
             Func<int, int, int, bool> borderFunction = RectangleBorder;

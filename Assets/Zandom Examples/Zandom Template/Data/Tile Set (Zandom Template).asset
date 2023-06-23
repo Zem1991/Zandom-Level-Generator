@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tile Set (Zandom Template)
   m_EditorClassIdentifier: 
   items: []
-  area: {fileID: 9033375250853195897, guid: 357913178b4363444b0dad23bb836c6f, type: 3}
-  border: {fileID: 9033375250853195897, guid: f0a906bb76869ba44991817a06e152d1, type: 3}
-  corner: {fileID: 9033375250853195897, guid: debcb797d02bf85448bb8d0151521603, type: 3}
-  wall: {fileID: 9033375250853195897, guid: 2d5e08fdd8ecf974eb7c864103b77260, type: 3}
-  doorway: {fileID: 9033375250853195897, guid: dcb13cc5f9f9e074d8777e2a2d6d444c, type: 3}
+  area: {fileID: 5159181536143509158, guid: 357913178b4363444b0dad23bb836c6f, type: 3}
+  border: {fileID: 5658449261055805846, guid: f0a906bb76869ba44991817a06e152d1, type: 3}
+  corner: {fileID: 5719111115250762643, guid: debcb797d02bf85448bb8d0151521603, type: 3}
+  wall: {fileID: -6081072022699618742, guid: 2d5e08fdd8ecf974eb7c864103b77260, type: 3}
+  doorway: {fileID: 2220588230234465669, guid: dcb13cc5f9f9e074d8777e2a2d6d444c, type: 3}

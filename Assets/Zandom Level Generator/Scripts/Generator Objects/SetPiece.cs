@@ -8,13 +8,14 @@ namespace ZandomLevelGenerator.GeneratorObjects
 {
     public class SetPiece
     {
-        public SetPiece(SetPieceData data)
+        public SetPiece(TileSet tileSet, SetPieceData data)
         {
+            TileSet = tileSet;
             Data = data;
             Layout = new char[Data.Size.x, Data.Size.z];
             string cleanLayout = Data.Layout.Replace("\n", "").Replace("\r", "");
             Queue<char> chars = new(cleanLayout);
-            for (int row = 0; row < Size.y; row++)
+            for (int row = 0; row < Size.z; row++)
             {
                 for (int col = 0; col < Size.x; col++)
                 {
@@ -24,6 +25,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
             }
         }
 
+        public TileSet TileSet { get; }
         public SetPieceData Data { get; }
         public char[,] Layout { get; private set; }
         public Vector3Int Size { get => new(Layout.GetLength(0), 1, Layout.GetLength(1)); }

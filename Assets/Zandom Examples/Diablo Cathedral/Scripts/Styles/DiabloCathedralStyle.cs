@@ -37,11 +37,10 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
         public override List<GeneratorTask> Step01_Tasks(ZandomLevelGenerator zandomLevelGenerator)
         {
             CreateBuddingRoomsParameters parameters = new DiabloCathedralCreateBuddingRoomsParameters().CreateParameters();
-            Vector3Int centralRoomSize = new(20, 1, 20);
             List<GeneratorTask> result = new()
             {
                 new DiabloCathedralSpine(zandomLevelGenerator),
-                //new CreateBuddingRooms(zandomLevelGenerator, parameters),
+                new CreateBuddingRooms(zandomLevelGenerator, parameters),
             };
             return result;
         }

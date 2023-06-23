@@ -48,7 +48,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                 int room1End = room1Coord + 20;
                 int room2Coord = room1End + (CorridorLength * moduleSize);
                 int roomOffset = (levelSize / 2) - 10;
-                int corridorOffset = roomOffset + 3;
+                int corridorOffset = roomOffset + 2;
                 Room1Position = new(roomOffset, 0, room1Coord);
                 Room2Position = new(roomOffset, 0, room2Coord);
                 for (int i = 0; i < CorridorLength; i++)
@@ -66,7 +66,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                 int room1End = room1Coord + 20;
                 int room2Coord = room1End + (CorridorLength * moduleSize);
                 int roomOffset = (levelSize / 2) - 10;
-                int corridorOffset = roomOffset + 3;
+                int corridorOffset = roomOffset + 2;
                 Room1Position = new(room1Coord, 0, roomOffset);
                 Room2Position = new(room2Coord, 0, roomOffset);
                 for (int i = 0; i < CorridorLength; i++)

@@ -69,9 +69,14 @@ namespace ZandomLevelGenerator.Tasks.Common
         private List<RoomPlan> BudRoomAlongAxis(RoomPlan parent, Vector3Int size, bool vertical)
         {
             CreateBuddingRoomsPositionPicker positionPicker = new(ZandomLevelGenerator);
-            //TODO: have same X or same Z coordinate, like Diablo
-            Vector3Int position1 = vertical ? positionPicker.BackRandom(parent, size) : positionPicker.LeftRandom(parent, size);
-            Vector3Int position2 = vertical ? positionPicker.FrontRandom(parent, size) : positionPicker.RightRandom(parent, size);
+            Vector3Int position1;
+            Vector3Int position2;
+            if (vertical)
+                positionPicker.VerticalRandom(parent, size, out position1, out position2);
+            else
+                positionPicker.HorizontalRandom(parent, size, out position1, out position2);
+            //Vector3Int position1 = vertical ? positionPicker.BackRandom(parent, size) : positionPicker.LeftRandom(parent, size);
+            //Vector3Int position2 = vertical ? positionPicker.FrontRandom(parent, size) : positionPicker.RightRandom(parent, size);
             bool gotRoom1 = TryRun(position1, size, vertical, parent, out RoomPlan room1);
             bool gotRoom2 = TryRun(position2, size, vertical, parent, out RoomPlan room2);
             List<RoomPlan> result = new();

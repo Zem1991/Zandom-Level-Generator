@@ -22,7 +22,6 @@ namespace ZandomLevelGenerator.Tasks.Common
             roomZ = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, roomZ);
             int randomZ = referencePosition.z + roomZ;
             int minX = referencePosition.x - size.x;
-            //minX--;
             minX++;
             Vector3Int result = new(minX, 0, randomZ);
             return result;
@@ -36,7 +35,6 @@ namespace ZandomLevelGenerator.Tasks.Common
             roomZ = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, roomZ);
             int randomZ = referencePosition.z + roomZ;
             int maxX = referencePosition.x + referenceSize.x;
-            //maxX++;
             maxX--;
             Vector3Int result = new(maxX, 0, randomZ);
             return result;
@@ -50,7 +48,6 @@ namespace ZandomLevelGenerator.Tasks.Common
             roomX = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, roomX);
             int randomX = referencePosition.x + roomX;
             int minZ = referencePosition.z - size.z;
-            //minZ--;
             minZ++;
             Vector3Int result = new(randomX, 0, minZ);
             return result;
@@ -64,10 +61,25 @@ namespace ZandomLevelGenerator.Tasks.Common
             roomX = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, roomX);
             int randomX = referencePosition.x + roomX;
             int maxZ = referencePosition.z + referenceSize.z;
-            //maxZ++;
             maxZ--;
             Vector3Int result = new(randomX, 0, maxZ);
             return result;
+        }
+
+        public void HorizontalRandom(RoomPlan parent, Vector3Int size, out Vector3Int left, out Vector3Int right)
+        {
+            left = LeftRandom(parent, size);
+            right = left;
+            right.x = parent.Start.x + parent.Size.x;
+            right.x--;
+        }
+        
+        public void VerticalRandom(RoomPlan parent, Vector3Int size, out Vector3Int back, out Vector3Int front)
+        {
+            back = BackRandom(parent, size);
+            front = back;
+            front.z = parent.Start.z + parent.Size.z;
+            front.z--;
         }
     }
 }

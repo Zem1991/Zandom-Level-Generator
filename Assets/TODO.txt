@@ -1,4 +1,13 @@
-receber uma seed ou gerar uma aleatoria para usar em todo o processo de geração
+rooms sendo gerados além dos limites do levelsize
+rever important rooms para desconsiderar salas geradas por set piece
+rever o border overlap para somente considerar tiles tipo AREA
+start location tambem precisa ignorar salas geradas por set piece
+encounters não-treasure e a exit precisam evitar proximidade com o start location
+refazer o wall randomizer
+
+cathedral spine com 0 corredores nao é atravessável de uma ponta a outra
+rever todos os checks do Diablo Cathedral
+
 task wait 0 = não faz wait além da coroutine do level generator em si
 task wait 1 = waits simples para o total das tasks
 task wait 2 = waits elaborados por etapa das tasks

@@ -34,7 +34,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             UseShorterVersion = ZandomLevelGenerator.ZandomParameters.SafetySize != Vector3Int.zero;
             MaxLength = UseShorterVersion ? 3 : 5;
             CorridorLength = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, MaxLength);
-            CorridorLength = 2; //!!
+            CorridorLength = 1; //!!
             MaxPosition = MaxLength - CorridorLength;
             FirstRoomPosition = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, MaxPosition);
             if (UseShorterVersion) FirstRoomPosition++;

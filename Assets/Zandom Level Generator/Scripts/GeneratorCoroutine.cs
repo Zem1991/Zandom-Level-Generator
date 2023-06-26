@@ -93,7 +93,7 @@ namespace ZandomLevelGenerator
         private void NewAttempt()
         {
             Attempts++;
-            Level = new();
+            Level = new(ZandomLevelGenerator.ZandomAsciiTable);
             ZandomLevelGenerator.RegisterNewAttempt(Level);
             if (Attempts > ZandomLevelGenerator.MaxAttempts)
             {

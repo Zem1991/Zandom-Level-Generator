@@ -6,7 +6,7 @@ using ZemReusables;
 namespace ZandomLevelGenerator.Customizables
 {
     [CreateAssetMenu(menuName = "Zandom2/SetPieceDataList")]
-    public class SetPieceDataList : PseudoDictionaryScriptableObject<SetPieceData>
+    public class SetPieceDataList : PseudoDictionaryScriptableObject<string, SetPieceData>
     {
 
     }

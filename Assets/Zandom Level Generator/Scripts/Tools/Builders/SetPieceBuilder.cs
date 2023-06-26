@@ -25,8 +25,8 @@ namespace ZandomLevelGenerator.Tools.Builders
                 Vector3Int coordinates = new(col, floor, row);
                 LevelPlan.Tiles.TryGetValue(coordinates, out TilePlan tile);
                 char charCode = setPiece.Get(coordinates.x - start.x, coordinates.z - start.z);
-                string fullCode = setPiece.TileSet.GetFullCode(charCode);
-                tile.Code = fullCode;
+                string code = LevelPlan.AsciiTable.Get(charCode);
+                tile.Code = code;
                 return true;
             }
             Vector3IntIterator iterator = new();

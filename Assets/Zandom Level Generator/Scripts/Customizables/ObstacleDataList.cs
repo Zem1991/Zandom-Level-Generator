@@ -6,7 +6,7 @@ using ZemReusables;
 namespace ZandomLevelGenerator.Customizables
 {
     [CreateAssetMenu(menuName = "Zandom2/ObstacleDataList")]
-    public class ObstacleDataList : PseudoDictionaryScriptableObject<ObstacleData>
+    public class ObstacleDataList : PseudoDictionaryScriptableObject<string, ObstacleData>
     {
         [Header("Reserved: Constants.ZandomStartLocation")]
         [SerializeField] private ObstacleData zandomStartLocation;

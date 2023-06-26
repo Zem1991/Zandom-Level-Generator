@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace ZemReusables
 {
-    public abstract class PseudoDictionaryScriptableObject<T> : ScriptableObject where T : Object
+    public abstract class PseudoDictionaryScriptableObject<K, V> : ScriptableObject
     {
         [Header("List")]
-        [SerializeField] protected List<PseudoItem<T>> items = new();
+        [SerializeField] protected List<PseudoItem<K, V>> items = new();
 
-        public virtual T Get(string key)
+        public virtual V Get(K key)
         {
-            return items.Find(item => item.key == key).value;
+            return items.Find(item => item.key.Equals(key)).value;
         }
     }
 
     [System.Serializable]
-    public struct PseudoItem<T>
+    public struct PseudoItem<K, V>
     {
-        public string key;
-        public T value;
+        public K key;
+        public V value;
     }
 }

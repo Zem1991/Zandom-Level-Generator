@@ -1,14 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.ResultObjects;
 
 namespace ZandomLevelGenerator.GeneratorObjects
 {
     public class LevelPlan
     {
-        public LevelPlan()
+        public LevelPlan(AsciiTable asciiTable)
         {
+            AsciiTable = asciiTable;
             Tiles = new();
             Sectors = new();
             BorderOverlapWalls = new();
@@ -17,6 +19,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
             PointsOfInterest = new();
         }
 
+        public AsciiTable AsciiTable { get; }
         public Dictionary<Vector3Int, TilePlan> Tiles { get; }
         public Dictionary<int, SectorPlan> Sectors { get; }
         public Dictionary<int, BorderOverlapWall> BorderOverlapWalls { get; }

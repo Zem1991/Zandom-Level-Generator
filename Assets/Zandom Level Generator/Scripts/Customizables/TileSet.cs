@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,57 +7,36 @@ using ZemReusables;
 namespace ZandomLevelGenerator.Customizables
 {
     [CreateAssetMenu(menuName = "Zandom2/TileSet")]
-    public class TileSet : PseudoDictionaryScriptableObject<TileSetObject>
+    public class TileSet : PseudoDictionaryScriptableObject<string, GameObject>
     {
         [Header("Reserved: TileType.AREA")]
-        [SerializeField] private TileSetObject area;
+        [SerializeField] private GameObject area;
 
         [Header("Reserved: TileType.BORDER")]
-        [SerializeField] private TileSetObject border;
+        [SerializeField] private GameObject border;
 
         [Header("Reserved: TileType.CORNER")]
-        [SerializeField] private TileSetObject corner;
+        [SerializeField] private GameObject corner;
 
         [Header("Reserved: TileOverlap.WALL")]
-        [SerializeField] private TileSetObject wall;
+        [SerializeField] private GameObject wall;
 
         [Header("Reserved: TileOverlap.DOORWAY")]
-        [SerializeField] private TileSetObject doorway;
+        [SerializeField] private GameObject doorway;
 
-        public override TileSetObject Get(string name)
+        public override GameObject Get(string code)
         {
-            char[] charArray = name.ToCharArray();
-            if (charArray.Length == 1)
-            {
-                char charCode = charArray[0];
-                return Get(charCode);
-            }
-            if (name == TileType.AREA.ToString()) return area;
-            if (name == TileType.BORDER.ToString()) return border;
-            if (name == TileType.CORNER.ToString()) return corner;
-            if (name == TileOverlap.WALL.ToString()) return wall;
-            if (name == TileOverlap.DOORWAY.ToString()) return doorway;
-            return base.Get(name);
-        }
-
-        public string GetCode(char charCode)
-        {
-            if (charCode == area.CharCode) return area;
-            if (charCode == border.CharCode) return border;
-            if (charCode == corner.CharCode) return corner;
-            if (charCode == wall.CharCode) return wall;
-            if (charCode == doorway.CharCode) return doorway;
-            foreach (var item in items)
-            {
-                TileSetObject tile = item.value;
-                if (charCode == tile.CharCode) return tile.;
-            }
-            return null;
-        }
-
-        public string GetFullCode(char charCode)
-        {
-            throw new NotImplementedException();
+            string areaCode = TileType.AREA.ToString();
+            string borderCode = TileType.BORDER.ToString();
+            string cornerCode = TileType.CORNER.ToString();
+            string wallCode = TileOverlap.WALL.ToString();
+            string doorwayCode = TileOverlap.DOORWAY.ToString();
+            if (code == areaCode) return area;
+            if (code == borderCode) return border;
+            if (code == cornerCode) return corner;
+            if (code == wallCode) return wall;
+            if (code == doorwayCode) return doorway;
+            return base.Get(code);
         }
     }
 }

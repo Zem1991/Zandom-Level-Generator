@@ -6,8 +6,17 @@ namespace ZandomLevelGenerator.Enums
 {
     public enum TileOverlap
     {
-        NONE,
-        WALL,
-        DOORWAY,
+        NONE = ' ',
+        WALL = '/',
+        DOORWAY = '+',
     }
+
+    //public static class TileOverlapExtensions
+    //{
+    //    public static string ToString(this TileOverlap tileOverlap)
+    //    {
+    //        char asChar = (char)tileOverlap;
+    //        return asChar.ToString();
+    //    }
+    //}
 }

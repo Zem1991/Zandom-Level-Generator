@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.ResultObjects;
+using static UnityEngine.UI.GridLayoutGroup;
 
 namespace ZandomLevelGenerator.GeneratorObjects
 {
@@ -44,7 +45,17 @@ namespace ZandomLevelGenerator.GeneratorObjects
                     return Type.ToString();
                 }
             }
-            set => code = value;
+            //set => code = value;
+            set
+            {
+                code = null;
+                if (value == TileType.AREA.ToString()) Type = TileType.AREA;
+                else if (value == TileType.BORDER.ToString()) Type = TileType.BORDER;
+                else if (value == TileType.CORNER.ToString()) Type = TileType.CORNER;
+                else if (value == TileOverlap.WALL.ToString()) Overlap = TileOverlap.WALL;
+                else if (value == TileOverlap.DOORWAY.ToString()) Overlap = TileOverlap.DOORWAY;
+                else code = value;
+            }
         }
         public ZandomTile Result { get; set; }
 

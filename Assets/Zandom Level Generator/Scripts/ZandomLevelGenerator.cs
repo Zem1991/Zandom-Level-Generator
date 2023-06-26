@@ -16,6 +16,7 @@ namespace ZandomLevelGenerator
         [Header("References")]
         [SerializeField] private GeneratorStyle zandomStyle;
         [SerializeField] private StyleParameters zandomParameters;
+        [SerializeField] private AsciiTable zandomAsciiTable;
         [SerializeField] private TileSet zandomTileset;
         [SerializeField] private SetPieceDataList zandomSetPieceList;
         [SerializeField] private ObstacleDataList zandomObstacleList;
@@ -35,6 +36,7 @@ namespace ZandomLevelGenerator
 
         public GeneratorStyle ZandomStyle => zandomStyle;
         public StyleParameters ZandomParameters => zandomParameters;
+        public AsciiTable ZandomAsciiTable { get => zandomAsciiTable; }
         public TileSet ZandomTileset => zandomTileset;
         public SetPieceDataList ZandomSetPieceList => zandomSetPieceList;
         public ObstacleDataList ZandomObstacleList => zandomObstacleList;

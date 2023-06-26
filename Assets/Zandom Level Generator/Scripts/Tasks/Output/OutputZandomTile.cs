@@ -19,7 +19,7 @@ namespace ZandomLevelGenerator.Tasks.Output
         public override void RunContents()
         {
             string modelName = Plan.Code;
-            GameObject model = ZandomLevelGenerator.ZandomTileset.Get(modelName).gameObject;
+            GameObject model = ZandomLevelGenerator.ZandomTileset.Get(modelName);//.gameObject;
             if (!model)
             {
                 Debug.LogWarning($"ModelName {modelName} doesn't exist.");

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0bd591f10218ab468b4ba19724df140, type: 3}
+  m_Name: Ascii Table (Diablo Cathedral)
+  m_EditorClassIdentifier: 
+  items:
+  - key: 33
+    value: Important Floor
+  - key: 126
+    value: Thin Wall
+  - key: 58
+    value: Bars Wall
+  - key: 120
+    value: Destructible Wall
+  area: 46
+  border: 61
+  corner: 35
+  wall: 47
+  doorway: 43

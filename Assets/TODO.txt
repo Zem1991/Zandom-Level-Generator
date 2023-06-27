@@ -1,6 +1,3 @@
-cathedral spine com 0 corredores nao é atravessável de uma ponta a outra
-cathedral corridor tem tiles tipo Temporary Wall pq eu to forçando a barra com o sistema de overlap
-
 start location tambem precisa ignorar salas geradas por set piece
 encounters não-treasure e a exit precisam evitar proximidade com o start location
 refazer o wall randomizer

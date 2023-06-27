@@ -22,8 +22,8 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             Vector3Int position2 = DiabloCathedralSpine.Room2Position;
             List<RoomPlan> rooms = new()
             {
-                SpineRoom(position1),
-                SpineRoom(position2),
+                SpineRoom(position1, false),
+                SpineRoom(position2, true),
             };
             if (DiabloCathedralSpine.CorridorLength > 0)
             {
@@ -33,10 +33,21 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             return rooms;
         }
 
-        private RoomPlan SpineRoom(Vector3Int position)
+        private RoomPlan SpineRoom(Vector3Int position, bool rotate180)
         {
             SetPieceData setPieceData = DiabloCathedralSpine.ZandomLevelGenerator.ZandomSetPieceList.Get("Spine Room");
             SetPiece setPiece = new(DiabloCathedralSpine.ZandomLevelGenerator.ZandomTileset, setPieceData);
+            if (rotate180)
+            {
+                //TODO: BETTER ROTATION PLS
+                setPiece.Rotate90Negative();
+                setPiece.Rotate90Negative();
+            }
+            bool vertical = DiabloCathedralSpine.Vertical;
+            if (vertical)
+            {
+                setPiece.Rotate90Negative();
+            }
             RoomPlan result = Build(setPiece, position);
             return result;
         }
@@ -46,6 +57,11 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             List<RoomPlan> result = new();
             SetPieceData setPieceData = DiabloCathedralSpine.ZandomLevelGenerator.ZandomSetPieceList.Get("Spine Corridor");
             SetPiece setPiece = new(DiabloCathedralSpine.ZandomLevelGenerator.ZandomTileset, setPieceData);
+            bool vertical = DiabloCathedralSpine.Vertical;
+            if (vertical)
+            {
+                setPiece.Rotate90Negative();
+            }
             for (int i = 0; i < DiabloCathedralSpine.CorridorLength; i++)
             {
                 Vector3Int position = DiabloCathedralSpine.CorridorPositions[i];
@@ -55,15 +71,13 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             return result;
         }
 
-        private RoomPlan Build(SetPiece setPieceBase, Vector3Int position)
+        private RoomPlan Build(SetPiece setPiece, Vector3Int position)
         {
-            SetPiece setPieceCopy = new(setPieceBase.TileSet, setPieceBase.Data);
             bool vertical = DiabloCathedralSpine.Vertical;
-            if (vertical) setPieceCopy.Rotate90Negative();
             RoomPlanFactory factory = new(DiabloCathedralSpine.ZandomLevelGenerator.ZandomParameters, DiabloCathedralSpine.ZandomLevelGenerator.GeneratorCoroutine.Level);
             int roomId = factory.NextId();
             Vector3Int start = position;
-            factory.TryCreate(roomId, start, setPieceCopy, vertical, null, out RoomPlan result);
+            factory.TryCreate(roomId, start, setPiece, vertical, null, out RoomPlan result);
             return result;
         }
     }

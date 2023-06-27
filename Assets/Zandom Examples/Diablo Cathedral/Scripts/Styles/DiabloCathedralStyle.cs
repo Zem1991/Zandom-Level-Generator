@@ -40,7 +40,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
             List<GeneratorTask> result = new()
             {
                 new DiabloCathedralSpine(zandomLevelGenerator),
-                new CreateBuddingRooms(zandomLevelGenerator, parameters),
+                //new CreateBuddingRooms(zandomLevelGenerator, parameters),
             };
             return result;
         }

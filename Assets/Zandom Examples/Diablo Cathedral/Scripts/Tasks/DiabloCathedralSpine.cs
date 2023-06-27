@@ -34,7 +34,6 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             UseShorterVersion = ZandomLevelGenerator.ZandomParameters.SafetySize != Vector3Int.zero;
             MaxLength = UseShorterVersion ? 3 : 5;
             CorridorLength = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, MaxLength);
-            CorridorLength = 2; //!!
             MaxPosition = MaxLength - CorridorLength;
             FirstRoomPosition = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(0, MaxPosition);
             if (UseShorterVersion) FirstRoomPosition++;
@@ -53,7 +52,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                 Room2Position = new(roomOffset, 0, room2Coord);
                 for (int i = 0; i < CorridorLength; i++)
                 {
-                    int corridorCoord = room1End + (i * moduleSize) - 1;
+                    int corridorCoord = room1End + (i * moduleSize);// - 1;
                     Vector3Int corridorPos = new(corridorOffset, 0, corridorCoord);
                     CorridorPositions.Add(corridorPos);
                 }
@@ -71,7 +70,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                 Room2Position = new(room2Coord, 0, roomOffset);
                 for (int i = 0; i < CorridorLength; i++)
                 {
-                    int corridorCoord = room1End + (i * moduleSize) - 1;
+                    int corridorCoord = room1End + (i * moduleSize);// - 1;
                     Vector3Int corridorPos = new(corridorCoord, 0, corridorOffset);
                     CorridorPositions.Add(corridorPos);
                 }

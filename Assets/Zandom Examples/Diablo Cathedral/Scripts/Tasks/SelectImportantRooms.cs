@@ -23,6 +23,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                 SectorPlan sector = item.Value;
                 RoomPlan room = sector as RoomPlan;
                 if (room == null) continue;
+                if (room.SetPiece != null) continue;
                 int wallsWithDoorways = CountWallsWithDoorways(room);
                 if (wallsWithDoorways != 1) continue;
                 room.Type = SectorType.IMPORTANT;

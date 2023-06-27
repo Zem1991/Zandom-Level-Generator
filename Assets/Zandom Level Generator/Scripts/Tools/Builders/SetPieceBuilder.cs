@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZemReusables;
 
@@ -20,6 +19,7 @@ namespace ZandomLevelGenerator.Tools.Builders
         {
             Vector3Int start = roomPlan.Start;
             Vector3Int size = setPiece.Size;
+            roomPlan.SetPiece = setPiece;
             bool setPieceTile(int col, int floor, int row)
             {
                 Vector3Int coordinates = new(col, floor, row);

@@ -16,6 +16,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
 
         public Vector3Int Start { get; }
         public Vector3Int Size { get; }
+        public SetPiece SetPiece { get; set; }
 
         public override string ToString()
         {

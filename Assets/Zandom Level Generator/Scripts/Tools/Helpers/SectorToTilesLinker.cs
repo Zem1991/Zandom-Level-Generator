@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.ResultObjects;
 using ZandomLevelGenerator.Tools.Factories;
@@ -9,11 +10,13 @@ namespace ZandomLevelGenerator.Tools.Helpers
 {
     public class SectorToTilesLinker
     {
-        public SectorToTilesLinker(LevelPlan levelPlan)
+        public SectorToTilesLinker(StyleParameters zandomParameters, LevelPlan levelPlan)
         {
+            ZandomParameters = zandomParameters;
             LevelPlan = levelPlan;
         }
 
+        public StyleParameters ZandomParameters { get; }
         public LevelPlan LevelPlan { get; }
 
         //public void LinkIds(int sectorId, HashSet<Vector3Int> tilesIds)
@@ -21,7 +24,7 @@ namespace ZandomLevelGenerator.Tools.Helpers
         {
             int sectorId = sector.Id;
             HashSet<Vector3Int> tilesIds = sector.TilesIds;
-            Dictionary<Vector3Int, TilePlan> tiles = new TilePlanFactory(LevelPlan).Create(tilesIds);
+            new TilePlanFactory(ZandomParameters, LevelPlan).TryCreate(tilesIds, out Dictionary<Vector3Int, TilePlan> tiles);
             foreach (var item in tiles)
             {
                 Vector3Int coord = item.Key;
@@ -34,7 +37,7 @@ namespace ZandomLevelGenerator.Tools.Helpers
         public void LinkTransforms(ZandomSector sector)
         {
             Transform parent = sector.transform;
-            Dictionary<Vector3Int, TilePlan> tiles = new TilePlanFactory(LevelPlan).Create(sector.SectorPlan.TilesIds);
+            new TilePlanFactory(ZandomParameters, LevelPlan).TryCreate(sector.SectorPlan.TilesIds, out Dictionary<Vector3Int, TilePlan> tiles);
             foreach (var item in tiles)
             {
                 Transform child = item.Value.Result.transform;

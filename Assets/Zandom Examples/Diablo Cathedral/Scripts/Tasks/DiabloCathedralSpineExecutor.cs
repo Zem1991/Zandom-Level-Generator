@@ -60,10 +60,10 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             SetPiece setPieceCopy = new(setPieceBase.TileSet, setPieceBase.Data);
             bool vertical = DiabloCathedralSpine.Vertical;
             if (vertical) setPieceCopy.Rotate90Negative();
-            RoomPlanFactory factory = new(DiabloCathedralSpine.ZandomLevelGenerator.GeneratorCoroutine.Level);
+            RoomPlanFactory factory = new(DiabloCathedralSpine.ZandomLevelGenerator.ZandomParameters, DiabloCathedralSpine.ZandomLevelGenerator.GeneratorCoroutine.Level);
             int roomId = factory.NextId();
             Vector3Int start = position;
-            RoomPlan result = factory.Create(roomId, start, setPieceCopy, vertical, null);
+            factory.TryCreate(roomId, start, setPieceCopy, vertical, null, out RoomPlan result);
             return result;
         }
     }

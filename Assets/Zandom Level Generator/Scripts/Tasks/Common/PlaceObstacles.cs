@@ -36,7 +36,7 @@ namespace ZandomLevelGenerator.Tasks.Common
                 TilePlan startTile = startTilesQueue.Dequeue();
                 bool canUseTile = TryStartTile(startTile, data, out HashSet <Vector3Int> coordinates);
                 if (!canUseTile) continue;
-                ObstacleFactory factory = new(ZandomLevelGenerator.GeneratorCoroutine.Level);
+                ObstacleFactory factory = new(ZandomLevelGenerator.ZandomParameters, ZandomLevelGenerator.GeneratorCoroutine.Level);
                 int obstacleId = factory.NextId();
                 //TODO: make padding tiles only pad and not actually register an obstacle over them
                 Obstacle obstacle = factory.Create(obstacleId, coordinates, Vector3.zero, data);

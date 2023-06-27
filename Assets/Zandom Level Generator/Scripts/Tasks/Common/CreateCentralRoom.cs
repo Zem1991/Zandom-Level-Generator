@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
+using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tools.Factories;
 
 namespace ZandomLevelGenerator.Tasks.Common
@@ -19,12 +20,12 @@ namespace ZandomLevelGenerator.Tasks.Common
 
         public override void RunContents()
         {
-            RoomPlanFactory factory = new(ZandomLevelGenerator.GeneratorCoroutine.Level);
+            RoomPlanFactory factory = new(ZandomLevelGenerator.ZandomParameters, ZandomLevelGenerator.GeneratorCoroutine.Level);
             int roomId = factory.NextId();
             Vector3Int halfRoomSize = RoomSize / 2;
             Vector3Int start = ZandomLevelGenerator.ZandomParameters.LevelSize / 2;
             start -= halfRoomSize;
-            factory.Create(roomId, start, RoomSize, Vertical, null);
+            factory.TryCreate(roomId, start, RoomSize, Vertical, null, out RoomPlan result);
         }
     }
 }

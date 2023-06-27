@@ -48,7 +48,7 @@ namespace ZandomLevelGenerator.Tasks.Common
         private bool IsCurrentValid(RoomPlan current)
         {
             if (current == null) return false;
-            bool tooFar = new SafetyBoundsChecker().IsWithinSafetyBounds(current);
+            bool tooFar = new SafetyBoundsChecker(ZandomLevelGenerator.ZandomParameters).IsOutsideBounds(current);
             if (tooFar) return false;
             return true;
         }
@@ -93,9 +93,9 @@ namespace ZandomLevelGenerator.Tasks.Common
             bool canBuild = new AreaAvailabilityChecker(levelPlan).IsAvailableForTiles(coordinates);
             if (canBuild)
             {
-                RoomPlanFactory factory = new(levelPlan);
+                RoomPlanFactory factory = new(ZandomLevelGenerator.ZandomParameters, levelPlan);
                 int roomId = factory.NextId();
-                child = factory.Create(roomId, position, size, vertical, parent);
+                factory.TryCreate(roomId, position, size, vertical, parent, out child);
             }
             return canBuild;
         }

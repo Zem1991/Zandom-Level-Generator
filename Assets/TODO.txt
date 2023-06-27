@@ -1,4 +1,3 @@
-rooms sendo gerados além dos limites do levelsize
 rever important rooms para desconsiderar salas geradas por set piece
 rever o border overlap para somente considerar tiles tipo AREA
 start location tambem precisa ignorar salas geradas por set piece

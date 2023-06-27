@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tools.Helpers;
 
@@ -8,11 +9,13 @@ namespace ZandomLevelGenerator.Tools.Factories
 {
     public class SectorPlanFactory
     {
-        public SectorPlanFactory(LevelPlan levelPlan)
+        public SectorPlanFactory(StyleParameters styleParameters, LevelPlan levelPlan)
         {
+            StyleParameters = styleParameters;
             LevelPlan = levelPlan;
         }
 
+        public StyleParameters StyleParameters { get; }
         public LevelPlan LevelPlan { get; }
 
         public int NextId()
@@ -28,7 +31,7 @@ namespace ZandomLevelGenerator.Tools.Factories
                 result = new(LevelPlan, id, tilesIds, vertical, parent);
                 LevelPlan.Sectors.Add(id, result);
             }
-            new SectorToTilesLinker(LevelPlan).LinkIds(result);
+            new SectorToTilesLinker(StyleParameters, LevelPlan).LinkIds(result);
             return result;
         }
         

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tools.Helpers;
 
@@ -8,11 +9,18 @@ namespace ZandomLevelGenerator.Tools.Checkers
 {
     public class SafetyBoundsChecker
     {
-        public bool IsWithinSafetyBounds(SectorPlan sectorPlan)
+        public StyleParameters StyleParameters { get; }
+
+        public SafetyBoundsChecker(StyleParameters styleParameters)
+        {
+            StyleParameters = styleParameters;
+        }
+
+        public bool IsOutsideBounds(SectorPlan sectorPlan)
         {
             Vector3 center = new PositionGetter().GetCenter(sectorPlan);
-            Vector3Int levelMin = GetLevelMin();
-            Vector3Int levelMax = GetLevelMax();
+            Vector3Int levelMin = GetMin();
+            Vector3Int levelMax = GetMax();
             if (center.x < levelMin.x) return true;
             if (center.z < levelMin.z) return true;
             if (center.x > levelMax.x) return true;
@@ -20,16 +28,17 @@ namespace ZandomLevelGenerator.Tools.Checkers
             return false;
         }
 
-        private Vector3Int GetLevelMin()
+        private Vector3Int GetMin()
         {
-            return Vector3Int.one * Constants.MODULE_SIZE;
+            return StyleParameters.SafetySize;
         }
 
-        private Vector3Int GetLevelMax()
+        private Vector3Int GetMax()
         {
-            Vector3Int resullt = GetLevelMin();
+            Vector3Int resullt = GetMin();
+            //TODO: remove hardcoded 7
             resullt *= 7;
-            resullt -= Vector3Int.one;
+            resullt -= StyleParameters.SafetySize;
             return resullt;
         }
     }

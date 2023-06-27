@@ -32,7 +32,7 @@ namespace ZandomLevelGenerator.Tasks.Common
 
         private void PlaceObstacle(ObstacleData data, BorderOverlapDoorway doorway)
         {
-            ObstacleFactory factory = new(ZandomLevelGenerator.GeneratorCoroutine.Level);
+            ObstacleFactory factory = new(ZandomLevelGenerator.ZandomParameters, ZandomLevelGenerator.GeneratorCoroutine.Level);
             int obstacleId = factory.NextId();
             HashSet<Vector3Int> coordinates = doorway.TilesIds;
             Vector3 rotationEuler = Vector3.zero;

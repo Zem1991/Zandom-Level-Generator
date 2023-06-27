@@ -9,11 +9,13 @@ namespace ZandomLevelGenerator.Tools.Factories
 {
     public class ObstacleFactory
     {
-        public ObstacleFactory(LevelPlan levelPlan)
+        public ObstacleFactory(StyleParameters styleParameters, LevelPlan levelPlan)
         {
+            StyleParameters = styleParameters;
             LevelPlan = levelPlan;
         }
 
+        public StyleParameters StyleParameters { get; }
         public LevelPlan LevelPlan { get; }
 
         public int NextId()
@@ -29,7 +31,7 @@ namespace ZandomLevelGenerator.Tools.Factories
                 result = new(LevelPlan, id, tilesIds, rotationEuler, data);
                 LevelPlan.Obstacles.Add(id, result);
             }
-            new ObstacleToTilesLinker(LevelPlan).LinkIds(result);
+            new ObstacleToTilesLinker(StyleParameters, LevelPlan).LinkIds(result);
             return result;
         }
     }

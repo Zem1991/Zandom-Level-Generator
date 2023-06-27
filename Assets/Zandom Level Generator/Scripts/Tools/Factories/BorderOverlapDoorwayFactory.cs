@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.Customizables;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tools.Builders;
+using ZandomLevelGenerator.Tools.Helpers;
 
 namespace ZandomLevelGenerator.Tools.Factories
 {
     public class BorderOverlapDoorwayFactory
     {
-        public BorderOverlapDoorwayFactory(LevelPlan levelPlan)
+        public BorderOverlapDoorwayFactory(StyleParameters styleParameters, LevelPlan levelPlan)
         {
+            StyleParameters = styleParameters;
             LevelPlan = levelPlan;
         }
 
+        public StyleParameters StyleParameters { get; }
         public LevelPlan LevelPlan { get; }
 
         public int NextId()
@@ -29,6 +33,7 @@ namespace ZandomLevelGenerator.Tools.Factories
                 LevelPlan.BorderOverlapDoorways.Add(id, result);
             }
             new DoorwayTileBuilder(result).FillDoorway();
+            new DoorwayToWallLinker(StyleParameters, LevelPlan).LinkIds(result);
             return result;
         }
     }

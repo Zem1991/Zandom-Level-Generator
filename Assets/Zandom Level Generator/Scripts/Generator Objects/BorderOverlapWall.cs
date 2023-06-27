@@ -13,6 +13,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
             SourceId = sourceId;
             OtherId = otherId;
             TilesIds = tilesIds;
+            DoorwayId = -1;
         }
 
         public LevelPlan LevelPlan { get; }
@@ -22,5 +23,10 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public HashSet<Vector3Int> TilesIds { get; }
 
         public int DoorwayId { get; set; }
+
+        public bool HasDoorway()
+        {
+            return DoorwayId >= 0;
+        }
     }
 }

@@ -23,14 +23,14 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                 SectorPlan sector = item.Value;
                 RoomPlan room = sector as RoomPlan;
                 if (room == null) continue;
-                int wallCount = CountWalls(room);
-                if (wallCount > 1) continue;
+                int wallsWithDoorways = CountWallsWithDoorways(room);
+                if (wallsWithDoorways != 1) continue;
                 room.Type = SectorType.IMPORTANT;
                 tileCodeReplacer.ReplaceArea(sector, "Important Floor");
             }
         }
 
-        private int CountWalls(RoomPlan room)
+        private int CountWallsWithDoorways(RoomPlan room)
         {
             int counter = 0;
             foreach (var item in ZandomLevelGenerator.GeneratorCoroutine.Level.BorderOverlapWalls)
@@ -39,6 +39,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                 bool sameSource = wall.SourceId == room.Id;
                 bool sameOther = wall.OtherId == room.Id;
                 if (!sameSource && !sameOther) continue;
+                if (!wall.HasDoorway()) continue;
                 counter++;
             }
             return counter;

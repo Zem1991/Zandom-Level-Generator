@@ -1,12 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using ZandomLevelGenerator.Customizables;
-using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tools.Factories;
-using static UnityEditor.Progress;
 
 namespace ZandomLevelGenerator.Tasks.Common
 {
@@ -22,7 +19,7 @@ namespace ZandomLevelGenerator.Tasks.Common
         public override void RunContents()
         {
             LevelPlan level = ZandomLevelGenerator.GeneratorCoroutine.Level;
-            BorderOverlapDoorwayFactory factory = new(level);
+            BorderOverlapDoorwayFactory factory = new(ZandomLevelGenerator.ZandomParameters, level);
             List<BorderOverlapWall> walls = Parameters.WallListFunction(ZandomLevelGenerator);
             foreach (var item in walls)
             {

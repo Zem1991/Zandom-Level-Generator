@@ -88,6 +88,7 @@ namespace ZandomLevelGenerator.Tasks.Common
         private bool TryRun(Vector3Int position, Vector3Int size, bool vertical, SectorPlan parent, out RoomPlan child)
         {
             child = null;
+            bool result = false;
             LevelPlan levelPlan = ZandomLevelGenerator.GeneratorCoroutine.Level;
             HashSet<Vector3Int> coordinates = new CoordinatesGetter().Get(position, size);
             bool canBuild = new AreaAvailabilityChecker(levelPlan).IsAvailableForTiles(coordinates);
@@ -95,9 +96,9 @@ namespace ZandomLevelGenerator.Tasks.Common
             {
                 RoomPlanFactory factory = new(ZandomLevelGenerator.ZandomParameters, levelPlan);
                 int roomId = factory.NextId();
-                factory.TryCreate(roomId, position, size, vertical, parent, out child);
+                result = factory.TryCreate(roomId, position, size, vertical, parent, out child);
             }
-            return canBuild;
+            return result;
         }
     }
 }

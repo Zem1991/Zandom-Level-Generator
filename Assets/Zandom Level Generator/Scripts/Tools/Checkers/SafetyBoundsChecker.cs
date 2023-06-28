@@ -36,8 +36,8 @@ namespace ZandomLevelGenerator.Tools.Checkers
         private Vector3Int GetMax()
         {
             Vector3Int resullt = GetMin();
-            //TODO: remove hardcoded 7
-            resullt *= 7;
+            //TODO: remove hardcoded value
+            resullt *= 8;
             resullt -= StyleParameters.SafetySize;
             return resullt;
         }

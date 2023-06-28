@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Tile Set (Diablo Cathedral)
   m_EditorClassIdentifier: 
   items:
+  - key: Area
+    value: {fileID: 9033375250853195897, guid: 31804412109c89c46b0d342e6c298d24, type: 3}
+  - key: Border
+    value: {fileID: 7278972641462252327, guid: 6e0c7534e77cee74ebc497ce75738c1d, type: 3}
   - key: Important Floor
     value: {fileID: 9033375250853195897, guid: 718ee50b78b3b2b478f171e79d5056bd, type: 3}
   - key: Thin Wall

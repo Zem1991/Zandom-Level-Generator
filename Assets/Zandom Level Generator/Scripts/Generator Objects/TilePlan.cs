@@ -55,6 +55,34 @@ namespace ZandomLevelGenerator.GeneratorObjects
                 else if (value == TileOverlap.DOORWAY.ToString()) Overlap = TileOverlap.DOORWAY;
                 else code = value;
             }
+            //set
+            //{
+            //    code = null;
+            //    if (value == TileType.AREA.ToString())
+            //    {
+            //        Type = TileType.AREA;
+            //        Overlap = TileOverlap.NONE;
+            //    }
+            //    else if (value == TileType.BORDER.ToString())
+            //    {
+            //        Type = TileType.BORDER;
+            //        Overlap = TileOverlap.NONE;
+            //    }
+            //    else if (value == TileType.CORNER.ToString())
+            //    {
+            //        Type = TileType.CORNER;
+            //        Overlap = TileOverlap.NONE;
+            //    }
+            //    else if (value == TileOverlap.WALL.ToString())
+            //    {
+            //        Overlap = TileOverlap.WALL;
+            //    }
+            //    else if (value == TileOverlap.DOORWAY.ToString())
+            //    {
+            //        Overlap = TileOverlap.DOORWAY;
+            //    }
+            //    else code = value;
+            //}
         }
         public ZandomTile Result { get; set; }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.Tasks.Common;
 
@@ -31,10 +32,13 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
             List<BorderOverlapDoorway> result(ZandomLevelGenerator zandomLevelGenerator)
             {
                 List<BorderOverlapDoorway> result = new();
-                foreach (var item in zandomLevelGenerator.GeneratorCoroutine.Level.BorderOverlapDoorways)
+                LevelPlan levelPlan = zandomLevelGenerator.GeneratorCoroutine.Level;
+                foreach (var item in levelPlan.BorderOverlapDoorways)
                 {
                     BorderOverlapDoorway doorway = item.Value;
                     if (doorway.TilesIds.Count != 2) continue;
+                    levelPlan.BorderOverlapWalls.TryGetValue(doorway.WallId, out BorderOverlapWall wall);
+                    if (wall.TileCode == "Area") continue;
                     result.Add(doorway);
                 }
                 return result;

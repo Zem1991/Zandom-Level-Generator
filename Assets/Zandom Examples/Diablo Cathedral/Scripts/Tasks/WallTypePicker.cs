@@ -11,6 +11,12 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
 {
     public class WallTypePicker : GeneratorTask
     {
+        private readonly string destructibleCode = "Destructible Wall";
+        private readonly string areaCode = "Area";
+        private readonly string thinCode = "Thin Wall";
+        private readonly string barsCode = "Bars Wall";
+        private readonly string borderCode = "Border";
+
         public WallTypePicker(ZandomLevelGenerator zandomLevelGenerator) : base(zandomLevelGenerator)
         {
         }
@@ -23,20 +29,26 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             List<BorderOverlapWall> borders = new();
             DiabloCathedralStyleParameters diabloCathedralStyleParameters = ZandomLevelGenerator.ZandomParameters as DiabloCathedralStyleParameters;
             LevelPlan levelPlan = ZandomLevelGenerator.GeneratorCoroutine.Level;
+            RootSectorFinder rootSectorFinder = new();
             foreach (var item in levelPlan.BorderOverlapWalls)
             {
                 BorderOverlapWall wall = item.Value;
                 levelPlan.Sectors.TryGetValue(wall.SourceId, out SectorPlan sector1);
                 levelPlan.Sectors.TryGetValue(wall.OtherId, out SectorPlan sector2);
-                int distance = new RootSectorFinder().Find(sector1, sector2, out _);
+                bool tooShort = wall.TilesIds.Count < 2;
+                int distance = rootSectorFinder.Find(sector1, sector2, out _);
                 bool tooDistant = distance >= diabloCathedralStyleParameters.DistanceForDestructibleWalls;
                 bool importantRoom = sector1.Type == SectorType.IMPORTANT || sector2.Type == SectorType.IMPORTANT;
                 bool parentWall = sector1.Parent == sector2 || sector2.Parent == sector1;
-                if (tooDistant)
+                if (tooShort)
+                {
+                    borders.Add(wall);
+                }
+                else if (tooDistant)
                 {
                     destructibles.Add(wall);
                 }
-                else if (importantRoom)
+                else if(importantRoom)
                 {
                     normals.Add(wall);
                 }
@@ -61,10 +73,9 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
 
         private void SetDestructible(List<BorderOverlapWall> walls)
         {
-            string code = "Destructible Wall";
             foreach (var item in walls)
             {
-                item.TileCode = code;
+                item.TileCode = destructibleCode;
             }
         }
 
@@ -72,9 +83,9 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
         {
             foreach (var item in walls)
             {
-                string code = "Thin Wall";
+                string code = thinCode;
                 bool change = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.NextBool();
-                if (change) code = "Bars Wall";
+                if (change) code = barsCode;
                 item.TileCode = code;
             }
         }
@@ -83,13 +94,13 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
         {
             foreach (var item in walls)
             {
-                string code = TileType.AREA.ToString();
+                string code = areaCode;
                 bool change = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.NextBool();
                 if (change)
                 {
-                    code = "Thin Wall";
+                    code = thinCode;
                     change = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.NextBool();
-                    if (change) code = "Bars Wall";
+                    if (change) code = barsCode;
                 }
                 item.TileCode = code;
             }
@@ -97,10 +108,9 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
         
         private void SetBorder(List<BorderOverlapWall> walls)
         {
-            string code = TileType.BORDER.ToString();
             foreach (var item in walls)
             {
-                item.TileCode = code;
+                item.TileCode = borderCode;
             }
         }
 
@@ -113,7 +123,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                 {
                     levelPlan.Tiles.TryGetValue(item, out TilePlan tile);
                     if (tile.Type != TileType.BORDER) continue;
-                    //if (tile.Overlap != TileOverlap.WALL) continue;
+                    if (tile.Overlap != TileOverlap.WALL) continue;
                     tile.Code = wall.TileCode;
                 }
             }

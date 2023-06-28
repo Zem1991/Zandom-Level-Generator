@@ -1,5 +1,4 @@
-start location tambem precisa ignorar salas geradas por set piece
-encounters não-treasure e a exit precisam evitar proximidade com o start location
+rever padding no obstacle placement
 rever todos os checks do Diablo Cathedral
 
 task wait 0 = não faz wait além da coroutine do level generator em si

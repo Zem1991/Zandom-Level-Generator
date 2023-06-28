@@ -15,11 +15,11 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Customizables
         [SerializeField] private int distanceForDestructibleWalls = 4;
         [SerializeField] private int chanceOfThickDestructible = 10;
 
-        [Header("Diablo Cathedral - Doors")]
+        [Header("Diablo Cathedral - Door Placement")]
         [SerializeField] private int smallDoorwayLength = 2;
         [SerializeField] private int largeDoorwayLength = 4;
 
-        [Header("Diablo Cathedral - Encounters")]
+        [Header("Diablo Cathedral - Obstacle Placement")]
         [SerializeField] private int normalEncounters = 30;
         [SerializeField] private int challengeEncounters = 5;
         [SerializeField] private int treasureEncounters = 6;

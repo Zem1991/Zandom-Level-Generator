@@ -27,7 +27,7 @@ namespace ZandomLevelGenerator.Gizmos
 
         private void SizeBounds()
         {
-            Vector3 size = new(Constants.LEVEL_SIZE_MAX, 0, Constants.LEVEL_SIZE_MAX);
+            Vector3 size = ZandomLevelGenerator.ZandomParameters.LevelSize;
             Vector3 center = size / 2F;
             center += ZandomLevelGenerator.transform.position;
             center.x -= 0.5F;
@@ -84,7 +84,7 @@ namespace ZandomLevelGenerator.Gizmos
             if (startLocation == null) return;
             Vector3 center = ZandomLevelGenerator.transform.position;
             center += startLocation.Position;
-            float radius = Constants.EntranceSafetyRadius;
+            float radius = Constants.StartLocationRadius;
             DrawSphere(Constants.EntranceZoneColor, center, radius);
         }
 
@@ -96,7 +96,7 @@ namespace ZandomLevelGenerator.Gizmos
             {
                 Vector3 center = ZandomLevelGenerator.transform.position;
                 center += item.Position;
-                float radius = Constants.ExitSafetyRadius;
+                float radius = Constants.PointOfInterestRadius;
                 DrawSphere(Constants.ExitZoneColor, center, radius);
             }
         }

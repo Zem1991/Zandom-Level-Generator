@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.ResultObjects;
-using static UnityEngine.UI.GridLayoutGroup;
 
 namespace ZandomLevelGenerator.GeneratorObjects
 {

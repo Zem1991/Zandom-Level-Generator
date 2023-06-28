@@ -11,6 +11,9 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Customizables
         [Header("Diablo Cathedral")]
         [SerializeField][Range(0F, 1F)] private float areaFillTarget = 0.5F;
 
+        [Header("Diablo Cathedral - Walls")]
+        [SerializeField] private int distanceForDestructibleWalls = 4;
+
         [Header("Diablo Cathedral - Doors")]
         [SerializeField] private int smallDoorwayLength = 2;
         [SerializeField] private int largeDoorwayLength = 4;
@@ -21,6 +24,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Customizables
         [SerializeField] private int treasureEncounters = 6;
 
         public float AreaFillTarget { get => areaFillTarget; }
+        public int DistanceForDestructibleWalls { get => distanceForDestructibleWalls; }
         public int SmallDoorwayLength { get => smallDoorwayLength; }
         public int LargeDoorwayLength { get => largeDoorwayLength; }
         public int NormalEncounters { get => normalEncounters; }

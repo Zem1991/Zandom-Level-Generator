@@ -23,6 +23,7 @@ namespace ZandomLevelGenerator.GeneratorObjects
         public HashSet<Vector3Int> TilesIds { get; }
 
         public int DoorwayId { get; set; }
+        public string TileCode { get; set; }
 
         public bool HasDoorway()
         {

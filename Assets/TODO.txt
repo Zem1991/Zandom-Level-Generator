@@ -1,4 +1,3 @@
-refazer o wall randomizer
 start location tambem precisa ignorar salas geradas por set piece
 encounters não-treasure e a exit precisam evitar proximidade com o start location
 rever todos os checks do Diablo Cathedral

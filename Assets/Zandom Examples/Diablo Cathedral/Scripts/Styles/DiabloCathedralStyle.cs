@@ -60,6 +60,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
                 new CreateBorderOverlapDoorways(zandomLevelGenerator, parameters),
                 new SelectImportantRooms(zandomLevelGenerator),
                 new WallTypePicker(zandomLevelGenerator),
+                new ThickDestructibleBorders(zandomLevelGenerator),
             };
             return result;
         }

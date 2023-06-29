@@ -9,9 +9,9 @@ using ZandomLevelGenerator.Tools.Helpers;
 
 namespace ZandomLevelGenerator.Tasks.Common
 {
-    public class PlaceObstacles : GeneratorTask
+    public class PlaceObstaclesPerRoom : GeneratorTask
     {
-        public PlaceObstacles(ZandomLevelGenerator zandomLevelGenerator, string objectName, PlaceObstaclesParameters parameters) : base(zandomLevelGenerator)
+        public PlaceObstaclesPerRoom(ZandomLevelGenerator zandomLevelGenerator, string objectName, PlaceObstaclesParameters parameters) : base(zandomLevelGenerator)
         {
             ObjectName = objectName;
             Parameters = parameters;
@@ -22,38 +22,49 @@ namespace ZandomLevelGenerator.Tasks.Common
         public PlaceObstaclesParameters Parameters { get; }
         public Dictionary<int, Obstacle> NewObstacles { get; }
 
+        public Dictionary<SectorPlan, List<TilePlan>> SectorsAndTiles { get; private set; }
+        public int RemainingTiles { get; private set; }
+
         public override void RunContents()
         {
+            LevelPlan levelPlan = ZandomLevelGenerator.GeneratorCoroutine.Level;
+            SectorsAndTiles = new SectorsWithTilesGetter().Get(levelPlan);
+            SectorsAndTiles = new (SectorsAndTiles.OrderBy(x => ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Next()));
+            RemainingTiles = levelPlan.Tiles.Count;
             string name = ObjectName;
             ObstacleData data = ZandomLevelGenerator.ZandomObstacleList.Get(name);
             int amount = Parameters.AmountFunction(ZandomLevelGenerator);
-            List<TilePlan> startTiles = FindStartTiles();
-            Queue<TilePlan> startTilesQueue = new(startTiles);
-            while (NewObstacles.Count < amount && startTilesQueue.Count > 0)
+            int roomIndex = 0;
+            while (NewObstacles.Count < amount && RemainingTiles > 0)
             {
-                TilePlan startTile = startTilesQueue.Dequeue();
-                bool canUseTile = TryStartTile(startTile, data, out HashSet <Vector3Int> coordinates);
-                if (!canUseTile) continue;
-                ObstacleFactory factory = new(ZandomLevelGenerator.ZandomParameters, ZandomLevelGenerator.GeneratorCoroutine.Level);
-                int obstacleId = factory.NextId();
-                Obstacle obstacle = factory.Create(obstacleId, coordinates, Vector3.zero, data);
-                NewObstacles.Add(obstacleId, obstacle);
+                KeyValuePair<SectorPlan, List<TilePlan>> keyValuePair = SectorsAndTiles.ElementAt(roomIndex);
+                SectorPlan sector = keyValuePair.Key;
+                List<TilePlan> tiles = keyValuePair.Value;
+                if (tiles.Count > 0)
+                {
+                    tiles = new(tiles.OrderBy(x => ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Next()));
+                    TilePlan tile = tiles[0];
+                    tiles.Remove(tile);
+                    bool canUseTile = TryStartTile(tile, data, out HashSet<Vector3Int> coordinates);
+                    if (canUseTile)
+                    {
+                        ObstacleFactory factory = new(ZandomLevelGenerator.ZandomParameters, ZandomLevelGenerator.GeneratorCoroutine.Level);
+                        int obstacleId = factory.NextId();
+                        Obstacle obstacle = factory.Create(obstacleId, coordinates, Vector3.zero, data);
+                        NewObstacles.Add(obstacleId, obstacle);
+                    }
+                    RemainingTiles--;
+                    roomIndex++;
+                }
+                else
+                {
+                    SectorsAndTiles.Remove(sector);
+                }
+                if (roomIndex >= SectorsAndTiles.Count)
+                {
+                    roomIndex = 0;
+                }
             }
-        }
-
-        //private int NextRoomIndex()   //TODO: CONTINUE FROM HERE
-
-        private List<TilePlan> FindStartTiles()
-        {
-            List<TilePlan> tiles = new();
-            foreach (var item in ZandomLevelGenerator.GeneratorCoroutine.Level.Tiles.Values)
-            {
-                bool checkOk = PaddingCheck(item);
-                if (!checkOk) continue;
-                tiles.Add(item);
-            }
-            tiles = tiles.OrderBy(x => ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Next()).ToList();
-            return tiles;
         }
 
         private bool TryStartTile(TilePlan startTile, ObstacleData data, out HashSet<Vector3Int> obstacleCoordinates)

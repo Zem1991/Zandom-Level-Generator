@@ -21,7 +21,8 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
         {
             string objectName = "Challenge Encounter";
             PlaceObstaclesParameters parameters = CreateParameters();
-            PlaceObstacles placeObstacles = new(ZandomLevelGenerator, objectName, parameters);
+            //PlaceObstacles placeObstacles = new(ZandomLevelGenerator, objectName, parameters);
+            PlaceObstaclesPerRoom placeObstacles = new(ZandomLevelGenerator, objectName, parameters);
             placeObstacles.RunContents();
         }
 

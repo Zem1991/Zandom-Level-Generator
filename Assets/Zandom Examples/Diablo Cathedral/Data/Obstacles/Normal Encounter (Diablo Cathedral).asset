@@ -15,7 +15,7 @@ MonoBehaviour:
   gameObject: {fileID: 877962812885065705, guid: f547deebf3f949248b4e7d69f055b32e, type: 3}
   canPlaceWithinStartPosition: 1
   size: {x: 3, y: 1, z: 3}
-  padding: {x: 1, y: 0, z: 1}
+  padding: {x: 0, y: 0, z: 0}
   normalSectorAllowed: 1
   importantSectorAllowed: 1
   secretSectorAllowed: 0

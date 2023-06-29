@@ -175,7 +175,7 @@ MonoBehaviour:
   zandomTileset: {fileID: 11400000, guid: 80ecad11bd391da40862434c854a2be1, type: 2}
   zandomSetPieceList: {fileID: 11400000, guid: 3ac72e2f5d3b4f14b84fc65e3be9832c, type: 2}
   zandomObstacleList: {fileID: 11400000, guid: 515092809a081c84daf21545c1adf4b3, type: 2}
-  seed: 84b2686b-626f-4931-9e6f-1d69efd73791
+  seed: 
   maxAttempts: 10
   waitType: 0
   isRunning: 0

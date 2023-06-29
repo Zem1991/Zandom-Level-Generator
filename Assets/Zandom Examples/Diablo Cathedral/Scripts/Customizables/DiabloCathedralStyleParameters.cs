@@ -20,7 +20,7 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Customizables
         [SerializeField] private int largeDoorwayLength = 4;
 
         [Header("Diablo Cathedral - Obstacle Placement")]
-        [SerializeField] private int normalEncounters = 30;
+        [SerializeField] private int normalEncounters = 50;
         [SerializeField] private int challengeEncounters = 5;
         [SerializeField] private int treasureEncounters = 6;
 

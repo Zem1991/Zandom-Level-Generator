@@ -49,7 +49,7 @@ namespace ZandomLevelGenerator.Tasks.Common
             List<TilePlan> tiles = new();
             foreach (var item in ZandomLevelGenerator.GeneratorCoroutine.Level.Tiles.Values)
             {
-                bool checkOk = TileCheck(item);
+                bool checkOk = PaddingCheck(item);
                 if (!checkOk) continue;
                 tiles.Add(item);
             }
@@ -57,37 +57,41 @@ namespace ZandomLevelGenerator.Tasks.Common
             return tiles;
         }
 
-        private bool TryStartTile(TilePlan startTile, ObstacleData data, out HashSet<Vector3Int> coordinates)
+        private bool TryStartTile(TilePlan startTile, ObstacleData data, out HashSet<Vector3Int> obstacleCoordinates)
         {
-            Vector3Int start = startTile.Coordinates;
-            Vector3Int size = data.Size;
-            Vector3Int padding = data.Padding;
-            //int extraX = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(padding.x, room.Size.x - size.x - padding.x + 1);
-            //int extraZ = ZandomLevelGenerator.GeneratorCoroutine.SeededRandom.Range(padding.z, room.Size.z - size.z - padding.z + 1);
-            //position.x += extraX;
-            //position.z += extraZ;
-            start -= padding;
-            size += padding;
-            size += padding;
-            coordinates = new CoordinatesGetter().Get(start, size);
-            foreach (var item in coordinates)
+            Vector3Int obstacleStart = startTile.Coordinates;
+            Vector3Int obstacleSize = data.Size;
+            obstacleCoordinates = new CoordinatesGetter().Get(obstacleStart, obstacleSize);
+            Vector3Int paddingSize = data.Padding;
+            Vector3Int paddingStart = obstacleStart - paddingSize;
+            paddingSize *= 2;
+            paddingSize += obstacleSize;
+            paddingSize.y = 1;
+            HashSet<Vector3Int> paddingCoordinates = new CoordinatesGetter().Get(paddingStart, paddingSize);
+            LevelPlan levelPlan = ZandomLevelGenerator.GeneratorCoroutine.Level;
+            foreach (var item in paddingCoordinates)
             {
-                ZandomLevelGenerator.GeneratorCoroutine.Level.Tiles.TryGetValue(item, out TilePlan itemTile);
-                bool checkOk = TileCheck(itemTile);
+                levelPlan.Tiles.TryGetValue(item, out TilePlan itemTile);
+                bool checkOk = PaddingCheck(itemTile);
+                if (!checkOk) return false;
+            }
+            foreach (var item in obstacleCoordinates)
+            {
+                levelPlan.Tiles.TryGetValue(item, out TilePlan itemTile);
+                bool checkOk = ObstacleCheck(itemTile);
                 if (!checkOk) return false;
             }
             return true;
         }
 
-        private bool TileCheck(TilePlan tile)
+        private bool PaddingCheck(TilePlan tile)
         {
-            bool hasTile = tile != null;
-            if (!hasTile) return false;
-            bool hasObstacle = tile.HasObstacle();
-            if (hasObstacle) return false;
-            bool canPlaceObstacle = Parameters.ValidTileFunction(ZandomLevelGenerator, tile);
-            if (!canPlaceObstacle) return false;
-            return true;
+            return Parameters.PaddingTileFunction(ZandomLevelGenerator, tile);
+        }
+
+        private bool ObstacleCheck(TilePlan tile)
+        {
+            return Parameters.ObstacleTileFunction(ZandomLevelGenerator, tile);
         }
     }
 }

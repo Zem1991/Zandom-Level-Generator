@@ -27,8 +27,9 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
         private PlaceObstaclesParameters CreateParameters()
         {
             var amountFunction = AmountFunction();
-            var validTilesFunction = ValidTilesFunction();
-            PlaceObstaclesParameters result = new(amountFunction, validTilesFunction);
+            var paddingTileFunction = PaddingTileFunction();
+            var obstacleTileFunction = ObstacleTileFunction();
+            PlaceObstaclesParameters result = new(amountFunction, paddingTileFunction, obstacleTileFunction);
             return result;
         }
 
@@ -42,7 +43,26 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
             return result;
         }
 
-        private Func<ZandomLevelGenerator, TilePlan, bool> ValidTilesFunction()
+        private Func<ZandomLevelGenerator, TilePlan, bool> PaddingTileFunction()
+        {
+            bool result(ZandomLevelGenerator zandomLevelGenerator, TilePlan tile)
+            {
+                bool hasTile = tile != null;
+                if (!hasTile) return false;
+                bool hasObstacle = tile.HasObstacle();
+                if (hasObstacle) return false;
+                bool isOverlap = tile.Overlap != TileOverlap.NONE;
+                if (isOverlap)
+                {
+                    bool becomeArea = tile.Code == "Area";
+                    if (!becomeArea) return false;
+                }
+                return true;
+            }
+            return result;
+        }
+
+        private Func<ZandomLevelGenerator, TilePlan, bool> ObstacleTileFunction()
         {
             bool result(ZandomLevelGenerator zandomLevelGenerator, TilePlan tile)
             {
@@ -58,8 +78,18 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Tasks
                         return false;
                     }
                 }
-                bool canPlaceObstacle = tile.Type == TileType.AREA;
-                return canPlaceObstacle;
+                bool isOverlap = tile.Overlap != TileOverlap.NONE;
+                if (isOverlap)
+                {
+                    bool becomeArea = tile.Code == "Area";
+                    if (!becomeArea) return false;
+                }
+                else
+                {
+                    bool canPlaceObstacle = tile.Type == TileType.AREA;
+                    if (!canPlaceObstacle) return false;
+                }
+                return true;
             }
             return result;
         }

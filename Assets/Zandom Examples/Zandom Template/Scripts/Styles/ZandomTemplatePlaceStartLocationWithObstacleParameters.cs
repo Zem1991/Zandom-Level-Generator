@@ -13,8 +13,9 @@ namespace ZandomLevelGenerator.Examples.ZandomTemplate.Styles
         public PlaceObstaclesParameters CreateParameters()
         {
             var amountFunction = AmountFunction();
-            var validTilesFunction = ValidTilesFunction();
-            PlaceObstaclesParameters result = new(amountFunction, validTilesFunction);
+            var paddingTileFunction = PaddingTileFunction();
+            var obstacleTileFunction = ObstacleTileFunction();
+            PlaceObstaclesParameters result = new(amountFunction, paddingTileFunction, obstacleTileFunction);
             return result;
         }
 
@@ -27,7 +28,16 @@ namespace ZandomLevelGenerator.Examples.ZandomTemplate.Styles
             return result;
         }
 
-        public Func<ZandomLevelGenerator, TilePlan, bool> ValidTilesFunction()
+        public Func<ZandomLevelGenerator, TilePlan, bool> PaddingTileFunction()
+        {
+            bool result(ZandomLevelGenerator zandomLevelGenerator, TilePlan tile)
+            {
+                return true;
+            }
+            return result;
+        }
+
+        public Func<ZandomLevelGenerator, TilePlan, bool> ObstacleTileFunction()
         {
             bool result(ZandomLevelGenerator zandomLevelGenerator, TilePlan tile)
             {

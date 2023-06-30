@@ -21,11 +21,12 @@ namespace ZandomLevelGenerator.Customizables
         public IEnumerator Run()
         {
             RunContents();
+            Debug.Log($"Finished task {this}");
             if (ZandomLevelGenerator.WaitType == WaitType.TASK)
             {
+                //TODO: is this extra yielding regardless of wait type?
                 yield return null;
             }
-            Debug.Log($"Finished task {this}");
         }
 
         public abstract void RunContents();

@@ -1,5 +1,1 @@
 rever todos os checks do Diablo Cathedral
-
-task wait 0 = não faz wait além da coroutine do level generator em si
-task wait 1 = waits simples para o total das tasks
-task wait 2 = waits elaborados por etapa das tasks

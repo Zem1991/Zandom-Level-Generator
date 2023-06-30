@@ -29,13 +29,13 @@ namespace ZandomLevelGenerator.GeneratorStages
         protected override List<GeneratorTask> GetTasks()
         {
             List<GeneratorTask> result = new();
-            bool addOutputZandomLevel = ZandomLevelGenerator.WaitType == WaitType.ZANDOM_ONLY;
-            if (addOutputZandomLevel)
-            {
-                LevelPlan levelPlan = ZandomLevelGenerator.GeneratorCoroutine.Level;
-                GeneratorTask task = new OutputZandomLevel(ZandomLevelGenerator, levelPlan);
-                result.Add(task);
-            }
+            //bool addOutputZandomLevel = ZandomLevelGenerator.WaitType == WaitType.ZANDOM_ONLY;
+            //if (addOutputZandomLevel)
+            //{
+            //    LevelPlan levelPlan = ZandomLevelGenerator.GeneratorCoroutine.Level;
+            //    GeneratorTask task = new OutputZandomLevel(ZandomLevelGenerator, levelPlan);
+            //    result.Add(task);
+            //}
             return result;
         }
 

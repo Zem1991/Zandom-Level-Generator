@@ -2,8 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZandomLevelGenerator.Customizables;
+using ZandomLevelGenerator.Enums;
 using ZandomLevelGenerator.GeneratorObjects;
 using ZandomLevelGenerator.GeneratorStages;
+using ZandomLevelGenerator.Tasks.Output;
 using ZemReusables;
 
 namespace ZandomLevelGenerator
@@ -40,6 +43,7 @@ namespace ZandomLevelGenerator
         public IEnumerator Run()
         {
             StartLoop();
+            yield return null;
             while (Stage != null)
             {
                 yield return RunLoop();
@@ -65,29 +69,15 @@ namespace ZandomLevelGenerator
             }
             if (Stage.TasksFinished)
             {
-                bool stateResult = Stage.RunChecks(out string message);
-                if (string.IsNullOrEmpty(message))
-                {
-                    message = "--";
-                }
-                if (stateResult)
-                {
-                    DebugMessageSuccess(message);
-                    Stage = Stage.NextIfSuccess();
-                    if (Stage != null) Debug.Log($"Entering state {Stage.Name}");
-                }
-                else
-                {
-                    DebugMessageFailure(message);
-                    Stage = Stage.NextIfFailure();
-                    NewAttempt();
-                }
+                yield return HandleWait();
+                yield return HandleStageFinished();
             }
         }
 
         private void EndLoop()
         {
             Debug.Log($"Level generation finished.");
+            OnFinish?.Invoke();
         }
 
         private void NewAttempt()
@@ -104,6 +94,42 @@ namespace ZandomLevelGenerator
             {
                 Debug.Log($"Starting attempt #{Attempts} at generating the next level.");
             }
+        }
+
+        private IEnumerator HandleWait()
+        {
+            bool waitZandom = ZandomLevelGenerator.WaitType == WaitType.ZANDOM && Stage.Name == StageName.STEP04_RESULT;
+            bool waitStage = ZandomLevelGenerator.WaitType == WaitType.STAGE;
+            //bool waitFailSafe = ZandomLevelGenerator.WaitType == WaitType.ITERATION;
+            //bool addWait = waitZandom || waitStage || waitFailSafe;
+            bool addWait = waitZandom || waitStage;
+            if (addWait)
+            {
+                GeneratorTask task = new OutputZandomLevel(ZandomLevelGenerator, Level);
+                yield return task.Run();
+            }
+        }
+
+        private IEnumerator HandleStageFinished()
+        {
+            bool stateResult = Stage.RunChecks(out string message);
+            if (string.IsNullOrEmpty(message))
+            {
+                message = "--";
+            }
+            if (stateResult)
+            {
+                DebugMessageSuccess(message);
+                Stage = Stage.NextIfSuccess();
+                if (Stage != null) Debug.Log($"Entering state {Stage.Name}");
+            }
+            else
+            {
+                DebugMessageFailure(message);
+                Stage = Stage.NextIfFailure();
+                NewAttempt();
+            }
+            yield return null;
         }
 
         private void DebugMessageSuccess(string message)

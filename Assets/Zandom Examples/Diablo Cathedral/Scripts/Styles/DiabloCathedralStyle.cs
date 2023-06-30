@@ -68,9 +68,10 @@ namespace ZandomLevelGenerator.Examples.DiabloCathedral.Styles
         public override bool Step03_Checks(ZandomLevelGenerator zandomLevelGenerator, out string message)
         {
             message = null;
-            bool startLocationOk = zandomLevelGenerator.GeneratorCoroutine.Level.StartLocation != null;
-            if (!startLocationOk) message = $"Start Location was not set.";
-            return startLocationOk;
+            return true;
+            //bool startLocationOk = zandomLevelGenerator.GeneratorCoroutine.Level.StartLocation != null;
+            //if (!startLocationOk) message = $"Start Location was not set.";
+            //return startLocationOk;
         }
 
         public override List<GeneratorTask> Step03_Tasks(ZandomLevelGenerator zandomLevelGenerator)

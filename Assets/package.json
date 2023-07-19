@@ -1,0 +1,19 @@
+{
+  "name": "com.zem.zandom-level-generator",
+  "version": "0.0.1",
+  "displayName": "Zandom Level Generator",
+  "description": "Level Generator inspired on how the original Diablo used to do.",
+  "documentationUrl": "https://github.com/Zem1991/Zandom-Level-Generator",
+  "changelogUrl": "https://github.com/Zem1991/Zandom-Level-Generator",
+  "licensesUrl": "https://github.com/Zem1991/Zandom-Level-Generator",
+  "keywords": [
+    "Zandom"
+    "Level",
+    "Generator"
+  ],
+  "author": {
+    "name": "Zem1991",
+    "email": "felipelopeszem@hotmail.com",
+    "url": "https://github.com/Zem1991"
+  }
+}

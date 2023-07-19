@@ -1,8 +1,8 @@
 {
     "name": "com.zem.zandom-level-generator",
-    "version": "0.0.1",
+    "version": "0.0.0",
     "displayName": "Zandom Level Generator",
-    "description": "Level Generator inspired on how the original Diablo used to do. More at https://github.com/Zem1991/Zandom-Level-Generator",
+    "description": "Level Generator inspired on how the original Diablo used to do. More at: https://github.com/Zem1991/Zandom-Level-Generator",
     "author": {
         "name": "Zem1991",
         "email": "felipelopeszem@hotmail.com",
@@ -11,13 +11,13 @@
     "samples": [
         {
             "displayName": "Zandom Template",
-            "description": "Uses default tools only to create square rooms adjacent to each other.",
-            "path": "Samples/Zandom Template"
+            "description": "Uses default tools to showcase how this package can be used as is.",
+            "path": "Samples~/Zandom Template"
         },
         {
             "displayName": "Diablo Cathedral",
             "description": "Inspired on how the original Diablo used to do the Cathedral levels.",
-            "path": "Samples/Diablo Cathedral"
+            "path": "Samples~/Diablo Cathedral"
         }
     ]
 }

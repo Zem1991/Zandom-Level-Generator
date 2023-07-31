@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.Customizables
 {
-    [CreateAssetMenu(menuName = "Zandom2/SetPieceData")]
+    [CreateAssetMenu(menuName = "Zandom Level Generator/Set Piece Data")]
     public class SetPieceData : ScriptableObject
     {
         [Header("Settings")]

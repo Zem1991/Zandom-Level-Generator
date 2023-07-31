@@ -6,7 +6,7 @@ using ZemReusables;
 
 namespace ZandomLevelGenerator.Customizables
 {
-    [CreateAssetMenu(menuName = "Zandom2/AsciiTable")]
+    [CreateAssetMenu(menuName = "Zandom Level Generator/Ascii Table")]
     public class AsciiTable : PseudoDictionaryScriptableObject<char, string>
     {
         [Header("Reserved: TileType.AREA")]

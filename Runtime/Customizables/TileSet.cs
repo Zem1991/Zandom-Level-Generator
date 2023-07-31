@@ -6,7 +6,7 @@ using ZemReusables;
 
 namespace ZandomLevelGenerator.Customizables
 {
-    [CreateAssetMenu(menuName = "Zandom2/TileSet")]
+    [CreateAssetMenu(menuName = "Zandom Level Generator/Tile Set")]
     public class TileSet : PseudoDictionaryScriptableObject<string, GameObject>
     {
         [Header("Reserved: TileType.AREA")]

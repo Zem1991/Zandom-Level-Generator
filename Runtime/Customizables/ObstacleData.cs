@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ZandomLevelGenerator.Customizables
 {
-    [CreateAssetMenu(menuName = "Zandom2/ObstacleData")]
+    [CreateAssetMenu(menuName = "Zandom Level Generator/Obstacle Data")]
     public class ObstacleData : ScriptableObject
     {
         [Header("Settings")]
